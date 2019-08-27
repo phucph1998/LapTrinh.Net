@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace SpaManagementSoftware
 {
-    public partial class Form1 : DevExpress.XtraEditors.XtraForm
+    public partial class frmMain : DevExpress.XtraEditors.XtraForm
     {
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
