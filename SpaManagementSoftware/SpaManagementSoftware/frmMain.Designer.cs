@@ -28,19 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tSBUseService = new System.Windows.Forms.ToolStripButton();
-            this.tSBManagementSales = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tSBStatisticalSales = new System.Windows.Forms.ToolStripButton();
-            this.tSBStatisticalGoods = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tSBFastNote = new System.Windows.Forms.ToolStripButton();
-            this.tSBTips = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tSBReport = new System.Windows.Forms.ToolStripButton();
-            this.tSBExit = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hỆTHỐNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cơSởDữLiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,6 +102,15 @@
             this.thưViệnẢnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.tRỢGIÚPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.tSBUseService = new System.Windows.Forms.ToolStripButton();
+            this.tSBManagementSales = new System.Windows.Forms.ToolStripButton();
+            this.tSBStatisticalSales = new System.Windows.Forms.ToolStripButton();
+            this.tSBStatisticalGoods = new System.Windows.Forms.ToolStripButton();
+            this.tSBFastNote = new System.Windows.Forms.ToolStripButton();
+            this.tSBTips = new System.Windows.Forms.ToolStripButton();
+            this.tSBReport = new System.Windows.Forms.ToolStripButton();
+            this.tSBExit = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -129,96 +131,24 @@
             this.tSBExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(912, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1035, 25);
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tSBUseService
-            // 
-            this.tSBUseService.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSBUseService.Image = ((System.Drawing.Image)(resources.GetObject("tSBUseService.Image")));
-            this.tSBUseService.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBUseService.Name = "tSBUseService";
-            this.tSBUseService.Size = new System.Drawing.Size(97, 22);
-            this.tSBUseService.Text = "Sử dụng dịch vụ";
-            // 
-            // tSBManagementSales
-            // 
-            this.tSBManagementSales.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSBManagementSales.Image = ((System.Drawing.Image)(resources.GetObject("tSBManagementSales.Image")));
-            this.tSBManagementSales.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBManagementSales.Name = "tSBManagementSales";
-            this.tSBManagementSales.Size = new System.Drawing.Size(105, 22);
-            this.tSBManagementSales.Text = "Quản lý bán hàng";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // tSBStatisticalSales
-            // 
-            this.tSBStatisticalSales.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSBStatisticalSales.Image = ((System.Drawing.Image)(resources.GetObject("tSBStatisticalSales.Image")));
-            this.tSBStatisticalSales.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBStatisticalSales.Name = "tSBStatisticalSales";
-            this.tSBStatisticalSales.Size = new System.Drawing.Size(118, 22);
-            this.tSBStatisticalSales.Text = "Thống kê doanh thu";
-            // 
-            // tSBStatisticalGoods
-            // 
-            this.tSBStatisticalGoods.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSBStatisticalGoods.Image = ((System.Drawing.Image)(resources.GetObject("tSBStatisticalGoods.Image")));
-            this.tSBStatisticalGoods.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBStatisticalGoods.Name = "tSBStatisticalGoods";
-            this.tSBStatisticalGoods.Size = new System.Drawing.Size(114, 22);
-            this.tSBStatisticalGoods.Text = "Thống kê mặt hàng";
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // tSBFastNote
-            // 
-            this.tSBFastNote.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSBFastNote.Image = ((System.Drawing.Image)(resources.GetObject("tSBFastNote.Image")));
-            this.tSBFastNote.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBFastNote.Name = "tSBFastNote";
-            this.tSBFastNote.Size = new System.Drawing.Size(89, 22);
-            this.tSBFastNote.Text = "Ghi chú nhanh";
-            // 
-            // tSBTips
-            // 
-            this.tSBTips.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSBTips.Image = ((System.Drawing.Image)(resources.GetObject("tSBTips.Image")));
-            this.tSBTips.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBTips.Name = "tSBTips";
-            this.tSBTips.Size = new System.Drawing.Size(54, 22);
-            this.tSBTips.Text = "Mẹo vặt";
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tSBReport
-            // 
-            this.tSBReport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSBReport.Image = ((System.Drawing.Image)(resources.GetObject("tSBReport.Image")));
-            this.tSBReport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBReport.Name = "tSBReport";
-            this.tSBReport.Size = new System.Drawing.Size(55, 22);
-            this.tSBReport.Text = "Báo Cáo";
-            // 
-            // tSBExit
-            // 
-            this.tSBExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSBExit.Image = ((System.Drawing.Image)(resources.GetObject("tSBExit.Image")));
-            this.tSBExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBExit.Name = "tSBExit";
-            this.tSBExit.Size = new System.Drawing.Size(41, 22);
-            this.tSBExit.Text = "Thoát";
             // 
             // menuStrip1
             // 
@@ -233,7 +163,7 @@
             this.tRỢGIÚPToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(912, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1035, 24);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -698,13 +628,160 @@
             this.tRỢGIÚPToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.tRỢGIÚPToolStripMenuItem.Text = "&TRỢ GIÚP";
             // 
+            // imageList
+            // 
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "basket.png");
+            this.imageList.Images.SetKeyName(1, "beer.png");
+            this.imageList.Images.SetKeyName(2, "beer2.png");
+            this.imageList.Images.SetKeyName(3, "bida.png");
+            this.imageList.Images.SetKeyName(4, "card.png");
+            this.imageList.Images.SetKeyName(5, "card2.png");
+            this.imageList.Images.SetKeyName(6, "cocktail.png");
+            this.imageList.Images.SetKeyName(7, "coffee.png");
+            this.imageList.Images.SetKeyName(8, "coke.png");
+            this.imageList.Images.SetKeyName(9, "cream.png");
+            this.imageList.Images.SetKeyName(10, "chair.png");
+            this.imageList.Images.SetKeyName(11, "cheff.png");
+            this.imageList.Images.SetKeyName(12, "chips_64.png");
+            this.imageList.Images.SetKeyName(13, "dinner.png");
+            this.imageList.Images.SetKeyName(14, "dinner2.png");
+            this.imageList.Images.SetKeyName(15, "game.png");
+            this.imageList.Images.SetKeyName(16, "girl.png");
+            this.imageList.Images.SetKeyName(17, "karaoke.png");
+            this.imageList.Images.SetKeyName(18, "karaoke2.png");
+            this.imageList.Images.SetKeyName(19, "Mai.png");
+            this.imageList.Images.SetKeyName(20, "mario_64.png");
+            this.imageList.Images.SetKeyName(21, "massage.png");
+            this.imageList.Images.SetKeyName(22, "menu.png");
+            this.imageList.Images.SetKeyName(23, "menu2.png");
+            this.imageList.Images.SetKeyName(24, "mushroom.png");
+            this.imageList.Images.SetKeyName(25, "pan.png");
+            this.imageList.Images.SetKeyName(26, "present.png");
+            this.imageList.Images.SetKeyName(27, "phonographe.png");
+            this.imageList.Images.SetKeyName(28, "seat.png");
+            this.imageList.Images.SetKeyName(29, "table.png");
+            this.imageList.Images.SetKeyName(30, "table2.png");
+            this.imageList.Images.SetKeyName(31, "ticket.png");
+            this.imageList.Images.SetKeyName(32, "wine.png");
+            this.imageList.Images.SetKeyName(33, "wizard.png");
+            this.imageList.Images.SetKeyName(34, "UserGroup_32x32.png");
+            this.imageList.Images.SetKeyName(35, "UserGroup_16x16.png");
+            this.imageList.Images.SetKeyName(36, "User_32x32.png");
+            this.imageList.Images.SetKeyName(37, "User_16x16.png");
+            this.imageList.Images.SetKeyName(38, "Team_32x32.png");
+            this.imageList.Images.SetKeyName(39, "Team_16x16.png");
+            this.imageList.Images.SetKeyName(40, "Employee_32x32.png");
+            this.imageList.Images.SetKeyName(41, "Employee_16x16.png");
+            this.imageList.Images.SetKeyName(42, "Customer_32x32.png");
+            this.imageList.Images.SetKeyName(43, "Customer_16x16.png");
+            this.imageList.Images.SetKeyName(44, "Trash_32x32.png");
+            this.imageList.Images.SetKeyName(45, "Trash_16x16.png");
+            this.imageList.Images.SetKeyName(46, "Reset2_32x32.png");
+            this.imageList.Images.SetKeyName(47, "Reset2_16x16.png");
+            this.imageList.Images.SetKeyName(48, "Remove_32x32.png");
+            this.imageList.Images.SetKeyName(49, "Remove_16x16.png");
+            this.imageList.Images.SetKeyName(50, "Refresh2_32x32.png");
+            this.imageList.Images.SetKeyName(51, "Refresh2_16x16.png");
+            this.imageList.Images.SetKeyName(52, "Refresh_32x32.png");
+            this.imageList.Images.SetKeyName(53, "Refresh_16x16.png");
+            this.imageList.Images.SetKeyName(54, "ImportImage_32x32.png");
+            this.imageList.Images.SetKeyName(55, "ImportImage_16x16.png");
+            this.imageList.Images.SetKeyName(56, "DeleteList2_32x32.png");
+            this.imageList.Images.SetKeyName(57, "DeleteList2_16x16.png");
+            this.imageList.Images.SetKeyName(58, "Convert_32x32.png");
+            this.imageList.Images.SetKeyName(59, "Convert_16x16.png");
+            this.imageList.Images.SetKeyName(60, "Close_32x32.png");
+            this.imageList.Images.SetKeyName(61, "Close_16x16.png");
+            this.imageList.Images.SetKeyName(62, "Clear_32x32.png");
+            this.imageList.Images.SetKeyName(63, "Clear_16x16.png");
+            this.imageList.Images.SetKeyName(64, "Cancel_32x32.png");
+            this.imageList.Images.SetKeyName(65, "Cancel_16x16.png");
+            this.imageList.Images.SetKeyName(66, "Apply_32x32.png");
+            this.imageList.Images.SetKeyName(67, "Apply_16x16.png");
+            this.imageList.Images.SetKeyName(68, "AddItem_32x32.png");
+            this.imageList.Images.SetKeyName(69, "AddItem_16x16.png");
+            this.imageList.Images.SetKeyName(70, "AddFile_32x32.png");
+            this.imageList.Images.SetKeyName(71, "AddFile_16x16.png");
+            this.imageList.Images.SetKeyName(72, "Add_32x32.png");
+            this.imageList.Images.SetKeyName(73, "Add_16x16.png");
+            // 
+            // tSBUseService
+            // 
+            this.tSBUseService.Image = global::SpaManagementSoftware.Properties.Resources.User_16x16;
+            this.tSBUseService.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBUseService.Name = "tSBUseService";
+            this.tSBUseService.Size = new System.Drawing.Size(113, 22);
+            this.tSBUseService.Text = "Sử dụng dịch vụ";
+            // 
+            // tSBManagementSales
+            // 
+            this.tSBManagementSales.Image = global::SpaManagementSoftware.Properties.Resources.BOOrder_16x16;
+            this.tSBManagementSales.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBManagementSales.Name = "tSBManagementSales";
+            this.tSBManagementSales.Size = new System.Drawing.Size(121, 22);
+            this.tSBManagementSales.Text = "Quản lý bán hàng";
+            // 
+            // tSBStatisticalSales
+            // 
+            this.tSBStatisticalSales.Image = global::SpaManagementSoftware.Properties.Resources._3DLine_16x16;
+            this.tSBStatisticalSales.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBStatisticalSales.Name = "tSBStatisticalSales";
+            this.tSBStatisticalSales.Size = new System.Drawing.Size(134, 22);
+            this.tSBStatisticalSales.Text = "Thống kê doanh thu";
+            // 
+            // tSBStatisticalGoods
+            // 
+            this.tSBStatisticalGoods.Image = global::SpaManagementSoftware.Properties.Resources.Column2_16x16;
+            this.tSBStatisticalGoods.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBStatisticalGoods.Name = "tSBStatisticalGoods";
+            this.tSBStatisticalGoods.Size = new System.Drawing.Size(130, 22);
+            this.tSBStatisticalGoods.Text = "Thống kê mặt hàng";
+            // 
+            // tSBFastNote
+            // 
+            this.tSBFastNote.Image = global::SpaManagementSoftware.Properties.Resources.Notes_16x16;
+            this.tSBFastNote.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBFastNote.Name = "tSBFastNote";
+            this.tSBFastNote.Size = new System.Drawing.Size(105, 22);
+            this.tSBFastNote.Text = "Ghi chú nhanh";
+            // 
+            // tSBTips
+            // 
+            this.tSBTips.Image = global::SpaManagementSoftware.Properties.Resources.Suggestion_16x16;
+            this.tSBTips.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBTips.Name = "tSBTips";
+            this.tSBTips.Size = new System.Drawing.Size(70, 22);
+            this.tSBTips.Text = "Mẹo vặt";
+            // 
+            // tSBReport
+            // 
+            this.tSBReport.Image = global::SpaManagementSoftware.Properties.Resources.Report_16x16;
+            this.tSBReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBReport.Name = "tSBReport";
+            this.tSBReport.Size = new System.Drawing.Size(71, 22);
+            this.tSBReport.Text = "Báo Cáo";
+            // 
+            // tSBExit
+            // 
+            this.tSBExit.Image = global::SpaManagementSoftware.Properties.Resources.Close_16x16;
+            this.tSBExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBExit.Name = "tSBExit";
+            this.tSBExit.Size = new System.Drawing.Size(57, 22);
+            this.tSBExit.Text = "Thoát";
+            // 
             // frmMain
             // 
+            this.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 421);
+            this.ClientSize = new System.Drawing.Size(1035, 465);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -800,6 +877,7 @@
         private System.Windows.Forms.ToolStripMenuItem thưViệnẢnhToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem tRỢGIÚPToolStripMenuItem;
+        private System.Windows.Forms.ImageList imageList;
 
     }
 }
