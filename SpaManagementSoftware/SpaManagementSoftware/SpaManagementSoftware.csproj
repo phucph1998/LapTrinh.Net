@@ -70,6 +70,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -80,6 +81,45 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trash_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BOOrder_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DLine_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Column2_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Notes_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Suggestion_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Database_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Outbox_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Customer_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

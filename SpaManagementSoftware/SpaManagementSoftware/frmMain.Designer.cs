@@ -36,14 +36,8 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hỆTHỐNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cơSởDữLiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCreateNewDatabase = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiBackupDatabase = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiRestoreDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiChangePass = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiLogOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.hOẠTĐỘNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhMụcKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trungTâmKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,6 +105,12 @@
             this.tSBTips = new System.Windows.Forms.ToolStripButton();
             this.tSBReport = new System.Windows.Forms.ToolStripButton();
             this.tSBExit = new System.Windows.Forms.ToolStripButton();
+            this.cơSởDữLiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCreateNewDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBackupDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRestoreDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLogOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -179,34 +179,6 @@
             this.hỆTHỐNGToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.hỆTHỐNGToolStripMenuItem.Text = "&HỆ THỐNG";
             // 
-            // cơSởDữLiệuToolStripMenuItem
-            // 
-            this.cơSởDữLiệuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiCreateNewDatabase,
-            this.tsmiBackupDatabase,
-            this.tsmiRestoreDatabase});
-            this.cơSởDữLiệuToolStripMenuItem.Name = "cơSởDữLiệuToolStripMenuItem";
-            this.cơSởDữLiệuToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.cơSởDữLiệuToolStripMenuItem.Text = "&Cơ Sở Dữ Liệu";
-            // 
-            // tsmiCreateNewDatabase
-            // 
-            this.tsmiCreateNewDatabase.Name = "tsmiCreateNewDatabase";
-            this.tsmiCreateNewDatabase.Size = new System.Drawing.Size(191, 22);
-            this.tsmiCreateNewDatabase.Text = "Tạo mới cơ sở dữ liệu";
-            // 
-            // tsmiBackupDatabase
-            // 
-            this.tsmiBackupDatabase.Name = "tsmiBackupDatabase";
-            this.tsmiBackupDatabase.Size = new System.Drawing.Size(191, 22);
-            this.tsmiBackupDatabase.Text = "Sao lưu cơ sở dữ liệu";
-            // 
-            // tsmiRestoreDatabase
-            // 
-            this.tsmiRestoreDatabase.Name = "tsmiRestoreDatabase";
-            this.tsmiRestoreDatabase.Size = new System.Drawing.Size(191, 22);
-            this.tsmiRestoreDatabase.Text = "Phục hồi cơ sở dữ liệu";
-            // 
             // tsmiChangePass
             // 
             this.tsmiChangePass.Name = "tsmiChangePass";
@@ -217,18 +189,6 @@
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(202, 6);
-            // 
-            // tsmiLogOut
-            // 
-            this.tsmiLogOut.Name = "tsmiLogOut";
-            this.tsmiLogOut.Size = new System.Drawing.Size(205, 22);
-            this.tsmiLogOut.Text = "Đăng xuất khỏi hệ thống";
-            // 
-            // tsmiExit
-            // 
-            this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(205, 22);
-            this.tsmiExit.Text = "Thoát khỏi hệ thống";
             // 
             // hOẠTĐỘNGToolStripMenuItem
             // 
@@ -259,6 +219,7 @@
             // 
             // danhMụcKháchHàngToolStripMenuItem
             // 
+            this.danhMụcKháchHàngToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Customer_16x16;
             this.danhMụcKháchHàngToolStripMenuItem.Name = "danhMụcKháchHàngToolStripMenuItem";
             this.danhMụcKháchHàngToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.danhMụcKháchHàngToolStripMenuItem.Text = "Danh mục khách hàng";
@@ -770,6 +731,49 @@
             this.tSBExit.Name = "tSBExit";
             this.tSBExit.Size = new System.Drawing.Size(57, 22);
             this.tSBExit.Text = "Thoát";
+            // 
+            // cơSởDữLiệuToolStripMenuItem
+            // 
+            this.cơSởDữLiệuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCreateNewDatabase,
+            this.tsmiBackupDatabase,
+            this.tsmiRestoreDatabase});
+            this.cơSởDữLiệuToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Database_16x16;
+            this.cơSởDữLiệuToolStripMenuItem.Name = "cơSởDữLiệuToolStripMenuItem";
+            this.cơSởDữLiệuToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.cơSởDữLiệuToolStripMenuItem.Text = "&Cơ Sở Dữ Liệu";
+            // 
+            // tsmiCreateNewDatabase
+            // 
+            this.tsmiCreateNewDatabase.Name = "tsmiCreateNewDatabase";
+            this.tsmiCreateNewDatabase.Size = new System.Drawing.Size(191, 22);
+            this.tsmiCreateNewDatabase.Text = "Tạo mới cơ sở dữ liệu";
+            // 
+            // tsmiBackupDatabase
+            // 
+            this.tsmiBackupDatabase.Name = "tsmiBackupDatabase";
+            this.tsmiBackupDatabase.Size = new System.Drawing.Size(191, 22);
+            this.tsmiBackupDatabase.Text = "Sao lưu cơ sở dữ liệu";
+            // 
+            // tsmiRestoreDatabase
+            // 
+            this.tsmiRestoreDatabase.Name = "tsmiRestoreDatabase";
+            this.tsmiRestoreDatabase.Size = new System.Drawing.Size(191, 22);
+            this.tsmiRestoreDatabase.Text = "Phục hồi cơ sở dữ liệu";
+            // 
+            // tsmiLogOut
+            // 
+            this.tsmiLogOut.Image = global::SpaManagementSoftware.Properties.Resources.Outbox_16x16;
+            this.tsmiLogOut.Name = "tsmiLogOut";
+            this.tsmiLogOut.Size = new System.Drawing.Size(205, 22);
+            this.tsmiLogOut.Text = "Đăng xuất khỏi hệ thống";
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Image = global::SpaManagementSoftware.Properties.Resources.Cancel_16x16;
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(205, 22);
+            this.tsmiExit.Text = "Thoát khỏi hệ thống";
             // 
             // frmMain
             // 
