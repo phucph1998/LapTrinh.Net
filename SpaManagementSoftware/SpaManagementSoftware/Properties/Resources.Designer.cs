@@ -103,6 +103,16 @@ namespace SpaManagementSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BOSaleItem_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("BOSaleItem_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cancel_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Cancel_16x16", resourceCulture);
@@ -126,6 +136,16 @@ namespace SpaManagementSoftware.Properties {
         internal static System.Drawing.Bitmap Column2_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Column2_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Currency2_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Currency2_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,6 +213,16 @@ namespace SpaManagementSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Next_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Next_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Notes_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Notes_16x16", resourceCulture);
@@ -206,6 +236,16 @@ namespace SpaManagementSoftware.Properties {
         internal static System.Drawing.Bitmap Outbox_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Outbox_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Prev_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Prev_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

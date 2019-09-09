@@ -21,7 +21,8 @@ namespace SpaManagementSoftware
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
+            //UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
+            UserLookAndFeel.Default.SetOffice2003Style();
             Application.Run(new frmMain());
         }
     }

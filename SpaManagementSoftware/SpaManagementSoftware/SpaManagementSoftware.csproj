@@ -164,6 +164,18 @@
   <ItemGroup>
     <None Include="Resources\move-option.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prev_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Currency2_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BOSaleItem_16x16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
