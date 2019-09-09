@@ -15,5 +15,52 @@ namespace SpaManagementSoftware
         {
             InitializeComponent();
         }
+
+        public Boolean CheckExist(string frmName)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                if (frm.Name.Equals(frmName))
+                {
+                    frm.Activate();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void openForm(Form frm)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.GetType() == frm.GetType())
+                {
+                    f.Activate();
+                    return;
+                }
+
+            }
+            frm.MdiParent = this;
+            frm.Show();
+        }
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            frmUseService use = new frmUseService();
+            openForm(use);
+        }
+
+        private void tSBUseService_Click(object sender, EventArgs e)
+        {
+            if(CheckExist("frmUseService"))
+            {
+                MessageBox.Show("Chức Năng Này Đang Sử Dụng, Không Cần Mở Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            else
+            {
+                frmUseService use = new frmUseService();
+                openForm(use);
+            }
+        }
     }
 }

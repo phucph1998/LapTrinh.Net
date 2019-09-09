@@ -31,13 +31,27 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tSBUseService = new System.Windows.Forms.ToolStripButton();
+            this.tSBManagementSales = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tSBStatisticalSales = new System.Windows.Forms.ToolStripButton();
+            this.tSBStatisticalGoods = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tSBFastNote = new System.Windows.Forms.ToolStripButton();
+            this.tSBTips = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tSBReport = new System.Windows.Forms.ToolStripButton();
+            this.tSBExit = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hỆTHỐNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cơSởDữLiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCreateNewDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBackupDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRestoreDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiChangePass = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiLogOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.hOẠTĐỘNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhMụcKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trungTâmKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,22 +111,10 @@
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.tRỢGIÚPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.tSBUseService = new System.Windows.Forms.ToolStripButton();
-            this.tSBManagementSales = new System.Windows.Forms.ToolStripButton();
-            this.tSBStatisticalSales = new System.Windows.Forms.ToolStripButton();
-            this.tSBStatisticalGoods = new System.Windows.Forms.ToolStripButton();
-            this.tSBFastNote = new System.Windows.Forms.ToolStripButton();
-            this.tSBTips = new System.Windows.Forms.ToolStripButton();
-            this.tSBReport = new System.Windows.Forms.ToolStripButton();
-            this.tSBExit = new System.Windows.Forms.ToolStripButton();
-            this.cơSởDữLiệuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCreateNewDatabase = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiBackupDatabase = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiRestoreDatabase = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLogOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -131,24 +133,89 @@
             this.tSBExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1035, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(902, 25);
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tSBUseService
+            // 
+            this.tSBUseService.Image = global::SpaManagementSoftware.Properties.Resources.User_16x16;
+            this.tSBUseService.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBUseService.Name = "tSBUseService";
+            this.tSBUseService.Size = new System.Drawing.Size(113, 22);
+            this.tSBUseService.Text = "Sử dụng dịch vụ";
+            this.tSBUseService.Click += new System.EventHandler(this.tSBUseService_Click);
+            // 
+            // tSBManagementSales
+            // 
+            this.tSBManagementSales.Image = global::SpaManagementSoftware.Properties.Resources.BOOrder_16x16;
+            this.tSBManagementSales.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBManagementSales.Name = "tSBManagementSales";
+            this.tSBManagementSales.Size = new System.Drawing.Size(121, 22);
+            this.tSBManagementSales.Text = "Quản lý bán hàng";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // tSBStatisticalSales
+            // 
+            this.tSBStatisticalSales.Image = global::SpaManagementSoftware.Properties.Resources._3DLine_16x16;
+            this.tSBStatisticalSales.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBStatisticalSales.Name = "tSBStatisticalSales";
+            this.tSBStatisticalSales.Size = new System.Drawing.Size(134, 22);
+            this.tSBStatisticalSales.Text = "Thống kê doanh thu";
+            // 
+            // tSBStatisticalGoods
+            // 
+            this.tSBStatisticalGoods.Image = global::SpaManagementSoftware.Properties.Resources.Column2_16x16;
+            this.tSBStatisticalGoods.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBStatisticalGoods.Name = "tSBStatisticalGoods";
+            this.tSBStatisticalGoods.Size = new System.Drawing.Size(130, 22);
+            this.tSBStatisticalGoods.Text = "Thống kê mặt hàng";
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // tSBFastNote
+            // 
+            this.tSBFastNote.Image = global::SpaManagementSoftware.Properties.Resources.Notes_16x16;
+            this.tSBFastNote.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBFastNote.Name = "tSBFastNote";
+            this.tSBFastNote.Size = new System.Drawing.Size(105, 22);
+            this.tSBFastNote.Text = "Ghi chú nhanh";
+            // 
+            // tSBTips
+            // 
+            this.tSBTips.Image = global::SpaManagementSoftware.Properties.Resources.Suggestion_16x16;
+            this.tSBTips.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBTips.Name = "tSBTips";
+            this.tSBTips.Size = new System.Drawing.Size(70, 22);
+            this.tSBTips.Text = "Mẹo vặt";
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tSBReport
+            // 
+            this.tSBReport.Image = global::SpaManagementSoftware.Properties.Resources.Report_16x16;
+            this.tSBReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBReport.Name = "tSBReport";
+            this.tSBReport.Size = new System.Drawing.Size(71, 22);
+            this.tSBReport.Text = "Báo Cáo";
+            // 
+            // tSBExit
+            // 
+            this.tSBExit.Image = global::SpaManagementSoftware.Properties.Resources.Close_16x16;
+            this.tSBExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBExit.Name = "tSBExit";
+            this.tSBExit.Size = new System.Drawing.Size(57, 22);
+            this.tSBExit.Text = "Thoát";
             // 
             // menuStrip1
             // 
@@ -163,7 +230,7 @@
             this.tRỢGIÚPToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1035, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(902, 24);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -179,6 +246,35 @@
             this.hỆTHỐNGToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.hỆTHỐNGToolStripMenuItem.Text = "&HỆ THỐNG";
             // 
+            // cơSởDữLiệuToolStripMenuItem
+            // 
+            this.cơSởDữLiệuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCreateNewDatabase,
+            this.tsmiBackupDatabase,
+            this.tsmiRestoreDatabase});
+            this.cơSởDữLiệuToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Database_16x16;
+            this.cơSởDữLiệuToolStripMenuItem.Name = "cơSởDữLiệuToolStripMenuItem";
+            this.cơSởDữLiệuToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.cơSởDữLiệuToolStripMenuItem.Text = "&Cơ Sở Dữ Liệu";
+            // 
+            // tsmiCreateNewDatabase
+            // 
+            this.tsmiCreateNewDatabase.Name = "tsmiCreateNewDatabase";
+            this.tsmiCreateNewDatabase.Size = new System.Drawing.Size(191, 22);
+            this.tsmiCreateNewDatabase.Text = "Tạo mới cơ sở dữ liệu";
+            // 
+            // tsmiBackupDatabase
+            // 
+            this.tsmiBackupDatabase.Name = "tsmiBackupDatabase";
+            this.tsmiBackupDatabase.Size = new System.Drawing.Size(191, 22);
+            this.tsmiBackupDatabase.Text = "Sao lưu cơ sở dữ liệu";
+            // 
+            // tsmiRestoreDatabase
+            // 
+            this.tsmiRestoreDatabase.Name = "tsmiRestoreDatabase";
+            this.tsmiRestoreDatabase.Size = new System.Drawing.Size(191, 22);
+            this.tsmiRestoreDatabase.Text = "Phục hồi cơ sở dữ liệu";
+            // 
             // tsmiChangePass
             // 
             this.tsmiChangePass.Name = "tsmiChangePass";
@@ -189,6 +285,20 @@
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(202, 6);
+            // 
+            // tsmiLogOut
+            // 
+            this.tsmiLogOut.Image = global::SpaManagementSoftware.Properties.Resources.Outbox_16x16;
+            this.tsmiLogOut.Name = "tsmiLogOut";
+            this.tsmiLogOut.Size = new System.Drawing.Size(205, 22);
+            this.tsmiLogOut.Text = "Đăng xuất khỏi hệ thống";
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Image = global::SpaManagementSoftware.Properties.Resources.Cancel_16x16;
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(205, 22);
+            this.tsmiExit.Text = "Thoát khỏi hệ thống";
             // 
             // hOẠTĐỘNGToolStripMenuItem
             // 
@@ -668,112 +778,9 @@
             this.imageList.Images.SetKeyName(72, "Add_32x32.png");
             this.imageList.Images.SetKeyName(73, "Add_16x16.png");
             // 
-            // tSBUseService
+            // xtraTabbedMdiManager1
             // 
-            this.tSBUseService.Image = global::SpaManagementSoftware.Properties.Resources.User_16x16;
-            this.tSBUseService.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBUseService.Name = "tSBUseService";
-            this.tSBUseService.Size = new System.Drawing.Size(113, 22);
-            this.tSBUseService.Text = "Sử dụng dịch vụ";
-            // 
-            // tSBManagementSales
-            // 
-            this.tSBManagementSales.Image = global::SpaManagementSoftware.Properties.Resources.BOOrder_16x16;
-            this.tSBManagementSales.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBManagementSales.Name = "tSBManagementSales";
-            this.tSBManagementSales.Size = new System.Drawing.Size(121, 22);
-            this.tSBManagementSales.Text = "Quản lý bán hàng";
-            // 
-            // tSBStatisticalSales
-            // 
-            this.tSBStatisticalSales.Image = global::SpaManagementSoftware.Properties.Resources._3DLine_16x16;
-            this.tSBStatisticalSales.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBStatisticalSales.Name = "tSBStatisticalSales";
-            this.tSBStatisticalSales.Size = new System.Drawing.Size(134, 22);
-            this.tSBStatisticalSales.Text = "Thống kê doanh thu";
-            // 
-            // tSBStatisticalGoods
-            // 
-            this.tSBStatisticalGoods.Image = global::SpaManagementSoftware.Properties.Resources.Column2_16x16;
-            this.tSBStatisticalGoods.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBStatisticalGoods.Name = "tSBStatisticalGoods";
-            this.tSBStatisticalGoods.Size = new System.Drawing.Size(130, 22);
-            this.tSBStatisticalGoods.Text = "Thống kê mặt hàng";
-            // 
-            // tSBFastNote
-            // 
-            this.tSBFastNote.Image = global::SpaManagementSoftware.Properties.Resources.Notes_16x16;
-            this.tSBFastNote.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBFastNote.Name = "tSBFastNote";
-            this.tSBFastNote.Size = new System.Drawing.Size(105, 22);
-            this.tSBFastNote.Text = "Ghi chú nhanh";
-            // 
-            // tSBTips
-            // 
-            this.tSBTips.Image = global::SpaManagementSoftware.Properties.Resources.Suggestion_16x16;
-            this.tSBTips.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBTips.Name = "tSBTips";
-            this.tSBTips.Size = new System.Drawing.Size(70, 22);
-            this.tSBTips.Text = "Mẹo vặt";
-            // 
-            // tSBReport
-            // 
-            this.tSBReport.Image = global::SpaManagementSoftware.Properties.Resources.Report_16x16;
-            this.tSBReport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBReport.Name = "tSBReport";
-            this.tSBReport.Size = new System.Drawing.Size(71, 22);
-            this.tSBReport.Text = "Báo Cáo";
-            // 
-            // tSBExit
-            // 
-            this.tSBExit.Image = global::SpaManagementSoftware.Properties.Resources.Close_16x16;
-            this.tSBExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBExit.Name = "tSBExit";
-            this.tSBExit.Size = new System.Drawing.Size(57, 22);
-            this.tSBExit.Text = "Thoát";
-            // 
-            // cơSởDữLiệuToolStripMenuItem
-            // 
-            this.cơSởDữLiệuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiCreateNewDatabase,
-            this.tsmiBackupDatabase,
-            this.tsmiRestoreDatabase});
-            this.cơSởDữLiệuToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Database_16x16;
-            this.cơSởDữLiệuToolStripMenuItem.Name = "cơSởDữLiệuToolStripMenuItem";
-            this.cơSởDữLiệuToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.cơSởDữLiệuToolStripMenuItem.Text = "&Cơ Sở Dữ Liệu";
-            // 
-            // tsmiCreateNewDatabase
-            // 
-            this.tsmiCreateNewDatabase.Name = "tsmiCreateNewDatabase";
-            this.tsmiCreateNewDatabase.Size = new System.Drawing.Size(191, 22);
-            this.tsmiCreateNewDatabase.Text = "Tạo mới cơ sở dữ liệu";
-            // 
-            // tsmiBackupDatabase
-            // 
-            this.tsmiBackupDatabase.Name = "tsmiBackupDatabase";
-            this.tsmiBackupDatabase.Size = new System.Drawing.Size(191, 22);
-            this.tsmiBackupDatabase.Text = "Sao lưu cơ sở dữ liệu";
-            // 
-            // tsmiRestoreDatabase
-            // 
-            this.tsmiRestoreDatabase.Name = "tsmiRestoreDatabase";
-            this.tsmiRestoreDatabase.Size = new System.Drawing.Size(191, 22);
-            this.tsmiRestoreDatabase.Text = "Phục hồi cơ sở dữ liệu";
-            // 
-            // tsmiLogOut
-            // 
-            this.tsmiLogOut.Image = global::SpaManagementSoftware.Properties.Resources.Outbox_16x16;
-            this.tsmiLogOut.Name = "tsmiLogOut";
-            this.tsmiLogOut.Size = new System.Drawing.Size(205, 22);
-            this.tsmiLogOut.Text = "Đăng xuất khỏi hệ thống";
-            // 
-            // tsmiExit
-            // 
-            this.tsmiExit.Image = global::SpaManagementSoftware.Properties.Resources.Cancel_16x16;
-            this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(205, 22);
-            this.tsmiExit.Text = "Thoát khỏi hệ thống";
+            this.xtraTabbedMdiManager1.MdiParent = this;
             // 
             // frmMain
             // 
@@ -781,7 +788,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 465);
+            this.ClientSize = new System.Drawing.Size(902, 369);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -790,10 +797,12 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PHẦN MỀM QUẢN LÝ SPA";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -882,6 +891,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem tRỢGIÚPToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList;
+        private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
 
     }
 }
