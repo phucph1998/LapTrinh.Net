@@ -41,13 +41,21 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_End = new System.Windows.Forms.Button();
-            this.btn_Start = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.xTCSale = new DevExpress.XtraTab.XtraTabControl();
             this.xTBGeneral = new DevExpress.XtraTab.XtraTabPage();
             this.panel_General = new System.Windows.Forms.Panel();
+            this.cMS_Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mởGhếToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mởGhếTừToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.thanhToánToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.chuyểnGhếToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gộpGhếToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.hủyHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xTPRetail = new DevExpress.XtraTab.XtraTabPage();
             this.panel_Retail = new System.Windows.Forms.Panel();
             this.tBL_UseService = new System.Windows.Forms.TableLayoutPanel();
@@ -90,19 +98,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.cMS_Menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mởGhếToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mởGhếTừToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thanhToánToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.chuyểnGhếToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gộpGhếToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.hủyHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xTCSale)).BeginInit();
             this.xTCSale.SuspendLayout();
             this.xTBGeneral.SuspendLayout();
+            this.cMS_Menu.SuspendLayout();
             this.xTPRetail.SuspendLayout();
             this.tBL_UseService.SuspendLayout();
             this.tBL_Detail.SuspendLayout();
@@ -115,7 +116,6 @@
             this.tBL_Control.SuspendLayout();
             this.tBL_GroupItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.cMS_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -181,26 +181,6 @@
             this.label1.Text = "Ngày:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // btn_End
-            // 
-            this.btn_End.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_End.Location = new System.Drawing.Point(95, 30);
-            this.btn_End.Name = "btn_End";
-            this.btn_End.Size = new System.Drawing.Size(63, 21);
-            this.btn_End.TabIndex = 3;
-            this.btn_End.Text = "Kết Thúc";
-            this.btn_End.UseVisualStyleBackColor = true;
-            // 
-            // btn_Start
-            // 
-            this.btn_Start.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Start.Location = new System.Drawing.Point(95, 3);
-            this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(63, 21);
-            this.btn_Start.TabIndex = 2;
-            this.btn_Start.Text = "Bắt Đầu";
-            this.btn_Start.UseVisualStyleBackColor = true;
-            // 
             // comboBox2
             // 
             this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -249,6 +229,78 @@
             this.panel_General.Name = "panel_General";
             this.panel_General.Size = new System.Drawing.Size(510, 468);
             this.panel_General.TabIndex = 0;
+            // 
+            // cMS_Menu
+            // 
+            this.cMS_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mởGhếToolStripMenuItem,
+            this.mởGhếTừToolStripMenuItem,
+            this.thanhToánToolStripMenuItem,
+            this.refreshToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.chuyểnGhếToolStripMenuItem,
+            this.gộpGhếToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.hủyHóaĐơnToolStripMenuItem});
+            this.cMS_Menu.Name = "contextMenuStrip1";
+            this.cMS_Menu.Size = new System.Drawing.Size(181, 170);
+            // 
+            // mởGhếToolStripMenuItem
+            // 
+            this.mởGhếToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.add;
+            this.mởGhếToolStripMenuItem.Name = "mởGhếToolStripMenuItem";
+            this.mởGhếToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mởGhếToolStripMenuItem.Text = "Mở ghê";
+            // 
+            // mởGhếTừToolStripMenuItem
+            // 
+            this.mởGhếTừToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Lookup_Reference_16x161;
+            this.mởGhếTừToolStripMenuItem.Name = "mởGhếTừToolStripMenuItem";
+            this.mởGhếTừToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mởGhếTừToolStripMenuItem.Text = "Mở ghế từ đặt trước";
+            // 
+            // thanhToánToolStripMenuItem
+            // 
+            this.thanhToánToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.gold;
+            this.thanhToánToolStripMenuItem.Name = "thanhToánToolStripMenuItem";
+            this.thanhToánToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thanhToánToolStripMenuItem.Text = "Thanh toán";
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Refresh2_16x16;
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // chuyểnGhếToolStripMenuItem
+            // 
+            this.chuyểnGhếToolStripMenuItem.Name = "chuyểnGhếToolStripMenuItem";
+            this.chuyểnGhếToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chuyểnGhếToolStripMenuItem.Text = "Chuyển ghế";
+            // 
+            // gộpGhếToolStripMenuItem
+            // 
+            this.gộpGhếToolStripMenuItem.Name = "gộpGhếToolStripMenuItem";
+            this.gộpGhếToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gộpGhếToolStripMenuItem.Text = "Gộp ghế";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            // 
+            // hủyHóaĐơnToolStripMenuItem
+            // 
+            this.hủyHóaĐơnToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Delete_16x16;
+            this.hủyHóaĐơnToolStripMenuItem.Name = "hủyHóaĐơnToolStripMenuItem";
+            this.hủyHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hủyHóaĐơnToolStripMenuItem.Text = "Hủy hóa đơn";
             // 
             // xTPRetail
             // 
@@ -445,16 +497,16 @@
             this.tBL_Time.Controls.Add(this.label2, 3, 1);
             this.tBL_Time.Controls.Add(this.textBox1, 4, 1);
             this.tBL_Time.Controls.Add(this.comboBox1, 0, 0);
-            this.tBL_Time.Controls.Add(this.btn_Start, 1, 0);
             this.tBL_Time.Controls.Add(this.label1, 3, 0);
             this.tBL_Time.Controls.Add(this.comboBox2, 0, 1);
-            this.tBL_Time.Controls.Add(this.btn_End, 1, 1);
             this.tBL_Time.Controls.Add(this.label4, 3, 2);
             this.tBL_Time.Controls.Add(this.btn_Hide_Show, 4, 3);
             this.tBL_Time.Controls.Add(this.numericUpDown1, 4, 2);
             this.tBL_Time.Controls.Add(this.label3, 0, 3);
             this.tBL_Time.Controls.Add(this.label7, 0, 2);
             this.tBL_Time.Controls.Add(this.dateTimePicker1, 4, 0);
+            this.tBL_Time.Controls.Add(this.simpleButton2, 1, 0);
+            this.tBL_Time.Controls.Add(this.simpleButton6, 1, 1);
             this.tBL_Time.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tBL_Time.Location = new System.Drawing.Point(3, 3);
             this.tBL_Time.Name = "tBL_Time";
@@ -747,77 +799,23 @@
             this.dataGridView2.Size = new System.Drawing.Size(256, 315);
             this.dataGridView2.TabIndex = 17;
             // 
-            // cMS_Menu
+            // simpleButton2
             // 
-            this.cMS_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mởGhếToolStripMenuItem,
-            this.mởGhếTừToolStripMenuItem,
-            this.thanhToánToolStripMenuItem,
-            this.refreshToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.chuyểnGhếToolStripMenuItem,
-            this.gộpGhếToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.hủyHóaĐơnToolStripMenuItem});
-            this.cMS_Menu.Name = "contextMenuStrip1";
-            this.cMS_Menu.Size = new System.Drawing.Size(181, 170);
+            this.simpleButton2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.simpleButton2.Location = new System.Drawing.Point(95, 3);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(63, 21);
+            this.simpleButton2.TabIndex = 16;
+            this.simpleButton2.Text = "Bắt Đầu";
             // 
-            // mởGhếToolStripMenuItem
+            // simpleButton6
             // 
-            this.mởGhếToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.add;
-            this.mởGhếToolStripMenuItem.Name = "mởGhếToolStripMenuItem";
-            this.mởGhếToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mởGhếToolStripMenuItem.Text = "Mở ghê";
-            // 
-            // mởGhếTừToolStripMenuItem
-            // 
-            this.mởGhếTừToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Lookup_Reference_16x161;
-            this.mởGhếTừToolStripMenuItem.Name = "mởGhếTừToolStripMenuItem";
-            this.mởGhếTừToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mởGhếTừToolStripMenuItem.Text = "Mở ghế từ đặt trước";
-            // 
-            // thanhToánToolStripMenuItem
-            // 
-            this.thanhToánToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.gold;
-            this.thanhToánToolStripMenuItem.Name = "thanhToánToolStripMenuItem";
-            this.thanhToánToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.thanhToánToolStripMenuItem.Text = "Thanh toán";
-            // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Refresh2_16x16;
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
-            // 
-            // chuyểnGhếToolStripMenuItem
-            // 
-            this.chuyểnGhếToolStripMenuItem.Name = "chuyểnGhếToolStripMenuItem";
-            this.chuyểnGhếToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.chuyểnGhếToolStripMenuItem.Text = "Chuyển ghế";
-            // 
-            // gộpGhếToolStripMenuItem
-            // 
-            this.gộpGhếToolStripMenuItem.Name = "gộpGhếToolStripMenuItem";
-            this.gộpGhếToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.gộpGhếToolStripMenuItem.Text = "Gộp ghế";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
-            // 
-            // hủyHóaĐơnToolStripMenuItem
-            // 
-            this.hủyHóaĐơnToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Delete_16x16;
-            this.hủyHóaĐơnToolStripMenuItem.Name = "hủyHóaĐơnToolStripMenuItem";
-            this.hủyHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.hủyHóaĐơnToolStripMenuItem.Text = "Hủy hóa đơn";
+            this.simpleButton6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.simpleButton6.Location = new System.Drawing.Point(95, 30);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(63, 21);
+            this.simpleButton6.TabIndex = 17;
+            this.simpleButton6.Text = "Kết Thúc";
             // 
             // frmUseService
             // 
@@ -831,6 +829,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xTCSale)).EndInit();
             this.xTCSale.ResumeLayout(false);
             this.xTBGeneral.ResumeLayout(false);
+            this.cMS_Menu.ResumeLayout(false);
             this.xTPRetail.ResumeLayout(false);
             this.tBL_UseService.ResumeLayout(false);
             this.tBL_Detail.ResumeLayout(false);
@@ -848,15 +847,12 @@
             this.tBL_GroupItem.ResumeLayout(false);
             this.tBL_GroupItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.cMS_Menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btn_End;
-        private System.Windows.Forms.Button btn_Start;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TableLayoutPanel tBL_UseService;
@@ -920,6 +916,8 @@
         private System.Windows.Forms.ToolStripMenuItem gộpGhếToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem hủyHóaĐơnToolStripMenuItem;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton6;
 
     }
 }

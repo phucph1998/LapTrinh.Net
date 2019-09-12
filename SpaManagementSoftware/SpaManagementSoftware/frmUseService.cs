@@ -49,32 +49,39 @@ namespace SpaManagementSoftware
 
         }
 
-        //Create Groupbox (tầng)
-        public GroupBox CreateFloor(int numberFloor, Panel panelName)
+        //Create FlowLayoutPanel (tầng)
+        public FlowLayoutPanel CreateFloor(int numberFloor, Panel panelName)
         {
-            GroupBox floor = new GroupBox();
+            //Thêm flowlayoutpanel
+            FlowLayoutPanel floor = new FlowLayoutPanel();
             panelName.Controls.Add(floor);
-            floor.Text = "Tầng " + numberFloor;
-            floor.Name = "floor" + numberFloor;
-            floor.Size = new Size(panelName.Width, 150);
+            floor.Name = "flp_floor" + numberFloor;
             floor.Dock = DockStyle.Top;
-            floor.Font = new Font("Tahoma", 8.25F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
-            floor.ForeColor = Color.DodgerBlue;
+            floor.AutoSize = true;
+            //Thêm tên tầng
+            Label nameFloor = new Label();
+            nameFloor.Text = "Tầng " + numberFloor;
+            nameFloor.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            nameFloor.ForeColor = System.Drawing.SystemColors.Highlight;
+            nameFloor.Name = "lbl_Floor" + numberFloor;
+            nameFloor.Dock = DockStyle.Top;
+            panelName.Controls.Add(nameFloor);
+            
             return floor;
         }
 
         //Create Button have chair icon
-        public SimpleButton CreateButtonChair(int numberFloor, int numberChair,GroupBox nameFloor)
+        public SimpleButton CreateButtonChair(int numberFloor, int numberChair, FlowLayoutPanel nameFloor)
         {
             SimpleButton btnChair = new SimpleButton();
             nameFloor.Controls.Add(btnChair);
             btnChair.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket_black;
             btnChair.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            btnChair.Name = "btnChair"+numberFloor+"."+numberChair;
+            btnChair.Name = "btnChair" + numberFloor + "." + numberChair;
             btnChair.Size = new System.Drawing.Size(100, 80);
             btnChair.Text = "Ghế " + numberFloor + "." + numberChair;
             btnChair.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            btnChair.Dock = DockStyle.Left;
+            //btnChair.Dock = DockStyle.Left;
             btnChair.Font = new Font("Tahoma", 10F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
             btnChair.ForeColor = Color.Black;
             btnChair.DoubleClick += btnChair_DoubleClick;
@@ -86,7 +93,7 @@ namespace SpaManagementSoftware
         void btnChair_DoubleClick(object sender, EventArgs e)
         {
             DialogResult r;
-            r = DevExpress.XtraEditors.XtraMessageBox.Show("Tạo Form Tính Tiền", "Nhắc Nhở", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);            
+            r = DevExpress.XtraEditors.XtraMessageBox.Show("Tạo Form Tính Tiền", "Nhắc Nhở", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             DevExpress.XtraEditors.SimpleButton t;
             if (r == DialogResult.Yes)
             {
@@ -105,16 +112,19 @@ namespace SpaManagementSoftware
 
         private void frmUseService_Load(object sender, EventArgs e)
         {
+            //i là số tầng của chi nhánh
+            //j là số ghế ứng với từng số lầu i của chi nhánh đó
             for (int i = 2; i > 0; i--)
             {
-                GroupBox temp = new GroupBox();
+                FlowLayoutPanel temp = new FlowLayoutPanel();
                 temp = CreateFloor(i, panel_General);
-                for (int j = 5; j > 0; j--)
+                for (int j = 1; j < 8; j++)
                 {
                     CreateButtonChair(i, j, temp);
                 }
             }
         }
+
 
     }
 }
