@@ -17,5 +17,10 @@ namespace SpaManagementSoftware
         {
             InitializeComponent();
         }
+
+        private void lUC_Login_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("A");
+        }        
     }
 }

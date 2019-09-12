@@ -1,0 +1,8 @@
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\SpaClassLibrary.dll.config
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\SpaClassLibrary.dll
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\SpaClassLibrary.pdb
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.LoginUserControl.resources
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.Properties.Resources.resources
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.csproj.GenerateResource.Cache
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.dll
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.pdb
