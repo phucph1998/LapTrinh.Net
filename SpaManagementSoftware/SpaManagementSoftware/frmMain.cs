@@ -52,9 +52,9 @@ namespace SpaManagementSoftware
 
         private void tSBUseService_Click(object sender, EventArgs e)
         {
-            if(CheckExist("frmUseService"))
+            if (CheckExist("frmUseService"))
             {
-                XtraMessageBox.Show("Bạn Đang Sử Dụng Chức Năng Này","Thông báo");
+                XtraMessageBox.Show("Bạn Đang Sử Dụng Chức Năng Này", "Thông báo");
                 //MessageBox.Show("Chức Năng Này Đang Sử Dụng, Không Cần Mở Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 return;
             }

@@ -14,11 +14,9 @@ namespace SpaClassLibrary
     public partial class LoginUserControl : UserControl
     {
         Account lg = new Account();
-        public Boolean checkClose = new Boolean();
         public LoginUserControl()
         {
             InitializeComponent();
-            checkClose = false;
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
@@ -26,16 +24,12 @@ namespace SpaClassLibrary
             if (lg.isAccount(txt_UserName.Text, txt_Password.Text))
             {
                 XtraMessageBox.Show("Đăng nhập thành công", "Thông báo");
+                this.FindForm();
             }
             else
             {
                 XtraMessageBox.Show("Đăng nhập thất bại", "Thông báo");
             }
-        }
-
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            checkClose = true;
         }
     }
 }

@@ -13,14 +13,31 @@ namespace SpaManagementSoftware
 {
     public partial class frmLogin : DevExpress.XtraEditors.XtraForm
     {
+        public static int Access;
         public frmLogin()
         {
             InitializeComponent();
+            Access = 0;
         }
 
-        private void lUC_Login_Click(object sender, EventArgs e)
+        private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("A");
-        }        
+            DialogResult r;
+            r = XtraMessageBox.Show("Bạn có chắc muốn thoát ?","Xác nhận",MessageBoxButtons.OKCancel,MessageBoxIcon.Question,MessageBoxDefaultButton.Button1);
+            if(r == DialogResult.OK)
+            {
+                this.Close();
+            }
+            else
+            {
+                return;
+            }
+
+        }
+
+        private void frmLogin_Validated(object sender, EventArgs e)
+        {
+            MessageBox.Show("a");
+        } 
     }
 }
