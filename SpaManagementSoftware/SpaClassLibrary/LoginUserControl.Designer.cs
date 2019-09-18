@@ -39,6 +39,7 @@
             this.ptb_Logo = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_Login = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_Cancel = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Banner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Logo)).BeginInit();
@@ -62,6 +63,7 @@
             this.tableLayoutPanel1.Controls.Add(this.ptb_Logo, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.btn_Login, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btn_Cancel, 4, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -188,6 +190,16 @@
             this.btn_Login.Text = "Đăng Nhập";
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Cancel.Location = new System.Drawing.Point(364, 190);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(95, 23);
+            this.btn_Cancel.TabIndex = 14;
+            this.btn_Cancel.Text = "Hủy Bỏ";
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
             // LoginUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,5 +228,6 @@
         private System.Windows.Forms.PictureBox ptb_Logo;
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.SimpleButton btn_Login;
+        private DevExpress.XtraEditors.SimpleButton btn_Cancel;
     }
 }

@@ -6,3 +6,4 @@ D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\D
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.csproj.GenerateResource.Cache
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.dll
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.pdb
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.frmConfig.resources

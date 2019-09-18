@@ -1,8 +1,15 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     08/09/2019 21:53:50                          */
+/* Created on:     18/09/2019 18:19:43                          */
 /*==============================================================*/
 
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('ACCOUNT') and o.name = 'FK_ACCOUNT_RELATIONS_ROLE')
+alter table ACCOUNT
+   drop constraint FK_ACCOUNT_RELATIONS_ROLE
+go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -20,16 +27,16 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('BOOKING') and o.name = 'FK_BOOKING_RE_29_USER')
+   where r.fkeyid = object_id('BOOKING') and o.name = 'FK_BOOKING_RE_29_ACCOUNT')
 alter table BOOKING
-   drop constraint FK_BOOKING_RE_29_USER
+   drop constraint FK_BOOKING_RE_29_ACCOUNT
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('BOOKING') and o.name = 'FK_BOOKING_RE_32_USER')
+   where r.fkeyid = object_id('BOOKING') and o.name = 'FK_BOOKING_RE_32_ACCOUNT')
 alter table BOOKING
-   drop constraint FK_BOOKING_RE_32_USER
+   drop constraint FK_BOOKING_RE_32_ACCOUNT
 go
 
 if exists (select 1
@@ -90,9 +97,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('DETAIL_RECEIPT_SERVICE') and o.name = 'FK_DETAIL_R_RELATIONS_USER')
+   where r.fkeyid = object_id('DETAIL_RECEIPT_SERVICE') and o.name = 'FK_DETAIL_R_RELATIONS_ACCOUNT')
 alter table DETAIL_RECEIPT_SERVICE
-   drop constraint FK_DETAIL_R_RELATIONS_USER
+   drop constraint FK_DETAIL_R_RELATIONS_ACCOUNT
 go
 
 if exists (select 1
@@ -132,9 +139,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('PROFILE') and o.name = 'FK_PROFILE_RELATIONS_USER')
+   where r.fkeyid = object_id('PROFILE') and o.name = 'FK_PROFILE_RELATIONS_ACCOUNT')
 alter table PROFILE
-   drop constraint FK_PROFILE_RELATIONS_USER
+   drop constraint FK_PROFILE_RELATIONS_ACCOUNT
 go
 
 if exists (select 1
@@ -153,16 +160,16 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RECEIPT') and o.name = 'FK_RECEIPT_RE_14_USER')
+   where r.fkeyid = object_id('RECEIPT') and o.name = 'FK_RECEIPT_RE_14_ACCOUNT')
 alter table RECEIPT
-   drop constraint FK_RECEIPT_RE_14_USER
+   drop constraint FK_RECEIPT_RE_14_ACCOUNT
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RECEIPT') and o.name = 'FK_RECEIPT_RE_15_USER')
+   where r.fkeyid = object_id('RECEIPT') and o.name = 'FK_RECEIPT_RE_15_ACCOUNT')
 alter table RECEIPT
-   drop constraint FK_RECEIPT_RE_15_USER
+   drop constraint FK_RECEIPT_RE_15_ACCOUNT
 go
 
 if exists (select 1
@@ -174,9 +181,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RECEIPT_IMPORT') and o.name = 'FK_RECEIPT__RE_11_USER')
+   where r.fkeyid = object_id('RECEIPT_IMPORT') and o.name = 'FK_RECEIPT__RE_11_ACCOUNT')
 alter table RECEIPT_IMPORT
-   drop constraint FK_RECEIPT__RE_11_USER
+   drop constraint FK_RECEIPT__RE_11_ACCOUNT
 go
 
 if exists (select 1
@@ -188,16 +195,16 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RECEIPT_SERVICE') and o.name = 'FK_RECEIPT__RE_19_USER')
+   where r.fkeyid = object_id('RECEIPT_SERVICE') and o.name = 'FK_RECEIPT__RE_19_ACCOUNT')
 alter table RECEIPT_SERVICE
-   drop constraint FK_RECEIPT__RE_19_USER
+   drop constraint FK_RECEIPT__RE_19_ACCOUNT
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RECEIPT_SERVICE') and o.name = 'FK_RECEIPT__RE_20_USER')
+   where r.fkeyid = object_id('RECEIPT_SERVICE') and o.name = 'FK_RECEIPT__RE_20_ACCOUNT')
 alter table RECEIPT_SERVICE
-   drop constraint FK_RECEIPT__RE_20_USER
+   drop constraint FK_RECEIPT__RE_20_ACCOUNT
 go
 
 if exists (select 1
@@ -216,16 +223,25 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('TIMEKEEPING') and o.name = 'FK_TIMEKEEP_RELATIONS_USER')
+   where r.fkeyid = object_id('TIMEKEEPING') and o.name = 'FK_TIMEKEEP_RELATIONS_ACCOUNT')
 alter table TIMEKEEPING
-   drop constraint FK_TIMEKEEP_RELATIONS_USER
+   drop constraint FK_TIMEKEEP_RELATIONS_ACCOUNT
 go
 
 if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('"USER"') and o.name = 'FK_USER_RELATIONS_ROLE')
-alter table "USER"
-   drop constraint FK_USER_RELATIONS_ROLE
+            from  sysindexes
+           where  id    = object_id('ACCOUNT')
+            and   name  = 'RELATIONSHIP_1_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index ACCOUNT.RELATIONSHIP_1_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('ACCOUNT')
+            and   type = 'U')
+   drop table ACCOUNT
 go
 
 if exists (select 1
@@ -689,20 +705,27 @@ if exists (select 1
    drop table TYPE_ITEM
 go
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('"USER"')
-            and   name  = 'RELATIONSHIP_1_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index "USER".RELATIONSHIP_1_FK
+/*==============================================================*/
+/* Table: ACCOUNT                                               */
+/*==============================================================*/
+create table ACCOUNT (
+   ID_USER              int                  not null,
+   ID_ROLE              int                  null,
+   USERNAME             varchar(50)          null,
+   PASSWORD             varchar(50)          null,
+   STATUS               int                  null,
+   constraint PK_ACCOUNT primary key (ID_USER)
+)
 go
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('"USER"')
-            and   type = 'U')
-   drop table "USER"
+/*==============================================================*/
+/* Index: RELATIONSHIP_1_FK                                     */
+/*==============================================================*/
+
+
+
+
+create nonclustered index RELATIONSHIP_1_FK on ACCOUNT (ID_ROLE ASC)
 go
 
 /*==============================================================*/
@@ -1365,27 +1388,9 @@ create table TYPE_ITEM (
 )
 go
 
-/*==============================================================*/
-/* Table: "USER"                                                */
-/*==============================================================*/
-create table "USER" (
-   ID_USER              int                  not null,
-   ID_ROLE              int                  null,
-   USERNAME             varchar(50)          null,
-   PASSWORD             varchar(50)          null,
-   STATUS               int                  null,
-   constraint PK_USER primary key (ID_USER)
-)
-go
-
-/*==============================================================*/
-/* Index: RELATIONSHIP_1_FK                                     */
-/*==============================================================*/
-
-
-
-
-create nonclustered index RELATIONSHIP_1_FK on "USER" (ID_ROLE ASC)
+alter table ACCOUNT
+   add constraint FK_ACCOUNT_RELATIONS_ROLE foreign key (ID_ROLE)
+      references ROLE (ID_ROLE)
 go
 
 alter table BOOKING
@@ -1399,13 +1404,13 @@ alter table BOOKING
 go
 
 alter table BOOKING
-   add constraint FK_BOOKING_RE_29_USER foreign key (ID_USER_CUSTOMER)
-      references "USER" (ID_USER)
+   add constraint FK_BOOKING_RE_29_ACCOUNT foreign key (ID_USER_CUSTOMER)
+      references ACCOUNT (ID_USER)
 go
 
 alter table BOOKING
-   add constraint FK_BOOKING_RE_32_USER foreign key (ID_USER_WORKER)
-      references "USER" (ID_USER)
+   add constraint FK_BOOKING_RE_32_ACCOUNT foreign key (ID_USER_WORKER)
+      references ACCOUNT (ID_USER)
 go
 
 alter table CHAIR
@@ -1449,8 +1454,8 @@ alter table DETAIL_RECEIPT_SERVICE
 go
 
 alter table DETAIL_RECEIPT_SERVICE
-   add constraint FK_DETAIL_R_RELATIONS_USER foreign key (ID_USER_WORKER)
-      references "USER" (ID_USER)
+   add constraint FK_DETAIL_R_RELATIONS_ACCOUNT foreign key (ID_USER_WORKER)
+      references ACCOUNT (ID_USER)
 go
 
 alter table DETAIL_RECEIPT_SERVICE
@@ -1479,8 +1484,8 @@ alter table ITEM
 go
 
 alter table PROFILE
-   add constraint FK_PROFILE_RELATIONS_USER foreign key (ID_USER)
-      references "USER" (ID_USER)
+   add constraint FK_PROFILE_RELATIONS_ACCOUNT foreign key (ID_USER)
+      references ACCOUNT (ID_USER)
 go
 
 alter table PROFILE_CUSTOMER
@@ -1494,13 +1499,13 @@ alter table PROFILE_STAFF
 go
 
 alter table RECEIPT
-   add constraint FK_RECEIPT_RE_14_USER foreign key (ID_USER_CUSTOMER)
-      references "USER" (ID_USER)
+   add constraint FK_RECEIPT_RE_14_ACCOUNT foreign key (ID_USER_CUSTOMER)
+      references ACCOUNT (ID_USER)
 go
 
 alter table RECEIPT
-   add constraint FK_RECEIPT_RE_15_USER foreign key (ID_USER_STAFF)
-      references "USER" (ID_USER)
+   add constraint FK_RECEIPT_RE_15_ACCOUNT foreign key (ID_USER_STAFF)
+      references ACCOUNT (ID_USER)
 go
 
 alter table RECEIPT_IMPORT
@@ -1509,8 +1514,8 @@ alter table RECEIPT_IMPORT
 go
 
 alter table RECEIPT_IMPORT
-   add constraint FK_RECEIPT__RE_11_USER foreign key (ID_USER)
-      references "USER" (ID_USER)
+   add constraint FK_RECEIPT__RE_11_ACCOUNT foreign key (ID_USER)
+      references ACCOUNT (ID_USER)
 go
 
 alter table RECEIPT_SERVICE
@@ -1519,13 +1524,13 @@ alter table RECEIPT_SERVICE
 go
 
 alter table RECEIPT_SERVICE
-   add constraint FK_RECEIPT__RE_19_USER foreign key (ID_USER_CUSTOMER)
-      references "USER" (ID_USER)
+   add constraint FK_RECEIPT__RE_19_ACCOUNT foreign key (ID_USER_CUSTOMER)
+      references ACCOUNT (ID_USER)
 go
 
 alter table RECEIPT_SERVICE
-   add constraint FK_RECEIPT__RE_20_USER foreign key (ID_USER_STAFF)
-      references "USER" (ID_USER)
+   add constraint FK_RECEIPT__RE_20_ACCOUNT foreign key (ID_USER_STAFF)
+      references ACCOUNT (ID_USER)
 go
 
 alter table SERVICE
@@ -1539,12 +1544,7 @@ alter table SERVICE
 go
 
 alter table TIMEKEEPING
-   add constraint FK_TIMEKEEP_RELATIONS_USER foreign key (ID_USER)
-      references "USER" (ID_USER)
-go
-
-alter table "USER"
-   add constraint FK_USER_RELATIONS_ROLE foreign key (ID_ROLE)
-      references ROLE (ID_ROLE)
+   add constraint FK_TIMEKEEP_RELATIONS_ACCOUNT foreign key (ID_USER)
+      references ACCOUNT (ID_USER)
 go
 

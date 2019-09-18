@@ -44,6 +44,7 @@ namespace SpaManagementSoftware
             frm.MdiParent = this;
             frm.Show();
         }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             frmUseService use = new frmUseService();

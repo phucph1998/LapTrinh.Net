@@ -29,18 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.btn_Cancel = new DevExpress.XtraEditors.SimpleButton();
             this.lUC_Login = new SpaClassLibrary.LoginUserControl();
             this.SuspendLayout();
-            // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.Location = new System.Drawing.Point(360, 189);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(89, 25);
-            this.btn_Cancel.TabIndex = 1;
-            this.btn_Cancel.Text = "Hủy Bỏ";
-            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // lUC_Login
             // 
@@ -55,14 +45,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 222);
-            this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.lUC_Login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ĐĂNG NHẬP HỆ THỐNG";
-            this.Validated += new System.EventHandler(this.frmLogin_Validated);
             this.ResumeLayout(false);
 
         }
@@ -70,6 +58,5 @@
         #endregion
 
         private SpaClassLibrary.LoginUserControl lUC_Login;
-        private DevExpress.XtraEditors.SimpleButton btn_Cancel;
     }
 }
