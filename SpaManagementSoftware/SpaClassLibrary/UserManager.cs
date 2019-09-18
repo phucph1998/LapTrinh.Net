@@ -81,5 +81,12 @@ namespace SpaClassLibrary
             }
             return list;
         }
+
+        //Lưu cấu hình
+        public void ChangConnectionString(string pServerName,string pDataBase,string pUser,string pPass)
+        {
+            SpaClassLibrary.Properties.Settings.Default["DB_SPAConnect"] = "Data Source=" + pServerName + ";Initial Catalog=" +pDataBase+ ";User ID=" + pUser + ";pwd=" + pPass + "";
+            Properties.Settings.Default.Save();
+        }
     }
 }

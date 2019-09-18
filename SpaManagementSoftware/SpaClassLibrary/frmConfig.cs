@@ -69,5 +69,17 @@ namespace SpaClassLibrary
             }
             return true;
         }
+
+        private void btn_SaveConfig_Click(object sender, EventArgs e)
+        {
+            Config.ChangConnectionString(cbb_ServerName.Text,cbb_Database.Text,txt_UserName.Text,txt_Password.Text);
+
+            this.Close();
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

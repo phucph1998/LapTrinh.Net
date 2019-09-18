@@ -121,6 +121,7 @@
             this.txt_UserName.Name = "txt_UserName";
             this.txt_UserName.Size = new System.Drawing.Size(224, 20);
             this.txt_UserName.TabIndex = 7;
+            this.txt_UserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_UserName_KeyPress);
             // 
             // txt_Password
             // 
@@ -131,6 +132,7 @@
             this.txt_Password.Size = new System.Drawing.Size(224, 20);
             this.txt_Password.TabIndex = 8;
             this.txt_Password.UseSystemPasswordChar = true;
+            this.txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Password_KeyPress);
             // 
             // chk_RemeberPass
             // 

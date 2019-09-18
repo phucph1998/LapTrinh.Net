@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace SpaClassLibrary
 {
@@ -37,17 +38,16 @@ namespace SpaClassLibrary
             {
                 ProcessLogin();
             }
+            frmConfig config = new frmConfig();
             if(checkConn == 1)
             {
-                XtraMessageBox.Show("Chuỗi cấu hình không tồn tại","Thông báo");
-                frmConfig config = new frmConfig();
+                XtraMessageBox.Show("Chuỗi cấu hình không tồn tại","Thông báo");                
                 config.ShowDialog();
             }
             if(checkConn == 2)
             {
                 XtraMessageBox.Show("Chuỗi cấu hình không phù hợp", "Thông báo");
                 //Xử lý cấu hình
-                frmConfig config = new frmConfig();
                 config.ShowDialog();
             }
             
@@ -76,6 +76,22 @@ namespace SpaClassLibrary
             }
             XtraMessageBox.Show("Đăng Nhập Thành Công !", "Thông Báo");
             //xử lý form parent để gọi formMain
+        }
+
+        private void txt_UserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(char.IsWhiteSpace(e.KeyChar) || char.IsUpper(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_Password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
