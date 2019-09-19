@@ -9,7 +9,7 @@ using System.Data.Sql;
 
 namespace SpaClassLibrary
 {
-    class UserManager
+    public class UserManager
     {
         //Kiểm tra cấu hình
         public int Check_Config()
@@ -31,7 +31,7 @@ namespace SpaClassLibrary
             }  
         }
         
-        //Kiểm tra tài khoản
+        //Kiểm tra tài khoản, trả về số
         public int Check_User(string pUser,string pPass)
         {
             SqlDataAdapter daUser = new SqlDataAdapter("select * from ACCOUNT where USERNAME='" + pUser + "' and PASSWORD ='" + pPass + "'", Properties.Settings.Default.DB_SPAConnect);
@@ -47,6 +47,15 @@ namespace SpaClassLibrary
                     return 2;//Không hoạt động
             }
             return 3;//Đăng nhập thành công
+        }
+
+        //Lấy quyền tài khoản , trả về số
+        public int GetNumberRole(string pUser,string pPass)
+        {
+            SqlDataAdapter daUser = new SqlDataAdapter("select * from ACCOUNT where USERNAME='" + pUser + "' and PASSWORD ='" + pPass + "'", Properties.Settings.Default.DB_SPAConnect);
+            DataTable dt = new DataTable();
+            daUser.Fill(dt);
+            return Int32.Parse(dt.Rows[0][1].ToString());
         }
 
         //Đọc tên Server

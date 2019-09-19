@@ -112,9 +112,15 @@
             this.tRỢGIÚPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbl_Account = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stt_User = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tSB_ListKey = new System.Windows.Forms.ToolStripSplitButton();
+            this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -133,7 +139,7 @@
             this.tSBExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1041, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1045, 25);
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -230,7 +236,7 @@
             this.tRỢGIÚPToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1041, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1045, 24);
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -782,13 +788,57 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbl_Account,
+            this.stt_User,
+            this.tSB_ListKey});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1045, 22);
+            this.statusStrip1.TabIndex = 16;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lbl_Account
+            // 
+            this.lbl_Account.Image = global::SpaManagementSoftware.Properties.Resources.User_16x16;
+            this.lbl_Account.Name = "lbl_Account";
+            this.lbl_Account.Size = new System.Drawing.Size(77, 17);
+            this.lbl_Account.Text = "Tài Khoản:";
+            // 
+            // stt_User
+            // 
+            this.stt_User.Name = "stt_User";
+            this.stt_User.Size = new System.Drawing.Size(79, 17);
+            this.stt_User.Text = "Tên Tài Khoản";
+            // 
+            // tSB_ListKey
+            // 
+            this.tSB_ListKey.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thoátToolStripMenuItem});
+            this.tSB_ListKey.Image = global::SpaManagementSoftware.Properties.Resources.Suggestion_16x16;
+            this.tSB_ListKey.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSB_ListKey.Name = "tSB_ListKey";
+            this.tSB_ListKey.Size = new System.Drawing.Size(145, 20);
+            this.tSB_ListKey.Text = "Danh Sách Phím Tắt";
+            // 
+            // thoátToolStripMenuItem
+            // 
+            this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
+            this.thoátToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.thoátToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.thoátToolStripMenuItem.Text = "Thoát";
+            // 
             // frmMain
             // 
             this.Appearance.BackColor = System.Drawing.Color.Silver;
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 465);
+            this.ClientSize = new System.Drawing.Size(1045, 470);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -802,6 +852,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -891,6 +943,11 @@
         private System.Windows.Forms.ToolStripMenuItem tRỢGIÚPToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lbl_Account;
+        private System.Windows.Forms.ToolStripStatusLabel stt_User;
+        private System.Windows.Forms.ToolStripSplitButton tSB_ListKey;
+        private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
 
     }
 }

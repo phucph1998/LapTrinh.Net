@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUseService));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node1");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node2");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
+            treeNode10,
+            treeNode11});
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -80,6 +80,8 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.tBL_Control = new System.Windows.Forms.TableLayoutPanel();
             this.btn_RemoveItem = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -98,8 +100,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xTCSale)).BeginInit();
             this.xTCSale.SuspendLayout();
             this.xTBGeneral.SuspendLayout();
@@ -572,6 +572,24 @@
             this.dateTimePicker1.TabIndex = 15;
             this.dateTimePicker1.Value = new System.DateTime(2019, 9, 9, 0, 0, 0, 0);
             // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.simpleButton2.Location = new System.Drawing.Point(95, 3);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(63, 21);
+            this.simpleButton2.TabIndex = 16;
+            this.simpleButton2.Text = "Bắt Đầu";
+            // 
+            // simpleButton6
+            // 
+            this.simpleButton6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.simpleButton6.Location = new System.Drawing.Point(95, 30);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(63, 21);
+            this.simpleButton6.TabIndex = 17;
+            this.simpleButton6.Text = "Kết Thúc";
+            // 
             // tBL_Control
             // 
             this.tBL_Control.ColumnCount = 1;
@@ -759,14 +777,14 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(3, 30);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node1";
-            treeNode1.Text = "Node1";
-            treeNode2.Name = "Node2";
-            treeNode2.Text = "Node2";
-            treeNode3.Name = "Node0";
-            treeNode3.Text = "Node0";
+            treeNode10.Name = "Node1";
+            treeNode10.Text = "Node1";
+            treeNode11.Name = "Node2";
+            treeNode11.Text = "Node2";
+            treeNode12.Name = "Node0";
+            treeNode12.Text = "Node0";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode12});
             this.treeView1.Size = new System.Drawing.Size(250, 145);
             this.treeView1.TabIndex = 0;
             // 
@@ -798,24 +816,6 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(256, 315);
             this.dataGridView2.TabIndex = 17;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.simpleButton2.Location = new System.Drawing.Point(95, 3);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(63, 21);
-            this.simpleButton2.TabIndex = 16;
-            this.simpleButton2.Text = "Bắt Đầu";
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.simpleButton6.Location = new System.Drawing.Point(95, 30);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(63, 21);
-            this.simpleButton6.TabIndex = 17;
-            this.simpleButton6.Text = "Kết Thúc";
             // 
             // frmUseService
             // 

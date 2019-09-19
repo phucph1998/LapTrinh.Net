@@ -27,7 +27,7 @@ namespace SpaManagementSoftware
              * Xmas 2008 Blue,Valentine,McSkin,Summer 2008,Pumpkin,Dark Side,Springtime,Darkroom,Foggy,High Contrast,Seven,Seven Classic
              * Sharp,Sharp Plus,DevExpress Style,Office 2007 Blue,Office 2007 Black,Office 2007 Silver,Office 2007 Green,Office 2007 Pink,Office 2010 Blue
              * Office 2010 Black,Office 2010 Silver*/       
-            Application.Run(new frmLogin());
+            Application.Run(new frmUseService());
         }
     }
 }
