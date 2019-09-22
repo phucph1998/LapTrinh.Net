@@ -16,20 +16,26 @@ namespace SpaManagementSoftware
     {
         private bool checkFrm;//Dấu hiệu để frmMain biết là frmLogin có đăng nhập thành công.
         public string nameAccount;
+        private string nameDatabase;
+        public int numberRole;
+
+        public string NameDatabase
+        {
+            get { return nameDatabase; }
+            set { nameDatabase = value; }
+        }
 
         public string NameAccount
         {
             get { return nameAccount; }
             set { nameAccount = value; }
         }
-        public int numberRole;
 
         public int NumberRole
         {
             get { return numberRole; }
             set { numberRole = value; }
         }
-
 
         public bool CheckFrm
         {
@@ -49,6 +55,7 @@ namespace SpaManagementSoftware
                 CheckFrm = true;
                 NameAccount = lUC_Login.NameAccount;
                 NumberRole = lUC_Login.NumberRole;
+                NameDatabase = lUC_Login.NameDatabase;
             }
         }
     }

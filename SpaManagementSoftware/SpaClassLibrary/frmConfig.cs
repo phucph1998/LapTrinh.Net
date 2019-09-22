@@ -34,11 +34,11 @@ namespace SpaClassLibrary
 
         private void cbb_Database_DropDown(object sender, EventArgs e)
         {
-            if(CheckedBeforSearchNameDB())
+            if (CheckedBeforSearchNameDB())
             {
                 cbb_Database.Items.Clear();
                 List<string> list = Config.GetDatabaseName(cbb_ServerName.Text, txt_UserName.Text, txt_Password.Text);
-                if(list == null)
+                if (list == null)
                 {
                     XtraMessageBox.Show("Thông tin cấu hình chưa chính xác", "Thông báo");
                     return;
@@ -52,7 +52,7 @@ namespace SpaClassLibrary
 
         private bool CheckedBeforSearchNameDB()
         {
-            if(cbb_ServerName.Text == string.Empty)
+            if (cbb_ServerName.Text == string.Empty)
             {
                 XtraMessageBox.Show("Server Name chưa được chọn hoặc nhập", "Thông Báo");
                 return false;
@@ -72,14 +72,29 @@ namespace SpaClassLibrary
 
         private void btn_SaveConfig_Click(object sender, EventArgs e)
         {
-            Config.ChangConnectionString(cbb_ServerName.Text,cbb_Database.Text,txt_UserName.Text,txt_Password.Text);
-
+            Config.ChangConnectionString(cbb_ServerName.Text, cbb_Database.Text, txt_UserName.Text, txt_Password.Text);
             this.Close();
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txt_Password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_UserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsWhiteSpace(e.KeyChar) || char.IsUpper(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

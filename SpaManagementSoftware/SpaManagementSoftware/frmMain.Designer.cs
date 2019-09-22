@@ -117,6 +117,7 @@
             this.stt_User = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSB_ListKey = new System.Windows.Forms.ToolStripSplitButton();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stt_NameData = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -791,6 +792,7 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stt_NameData,
             this.lbl_Account,
             this.stt_User,
             this.tSB_ListKey});
@@ -802,15 +804,18 @@
             // 
             // lbl_Account
             // 
+            this.lbl_Account.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Account.Image = global::SpaManagementSoftware.Properties.Resources.User_16x16;
             this.lbl_Account.Name = "lbl_Account";
-            this.lbl_Account.Size = new System.Drawing.Size(77, 17);
+            this.lbl_Account.Size = new System.Drawing.Size(87, 17);
             this.lbl_Account.Text = "Tài Khoản:";
             // 
             // stt_User
             // 
+            this.stt_User.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stt_User.ForeColor = System.Drawing.SystemColors.Highlight;
             this.stt_User.Name = "stt_User";
-            this.stt_User.Size = new System.Drawing.Size(79, 17);
+            this.stt_User.Size = new System.Drawing.Size(93, 17);
             this.stt_User.Text = "Tên Tài Khoản";
             // 
             // tSB_ListKey
@@ -828,8 +833,17 @@
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
             this.thoátToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.thoátToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.thoátToolStripMenuItem.Text = "Thoát";
+            // 
+            // stt_NameData
+            // 
+            this.stt_NameData.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stt_NameData.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.stt_NameData.Image = global::SpaManagementSoftware.Properties.Resources.Database_16x16;
+            this.stt_NameData.Name = "stt_NameData";
+            this.stt_NameData.Size = new System.Drawing.Size(104, 17);
+            this.stt_NameData.Text = "tên database";
             // 
             // frmMain
             // 
@@ -948,6 +962,7 @@
         private System.Windows.Forms.ToolStripStatusLabel stt_User;
         private System.Windows.Forms.ToolStripSplitButton tSB_ListKey;
         private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel stt_NameData;
 
     }
 }

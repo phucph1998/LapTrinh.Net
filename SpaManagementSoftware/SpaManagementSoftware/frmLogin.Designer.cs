@@ -35,16 +35,19 @@
             // lUC_Login
             // 
             this.lUC_Login.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lUC_Login.Flag = false;
             this.lUC_Login.Location = new System.Drawing.Point(0, 0);
             this.lUC_Login.Name = "lUC_Login";
-            this.lUC_Login.Size = new System.Drawing.Size(469, 222);
+            this.lUC_Login.NameAccount = null;
+            this.lUC_Login.NumberRole = 0;
+            this.lUC_Login.Size = new System.Drawing.Size(457, 195);
             this.lUC_Login.TabIndex = 0;
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 222);
+            this.ClientSize = new System.Drawing.Size(457, 195);
             this.Controls.Add(this.lUC_Login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

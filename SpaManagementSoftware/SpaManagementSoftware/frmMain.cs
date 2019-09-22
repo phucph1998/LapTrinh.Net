@@ -53,6 +53,7 @@ namespace SpaManagementSoftware
             if(log.CheckFrm==true)//Nếu đăng nhập thành công thì CheckFrm = true đồng thời đóng form đăng nhập
             {
                 stt_User.Text = log.NameAccount;
+                stt_NameData.Text = log.NameDatabase;
                 frmUseService use = new frmUseService();
                 openForm(use);                
             }            

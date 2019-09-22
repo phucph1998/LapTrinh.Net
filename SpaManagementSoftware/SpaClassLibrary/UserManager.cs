@@ -66,7 +66,7 @@ namespace SpaClassLibrary
             return table;
         }
        
-        //Đọc danh sách database
+        //Đọc danh sách database,đầu vào là tên sever, tên user, mật khẩu trả về danh sách database
         public List<string> GetDatabaseName(string pServerName,string pUser,string pPass)
         {
             List<string> list = new List<string>();
