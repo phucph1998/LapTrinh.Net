@@ -47,21 +47,10 @@ namespace SpaManagementSoftware
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            frmLogin log = new frmLogin();
-            DialogResult r;
-            r = log.ShowDialog();//Cho form Đăng nhập hiện showdialog
-            if(log.CheckFrm==true)//Nếu đăng nhập thành công thì CheckFrm = true đồng thời đóng form đăng nhập
-            {
-                stt_User.Text = log.NameAccount;
-                stt_NameData.Text = log.NameDatabase;
-                frmUseService use = new frmUseService();
-                openForm(use);                
-            }            
-            else
-            {
-                //CheckFrm = false đống formMain không cho phép chạy (Hiểu rằng lúc này đăng nhập không thành công hoặc frmLogin đóng)
-                this.Close();
-            }
+            stt_User.Text = Program.loginForm.NameAccount;
+            stt_NameData.Text = Program.loginForm.NameDatabase;
+            frmUseService use = new frmUseService();
+            openForm(use);
         }
 
         private void tSBUseService_Click(object sender, EventArgs e)
@@ -77,6 +66,11 @@ namespace SpaManagementSoftware
                 frmUseService use = new frmUseService();
                 openForm(use);
             }
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.loginForm.Visible = true;
         }
     }
 }

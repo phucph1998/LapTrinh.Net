@@ -1,13 +1,13 @@
-D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\SpaManagementSoftware.exe
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\SpaManagementSoftware.pdb
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\SpaClassLibrary.dll
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\SpaClassLibrary.pdb
-D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.csprojResolveAssemblyReference.cache
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmLogin.resources
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmMain.resources
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmUseService.resources
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.Properties.Resources.resources
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.csproj.GenerateResource.Cache
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.pdb
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.csprojResolveAssemblyReference.cache
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\SpaManagementSoftware.exe
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.exe.licenses
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.exe
-D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.pdb

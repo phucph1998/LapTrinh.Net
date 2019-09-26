@@ -113,11 +113,11 @@
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.stt_NameData = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_Account = new System.Windows.Forms.ToolStripStatusLabel();
             this.stt_User = new System.Windows.Forms.ToolStripStatusLabel();
             this.tSB_ListKey = new System.Windows.Forms.ToolStripSplitButton();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stt_NameData = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -802,6 +802,15 @@
             this.statusStrip1.TabIndex = 16;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // stt_NameData
+            // 
+            this.stt_NameData.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stt_NameData.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.stt_NameData.Image = global::SpaManagementSoftware.Properties.Resources.Database_16x16;
+            this.stt_NameData.Name = "stt_NameData";
+            this.stt_NameData.Size = new System.Drawing.Size(104, 17);
+            this.stt_NameData.Text = "tên database";
+            // 
             // lbl_Account
             // 
             this.lbl_Account.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -833,17 +842,8 @@
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
             this.thoátToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.thoátToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.thoátToolStripMenuItem.Text = "Thoát";
-            // 
-            // stt_NameData
-            // 
-            this.stt_NameData.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stt_NameData.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.stt_NameData.Image = global::SpaManagementSoftware.Properties.Resources.Database_16x16;
-            this.stt_NameData.Name = "stt_NameData";
-            this.stt_NameData.Size = new System.Drawing.Size(104, 17);
-            this.stt_NameData.Text = "tên database";
             // 
             // frmMain
             // 
@@ -860,6 +860,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PHẦN MỀM QUẢN LÝ SPA";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

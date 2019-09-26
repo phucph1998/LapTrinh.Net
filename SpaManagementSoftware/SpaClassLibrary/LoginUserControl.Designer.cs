@@ -47,6 +47,7 @@
             // 
             // tlp_UC
             // 
+            this.tlp_UC.BackColor = System.Drawing.SystemColors.Control;
             this.tlp_UC.ColumnCount = 5;
             this.tlp_UC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.16063F));
             this.tlp_UC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.20798F));

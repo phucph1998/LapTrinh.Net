@@ -73,6 +73,8 @@ namespace SpaClassLibrary
         private void btn_SaveConfig_Click(object sender, EventArgs e)
         {
             Config.ChangConnectionString(cbb_ServerName.Text, cbb_Database.Text, txt_UserName.Text, txt_Password.Text);
+            LoginUserControl uc = new LoginUserControl();
+            uc.nameDatabase = cbb_Database.Text;
             this.Close();
         }
 

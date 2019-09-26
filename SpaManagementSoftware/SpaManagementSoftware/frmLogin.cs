@@ -42,20 +42,26 @@ namespace SpaManagementSoftware
             get { return checkFrm; }
             set { checkFrm = value; }
         }
+
         public frmLogin()
         {
             InitializeComponent();
         }
 
-        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmLogin_BackColorChanged(object sender, EventArgs e)
         {
-            //Cờ của UC tại sự kiện Click đăng nhập nếu thành công thì cờ có giá trị là TRUE và ngược lại
             if (lUC_Login.Flag == true)
             {
-                CheckFrm = true;
                 NameAccount = lUC_Login.NameAccount;
                 NumberRole = lUC_Login.NumberRole;
                 NameDatabase = lUC_Login.NameDatabase;
+                if (Program.mainForm == null || Program.mainForm.IsDisposed)
+                {
+                    Program.mainForm = new frmMain();
+                }
+                this.Visible = false;
+                this.BackColor = System.Drawing.SystemColors.Control;
+                Program.mainForm.Show();
             }
         }
     }

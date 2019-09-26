@@ -45,6 +45,7 @@ namespace SpaClassLibrary
             get { return flag; }
             set { flag = value; }
         }
+
         public LoginUserControl()
         {
             InitializeComponent();
@@ -76,12 +77,14 @@ namespace SpaClassLibrary
             {
                 XtraMessageBox.Show("Chuỗi cấu hình không tồn tại", "Thông báo");
                 config.ShowDialog();
+                GetNameDatabase();
             }
             if (checkConn == 2)
             {
                 XtraMessageBox.Show("Chuỗi cấu hình không phù hợp", "Thông báo");
                 //Xử lý cấu hình
                 config.ShowDialog();
+                GetNameDatabase();
             }
 
         }
@@ -152,7 +155,7 @@ namespace SpaClassLibrary
             flag = true;//Đánh dấu lại là Người dùng đã đăng nhập thành công và cho phép sử dụng frmMain
             nameAccount = txt_UserName.Text;
             numberRole = Config.GetNumberRole(txt_UserName.Text, EncodePass(txt_Password.Text));
-            ParentForm.Close();//Đóng lại cửa sổ đăng nhập khi đã đăng nhập thành công
+            ParentForm.BackColor = Color.White;
             //Bước tiếp: Sẽ có thêm các biến Lấy giá trị UserName, Pass, Quyền của người dùng gửi đến frmLogin -> frmMain
         }
 
@@ -183,6 +186,7 @@ namespace SpaClassLibrary
             }
             GetNameDatabase();
         }
+
         public void GetNameDatabase()
         {
             SqlConnection temp = new SqlConnection(Properties.Settings.Default.DB_SPAConnect);
