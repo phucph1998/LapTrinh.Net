@@ -11,3 +11,5 @@ D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\SpaManagementSoftware.exe
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.exe.licenses
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.exe
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmCustomer.resources
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAddTypeCus.resources

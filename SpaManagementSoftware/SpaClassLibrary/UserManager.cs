@@ -95,7 +95,14 @@ namespace SpaClassLibrary
         public void ChangConnectionString(string pServerName,string pDataBase,string pUser,string pPass)
         {
             SpaClassLibrary.Properties.Settings.Default["DB_SPAConnect"] = "Data Source=" + pServerName + ";Initial Catalog=" +pDataBase+ ";User ID=" + pUser + ";pwd=" + pPass + "";
+            SpaClassLibrary.Properties.Settings.Default["DB_SPAConnectionString"] = "Data Source=" + pServerName + ";Initial Catalog=" + pDataBase + ";User ID=" + pUser + ";pwd=" + pPass + "";
             Properties.Settings.Default.Save();
+        }
+
+        //Lấy chuỗi cấu hình
+        public string GetStringConfig()
+        {
+            return SpaClassLibrary.Properties.Settings.Default.DB_SPAConnect;
         }
     }
 }

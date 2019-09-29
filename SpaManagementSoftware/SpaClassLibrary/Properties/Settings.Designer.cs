@@ -59,15 +59,6 @@ namespace SpaClassLibrary.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        public string DB_SPAConnect {
-            get {
-                return ((string)(this["DB_SPAConnect"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -77,6 +68,28 @@ namespace SpaClassLibrary.Properties {
             }
             set {
                 this["Connect"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HOANGPHUC-PC\\SQLEXPRESS;Initial Catalog=DB_SPA;User ID=sa;Password=sa" +
+            "2012")]
+        public string DB_SPAConnect {
+            get {
+                return ((string)(this["DB_SPAConnect"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HOANGPHUC-PC\\SQLEXPRESS;Initial Catalog=DB_SPA;User ID=sa;Password=sa" +
+            "2012")]
+        public string DB_SPAConnectionString {
+            get {
+                return ((string)(this["DB_SPAConnectionString"]));
             }
         }
     }

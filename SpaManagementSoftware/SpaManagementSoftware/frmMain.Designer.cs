@@ -160,6 +160,7 @@
             this.tSBManagementSales.Name = "tSBManagementSales";
             this.tSBManagementSales.Size = new System.Drawing.Size(121, 22);
             this.tSBManagementSales.Text = "Quản lý bán hàng";
+            this.tSBManagementSales.Click += new System.EventHandler(this.tSBManagementSales_Click);
             // 
             // toolStripSeparator1
             // 
