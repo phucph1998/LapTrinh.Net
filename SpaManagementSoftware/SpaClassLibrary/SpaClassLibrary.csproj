@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerManager.cs" />
+    <Compile Include="C_Account.cs" />
+    <Compile Include="DC_Customer.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DC_Customer.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DC_TypeCustomer.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,8 +88,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="DC_Customer.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DC_Customer.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DC_TypeCustomer.dbml.layout">
       <DependentUpon>DC_TypeCustomer.dbml</DependentUpon>
+    </None>
+    <None Include="DC_Customer.dbml.layout">
+      <DependentUpon>DC_Customer.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="frmConfig.resx">
       <DependentUpon>frmConfig.cs</DependentUpon>

@@ -34,11 +34,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tV_Member = new System.Windows.Forms.TreeView();
             this.tS_TypeCus = new System.Windows.Forms.ToolStrip();
+            this.tSP_AddGroup = new System.Windows.Forms.ToolStripButton();
+            this.tSP_EditGroup = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tSP_Refresh = new System.Windows.Forms.ToolStripButton();
             this.tCtr_Customer = new System.Windows.Forms.TabControl();
             this.tP_Customer = new System.Windows.Forms.TabPage();
             this.tLP_DetailCus = new System.Windows.Forms.TableLayoutPanel();
             this.tS_Customer = new System.Windows.Forms.ToolStrip();
+            this.tSB_Add = new System.Windows.Forms.ToolStripButton();
+            this.tSP_Edit = new System.Windows.Forms.ToolStripButton();
+            this.tSB_Delete = new System.Windows.Forms.ToolStripButton();
             this.dGV_Customer = new System.Windows.Forms.DataGridView();
             this.ID_PROFILE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_USER = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,13 +54,9 @@
             this.SEX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PHONE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ADDRESS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SCORE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tSP_AddGroup = new System.Windows.Forms.ToolStripButton();
-            this.tSP_EditGroup = new System.Windows.Forms.ToolStripButton();
-            this.tSP_Refresh = new System.Windows.Forms.ToolStripButton();
-            this.tSB_Add = new System.Windows.Forms.ToolStripButton();
-            this.tSP_Edit = new System.Windows.Forms.ToolStripButton();
-            this.tSB_Delete = new System.Windows.Forms.ToolStripButton();
             this.tLP_Customer.SuspendLayout();
             this.tCtr_Member.SuspendLayout();
             this.tP_Member.SuspendLayout();
@@ -141,10 +143,38 @@
             this.tS_TypeCus.TabIndex = 1;
             this.tS_TypeCus.Text = "toolStrip1";
             // 
+            // tSP_AddGroup
+            // 
+            this.tSP_AddGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tSP_AddGroup.Image = global::SpaManagementSoftware.Properties.Resources.add;
+            this.tSP_AddGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSP_AddGroup.Name = "tSP_AddGroup";
+            this.tSP_AddGroup.Size = new System.Drawing.Size(23, 18);
+            this.tSP_AddGroup.Text = "toolStripButton2";
+            this.tSP_AddGroup.Click += new System.EventHandler(this.tSP_AddGroup_Click);
+            // 
+            // tSP_EditGroup
+            // 
+            this.tSP_EditGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tSP_EditGroup.Image = global::SpaManagementSoftware.Properties.Resources.Edit_16x16;
+            this.tSP_EditGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSP_EditGroup.Name = "tSP_EditGroup";
+            this.tSP_EditGroup.Size = new System.Drawing.Size(23, 18);
+            this.tSP_EditGroup.Text = "toolStripButton3";
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 21);
+            // 
+            // tSP_Refresh
+            // 
+            this.tSP_Refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tSP_Refresh.Image = global::SpaManagementSoftware.Properties.Resources.Refresh_16x16;
+            this.tSP_Refresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSP_Refresh.Name = "tSP_Refresh";
+            this.tSP_Refresh.Size = new System.Drawing.Size(23, 18);
+            this.tSP_Refresh.Text = "toolStripButton4";
             // 
             // tCtr_Customer
             // 
@@ -195,6 +225,31 @@
             this.tS_Customer.TabIndex = 0;
             this.tS_Customer.Text = "toolStrip1";
             // 
+            // tSB_Add
+            // 
+            this.tSB_Add.Image = global::SpaManagementSoftware.Properties.Resources.Add_16x16;
+            this.tSB_Add.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSB_Add.Name = "tSB_Add";
+            this.tSB_Add.Size = new System.Drawing.Size(81, 17);
+            this.tSB_Add.Text = "Thêm Mới";
+            this.tSB_Add.Click += new System.EventHandler(this.tSB_Add_Click);
+            // 
+            // tSP_Edit
+            // 
+            this.tSP_Edit.Image = global::SpaManagementSoftware.Properties.Resources.Edit_16x16;
+            this.tSP_Edit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSP_Edit.Name = "tSP_Edit";
+            this.tSP_Edit.Size = new System.Drawing.Size(81, 17);
+            this.tSP_Edit.Text = "Chỉnh Sửa";
+            // 
+            // tSB_Delete
+            // 
+            this.tSB_Delete.Image = global::SpaManagementSoftware.Properties.Resources.Delete_16x16;
+            this.tSB_Delete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSB_Delete.Name = "tSB_Delete";
+            this.tSB_Delete.Size = new System.Drawing.Size(47, 17);
+            this.tSB_Delete.Text = "Xóa";
+            // 
             // dGV_Customer
             // 
             this.dGV_Customer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -208,6 +263,8 @@
             this.SEX,
             this.PHONE,
             this.ADDRESS,
+            this.SCORE,
+            this.NAME_TYPE,
             this.STATUS});
             this.dGV_Customer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Customer.Location = new System.Drawing.Point(3, 23);
@@ -263,63 +320,24 @@
             this.ADDRESS.HeaderText = "Địa Chỉ";
             this.ADDRESS.Name = "ADDRESS";
             // 
+            // SCORE
+            // 
+            this.SCORE.DataPropertyName = "SCORE";
+            this.SCORE.HeaderText = "Điểm TL";
+            this.SCORE.Name = "SCORE";
+            // 
+            // NAME_TYPE
+            // 
+            this.NAME_TYPE.DataPropertyName = "NAME_TYPE";
+            this.NAME_TYPE.HeaderText = "Tên Loại";
+            this.NAME_TYPE.Name = "NAME_TYPE";
+            this.NAME_TYPE.Visible = false;
+            // 
             // STATUS
             // 
             this.STATUS.DataPropertyName = "STATUS";
             this.STATUS.HeaderText = "Trạng Thái";
             this.STATUS.Name = "STATUS";
-            // 
-            // tSP_AddGroup
-            // 
-            this.tSP_AddGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tSP_AddGroup.Image = global::SpaManagementSoftware.Properties.Resources.add;
-            this.tSP_AddGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSP_AddGroup.Name = "tSP_AddGroup";
-            this.tSP_AddGroup.Size = new System.Drawing.Size(23, 18);
-            this.tSP_AddGroup.Text = "toolStripButton2";
-            this.tSP_AddGroup.Click += new System.EventHandler(this.tSP_AddGroup_Click);
-            // 
-            // tSP_EditGroup
-            // 
-            this.tSP_EditGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tSP_EditGroup.Image = global::SpaManagementSoftware.Properties.Resources.Edit_16x16;
-            this.tSP_EditGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSP_EditGroup.Name = "tSP_EditGroup";
-            this.tSP_EditGroup.Size = new System.Drawing.Size(23, 18);
-            this.tSP_EditGroup.Text = "toolStripButton3";
-            // 
-            // tSP_Refresh
-            // 
-            this.tSP_Refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tSP_Refresh.Image = global::SpaManagementSoftware.Properties.Resources.Refresh_16x16;
-            this.tSP_Refresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSP_Refresh.Name = "tSP_Refresh";
-            this.tSP_Refresh.Size = new System.Drawing.Size(23, 18);
-            this.tSP_Refresh.Text = "toolStripButton4";
-            // 
-            // tSB_Add
-            // 
-            this.tSB_Add.Image = global::SpaManagementSoftware.Properties.Resources.Add_16x16;
-            this.tSB_Add.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSB_Add.Name = "tSB_Add";
-            this.tSB_Add.Size = new System.Drawing.Size(81, 17);
-            this.tSB_Add.Text = "Thêm Mới";
-            // 
-            // tSP_Edit
-            // 
-            this.tSP_Edit.Image = global::SpaManagementSoftware.Properties.Resources.Edit_16x16;
-            this.tSP_Edit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSP_Edit.Name = "tSP_Edit";
-            this.tSP_Edit.Size = new System.Drawing.Size(81, 17);
-            this.tSP_Edit.Text = "Chỉnh Sửa";
-            // 
-            // tSB_Delete
-            // 
-            this.tSB_Delete.Image = global::SpaManagementSoftware.Properties.Resources.Delete_16x16;
-            this.tSB_Delete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSB_Delete.Name = "tSB_Delete";
-            this.tSB_Delete.Size = new System.Drawing.Size(47, 17);
-            this.tSB_Delete.Text = "Xóa";
             // 
             // frmCustomer
             // 
@@ -376,6 +394,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SEX;
         private System.Windows.Forms.DataGridViewTextBoxColumn PHONE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ADDRESS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SCORE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_TYPE;
         private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
     }
 }

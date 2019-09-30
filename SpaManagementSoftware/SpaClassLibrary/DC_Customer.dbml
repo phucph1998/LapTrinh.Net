@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_SPA" Class="DC_CustomerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HOANGPHUC-PC\SQLEXPRESS;Initial Catalog=DB_SPA;User ID=sa" SettingsObjectName="SpaClassLibrary.Properties.Settings" SettingsPropertyName="DB_SPAConnect" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.PROFILE" Member="PROFILEs">
+    <Type Name="PROFILE">
+      <Column Name="ID_PROFILE" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_USER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDENFITICATION" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="LAST_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FIRST_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEX" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="PHONE" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="ADDRESS" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PROFILE_PROFILE_CUSTOMER" Member="PROFILE_CUSTOMERs" ThisKey="ID_PROFILE" OtherKey="ID_PROFILE" Type="PROFILE_CUSTOMER" />
+      <Association Name="ACCOUNT_PROFILE" Member="ACCOUNT" ThisKey="ID_USER" OtherKey="ID_USER" Type="ACCOUNT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PROFILE_CUSTOMER" Member="PROFILE_CUSTOMERs">
+    <Type Name="PROFILE_CUSTOMER">
+      <Column Name="ID_PROFILE_CUSTOMER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_TYPE_CUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_PROFILE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SCORE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PROFILE_PROFILE_CUSTOMER" Member="PROFILE" ThisKey="ID_PROFILE" OtherKey="ID_PROFILE" Type="PROFILE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ACCOUNT" Member="ACCOUNTs">
+    <Type Name="ACCOUNT">
+      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_ROLE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USERNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PASSWORD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ACCOUNT_PROFILE" Member="PROFILEs" ThisKey="ID_USER" OtherKey="ID_USER" Type="PROFILE" />
+    </Type>
+  </Table>
+</Database>

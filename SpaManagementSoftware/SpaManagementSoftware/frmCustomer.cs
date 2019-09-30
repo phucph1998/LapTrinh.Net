@@ -85,5 +85,12 @@ namespace SpaManagementSoftware
             add.ShowDialog();
             LoadTreeGroupCus();
         }
+
+        private void tSB_Add_Click(object sender, EventArgs e)
+        {
+            frmAddCustomer add = new frmAddCustomer();
+            add.ShowDialog();
+            dGV_Customer.DataSource = pCus.GetListCustomer();
+        }
     }
 }

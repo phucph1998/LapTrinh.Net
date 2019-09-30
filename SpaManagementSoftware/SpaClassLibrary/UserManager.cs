@@ -6,11 +6,32 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Data.Sql;
+using System.Security.Cryptography;
 
 namespace SpaClassLibrary
 {
     public class UserManager
     {
+
+        //Mã hóa MD5
+        public string EncodePass(string pPass)
+        {
+            MD5 encode = MD5.Create();
+
+            //Chuyển chuỗi thành kiểu byte
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pPass);
+
+            //Mã hóa chuỗi đã chuyển
+            byte[] hash = encode.ComputeHash(inputBytes);
+
+            //tạo đối tượng StringBuilder
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                result.Append(hash[i].ToString("x"));
+            }
+            return result.ToString();
+        }
         //Kiểm tra cấu hình
         public int Check_Config()
         {

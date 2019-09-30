@@ -10,6 +10,7 @@ namespace SpaClassLibrary
 {
     public class CustomerManager
     {
+        C_Account acc = new C_Account();
         //Bảng loại khách hàng
         public DataTable GetTableTypeCustomer()
         {
@@ -23,7 +24,7 @@ namespace SpaClassLibrary
         public DataTable GetListCustomer()
         {
             DataTable listCus = new DataTable();
-            SqlDataAdapter dt = new SqlDataAdapter("select * from dbo.PROFILE p where p.ID_PROFILE in (select ID_PROFILE from dbo.PROFILE_CUSTOMER)", Properties.Settings.Default.DB_SPAConnect);
+            SqlDataAdapter dt = new SqlDataAdapter("select p.ID_PROFILE,p.ID_USER,p.IDENFITICATION,p.LAST_NAME,p.FIRST_NAME,p.SEX,p.PHONE,p.ADDRESS,pc.SCORE,tpc.NAME_TYPE,p.STATUS from dbo.PROFILE p,dbo.PROFILE_CUSTOMER pc ,dbo.TYPE_CUSTOMER tpc where p.ID_PROFILE = pc.ID_PROFILE and pc.ID_TYPE_CUS = tpc.ID_TYPE_CUS", Properties.Settings.Default.DB_SPAConnect);
             dt.Fill(listCus);
             return listCus;
         }
@@ -32,7 +33,7 @@ namespace SpaClassLibrary
         public DataTable GetListTypeCustomer(string pTypeCus)
         {
             DataTable listCus = new DataTable();
-            SqlDataAdapter dt = new SqlDataAdapter("select * from dbo.PROFILE p where p.ID_PROFILE in (select pc.ID_PROFILE from dbo.PROFILE_CUSTOMER pc, dbo.TYPE_CUSTOMER tc where tc.ID_TYPE_CUS = pc.ID_TYPE_CUS and tc.NAME_TYPE=N'" + pTypeCus + "')", Properties.Settings.Default.DB_SPAConnect);
+            SqlDataAdapter dt = new SqlDataAdapter("select p.ID_PROFILE,p.ID_USER,p.IDENFITICATION,p.LAST_NAME,p.FIRST_NAME,p.SEX,p.PHONE,p.ADDRESS,pc.SCORE,tpc.NAME_TYPE,p.STATUS from dbo.PROFILE p,dbo.PROFILE_CUSTOMER pc ,dbo.TYPE_CUSTOMER tpc where p.ID_PROFILE = pc.ID_PROFILE and pc.ID_TYPE_CUS = tpc.ID_TYPE_CUS and tpc.NAME_TYPE=N'"+pTypeCus+"'", Properties.Settings.Default.DB_SPAConnect);
             dt.Fill(listCus);
             return listCus;
         }
@@ -81,6 +82,81 @@ namespace SpaClassLibrary
             {
                 return false;
             }
+        }
+
+        //Load loại khách hàng
+        public DataTable LoadTypeCus()
+        {
+            DataTable tb = new DataTable();
+            SqlDataAdapter dt = new SqlDataAdapter("select * from TYPE_CUSTOMER", Properties.Settings.Default.DB_SPAConnect);
+            dt.Fill(tb);
+            return tb;
+        }
+
+        //Max ID_PROFILE
+        public int GetIDMaxProFile()
+        {
+            DataTable tb = new DataTable();
+            SqlDataAdapter dt = new SqlDataAdapter("select MAX(ID_PROFILE) from PROFILE", Properties.Settings.Default.DB_SPAConnectionString);
+            dt.Fill(tb);
+            return Int32.Parse(tb.Rows[0][0].ToString());
+        }
+
+        //Max ID_PROFILE_CUSTOMER
+        public int GetIDMaxProFileTypeCus()
+        {
+            DataTable tb = new DataTable();
+            SqlDataAdapter dt = new SqlDataAdapter("select MAX(ID_PROFILE_CUSTOMER) from PROFILE_CUSTOMER", Properties.Settings.Default.DB_SPAConnectionString);
+            dt.Fill(tb);
+            return Int32.Parse(tb.Rows[0][0].ToString());
+        }
+
+        //Thêm khách hàng đồng thời tạo tài khoản khách hàng ID: Số đt KH, Pass : CMND (Mặc định)
+        public int InsertCustomer(string pID,string pLastName,string pFirstName,string pSex,string pPhone,string pAddress,int pTypeCus)
+        {
+            //B1 thêm tài khoản cho khách hàng
+            //Username: Số đt khách hàng, Password: CMND khách hàng
+            if (acc.IsAccountPhone(pPhone)!=0)
+            {
+                return 1;//Tồn tại tài khoản
+            }
+            else
+            {
+                int idUser = acc.InsertAccount(pPhone,pID);//thêm thành công sẽ trả về ID_USER vừa thêm
+                if(idUser != 0)
+                {
+                    DC_CustomerDataContext cus = new DC_CustomerDataContext();
+
+                    PROFILE profile = new PROFILE();
+                    PROFILE_CUSTOMER pro_cus = new PROFILE_CUSTOMER();
+
+                    int number = GetIDMaxProFile() + 1;
+
+                    profile.ID_PROFILE = number;
+                    profile.ID_USER = idUser;
+                    profile.IDENFITICATION = pID;
+                    profile.LAST_NAME = pLastName;
+                    profile.FIRST_NAME = pFirstName;
+                    profile.SEX = pSex;
+                    profile.PHONE = pPhone;
+                    profile.ADDRESS = pAddress;
+                    profile.STATUS = 0;
+
+                    pro_cus.ID_PROFILE_CUSTOMER = GetIDMaxProFileTypeCus() + 1;
+                    pro_cus.ID_PROFILE = number;
+                    pro_cus.ID_TYPE_CUS = pTypeCus;
+                    pro_cus.SCORE = 0;
+
+                    cus.PROFILEs.InsertOnSubmit(profile);
+                    cus.PROFILE_CUSTOMERs.InsertOnSubmit(pro_cus);                    
+                    cus.SubmitChanges();
+                    return 2;//Thêm thành công
+                }
+                else
+                {
+                    return 3;//thêm thất bại
+                }
+            }      
         }
     }
 }
