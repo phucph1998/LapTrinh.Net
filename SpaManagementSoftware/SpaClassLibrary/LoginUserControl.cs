@@ -154,7 +154,6 @@ namespace SpaClassLibrary
             //xử lý form parent để gọi formMain
             flag = true;//Đánh dấu lại là Người dùng đã đăng nhập thành công và cho phép sử dụng frmMain
             nameAccount = txt_UserName.Text;
-            numberRole = Config.GetNumberRole(txt_UserName.Text, EncodePass(txt_Password.Text));
             ParentForm.BackColor = Color.White;
             //Bước tiếp: Sẽ có thêm các biến Lấy giá trị UserName, Pass, Quyền của người dùng gửi đến frmLogin -> frmMain
         }

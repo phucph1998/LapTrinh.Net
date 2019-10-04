@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_SPA" Class="DC_CustomerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=HOANGPHUC-PC\SQLEXPRESS;Initial Catalog=DB_SPA;User ID=sa" SettingsObjectName="SpaClassLibrary.Properties.Settings" SettingsPropertyName="DB_SPAConnect" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ACCOUNT" Member="ACCOUNTs">
+    <Type Name="ACCOUNT">
+      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="USERNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PASSWORD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ACCOUNT_PROFILE" Member="PROFILEs" ThisKey="ID_USER" OtherKey="ID_USER" Type="PROFILE" />
+      <Association Name="ACCOUNT_USER_GROUP_USER" Member="USER_GROUP_USERs" ThisKey="ID_USER" OtherKey="ID_USER" Type="USER_GROUP_USER" />
+    </Type>
+  </Table>
   <Table Name="dbo.PROFILE" Member="PROFILEs">
     <Type Name="PROFILE">
       <Column Name="ID_PROFILE" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -12,26 +22,69 @@
       <Column Name="ADDRESS" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="STATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="PROFILE_PROFILE_CUSTOMER" Member="PROFILE_CUSTOMERs" ThisKey="ID_PROFILE" OtherKey="ID_PROFILE" Type="PROFILE_CUSTOMER" />
+      <Association Name="PROFILE_PROFILE_STAFF" Member="PROFILE_STAFFs" ThisKey="ID_PROFILE" OtherKey="ID_PROFILE" Type="PROFILE_STAFF" />
       <Association Name="ACCOUNT_PROFILE" Member="ACCOUNT" ThisKey="ID_USER" OtherKey="ID_USER" Type="ACCOUNT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PROFILE_CUSTOMER" Member="PROFILE_CUSTOMERs">
     <Type Name="PROFILE_CUSTOMER">
       <Column Name="ID_PROFILE_CUSTOMER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_TYPE_CUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ID_PROFILE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TYPE_CUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SCORE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="PROFILE_PROFILE_CUSTOMER" Member="PROFILE" ThisKey="ID_PROFILE" OtherKey="ID_PROFILE" Type="PROFILE" IsForeignKey="true" />
+      <Association Name="TYPE_CUSTOMER_PROFILE_CUSTOMER" Member="TYPE_CUSTOMER" ThisKey="ID_TYPE_CUS" OtherKey="ID_TYPE_CUS" Type="TYPE_CUSTOMER" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ACCOUNT" Member="ACCOUNTs">
-    <Type Name="ACCOUNT">
-      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_ROLE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="USERNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PASSWORD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.PROFILE_STAFF" Member="PROFILE_STAFFs">
+    <Type Name="PROFILE_STAFF">
+      <Column Name="ID_PROFILE_STAFF" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_PROFILE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POSITION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="PROFILE_PROFILE_STAFF" Member="PROFILE" ThisKey="ID_PROFILE" OtherKey="ID_PROFILE" Type="PROFILE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GRANT_RIGHT" Member="GRANT_RIGHTs">
+    <Type Name="GRANT_RIGHT">
+      <Column Name="ID_GROUP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_SCREEN" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ROLE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="GROUP_USER_GRANT_RIGHT" Member="GROUP_USER" ThisKey="ID_GROUP" OtherKey="ID_GROUP" Type="GROUP_USER" IsForeignKey="true" />
+      <Association Name="SCREEN_GRANT_RIGHT" Member="SCREEN" ThisKey="ID_SCREEN" OtherKey="ID_SCREEN" Type="SCREEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GROUP_USER" Member="GROUP_USERs">
+    <Type Name="GROUP_USER">
+      <Column Name="ID_GROUP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NAME_GROUP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="STATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="ACCOUNT_PROFILE" Member="PROFILEs" ThisKey="ID_USER" OtherKey="ID_USER" Type="PROFILE" />
+      <Association Name="GROUP_USER_GRANT_RIGHT" Member="GRANT_RIGHTs" ThisKey="ID_GROUP" OtherKey="ID_GROUP" Type="GRANT_RIGHT" />
+      <Association Name="GROUP_USER_USER_GROUP_USER" Member="USER_GROUP_USERs" ThisKey="ID_GROUP" OtherKey="ID_GROUP" Type="USER_GROUP_USER" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SCREEN" Member="SCREENs">
+    <Type Name="SCREEN">
+      <Column Name="ID_SCREEN" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NAME_SCREEN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SCREEN_GRANT_RIGHT" Member="GRANT_RIGHTs" ThisKey="ID_SCREEN" OtherKey="ID_SCREEN" Type="GRANT_RIGHT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USER_GROUP_USER" Member="USER_GROUP_USERs">
+    <Type Name="USER_GROUP_USER">
+      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_GROUP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ACCOUNT_USER_GROUP_USER" Member="ACCOUNT" ThisKey="ID_USER" OtherKey="ID_USER" Type="ACCOUNT" IsForeignKey="true" />
+      <Association Name="GROUP_USER_USER_GROUP_USER" Member="GROUP_USER" ThisKey="ID_GROUP" OtherKey="ID_GROUP" Type="GROUP_USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TYPE_CUSTOMER" Member="TYPE_CUSTOMERs">
+    <Type Name="TYPE_CUSTOMER">
+      <Column Name="ID_TYPE_CUS" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NAME_TYPE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TYPE_CUSTOMER_PROFILE_CUSTOMER" Member="PROFILE_CUSTOMERs" ThisKey="ID_TYPE_CUS" OtherKey="ID_TYPE_CUS" Type="PROFILE_CUSTOMER" />
     </Type>
   </Table>
 </Database>

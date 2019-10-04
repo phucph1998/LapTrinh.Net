@@ -21,7 +21,7 @@ namespace SpaClassLibrary
         }
 
         //Kiểm tra tài khoản có tồn tại chưa
-        public int IsAccountPhone(string pUserName)
+        public int IsAccount(string pUserName)
         {
             DataTable tb = new DataTable();
             SqlDataAdapter dt = new SqlDataAdapter("select USERNAME from ACCOUNT a where USERNAME = N'" + pUserName + "'", Properties.Settings.Default.DB_SPAConnectionString);
@@ -32,12 +32,11 @@ namespace SpaClassLibrary
         //Thêm tài khoản
         public int InsertAccount(string pUserName, string pPass)
         {
-            if(IsAccountPhone(pUserName)==0)
+            if(IsAccount(pUserName)==0)
             {
                 DC_CustomerDataContext account = new DC_CustomerDataContext();
 
                 ACCOUNT temp = new ACCOUNT();
-                temp.ID_ROLE = 2;
                 temp.ID_USER = GetIDMax() + 1;
                 temp.USERNAME = pUserName;
                 temp.PASSWORD = mh.EncodePass(pPass);
@@ -51,6 +50,28 @@ namespace SpaClassLibrary
             {
                 return 0;//Khách hàng đã tạo tài khoản
             }
+        }
+
+        //Xóa tài khoản,Tại đây thực chất cho khóa tài khoản đồng nghĩa với việc dữ liệu tk vẫn còn
+        public int DeleteAccount(string pUserName)
+        {
+            if(IsAccount(pUserName)==1)
+            {
+                DC_CustomerDataContext account = new DC_CustomerDataContext();
+                var query = from acc in account.ACCOUNTs
+                            where acc.USERNAME.ToString().Equals(pUserName) == true
+                            select acc;
+                foreach (ACCOUNT item in query)
+                {
+                    item.STATUS = 0;
+                }
+                account.SubmitChanges();
+                return 1;//Tài khoản bị khóa đồng nghĩa việc xóa tài khoản
+            }
+            else
+            {
+                return 0;//Không tồn tại tài khoản
+            }            
         }
     }
 }

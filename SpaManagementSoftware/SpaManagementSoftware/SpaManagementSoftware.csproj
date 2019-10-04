@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateControl.cs" />
+    <Compile Include="C_Customer.cs" />
     <Compile Include="frmAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>

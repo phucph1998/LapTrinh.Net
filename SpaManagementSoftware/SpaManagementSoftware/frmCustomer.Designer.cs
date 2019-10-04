@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             this.tLP_Customer = new System.Windows.Forms.TableLayoutPanel();
             this.tCtr_Member = new System.Windows.Forms.TabControl();
             this.tP_Member = new System.Windows.Forms.TabPage();
@@ -57,6 +59,11 @@
             this.SCORE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NAME_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cMS_GroupCus = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.thêmNhómToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xóaNhómToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đổiTênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tLP_Customer.SuspendLayout();
             this.tCtr_Member.SuspendLayout();
             this.tP_Member.SuspendLayout();
@@ -67,6 +74,7 @@
             this.tLP_DetailCus.SuspendLayout();
             this.tS_Customer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Customer)).BeginInit();
+            this.cMS_GroupCus.SuspendLayout();
             this.SuspendLayout();
             // 
             // tLP_Customer
@@ -241,6 +249,7 @@
             this.tSP_Edit.Name = "tSP_Edit";
             this.tSP_Edit.Size = new System.Drawing.Size(81, 17);
             this.tSP_Edit.Text = "Chỉnh Sửa";
+            this.tSP_Edit.Click += new System.EventHandler(this.tSP_Edit_Click);
             // 
             // tSB_Delete
             // 
@@ -249,10 +258,14 @@
             this.tSB_Delete.Name = "tSB_Delete";
             this.tSB_Delete.Size = new System.Drawing.Size(47, 17);
             this.tSB_Delete.Text = "Xóa";
+            this.tSB_Delete.Click += new System.EventHandler(this.tSB_Delete_Click);
             // 
             // dGV_Customer
             // 
+            this.dGV_Customer.AllowUserToAddRows = false;
+            this.dGV_Customer.AllowUserToDeleteRows = false;
             this.dGV_Customer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGV_Customer.BackgroundColor = System.Drawing.Color.White;
             this.dGV_Customer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Customer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_PROFILE,
@@ -268,69 +281,84 @@
             this.STATUS});
             this.dGV_Customer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Customer.Location = new System.Drawing.Point(3, 23);
+            this.dGV_Customer.MultiSelect = false;
             this.dGV_Customer.Name = "dGV_Customer";
+            this.dGV_Customer.ReadOnly = true;
+            this.dGV_Customer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Customer.Size = new System.Drawing.Size(647, 390);
             this.dGV_Customer.TabIndex = 1;
+            this.dGV_Customer.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGV_Customer_CellMouseDoubleClick);
+            this.dGV_Customer.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dGV_Customer_ColumnHeaderMouseClick);
             // 
             // ID_PROFILE
             // 
             this.ID_PROFILE.DataPropertyName = "ID_PROFILE";
             this.ID_PROFILE.HeaderText = "Mã Hồ Sơ";
             this.ID_PROFILE.Name = "ID_PROFILE";
+            this.ID_PROFILE.ReadOnly = true;
             // 
             // ID_USER
             // 
             this.ID_USER.DataPropertyName = "ID_USER";
             this.ID_USER.HeaderText = "Mã Người Dùng";
             this.ID_USER.Name = "ID_USER";
+            this.ID_USER.ReadOnly = true;
             // 
             // IDENFITICATION
             // 
             this.IDENFITICATION.DataPropertyName = "IDENFITICATION";
             this.IDENFITICATION.HeaderText = "SỐ CMND";
             this.IDENFITICATION.Name = "IDENFITICATION";
+            this.IDENFITICATION.ReadOnly = true;
             // 
             // LAST_NAME
             // 
             this.LAST_NAME.DataPropertyName = "LAST_NAME";
             this.LAST_NAME.HeaderText = "Họ";
             this.LAST_NAME.Name = "LAST_NAME";
+            this.LAST_NAME.ReadOnly = true;
             // 
             // FIRST_NAME
             // 
             this.FIRST_NAME.DataPropertyName = "FIRST_NAME";
             this.FIRST_NAME.HeaderText = "Tên";
             this.FIRST_NAME.Name = "FIRST_NAME";
+            this.FIRST_NAME.ReadOnly = true;
             // 
             // SEX
             // 
             this.SEX.DataPropertyName = "SEX";
             this.SEX.HeaderText = "Giới Tính";
             this.SEX.Name = "SEX";
+            this.SEX.ReadOnly = true;
             // 
             // PHONE
             // 
             this.PHONE.DataPropertyName = "PHONE";
             this.PHONE.HeaderText = "SDT";
             this.PHONE.Name = "PHONE";
+            this.PHONE.ReadOnly = true;
             // 
             // ADDRESS
             // 
             this.ADDRESS.DataPropertyName = "ADDRESS";
             this.ADDRESS.HeaderText = "Địa Chỉ";
             this.ADDRESS.Name = "ADDRESS";
+            this.ADDRESS.ReadOnly = true;
             // 
             // SCORE
             // 
             this.SCORE.DataPropertyName = "SCORE";
             this.SCORE.HeaderText = "Điểm TL";
             this.SCORE.Name = "SCORE";
+            this.SCORE.ReadOnly = true;
             // 
             // NAME_TYPE
             // 
             this.NAME_TYPE.DataPropertyName = "NAME_TYPE";
             this.NAME_TYPE.HeaderText = "Tên Loại";
             this.NAME_TYPE.Name = "NAME_TYPE";
+            this.NAME_TYPE.ReadOnly = true;
             this.NAME_TYPE.Visible = false;
             // 
             // STATUS
@@ -338,6 +366,46 @@
             this.STATUS.DataPropertyName = "STATUS";
             this.STATUS.HeaderText = "Trạng Thái";
             this.STATUS.Name = "STATUS";
+            this.STATUS.ReadOnly = true;
+            // 
+            // cMS_GroupCus
+            // 
+            this.cMS_GroupCus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thêmNhómToolStripMenuItem,
+            this.xóaNhómToolStripMenuItem,
+            this.refreshToolStripMenuItem,
+            this.đổiTênToolStripMenuItem});
+            this.cMS_GroupCus.Name = "cMS_GroupCus";
+            this.cMS_GroupCus.Size = new System.Drawing.Size(142, 92);
+            // 
+            // thêmNhómToolStripMenuItem
+            // 
+            this.thêmNhómToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("thêmNhómToolStripMenuItem.Image")));
+            this.thêmNhómToolStripMenuItem.Name = "thêmNhómToolStripMenuItem";
+            this.thêmNhómToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.thêmNhómToolStripMenuItem.Text = "Thêm Nhóm";
+            this.thêmNhómToolStripMenuItem.Click += new System.EventHandler(this.thêmNhómToolStripMenuItem_Click);
+            // 
+            // xóaNhómToolStripMenuItem
+            // 
+            this.xóaNhómToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Delete_16x16;
+            this.xóaNhómToolStripMenuItem.Name = "xóaNhómToolStripMenuItem";
+            this.xóaNhómToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.xóaNhómToolStripMenuItem.Text = "Xóa Nhóm";
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Refresh_16x16;
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            // 
+            // đổiTênToolStripMenuItem
+            // 
+            this.đổiTênToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Edit_16x16;
+            this.đổiTênToolStripMenuItem.Name = "đổiTênToolStripMenuItem";
+            this.đổiTênToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.đổiTênToolStripMenuItem.Text = "Đổi tên";
             // 
             // frmCustomer
             // 
@@ -362,6 +430,7 @@
             this.tS_Customer.ResumeLayout(false);
             this.tS_Customer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Customer)).EndInit();
+            this.cMS_GroupCus.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -397,5 +466,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SCORE;
         private System.Windows.Forms.DataGridViewTextBoxColumn NAME_TYPE;
         private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
+        private System.Windows.Forms.ContextMenuStrip cMS_GroupCus;
+        private System.Windows.Forms.ToolStripMenuItem thêmNhómToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xóaNhómToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem đổiTênToolStripMenuItem;
     }
 }

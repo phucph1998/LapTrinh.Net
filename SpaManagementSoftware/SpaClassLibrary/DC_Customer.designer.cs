@@ -30,15 +30,33 @@ namespace SpaClassLibrary
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertACCOUNT(ACCOUNT instance);
+    partial void UpdateACCOUNT(ACCOUNT instance);
+    partial void DeleteACCOUNT(ACCOUNT instance);
     partial void InsertPROFILE(PROFILE instance);
     partial void UpdatePROFILE(PROFILE instance);
     partial void DeletePROFILE(PROFILE instance);
     partial void InsertPROFILE_CUSTOMER(PROFILE_CUSTOMER instance);
     partial void UpdatePROFILE_CUSTOMER(PROFILE_CUSTOMER instance);
     partial void DeletePROFILE_CUSTOMER(PROFILE_CUSTOMER instance);
-    partial void InsertACCOUNT(ACCOUNT instance);
-    partial void UpdateACCOUNT(ACCOUNT instance);
-    partial void DeleteACCOUNT(ACCOUNT instance);
+    partial void InsertPROFILE_STAFF(PROFILE_STAFF instance);
+    partial void UpdatePROFILE_STAFF(PROFILE_STAFF instance);
+    partial void DeletePROFILE_STAFF(PROFILE_STAFF instance);
+    partial void InsertGRANT_RIGHT(GRANT_RIGHT instance);
+    partial void UpdateGRANT_RIGHT(GRANT_RIGHT instance);
+    partial void DeleteGRANT_RIGHT(GRANT_RIGHT instance);
+    partial void InsertGROUP_USER(GROUP_USER instance);
+    partial void UpdateGROUP_USER(GROUP_USER instance);
+    partial void DeleteGROUP_USER(GROUP_USER instance);
+    partial void InsertSCREEN(SCREEN instance);
+    partial void UpdateSCREEN(SCREEN instance);
+    partial void DeleteSCREEN(SCREEN instance);
+    partial void InsertUSER_GROUP_USER(USER_GROUP_USER instance);
+    partial void UpdateUSER_GROUP_USER(USER_GROUP_USER instance);
+    partial void DeleteUSER_GROUP_USER(USER_GROUP_USER instance);
+    partial void InsertTYPE_CUSTOMER(TYPE_CUSTOMER instance);
+    partial void UpdateTYPE_CUSTOMER(TYPE_CUSTOMER instance);
+    partial void DeleteTYPE_CUSTOMER(TYPE_CUSTOMER instance);
     #endregion
 		
 		public DC_CustomerDataContext() : 
@@ -71,6 +89,14 @@ namespace SpaClassLibrary
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<ACCOUNT> ACCOUNTs
+		{
+			get
+			{
+				return this.GetTable<ACCOUNT>();
+			}
+		}
+		
 		public System.Data.Linq.Table<PROFILE> PROFILEs
 		{
 			get
@@ -87,12 +113,242 @@ namespace SpaClassLibrary
 			}
 		}
 		
-		public System.Data.Linq.Table<ACCOUNT> ACCOUNTs
+		public System.Data.Linq.Table<PROFILE_STAFF> PROFILE_STAFFs
 		{
 			get
 			{
-				return this.GetTable<ACCOUNT>();
+				return this.GetTable<PROFILE_STAFF>();
 			}
+		}
+		
+		public System.Data.Linq.Table<GRANT_RIGHT> GRANT_RIGHTs
+		{
+			get
+			{
+				return this.GetTable<GRANT_RIGHT>();
+			}
+		}
+		
+		public System.Data.Linq.Table<GROUP_USER> GROUP_USERs
+		{
+			get
+			{
+				return this.GetTable<GROUP_USER>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SCREEN> SCREENs
+		{
+			get
+			{
+				return this.GetTable<SCREEN>();
+			}
+		}
+		
+		public System.Data.Linq.Table<USER_GROUP_USER> USER_GROUP_USERs
+		{
+			get
+			{
+				return this.GetTable<USER_GROUP_USER>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TYPE_CUSTOMER> TYPE_CUSTOMERs
+		{
+			get
+			{
+				return this.GetTable<TYPE_CUSTOMER>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ACCOUNT")]
+	public partial class ACCOUNT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_USER;
+		
+		private string _USERNAME;
+		
+		private string _PASSWORD;
+		
+		private System.Nullable<int> _STATUS;
+		
+		private EntitySet<PROFILE> _PROFILEs;
+		
+		private EntitySet<USER_GROUP_USER> _USER_GROUP_USERs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_USERChanging(int value);
+    partial void OnID_USERChanged();
+    partial void OnUSERNAMEChanging(string value);
+    partial void OnUSERNAMEChanged();
+    partial void OnPASSWORDChanging(string value);
+    partial void OnPASSWORDChanged();
+    partial void OnSTATUSChanging(System.Nullable<int> value);
+    partial void OnSTATUSChanged();
+    #endregion
+		
+		public ACCOUNT()
+		{
+			this._PROFILEs = new EntitySet<PROFILE>(new Action<PROFILE>(this.attach_PROFILEs), new Action<PROFILE>(this.detach_PROFILEs));
+			this._USER_GROUP_USERs = new EntitySet<USER_GROUP_USER>(new Action<USER_GROUP_USER>(this.attach_USER_GROUP_USERs), new Action<USER_GROUP_USER>(this.detach_USER_GROUP_USERs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_USER", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_USER
+		{
+			get
+			{
+				return this._ID_USER;
+			}
+			set
+			{
+				if ((this._ID_USER != value))
+				{
+					this.OnID_USERChanging(value);
+					this.SendPropertyChanging();
+					this._ID_USER = value;
+					this.SendPropertyChanged("ID_USER");
+					this.OnID_USERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERNAME", DbType="VarChar(50)")]
+		public string USERNAME
+		{
+			get
+			{
+				return this._USERNAME;
+			}
+			set
+			{
+				if ((this._USERNAME != value))
+				{
+					this.OnUSERNAMEChanging(value);
+					this.SendPropertyChanging();
+					this._USERNAME = value;
+					this.SendPropertyChanged("USERNAME");
+					this.OnUSERNAMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PASSWORD", DbType="VarChar(50)")]
+		public string PASSWORD
+		{
+			get
+			{
+				return this._PASSWORD;
+			}
+			set
+			{
+				if ((this._PASSWORD != value))
+				{
+					this.OnPASSWORDChanging(value);
+					this.SendPropertyChanging();
+					this._PASSWORD = value;
+					this.SendPropertyChanged("PASSWORD");
+					this.OnPASSWORDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="Int")]
+		public System.Nullable<int> STATUS
+		{
+			get
+			{
+				return this._STATUS;
+			}
+			set
+			{
+				if ((this._STATUS != value))
+				{
+					this.OnSTATUSChanging(value);
+					this.SendPropertyChanging();
+					this._STATUS = value;
+					this.SendPropertyChanged("STATUS");
+					this.OnSTATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ACCOUNT_PROFILE", Storage="_PROFILEs", ThisKey="ID_USER", OtherKey="ID_USER")]
+		public EntitySet<PROFILE> PROFILEs
+		{
+			get
+			{
+				return this._PROFILEs;
+			}
+			set
+			{
+				this._PROFILEs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ACCOUNT_USER_GROUP_USER", Storage="_USER_GROUP_USERs", ThisKey="ID_USER", OtherKey="ID_USER")]
+		public EntitySet<USER_GROUP_USER> USER_GROUP_USERs
+		{
+			get
+			{
+				return this._USER_GROUP_USERs;
+			}
+			set
+			{
+				this._USER_GROUP_USERs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PROFILEs(PROFILE entity)
+		{
+			this.SendPropertyChanging();
+			entity.ACCOUNT = this;
+		}
+		
+		private void detach_PROFILEs(PROFILE entity)
+		{
+			this.SendPropertyChanging();
+			entity.ACCOUNT = null;
+		}
+		
+		private void attach_USER_GROUP_USERs(USER_GROUP_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.ACCOUNT = this;
+		}
+		
+		private void detach_USER_GROUP_USERs(USER_GROUP_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.ACCOUNT = null;
 		}
 	}
 	
@@ -121,6 +377,8 @@ namespace SpaClassLibrary
 		private System.Nullable<int> _STATUS;
 		
 		private EntitySet<PROFILE_CUSTOMER> _PROFILE_CUSTOMERs;
+		
+		private EntitySet<PROFILE_STAFF> _PROFILE_STAFFs;
 		
 		private EntityRef<ACCOUNT> _ACCOUNT;
 		
@@ -151,6 +409,7 @@ namespace SpaClassLibrary
 		public PROFILE()
 		{
 			this._PROFILE_CUSTOMERs = new EntitySet<PROFILE_CUSTOMER>(new Action<PROFILE_CUSTOMER>(this.attach_PROFILE_CUSTOMERs), new Action<PROFILE_CUSTOMER>(this.detach_PROFILE_CUSTOMERs));
+			this._PROFILE_STAFFs = new EntitySet<PROFILE_STAFF>(new Action<PROFILE_STAFF>(this.attach_PROFILE_STAFFs), new Action<PROFILE_STAFF>(this.detach_PROFILE_STAFFs));
 			this._ACCOUNT = default(EntityRef<ACCOUNT>);
 			OnCreated();
 		}
@@ -352,6 +611,19 @@ namespace SpaClassLibrary
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROFILE_PROFILE_STAFF", Storage="_PROFILE_STAFFs", ThisKey="ID_PROFILE", OtherKey="ID_PROFILE")]
+		public EntitySet<PROFILE_STAFF> PROFILE_STAFFs
+		{
+			get
+			{
+				return this._PROFILE_STAFFs;
+			}
+			set
+			{
+				this._PROFILE_STAFFs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ACCOUNT_PROFILE", Storage="_ACCOUNT", ThisKey="ID_USER", OtherKey="ID_USER", IsForeignKey=true)]
 		public ACCOUNT ACCOUNT
 		{
@@ -417,6 +689,18 @@ namespace SpaClassLibrary
 			this.SendPropertyChanging();
 			entity.PROFILE = null;
 		}
+		
+		private void attach_PROFILE_STAFFs(PROFILE_STAFF entity)
+		{
+			this.SendPropertyChanging();
+			entity.PROFILE = this;
+		}
+		
+		private void detach_PROFILE_STAFFs(PROFILE_STAFF entity)
+		{
+			this.SendPropertyChanging();
+			entity.PROFILE = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROFILE_CUSTOMER")]
@@ -427,13 +711,15 @@ namespace SpaClassLibrary
 		
 		private int _ID_PROFILE_CUSTOMER;
 		
-		private System.Nullable<int> _ID_TYPE_CUS;
-		
 		private System.Nullable<int> _ID_PROFILE;
+		
+		private System.Nullable<int> _ID_TYPE_CUS;
 		
 		private System.Nullable<int> _SCORE;
 		
 		private EntityRef<PROFILE> _PROFILE;
+		
+		private EntityRef<TYPE_CUSTOMER> _TYPE_CUSTOMER;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -441,10 +727,10 @@ namespace SpaClassLibrary
     partial void OnCreated();
     partial void OnID_PROFILE_CUSTOMERChanging(int value);
     partial void OnID_PROFILE_CUSTOMERChanged();
-    partial void OnID_TYPE_CUSChanging(System.Nullable<int> value);
-    partial void OnID_TYPE_CUSChanged();
     partial void OnID_PROFILEChanging(System.Nullable<int> value);
     partial void OnID_PROFILEChanged();
+    partial void OnID_TYPE_CUSChanging(System.Nullable<int> value);
+    partial void OnID_TYPE_CUSChanged();
     partial void OnSCOREChanging(System.Nullable<int> value);
     partial void OnSCOREChanged();
     #endregion
@@ -452,6 +738,7 @@ namespace SpaClassLibrary
 		public PROFILE_CUSTOMER()
 		{
 			this._PROFILE = default(EntityRef<PROFILE>);
+			this._TYPE_CUSTOMER = default(EntityRef<TYPE_CUSTOMER>);
 			OnCreated();
 		}
 		
@@ -471,26 +758,6 @@ namespace SpaClassLibrary
 					this._ID_PROFILE_CUSTOMER = value;
 					this.SendPropertyChanged("ID_PROFILE_CUSTOMER");
 					this.OnID_PROFILE_CUSTOMERChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TYPE_CUS", DbType="Int")]
-		public System.Nullable<int> ID_TYPE_CUS
-		{
-			get
-			{
-				return this._ID_TYPE_CUS;
-			}
-			set
-			{
-				if ((this._ID_TYPE_CUS != value))
-				{
-					this.OnID_TYPE_CUSChanging(value);
-					this.SendPropertyChanging();
-					this._ID_TYPE_CUS = value;
-					this.SendPropertyChanged("ID_TYPE_CUS");
-					this.OnID_TYPE_CUSChanged();
 				}
 			}
 		}
@@ -515,6 +782,30 @@ namespace SpaClassLibrary
 					this._ID_PROFILE = value;
 					this.SendPropertyChanged("ID_PROFILE");
 					this.OnID_PROFILEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TYPE_CUS", DbType="Int")]
+		public System.Nullable<int> ID_TYPE_CUS
+		{
+			get
+			{
+				return this._ID_TYPE_CUS;
+			}
+			set
+			{
+				if ((this._ID_TYPE_CUS != value))
+				{
+					if (this._TYPE_CUSTOMER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_TYPE_CUSChanging(value);
+					this.SendPropertyChanging();
+					this._ID_TYPE_CUS = value;
+					this.SendPropertyChanged("ID_TYPE_CUS");
+					this.OnID_TYPE_CUSChanged();
 				}
 			}
 		}
@@ -573,6 +864,40 @@ namespace SpaClassLibrary
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TYPE_CUSTOMER_PROFILE_CUSTOMER", Storage="_TYPE_CUSTOMER", ThisKey="ID_TYPE_CUS", OtherKey="ID_TYPE_CUS", IsForeignKey=true)]
+		public TYPE_CUSTOMER TYPE_CUSTOMER
+		{
+			get
+			{
+				return this._TYPE_CUSTOMER.Entity;
+			}
+			set
+			{
+				TYPE_CUSTOMER previousValue = this._TYPE_CUSTOMER.Entity;
+				if (((previousValue != value) 
+							|| (this._TYPE_CUSTOMER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TYPE_CUSTOMER.Entity = null;
+						previousValue.PROFILE_CUSTOMERs.Remove(this);
+					}
+					this._TYPE_CUSTOMER.Entity = value;
+					if ((value != null))
+					{
+						value.PROFILE_CUSTOMERs.Add(this);
+						this._ID_TYPE_CUS = value.ID_TYPE_CUS;
+					}
+					else
+					{
+						this._ID_TYPE_CUS = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TYPE_CUSTOMER");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -594,122 +919,420 @@ namespace SpaClassLibrary
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ACCOUNT")]
-	public partial class ACCOUNT : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PROFILE_STAFF")]
+	public partial class PROFILE_STAFF : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ID_USER;
+		private int _ID_PROFILE_STAFF;
 		
-		private System.Nullable<int> _ID_ROLE;
+		private System.Nullable<int> _ID_PROFILE;
 		
-		private string _USERNAME;
+		private string _POSITION;
 		
-		private string _PASSWORD;
-		
-		private System.Nullable<int> _STATUS;
-		
-		private EntitySet<PROFILE> _PROFILEs;
+		private EntityRef<PROFILE> _PROFILE;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnID_USERChanging(int value);
-    partial void OnID_USERChanged();
-    partial void OnID_ROLEChanging(System.Nullable<int> value);
-    partial void OnID_ROLEChanged();
-    partial void OnUSERNAMEChanging(string value);
-    partial void OnUSERNAMEChanged();
-    partial void OnPASSWORDChanging(string value);
-    partial void OnPASSWORDChanged();
+    partial void OnID_PROFILE_STAFFChanging(int value);
+    partial void OnID_PROFILE_STAFFChanged();
+    partial void OnID_PROFILEChanging(System.Nullable<int> value);
+    partial void OnID_PROFILEChanged();
+    partial void OnPOSITIONChanging(string value);
+    partial void OnPOSITIONChanged();
+    #endregion
+		
+		public PROFILE_STAFF()
+		{
+			this._PROFILE = default(EntityRef<PROFILE>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PROFILE_STAFF", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_PROFILE_STAFF
+		{
+			get
+			{
+				return this._ID_PROFILE_STAFF;
+			}
+			set
+			{
+				if ((this._ID_PROFILE_STAFF != value))
+				{
+					this.OnID_PROFILE_STAFFChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PROFILE_STAFF = value;
+					this.SendPropertyChanged("ID_PROFILE_STAFF");
+					this.OnID_PROFILE_STAFFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PROFILE", DbType="Int")]
+		public System.Nullable<int> ID_PROFILE
+		{
+			get
+			{
+				return this._ID_PROFILE;
+			}
+			set
+			{
+				if ((this._ID_PROFILE != value))
+				{
+					if (this._PROFILE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PROFILEChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PROFILE = value;
+					this.SendPropertyChanged("ID_PROFILE");
+					this.OnID_PROFILEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITION", DbType="VarChar(50)")]
+		public string POSITION
+		{
+			get
+			{
+				return this._POSITION;
+			}
+			set
+			{
+				if ((this._POSITION != value))
+				{
+					this.OnPOSITIONChanging(value);
+					this.SendPropertyChanging();
+					this._POSITION = value;
+					this.SendPropertyChanged("POSITION");
+					this.OnPOSITIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PROFILE_PROFILE_STAFF", Storage="_PROFILE", ThisKey="ID_PROFILE", OtherKey="ID_PROFILE", IsForeignKey=true)]
+		public PROFILE PROFILE
+		{
+			get
+			{
+				return this._PROFILE.Entity;
+			}
+			set
+			{
+				PROFILE previousValue = this._PROFILE.Entity;
+				if (((previousValue != value) 
+							|| (this._PROFILE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PROFILE.Entity = null;
+						previousValue.PROFILE_STAFFs.Remove(this);
+					}
+					this._PROFILE.Entity = value;
+					if ((value != null))
+					{
+						value.PROFILE_STAFFs.Add(this);
+						this._ID_PROFILE = value.ID_PROFILE;
+					}
+					else
+					{
+						this._ID_PROFILE = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PROFILE");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GRANT_RIGHT")]
+	public partial class GRANT_RIGHT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_GROUP;
+		
+		private string _ID_SCREEN;
+		
+		private System.Nullable<bool> _ROLE;
+		
+		private EntityRef<GROUP_USER> _GROUP_USER;
+		
+		private EntityRef<SCREEN> _SCREEN;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_GROUPChanging(int value);
+    partial void OnID_GROUPChanged();
+    partial void OnID_SCREENChanging(string value);
+    partial void OnID_SCREENChanged();
+    partial void OnROLEChanging(System.Nullable<bool> value);
+    partial void OnROLEChanged();
+    #endregion
+		
+		public GRANT_RIGHT()
+		{
+			this._GROUP_USER = default(EntityRef<GROUP_USER>);
+			this._SCREEN = default(EntityRef<SCREEN>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_GROUP", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_GROUP
+		{
+			get
+			{
+				return this._ID_GROUP;
+			}
+			set
+			{
+				if ((this._ID_GROUP != value))
+				{
+					if (this._GROUP_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_GROUPChanging(value);
+					this.SendPropertyChanging();
+					this._ID_GROUP = value;
+					this.SendPropertyChanged("ID_GROUP");
+					this.OnID_GROUPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_SCREEN", DbType="VarChar(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_SCREEN
+		{
+			get
+			{
+				return this._ID_SCREEN;
+			}
+			set
+			{
+				if ((this._ID_SCREEN != value))
+				{
+					if (this._SCREEN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_SCREENChanging(value);
+					this.SendPropertyChanging();
+					this._ID_SCREEN = value;
+					this.SendPropertyChanged("ID_SCREEN");
+					this.OnID_SCREENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE", DbType="Bit")]
+		public System.Nullable<bool> ROLE
+		{
+			get
+			{
+				return this._ROLE;
+			}
+			set
+			{
+				if ((this._ROLE != value))
+				{
+					this.OnROLEChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE = value;
+					this.SendPropertyChanged("ROLE");
+					this.OnROLEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_GRANT_RIGHT", Storage="_GROUP_USER", ThisKey="ID_GROUP", OtherKey="ID_GROUP", IsForeignKey=true)]
+		public GROUP_USER GROUP_USER
+		{
+			get
+			{
+				return this._GROUP_USER.Entity;
+			}
+			set
+			{
+				GROUP_USER previousValue = this._GROUP_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._GROUP_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._GROUP_USER.Entity = null;
+						previousValue.GRANT_RIGHTs.Remove(this);
+					}
+					this._GROUP_USER.Entity = value;
+					if ((value != null))
+					{
+						value.GRANT_RIGHTs.Add(this);
+						this._ID_GROUP = value.ID_GROUP;
+					}
+					else
+					{
+						this._ID_GROUP = default(int);
+					}
+					this.SendPropertyChanged("GROUP_USER");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SCREEN_GRANT_RIGHT", Storage="_SCREEN", ThisKey="ID_SCREEN", OtherKey="ID_SCREEN", IsForeignKey=true)]
+		public SCREEN SCREEN
+		{
+			get
+			{
+				return this._SCREEN.Entity;
+			}
+			set
+			{
+				SCREEN previousValue = this._SCREEN.Entity;
+				if (((previousValue != value) 
+							|| (this._SCREEN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SCREEN.Entity = null;
+						previousValue.GRANT_RIGHTs.Remove(this);
+					}
+					this._SCREEN.Entity = value;
+					if ((value != null))
+					{
+						value.GRANT_RIGHTs.Add(this);
+						this._ID_SCREEN = value.ID_SCREEN;
+					}
+					else
+					{
+						this._ID_SCREEN = default(string);
+					}
+					this.SendPropertyChanged("SCREEN");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GROUP_USER")]
+	public partial class GROUP_USER : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_GROUP;
+		
+		private string _NAME_GROUP;
+		
+		private System.Nullable<int> _STATUS;
+		
+		private EntitySet<GRANT_RIGHT> _GRANT_RIGHTs;
+		
+		private EntitySet<USER_GROUP_USER> _USER_GROUP_USERs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_GROUPChanging(int value);
+    partial void OnID_GROUPChanged();
+    partial void OnNAME_GROUPChanging(string value);
+    partial void OnNAME_GROUPChanged();
     partial void OnSTATUSChanging(System.Nullable<int> value);
     partial void OnSTATUSChanged();
     #endregion
 		
-		public ACCOUNT()
+		public GROUP_USER()
 		{
-			this._PROFILEs = new EntitySet<PROFILE>(new Action<PROFILE>(this.attach_PROFILEs), new Action<PROFILE>(this.detach_PROFILEs));
+			this._GRANT_RIGHTs = new EntitySet<GRANT_RIGHT>(new Action<GRANT_RIGHT>(this.attach_GRANT_RIGHTs), new Action<GRANT_RIGHT>(this.detach_GRANT_RIGHTs));
+			this._USER_GROUP_USERs = new EntitySet<USER_GROUP_USER>(new Action<USER_GROUP_USER>(this.attach_USER_GROUP_USERs), new Action<USER_GROUP_USER>(this.detach_USER_GROUP_USERs));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_USER", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID_USER
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_GROUP", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_GROUP
 		{
 			get
 			{
-				return this._ID_USER;
+				return this._ID_GROUP;
 			}
 			set
 			{
-				if ((this._ID_USER != value))
+				if ((this._ID_GROUP != value))
 				{
-					this.OnID_USERChanging(value);
+					this.OnID_GROUPChanging(value);
 					this.SendPropertyChanging();
-					this._ID_USER = value;
-					this.SendPropertyChanged("ID_USER");
-					this.OnID_USERChanged();
+					this._ID_GROUP = value;
+					this.SendPropertyChanged("ID_GROUP");
+					this.OnID_GROUPChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_ROLE", DbType="Int")]
-		public System.Nullable<int> ID_ROLE
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_GROUP", DbType="NVarChar(50)")]
+		public string NAME_GROUP
 		{
 			get
 			{
-				return this._ID_ROLE;
+				return this._NAME_GROUP;
 			}
 			set
 			{
-				if ((this._ID_ROLE != value))
+				if ((this._NAME_GROUP != value))
 				{
-					this.OnID_ROLEChanging(value);
+					this.OnNAME_GROUPChanging(value);
 					this.SendPropertyChanging();
-					this._ID_ROLE = value;
-					this.SendPropertyChanged("ID_ROLE");
-					this.OnID_ROLEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERNAME", DbType="VarChar(50)")]
-		public string USERNAME
-		{
-			get
-			{
-				return this._USERNAME;
-			}
-			set
-			{
-				if ((this._USERNAME != value))
-				{
-					this.OnUSERNAMEChanging(value);
-					this.SendPropertyChanging();
-					this._USERNAME = value;
-					this.SendPropertyChanged("USERNAME");
-					this.OnUSERNAMEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PASSWORD", DbType="VarChar(50)")]
-		public string PASSWORD
-		{
-			get
-			{
-				return this._PASSWORD;
-			}
-			set
-			{
-				if ((this._PASSWORD != value))
-				{
-					this.OnPASSWORDChanging(value);
-					this.SendPropertyChanging();
-					this._PASSWORD = value;
-					this.SendPropertyChanged("PASSWORD");
-					this.OnPASSWORDChanged();
+					this._NAME_GROUP = value;
+					this.SendPropertyChanged("NAME_GROUP");
+					this.OnNAME_GROUPChanged();
 				}
 			}
 		}
@@ -734,16 +1357,29 @@ namespace SpaClassLibrary
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ACCOUNT_PROFILE", Storage="_PROFILEs", ThisKey="ID_USER", OtherKey="ID_USER")]
-		public EntitySet<PROFILE> PROFILEs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_GRANT_RIGHT", Storage="_GRANT_RIGHTs", ThisKey="ID_GROUP", OtherKey="ID_GROUP")]
+		public EntitySet<GRANT_RIGHT> GRANT_RIGHTs
 		{
 			get
 			{
-				return this._PROFILEs;
+				return this._GRANT_RIGHTs;
 			}
 			set
 			{
-				this._PROFILEs.Assign(value);
+				this._GRANT_RIGHTs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_USER_GROUP_USER", Storage="_USER_GROUP_USERs", ThisKey="ID_GROUP", OtherKey="ID_GROUP")]
+		public EntitySet<USER_GROUP_USER> USER_GROUP_USERs
+		{
+			get
+			{
+				return this._USER_GROUP_USERs;
+			}
+			set
+			{
+				this._USER_GROUP_USERs.Assign(value);
 			}
 		}
 		
@@ -767,16 +1403,496 @@ namespace SpaClassLibrary
 			}
 		}
 		
-		private void attach_PROFILEs(PROFILE entity)
+		private void attach_GRANT_RIGHTs(GRANT_RIGHT entity)
 		{
 			this.SendPropertyChanging();
-			entity.ACCOUNT = this;
+			entity.GROUP_USER = this;
 		}
 		
-		private void detach_PROFILEs(PROFILE entity)
+		private void detach_GRANT_RIGHTs(GRANT_RIGHT entity)
 		{
 			this.SendPropertyChanging();
-			entity.ACCOUNT = null;
+			entity.GROUP_USER = null;
+		}
+		
+		private void attach_USER_GROUP_USERs(USER_GROUP_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.GROUP_USER = this;
+		}
+		
+		private void detach_USER_GROUP_USERs(USER_GROUP_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.GROUP_USER = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SCREEN")]
+	public partial class SCREEN : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ID_SCREEN;
+		
+		private string _NAME_SCREEN;
+		
+		private System.Nullable<int> _STATUS;
+		
+		private EntitySet<GRANT_RIGHT> _GRANT_RIGHTs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_SCREENChanging(string value);
+    partial void OnID_SCREENChanged();
+    partial void OnNAME_SCREENChanging(string value);
+    partial void OnNAME_SCREENChanged();
+    partial void OnSTATUSChanging(System.Nullable<int> value);
+    partial void OnSTATUSChanged();
+    #endregion
+		
+		public SCREEN()
+		{
+			this._GRANT_RIGHTs = new EntitySet<GRANT_RIGHT>(new Action<GRANT_RIGHT>(this.attach_GRANT_RIGHTs), new Action<GRANT_RIGHT>(this.detach_GRANT_RIGHTs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_SCREEN", DbType="VarChar(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_SCREEN
+		{
+			get
+			{
+				return this._ID_SCREEN;
+			}
+			set
+			{
+				if ((this._ID_SCREEN != value))
+				{
+					this.OnID_SCREENChanging(value);
+					this.SendPropertyChanging();
+					this._ID_SCREEN = value;
+					this.SendPropertyChanged("ID_SCREEN");
+					this.OnID_SCREENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_SCREEN", DbType="NVarChar(50)")]
+		public string NAME_SCREEN
+		{
+			get
+			{
+				return this._NAME_SCREEN;
+			}
+			set
+			{
+				if ((this._NAME_SCREEN != value))
+				{
+					this.OnNAME_SCREENChanging(value);
+					this.SendPropertyChanging();
+					this._NAME_SCREEN = value;
+					this.SendPropertyChanged("NAME_SCREEN");
+					this.OnNAME_SCREENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="Int")]
+		public System.Nullable<int> STATUS
+		{
+			get
+			{
+				return this._STATUS;
+			}
+			set
+			{
+				if ((this._STATUS != value))
+				{
+					this.OnSTATUSChanging(value);
+					this.SendPropertyChanging();
+					this._STATUS = value;
+					this.SendPropertyChanged("STATUS");
+					this.OnSTATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SCREEN_GRANT_RIGHT", Storage="_GRANT_RIGHTs", ThisKey="ID_SCREEN", OtherKey="ID_SCREEN")]
+		public EntitySet<GRANT_RIGHT> GRANT_RIGHTs
+		{
+			get
+			{
+				return this._GRANT_RIGHTs;
+			}
+			set
+			{
+				this._GRANT_RIGHTs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_GRANT_RIGHTs(GRANT_RIGHT entity)
+		{
+			this.SendPropertyChanging();
+			entity.SCREEN = this;
+		}
+		
+		private void detach_GRANT_RIGHTs(GRANT_RIGHT entity)
+		{
+			this.SendPropertyChanging();
+			entity.SCREEN = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.USER_GROUP_USER")]
+	public partial class USER_GROUP_USER : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_USER;
+		
+		private int _ID_GROUP;
+		
+		private System.Nullable<int> _STATUS;
+		
+		private EntityRef<ACCOUNT> _ACCOUNT;
+		
+		private EntityRef<GROUP_USER> _GROUP_USER;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_USERChanging(int value);
+    partial void OnID_USERChanged();
+    partial void OnID_GROUPChanging(int value);
+    partial void OnID_GROUPChanged();
+    partial void OnSTATUSChanging(System.Nullable<int> value);
+    partial void OnSTATUSChanged();
+    #endregion
+		
+		public USER_GROUP_USER()
+		{
+			this._ACCOUNT = default(EntityRef<ACCOUNT>);
+			this._GROUP_USER = default(EntityRef<GROUP_USER>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_USER", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_USER
+		{
+			get
+			{
+				return this._ID_USER;
+			}
+			set
+			{
+				if ((this._ID_USER != value))
+				{
+					if (this._ACCOUNT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_USERChanging(value);
+					this.SendPropertyChanging();
+					this._ID_USER = value;
+					this.SendPropertyChanged("ID_USER");
+					this.OnID_USERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_GROUP", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_GROUP
+		{
+			get
+			{
+				return this._ID_GROUP;
+			}
+			set
+			{
+				if ((this._ID_GROUP != value))
+				{
+					if (this._GROUP_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_GROUPChanging(value);
+					this.SendPropertyChanging();
+					this._ID_GROUP = value;
+					this.SendPropertyChanged("ID_GROUP");
+					this.OnID_GROUPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="Int")]
+		public System.Nullable<int> STATUS
+		{
+			get
+			{
+				return this._STATUS;
+			}
+			set
+			{
+				if ((this._STATUS != value))
+				{
+					this.OnSTATUSChanging(value);
+					this.SendPropertyChanging();
+					this._STATUS = value;
+					this.SendPropertyChanged("STATUS");
+					this.OnSTATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ACCOUNT_USER_GROUP_USER", Storage="_ACCOUNT", ThisKey="ID_USER", OtherKey="ID_USER", IsForeignKey=true)]
+		public ACCOUNT ACCOUNT
+		{
+			get
+			{
+				return this._ACCOUNT.Entity;
+			}
+			set
+			{
+				ACCOUNT previousValue = this._ACCOUNT.Entity;
+				if (((previousValue != value) 
+							|| (this._ACCOUNT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ACCOUNT.Entity = null;
+						previousValue.USER_GROUP_USERs.Remove(this);
+					}
+					this._ACCOUNT.Entity = value;
+					if ((value != null))
+					{
+						value.USER_GROUP_USERs.Add(this);
+						this._ID_USER = value.ID_USER;
+					}
+					else
+					{
+						this._ID_USER = default(int);
+					}
+					this.SendPropertyChanged("ACCOUNT");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_USER_GROUP_USER", Storage="_GROUP_USER", ThisKey="ID_GROUP", OtherKey="ID_GROUP", IsForeignKey=true)]
+		public GROUP_USER GROUP_USER
+		{
+			get
+			{
+				return this._GROUP_USER.Entity;
+			}
+			set
+			{
+				GROUP_USER previousValue = this._GROUP_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._GROUP_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._GROUP_USER.Entity = null;
+						previousValue.USER_GROUP_USERs.Remove(this);
+					}
+					this._GROUP_USER.Entity = value;
+					if ((value != null))
+					{
+						value.USER_GROUP_USERs.Add(this);
+						this._ID_GROUP = value.ID_GROUP;
+					}
+					else
+					{
+						this._ID_GROUP = default(int);
+					}
+					this.SendPropertyChanged("GROUP_USER");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TYPE_CUSTOMER")]
+	public partial class TYPE_CUSTOMER : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_TYPE_CUS;
+		
+		private string _NAME_TYPE;
+		
+		private System.Nullable<int> _STATUS;
+		
+		private EntitySet<PROFILE_CUSTOMER> _PROFILE_CUSTOMERs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_TYPE_CUSChanging(int value);
+    partial void OnID_TYPE_CUSChanged();
+    partial void OnNAME_TYPEChanging(string value);
+    partial void OnNAME_TYPEChanged();
+    partial void OnSTATUSChanging(System.Nullable<int> value);
+    partial void OnSTATUSChanged();
+    #endregion
+		
+		public TYPE_CUSTOMER()
+		{
+			this._PROFILE_CUSTOMERs = new EntitySet<PROFILE_CUSTOMER>(new Action<PROFILE_CUSTOMER>(this.attach_PROFILE_CUSTOMERs), new Action<PROFILE_CUSTOMER>(this.detach_PROFILE_CUSTOMERs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TYPE_CUS", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_TYPE_CUS
+		{
+			get
+			{
+				return this._ID_TYPE_CUS;
+			}
+			set
+			{
+				if ((this._ID_TYPE_CUS != value))
+				{
+					this.OnID_TYPE_CUSChanging(value);
+					this.SendPropertyChanging();
+					this._ID_TYPE_CUS = value;
+					this.SendPropertyChanged("ID_TYPE_CUS");
+					this.OnID_TYPE_CUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_TYPE", DbType="NVarChar(50)")]
+		public string NAME_TYPE
+		{
+			get
+			{
+				return this._NAME_TYPE;
+			}
+			set
+			{
+				if ((this._NAME_TYPE != value))
+				{
+					this.OnNAME_TYPEChanging(value);
+					this.SendPropertyChanging();
+					this._NAME_TYPE = value;
+					this.SendPropertyChanged("NAME_TYPE");
+					this.OnNAME_TYPEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="Int")]
+		public System.Nullable<int> STATUS
+		{
+			get
+			{
+				return this._STATUS;
+			}
+			set
+			{
+				if ((this._STATUS != value))
+				{
+					this.OnSTATUSChanging(value);
+					this.SendPropertyChanging();
+					this._STATUS = value;
+					this.SendPropertyChanged("STATUS");
+					this.OnSTATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TYPE_CUSTOMER_PROFILE_CUSTOMER", Storage="_PROFILE_CUSTOMERs", ThisKey="ID_TYPE_CUS", OtherKey="ID_TYPE_CUS")]
+		public EntitySet<PROFILE_CUSTOMER> PROFILE_CUSTOMERs
+		{
+			get
+			{
+				return this._PROFILE_CUSTOMERs;
+			}
+			set
+			{
+				this._PROFILE_CUSTOMERs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PROFILE_CUSTOMERs(PROFILE_CUSTOMER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TYPE_CUSTOMER = this;
+		}
+		
+		private void detach_PROFILE_CUSTOMERs(PROFILE_CUSTOMER entity)
+		{
+			this.SendPropertyChanging();
+			entity.TYPE_CUSTOMER = null;
 		}
 	}
 }

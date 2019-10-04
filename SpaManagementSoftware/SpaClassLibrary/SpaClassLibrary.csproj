@@ -56,11 +56,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DC_Customer.dbml</DependentUpon>
     </Compile>
-    <Compile Include="DC_TypeCustomer.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DC_TypeCustomer.dbml</DependentUpon>
-    </Compile>
     <Compile Include="frmConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,9 +88,6 @@
       <LastGenOutput>DC_Customer.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DC_TypeCustomer.dbml.layout">
-      <DependentUpon>DC_TypeCustomer.dbml</DependentUpon>
-    </None>
     <None Include="DC_Customer.dbml.layout">
       <DependentUpon>DC_Customer.dbml</DependentUpon>
     </None>
@@ -109,11 +101,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DC_TypeCustomer.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DC_TypeCustomer.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
