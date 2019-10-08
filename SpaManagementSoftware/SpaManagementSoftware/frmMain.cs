@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using SpaClassLibrary;
 
 namespace SpaManagementSoftware
 {
     public partial class frmMain : DevExpress.XtraEditors.XtraForm
     {
+        UserManager us;
         public frmMain()
         {
             InitializeComponent();
+            us = new UserManager();
         }
 
         public Boolean CheckExist(string frmName)
@@ -47,10 +50,52 @@ namespace SpaManagementSoftware
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            stt_User.Text = Program.loginForm.NameAccount;
-            stt_NameData.Text = Program.loginForm.NameDatabase;
-            frmUseService use = new frmUseService();
-            openForm(use);
+            stt_User.Text = Program.loginForm.NameAccount;//Tên đăng nhập
+            stt_NameData.Text = Program.loginForm.NameDatabase;//Tên Database
+
+            List<string> groupUser = us.GetListIdGroupUser(stt_User.Text);
+            foreach (string item in groupUser)
+            {
+                DataTable listRole = us.GetListScreen(item);//Danh sách màn hình ứng với từng nhóm ND
+                foreach (DataRow screen in listRole.Rows)
+                {
+                    FindMenuRole(menuStrip1.Items, screen[1].ToString(), Convert.ToBoolean(screen[2].ToString()));
+                }
+            }
+        }
+
+        private void FindMenuRole(ToolStripItemCollection mnuItems, string pScreenName, bool pEnable)
+        {
+            foreach (ToolStripItem menu in mnuItems)
+            {
+                if (menu is ToolStripMenuItem && ((ToolStripMenuItem)(menu)).DropDownItems.Count > 0)
+                {
+                    FindMenuRole(((ToolStripMenuItem)(menu)).DropDownItems, pScreenName, pEnable);
+                    menu.Enabled = CheckAllMenuChildVisible(((ToolStripMenuItem)(menu)).DropDownItems);
+                    menu.Visible = menu.Enabled;
+                }
+                else if (string.Equals(pScreenName, menu.Tag))
+                {
+                    menu.Enabled = pEnable;
+                    menu.Visible = pEnable;
+                }
+            }
+        }
+
+        private bool CheckAllMenuChildVisible(ToolStripItemCollection mnuItems)
+        {
+            foreach (ToolStripItem menuItem in mnuItems)
+            {
+                if (menuItem is ToolStripMenuItem && menuItem.Enabled)
+                {
+                    return true;
+                }
+                else if (menuItem is ToolStripSeparator)
+                {
+                    continue;
+                }
+            }
+            return false;
         }
 
         private void tSBUseService_Click(object sender, EventArgs e)
@@ -85,6 +130,36 @@ namespace SpaManagementSoftware
             {
                 frmCustomer cus = new frmCustomer();
                 openForm(cus);
+            }
+        }
+
+        private void phânNhómNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CheckExist("frmAddUserToGroup"))
+            {
+                XtraMessageBox.Show("Bạn Đang Sử Dụng Chức Năng Này", "Thông báo");
+                //MessageBox.Show("Chức Năng Này Đang Sử Dụng, Không Cần Mở Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            else
+            {
+                frmAddUserToGroup frm = new frmAddUserToGroup();
+                openForm(frm);
+            }
+        }
+
+        private void phânQuyềnNhómNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CheckExist("frmRole"))
+            {
+                XtraMessageBox.Show("Bạn Đang Sử Dụng Chức Năng Này", "Thông báo");
+                //MessageBox.Show("Chức Năng Này Đang Sử Dụng, Không Cần Mở Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            else
+            {
+                frmRole frm = new frmRole();
+                openForm(frm);
             }
         }
     }

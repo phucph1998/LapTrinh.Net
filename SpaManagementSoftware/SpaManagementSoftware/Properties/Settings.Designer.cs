@@ -26,7 +26,8 @@ namespace SpaManagementSoftware.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=DB_SPA;User ID=sa;Password=sa2012")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HOANGPHUC-PC\\SQLEXPRESS;Initial Catalog=DB_SPA;User ID=sa;Password=sa" +
+            "2012")]
         public string DB_SPAConnectionString {
             get {
                 return ((string)(this["DB_SPAConnectionString"]));

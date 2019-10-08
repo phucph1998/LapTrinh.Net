@@ -14,3 +14,7 @@ D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAddCustomer.resources
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\SpaClassLibrary.dll
 D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.csprojResolveAssemblyReference.cache
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\SpaManagementSoftware.exe.config
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAddUserToGroup.resources
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmRole.resources
+D:\CODE\CODE_C#_NANGCAO\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmChangePass.resources

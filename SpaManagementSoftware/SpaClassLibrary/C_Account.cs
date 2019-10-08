@@ -11,6 +11,15 @@ namespace SpaClassLibrary
     public class C_Account
     {
         UserManager mh = new UserManager();
+        //Lấy ID Tài khoản
+
+        public int GetIDAccount(string pUserName)
+        {
+            DataTable tb = new DataTable();
+            SqlDataAdapter dt = new SqlDataAdapter("select * from ACCOUNT a where a.USERNAME ='"+pUserName+"'", Properties.Settings.Default.DB_SPAConnectionString);
+            dt.Fill(tb);
+            return Int32.Parse(tb.Rows[0][0].ToString());
+        }
         //Max ID_USER
         public int GetIDMax()
         {

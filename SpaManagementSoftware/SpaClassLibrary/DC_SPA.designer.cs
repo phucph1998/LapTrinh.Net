@@ -33,6 +33,12 @@ namespace SpaClassLibrary
     partial void InsertACCOUNT(ACCOUNT instance);
     partial void UpdateACCOUNT(ACCOUNT instance);
     partial void DeleteACCOUNT(ACCOUNT instance);
+    partial void InsertGROUP_USER(GROUP_USER instance);
+    partial void UpdateGROUP_USER(GROUP_USER instance);
+    partial void DeleteGROUP_USER(GROUP_USER instance);
+    partial void InsertGRANT_RIGHT(GRANT_RIGHT instance);
+    partial void UpdateGRANT_RIGHT(GRANT_RIGHT instance);
+    partial void DeleteGRANT_RIGHT(GRANT_RIGHT instance);
     partial void InsertPROFILE(PROFILE instance);
     partial void UpdatePROFILE(PROFILE instance);
     partial void DeletePROFILE(PROFILE instance);
@@ -42,12 +48,6 @@ namespace SpaClassLibrary
     partial void InsertPROFILE_STAFF(PROFILE_STAFF instance);
     partial void UpdatePROFILE_STAFF(PROFILE_STAFF instance);
     partial void DeletePROFILE_STAFF(PROFILE_STAFF instance);
-    partial void InsertGRANT_RIGHT(GRANT_RIGHT instance);
-    partial void UpdateGRANT_RIGHT(GRANT_RIGHT instance);
-    partial void DeleteGRANT_RIGHT(GRANT_RIGHT instance);
-    partial void InsertGROUP_USER(GROUP_USER instance);
-    partial void UpdateGROUP_USER(GROUP_USER instance);
-    partial void DeleteGROUP_USER(GROUP_USER instance);
     partial void InsertSCREEN(SCREEN instance);
     partial void UpdateSCREEN(SCREEN instance);
     partial void DeleteSCREEN(SCREEN instance);
@@ -97,6 +97,22 @@ namespace SpaClassLibrary
 			}
 		}
 		
+		public System.Data.Linq.Table<GROUP_USER> GROUP_USERs
+		{
+			get
+			{
+				return this.GetTable<GROUP_USER>();
+			}
+		}
+		
+		public System.Data.Linq.Table<GRANT_RIGHT> GRANT_RIGHTs
+		{
+			get
+			{
+				return this.GetTable<GRANT_RIGHT>();
+			}
+		}
+		
 		public System.Data.Linq.Table<PROFILE> PROFILEs
 		{
 			get
@@ -118,22 +134,6 @@ namespace SpaClassLibrary
 			get
 			{
 				return this.GetTable<PROFILE_STAFF>();
-			}
-		}
-		
-		public System.Data.Linq.Table<GRANT_RIGHT> GRANT_RIGHTs
-		{
-			get
-			{
-				return this.GetTable<GRANT_RIGHT>();
-			}
-		}
-		
-		public System.Data.Linq.Table<GROUP_USER> GROUP_USERs
-		{
-			get
-			{
-				return this.GetTable<GROUP_USER>();
 			}
 		}
 		
@@ -349,6 +349,364 @@ namespace SpaClassLibrary
 		{
 			this.SendPropertyChanging();
 			entity.ACCOUNT = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GROUP_USER")]
+	public partial class GROUP_USER : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_GROUP;
+		
+		private string _NAME_GROUP;
+		
+		private System.Nullable<int> _STATUS;
+		
+		private EntitySet<GRANT_RIGHT> _GRANT_RIGHTs;
+		
+		private EntitySet<USER_GROUP_USER> _USER_GROUP_USERs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_GROUPChanging(int value);
+    partial void OnID_GROUPChanged();
+    partial void OnNAME_GROUPChanging(string value);
+    partial void OnNAME_GROUPChanged();
+    partial void OnSTATUSChanging(System.Nullable<int> value);
+    partial void OnSTATUSChanged();
+    #endregion
+		
+		public GROUP_USER()
+		{
+			this._GRANT_RIGHTs = new EntitySet<GRANT_RIGHT>(new Action<GRANT_RIGHT>(this.attach_GRANT_RIGHTs), new Action<GRANT_RIGHT>(this.detach_GRANT_RIGHTs));
+			this._USER_GROUP_USERs = new EntitySet<USER_GROUP_USER>(new Action<USER_GROUP_USER>(this.attach_USER_GROUP_USERs), new Action<USER_GROUP_USER>(this.detach_USER_GROUP_USERs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_GROUP", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_GROUP
+		{
+			get
+			{
+				return this._ID_GROUP;
+			}
+			set
+			{
+				if ((this._ID_GROUP != value))
+				{
+					this.OnID_GROUPChanging(value);
+					this.SendPropertyChanging();
+					this._ID_GROUP = value;
+					this.SendPropertyChanged("ID_GROUP");
+					this.OnID_GROUPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_GROUP", DbType="NVarChar(50)")]
+		public string NAME_GROUP
+		{
+			get
+			{
+				return this._NAME_GROUP;
+			}
+			set
+			{
+				if ((this._NAME_GROUP != value))
+				{
+					this.OnNAME_GROUPChanging(value);
+					this.SendPropertyChanging();
+					this._NAME_GROUP = value;
+					this.SendPropertyChanged("NAME_GROUP");
+					this.OnNAME_GROUPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="Int")]
+		public System.Nullable<int> STATUS
+		{
+			get
+			{
+				return this._STATUS;
+			}
+			set
+			{
+				if ((this._STATUS != value))
+				{
+					this.OnSTATUSChanging(value);
+					this.SendPropertyChanging();
+					this._STATUS = value;
+					this.SendPropertyChanged("STATUS");
+					this.OnSTATUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_GRANT_RIGHT", Storage="_GRANT_RIGHTs", ThisKey="ID_GROUP", OtherKey="ID_GROUP")]
+		public EntitySet<GRANT_RIGHT> GRANT_RIGHTs
+		{
+			get
+			{
+				return this._GRANT_RIGHTs;
+			}
+			set
+			{
+				this._GRANT_RIGHTs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_USER_GROUP_USER", Storage="_USER_GROUP_USERs", ThisKey="ID_GROUP", OtherKey="ID_GROUP")]
+		public EntitySet<USER_GROUP_USER> USER_GROUP_USERs
+		{
+			get
+			{
+				return this._USER_GROUP_USERs;
+			}
+			set
+			{
+				this._USER_GROUP_USERs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_GRANT_RIGHTs(GRANT_RIGHT entity)
+		{
+			this.SendPropertyChanging();
+			entity.GROUP_USER = this;
+		}
+		
+		private void detach_GRANT_RIGHTs(GRANT_RIGHT entity)
+		{
+			this.SendPropertyChanging();
+			entity.GROUP_USER = null;
+		}
+		
+		private void attach_USER_GROUP_USERs(USER_GROUP_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.GROUP_USER = this;
+		}
+		
+		private void detach_USER_GROUP_USERs(USER_GROUP_USER entity)
+		{
+			this.SendPropertyChanging();
+			entity.GROUP_USER = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GRANT_RIGHT")]
+	public partial class GRANT_RIGHT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_GROUP;
+		
+		private string _ID_SCREEN;
+		
+		private System.Nullable<bool> _ROLE;
+		
+		private EntityRef<GROUP_USER> _GROUP_USER;
+		
+		private EntityRef<SCREEN> _SCREEN;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_GROUPChanging(int value);
+    partial void OnID_GROUPChanged();
+    partial void OnID_SCREENChanging(string value);
+    partial void OnID_SCREENChanged();
+    partial void OnROLEChanging(System.Nullable<bool> value);
+    partial void OnROLEChanged();
+    #endregion
+		
+		public GRANT_RIGHT()
+		{
+			this._GROUP_USER = default(EntityRef<GROUP_USER>);
+			this._SCREEN = default(EntityRef<SCREEN>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_GROUP", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID_GROUP
+		{
+			get
+			{
+				return this._ID_GROUP;
+			}
+			set
+			{
+				if ((this._ID_GROUP != value))
+				{
+					if (this._GROUP_USER.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_GROUPChanging(value);
+					this.SendPropertyChanging();
+					this._ID_GROUP = value;
+					this.SendPropertyChanged("ID_GROUP");
+					this.OnID_GROUPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_SCREEN", DbType="VarChar(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID_SCREEN
+		{
+			get
+			{
+				return this._ID_SCREEN;
+			}
+			set
+			{
+				if ((this._ID_SCREEN != value))
+				{
+					if (this._SCREEN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_SCREENChanging(value);
+					this.SendPropertyChanging();
+					this._ID_SCREEN = value;
+					this.SendPropertyChanged("ID_SCREEN");
+					this.OnID_SCREENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE", DbType="Bit")]
+		public System.Nullable<bool> ROLE
+		{
+			get
+			{
+				return this._ROLE;
+			}
+			set
+			{
+				if ((this._ROLE != value))
+				{
+					this.OnROLEChanging(value);
+					this.SendPropertyChanging();
+					this._ROLE = value;
+					this.SendPropertyChanged("ROLE");
+					this.OnROLEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_GRANT_RIGHT", Storage="_GROUP_USER", ThisKey="ID_GROUP", OtherKey="ID_GROUP", IsForeignKey=true)]
+		public GROUP_USER GROUP_USER
+		{
+			get
+			{
+				return this._GROUP_USER.Entity;
+			}
+			set
+			{
+				GROUP_USER previousValue = this._GROUP_USER.Entity;
+				if (((previousValue != value) 
+							|| (this._GROUP_USER.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._GROUP_USER.Entity = null;
+						previousValue.GRANT_RIGHTs.Remove(this);
+					}
+					this._GROUP_USER.Entity = value;
+					if ((value != null))
+					{
+						value.GRANT_RIGHTs.Add(this);
+						this._ID_GROUP = value.ID_GROUP;
+					}
+					else
+					{
+						this._ID_GROUP = default(int);
+					}
+					this.SendPropertyChanged("GROUP_USER");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SCREEN_GRANT_RIGHT", Storage="_SCREEN", ThisKey="ID_SCREEN", OtherKey="ID_SCREEN", IsForeignKey=true)]
+		public SCREEN SCREEN
+		{
+			get
+			{
+				return this._SCREEN.Entity;
+			}
+			set
+			{
+				SCREEN previousValue = this._SCREEN.Entity;
+				if (((previousValue != value) 
+							|| (this._SCREEN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SCREEN.Entity = null;
+						previousValue.GRANT_RIGHTs.Remove(this);
+					}
+					this._SCREEN.Entity = value;
+					if ((value != null))
+					{
+						value.GRANT_RIGHTs.Add(this);
+						this._ID_SCREEN = value.ID_SCREEN;
+					}
+					else
+					{
+						this._ID_SCREEN = default(string);
+					}
+					this.SendPropertyChanged("SCREEN");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -1067,364 +1425,6 @@ namespace SpaClassLibrary
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GRANT_RIGHT")]
-	public partial class GRANT_RIGHT : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_GROUP;
-		
-		private string _ID_SCREEN;
-		
-		private System.Nullable<bool> _ROLE;
-		
-		private EntityRef<GROUP_USER> _GROUP_USER;
-		
-		private EntityRef<SCREEN> _SCREEN;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_GROUPChanging(int value);
-    partial void OnID_GROUPChanged();
-    partial void OnID_SCREENChanging(string value);
-    partial void OnID_SCREENChanged();
-    partial void OnROLEChanging(System.Nullable<bool> value);
-    partial void OnROLEChanged();
-    #endregion
-		
-		public GRANT_RIGHT()
-		{
-			this._GROUP_USER = default(EntityRef<GROUP_USER>);
-			this._SCREEN = default(EntityRef<SCREEN>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_GROUP", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID_GROUP
-		{
-			get
-			{
-				return this._ID_GROUP;
-			}
-			set
-			{
-				if ((this._ID_GROUP != value))
-				{
-					if (this._GROUP_USER.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_GROUPChanging(value);
-					this.SendPropertyChanging();
-					this._ID_GROUP = value;
-					this.SendPropertyChanged("ID_GROUP");
-					this.OnID_GROUPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_SCREEN", DbType="VarChar(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID_SCREEN
-		{
-			get
-			{
-				return this._ID_SCREEN;
-			}
-			set
-			{
-				if ((this._ID_SCREEN != value))
-				{
-					if (this._SCREEN.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_SCREENChanging(value);
-					this.SendPropertyChanging();
-					this._ID_SCREEN = value;
-					this.SendPropertyChanged("ID_SCREEN");
-					this.OnID_SCREENChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLE", DbType="Bit")]
-		public System.Nullable<bool> ROLE
-		{
-			get
-			{
-				return this._ROLE;
-			}
-			set
-			{
-				if ((this._ROLE != value))
-				{
-					this.OnROLEChanging(value);
-					this.SendPropertyChanging();
-					this._ROLE = value;
-					this.SendPropertyChanged("ROLE");
-					this.OnROLEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_GRANT_RIGHT", Storage="_GROUP_USER", ThisKey="ID_GROUP", OtherKey="ID_GROUP", IsForeignKey=true)]
-		public GROUP_USER GROUP_USER
-		{
-			get
-			{
-				return this._GROUP_USER.Entity;
-			}
-			set
-			{
-				GROUP_USER previousValue = this._GROUP_USER.Entity;
-				if (((previousValue != value) 
-							|| (this._GROUP_USER.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._GROUP_USER.Entity = null;
-						previousValue.GRANT_RIGHTs.Remove(this);
-					}
-					this._GROUP_USER.Entity = value;
-					if ((value != null))
-					{
-						value.GRANT_RIGHTs.Add(this);
-						this._ID_GROUP = value.ID_GROUP;
-					}
-					else
-					{
-						this._ID_GROUP = default(int);
-					}
-					this.SendPropertyChanged("GROUP_USER");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SCREEN_GRANT_RIGHT", Storage="_SCREEN", ThisKey="ID_SCREEN", OtherKey="ID_SCREEN", IsForeignKey=true)]
-		public SCREEN SCREEN
-		{
-			get
-			{
-				return this._SCREEN.Entity;
-			}
-			set
-			{
-				SCREEN previousValue = this._SCREEN.Entity;
-				if (((previousValue != value) 
-							|| (this._SCREEN.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SCREEN.Entity = null;
-						previousValue.GRANT_RIGHTs.Remove(this);
-					}
-					this._SCREEN.Entity = value;
-					if ((value != null))
-					{
-						value.GRANT_RIGHTs.Add(this);
-						this._ID_SCREEN = value.ID_SCREEN;
-					}
-					else
-					{
-						this._ID_SCREEN = default(string);
-					}
-					this.SendPropertyChanged("SCREEN");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GROUP_USER")]
-	public partial class GROUP_USER : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_GROUP;
-		
-		private string _NAME_GROUP;
-		
-		private System.Nullable<int> _STATUS;
-		
-		private EntitySet<GRANT_RIGHT> _GRANT_RIGHTs;
-		
-		private EntitySet<USER_GROUP_USER> _USER_GROUP_USERs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_GROUPChanging(int value);
-    partial void OnID_GROUPChanged();
-    partial void OnNAME_GROUPChanging(string value);
-    partial void OnNAME_GROUPChanged();
-    partial void OnSTATUSChanging(System.Nullable<int> value);
-    partial void OnSTATUSChanged();
-    #endregion
-		
-		public GROUP_USER()
-		{
-			this._GRANT_RIGHTs = new EntitySet<GRANT_RIGHT>(new Action<GRANT_RIGHT>(this.attach_GRANT_RIGHTs), new Action<GRANT_RIGHT>(this.detach_GRANT_RIGHTs));
-			this._USER_GROUP_USERs = new EntitySet<USER_GROUP_USER>(new Action<USER_GROUP_USER>(this.attach_USER_GROUP_USERs), new Action<USER_GROUP_USER>(this.detach_USER_GROUP_USERs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_GROUP", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ID_GROUP
-		{
-			get
-			{
-				return this._ID_GROUP;
-			}
-			set
-			{
-				if ((this._ID_GROUP != value))
-				{
-					this.OnID_GROUPChanging(value);
-					this.SendPropertyChanging();
-					this._ID_GROUP = value;
-					this.SendPropertyChanged("ID_GROUP");
-					this.OnID_GROUPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME_GROUP", DbType="NVarChar(50)")]
-		public string NAME_GROUP
-		{
-			get
-			{
-				return this._NAME_GROUP;
-			}
-			set
-			{
-				if ((this._NAME_GROUP != value))
-				{
-					this.OnNAME_GROUPChanging(value);
-					this.SendPropertyChanging();
-					this._NAME_GROUP = value;
-					this.SendPropertyChanged("NAME_GROUP");
-					this.OnNAME_GROUPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="Int")]
-		public System.Nullable<int> STATUS
-		{
-			get
-			{
-				return this._STATUS;
-			}
-			set
-			{
-				if ((this._STATUS != value))
-				{
-					this.OnSTATUSChanging(value);
-					this.SendPropertyChanging();
-					this._STATUS = value;
-					this.SendPropertyChanged("STATUS");
-					this.OnSTATUSChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_GRANT_RIGHT", Storage="_GRANT_RIGHTs", ThisKey="ID_GROUP", OtherKey="ID_GROUP")]
-		public EntitySet<GRANT_RIGHT> GRANT_RIGHTs
-		{
-			get
-			{
-				return this._GRANT_RIGHTs;
-			}
-			set
-			{
-				this._GRANT_RIGHTs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GROUP_USER_USER_GROUP_USER", Storage="_USER_GROUP_USERs", ThisKey="ID_GROUP", OtherKey="ID_GROUP")]
-		public EntitySet<USER_GROUP_USER> USER_GROUP_USERs
-		{
-			get
-			{
-				return this._USER_GROUP_USERs;
-			}
-			set
-			{
-				this._USER_GROUP_USERs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_GRANT_RIGHTs(GRANT_RIGHT entity)
-		{
-			this.SendPropertyChanging();
-			entity.GROUP_USER = this;
-		}
-		
-		private void detach_GRANT_RIGHTs(GRANT_RIGHT entity)
-		{
-			this.SendPropertyChanging();
-			entity.GROUP_USER = null;
-		}
-		
-		private void attach_USER_GROUP_USERs(USER_GROUP_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.GROUP_USER = this;
-		}
-		
-		private void detach_USER_GROUP_USERs(USER_GROUP_USER entity)
-		{
-			this.SendPropertyChanging();
-			entity.GROUP_USER = null;
 		}
 	}
 	

@@ -72,6 +72,15 @@
   <ItemGroup>
     <Compile Include="CreateControl.cs" />
     <Compile Include="C_Customer.cs" />
+    <Compile Include="DS_GRAND.cs">
+      <DependentUpon>DS_GRAND.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DS_GRAND.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_GRAND.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +92,18 @@
     </Compile>
     <Compile Include="frmAddTypeCus.Designer.cs">
       <DependentUpon>frmAddTypeCus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddUserToGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddUserToGroup.Designer.cs">
+      <DependentUpon>frmAddUserToGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePass.Designer.cs">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCustomer.cs">
       <SubType>Form</SubType>
@@ -102,6 +123,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRole.Designer.cs">
+      <DependentUpon>frmRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUseService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +143,12 @@
     <EmbeddedResource Include="frmAddTypeCus.resx">
       <DependentUpon>frmAddTypeCus.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddUserToGroup.resx">
+      <DependentUpon>frmAddUserToGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePass.resx">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRole.resx">
+      <DependentUpon>frmRole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUseService.resx">
       <DependentUpon>frmUseService.cs</DependentUpon>
@@ -134,6 +170,18 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="DS_GRAND.xsc">
+      <DependentUpon>DS_GRAND.xsd</DependentUpon>
+    </None>
+    <None Include="DS_GRAND.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_GRAND.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DS_GRAND.xss">
+      <DependentUpon>DS_GRAND.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

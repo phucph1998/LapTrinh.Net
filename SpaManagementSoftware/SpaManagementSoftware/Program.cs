@@ -30,7 +30,7 @@ namespace SpaManagementSoftware
              * Sharp,Sharp Plus,DevExpress Style,Office 2007 Blue,Office 2007 Black,Office 2007 Silver,Office 2007 Green,Office 2007 Pink,Office 2010 Blue
              * Office 2010 Black,Office 2010 Silver*/
             loginForm = new frmLogin();
-            Application.Run(new frmCustomer());
+            Application.Run(loginForm);
         }
     }
 }

@@ -51,10 +51,10 @@
   <ItemGroup>
     <Compile Include="CustomerManager.cs" />
     <Compile Include="C_Account.cs" />
-    <Compile Include="DC_Customer.designer.cs">
+    <Compile Include="DC_SPA.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DC_Customer.dbml</DependentUpon>
+      <DependentUpon>DC_SPA.dbml</DependentUpon>
     </Compile>
     <Compile Include="frmConfig.cs">
       <SubType>Form</SubType>
@@ -83,13 +83,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="DC_Customer.dbml">
+    <None Include="DC_SPA.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DC_Customer.designer.cs</LastGenOutput>
+      <LastGenOutput>DC_SPA.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DC_Customer.dbml.layout">
-      <DependentUpon>DC_Customer.dbml</DependentUpon>
+    <None Include="DC_SPA.dbml.layout">
+      <DependentUpon>DC_SPA.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="frmConfig.resx">
       <DependentUpon>frmConfig.cs</DependentUpon>

@@ -30,6 +30,12 @@ namespace SpaClassLibrary
                     cbb_ServerName.Items.Add(row[col]);
                 }
             }
+            //List<string> srvname = Config.LoadServerName();
+            //cbb_ServerName.Items.Clear();
+            //foreach (string item in srvname)
+            //{
+            //    cbb_ServerName.Items.Add(item);
+            //}
         }
 
         private void cbb_Database_DropDown(object sender, EventArgs e)
