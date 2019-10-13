@@ -301,6 +301,7 @@
             this.tsmiChangePass.Size = new System.Drawing.Size(244, 22);
             this.tsmiChangePass.Tag = "T2";
             this.tsmiChangePass.Text = "Đổi mật &khẩu đăng nhập";
+            this.tsmiChangePass.Click += new System.EventHandler(this.tsmiChangePass_Click);
             // 
             // toolStripSeparator4
             // 
@@ -313,6 +314,7 @@
             this.phânNhómNgườiDùngToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
             this.phânNhómNgườiDùngToolStripMenuItem.Tag = "T13";
             this.phânNhómNgườiDùngToolStripMenuItem.Text = "Phân Nhóm Người Dùng";
+            this.phânNhómNgườiDùngToolStripMenuItem.Visible = false;
             this.phânNhómNgườiDùngToolStripMenuItem.Click += new System.EventHandler(this.phânNhómNgườiDùngToolStripMenuItem_Click);
             // 
             // phânQuyềnNhómNgườiDùngToolStripMenuItem
@@ -321,6 +323,7 @@
             this.phânQuyềnNhómNgườiDùngToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
             this.phânQuyềnNhómNgườiDùngToolStripMenuItem.Tag = "T14";
             this.phânQuyềnNhómNgườiDùngToolStripMenuItem.Text = "Phân Quyền Nhóm Người Dùng";
+            this.phânQuyềnNhómNgườiDùngToolStripMenuItem.Visible = false;
             this.phânQuyềnNhómNgườiDùngToolStripMenuItem.Click += new System.EventHandler(this.phânQuyềnNhómNgườiDùngToolStripMenuItem_Click);
             // 
             // toolStripSeparator12

@@ -16,7 +16,7 @@ namespace SpaClassLibrary
         public int GetIDAccount(string pUserName)
         {
             DataTable tb = new DataTable();
-            SqlDataAdapter dt = new SqlDataAdapter("select * from ACCOUNT a where a.USERNAME ='"+pUserName+"'", Properties.Settings.Default.DB_SPAConnectionString);
+            SqlDataAdapter dt = new SqlDataAdapter("select * from ACCOUNT a where a.USERNAME ='" + pUserName + "'", Properties.Settings.Default.DB_SPAConnectionString);
             dt.Fill(tb);
             return Int32.Parse(tb.Rows[0][0].ToString());
         }
@@ -41,7 +41,7 @@ namespace SpaClassLibrary
         //Thêm tài khoản
         public int InsertAccount(string pUserName, string pPass)
         {
-            if(IsAccount(pUserName)==0)
+            if (IsAccount(pUserName) == 0)
             {
                 DC_CustomerDataContext account = new DC_CustomerDataContext();
 
@@ -64,7 +64,7 @@ namespace SpaClassLibrary
         //Xóa tài khoản,Tại đây thực chất cho khóa tài khoản đồng nghĩa với việc dữ liệu tk vẫn còn
         public int DeleteAccount(string pUserName)
         {
-            if(IsAccount(pUserName)==1)
+            if (IsAccount(pUserName) == 1)
             {
                 DC_CustomerDataContext account = new DC_CustomerDataContext();
                 var query = from acc in account.ACCOUNTs
@@ -80,7 +80,37 @@ namespace SpaClassLibrary
             else
             {
                 return 0;//Không tồn tại tài khoản
-            }            
+            }
+        }
+
+        //Đổi mật khẩu
+        public bool ChangePass(string pUserName, string pPassNew, string pPassOld)
+        {
+            try
+            {
+                DC_CustomerDataContext dc = new DC_CustomerDataContext();
+                var query = from acc in dc.ACCOUNTs
+                            where string.Equals(acc.USERNAME, pUserName) == true
+                            select acc;
+
+                foreach (ACCOUNT item in query)
+                {
+                    if (string.Equals(item.PASSWORD, mh.EncodePass(pPassOld)))
+                    {
+                        item.PASSWORD = mh.EncodePass(pPassNew);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                dc.SubmitChanges();
+                return true;//Cap nhat thanh cong
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -121,7 +121,7 @@
             // btn_SerchCus
             // 
             this.btn_SerchCus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_SerchCus.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btn_SerchCus.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_SerchCus.ImageOptions.Image")));
             this.btn_SerchCus.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btn_SerchCus.Location = new System.Drawing.Point(288, 87);
             this.btn_SerchCus.Name = "btn_SerchCus";
@@ -643,7 +643,7 @@
             // btn_MoveChair
             // 
             this.btn_MoveChair.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_MoveChair.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.btn_MoveChair.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_MoveChair.ImageOptions.Image")));
             this.btn_MoveChair.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btn_MoveChair.Location = new System.Drawing.Point(3, 3);
             this.btn_MoveChair.Name = "btn_MoveChair";
@@ -654,7 +654,7 @@
             // btn_MergeBill
             // 
             this.btn_MergeBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_MergeBill.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.btn_MergeBill.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_MergeBill.ImageOptions.Image")));
             this.btn_MergeBill.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btn_MergeBill.Location = new System.Drawing.Point(3, 60);
             this.btn_MergeBill.Name = "btn_MergeBill";
@@ -704,7 +704,7 @@
             // btn_DeleteItem
             // 
             this.btn_DeleteItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_DeleteItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.ImageOptions.Image")));
+            this.btn_DeleteItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_DeleteItem.ImageOptions.Image")));
             this.btn_DeleteItem.Location = new System.Drawing.Point(3, 240);
             this.btn_DeleteItem.Name = "btn_DeleteItem";
             this.btn_DeleteItem.Size = new System.Drawing.Size(53, 23);
@@ -725,7 +725,7 @@
             // btn_PrintBill
             // 
             this.btn_PrintBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_PrintBill.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton10.ImageOptions.Image")));
+            this.btn_PrintBill.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_PrintBill.ImageOptions.Image")));
             this.btn_PrintBill.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btn_PrintBill.Location = new System.Drawing.Point(3, 320);
             this.btn_PrintBill.Name = "btn_PrintBill";
@@ -747,7 +747,7 @@
             // btn_Statictical
             // 
             this.btn_Statictical.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Statictical.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton12.ImageOptions.Image")));
+            this.btn_Statictical.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Statictical.ImageOptions.Image")));
             this.btn_Statictical.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btn_Statictical.Location = new System.Drawing.Point(3, 451);
             this.btn_Statictical.Name = "btn_Statictical";
