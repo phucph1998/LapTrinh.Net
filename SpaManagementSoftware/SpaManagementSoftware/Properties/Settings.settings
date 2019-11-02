@@ -10,5 +10,12 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=HOANGPHUC-PC\SQLEXPRESS;Initial Catalog=DB_SPA;User ID=sa;Password=sa2012</Value>
     </Setting>
+    <Setting Name="DbSpaDataContextConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;User Id=root;Password=123;Host=127.0.0.1;Database=db_spa;Persist Security Info=True;&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">User Id=root;Password=123;Host=127.0.0.1;Database=db_spa;Persist Security Info=True;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

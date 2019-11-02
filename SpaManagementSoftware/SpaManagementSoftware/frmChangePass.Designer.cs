@@ -57,9 +57,9 @@
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.txt_PassOld, 3);
             this.txt_PassOld.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_PassOld.Location = new System.Drawing.Point(141, 41);
+            this.txt_PassOld.Location = new System.Drawing.Point(140, 41);
             this.txt_PassOld.Name = "txt_PassOld";
-            this.txt_PassOld.Size = new System.Drawing.Size(276, 21);
+            this.txt_PassOld.Size = new System.Drawing.Size(277, 21);
             this.txt_PassOld.TabIndex = 1;
             this.txt_PassOld.UseSystemPasswordChar = true;
             // 
@@ -67,9 +67,9 @@
             // 
             this.btn_Agree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Agree.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Agree.ImageOptions.Image")));
-            this.btn_Agree.Location = new System.Drawing.Point(141, 155);
+            this.btn_Agree.Location = new System.Drawing.Point(140, 155);
             this.btn_Agree.Name = "btn_Agree";
-            this.btn_Agree.Size = new System.Drawing.Size(94, 34);
+            this.btn_Agree.Size = new System.Drawing.Size(93, 34);
             this.btn_Agree.TabIndex = 2;
             this.btn_Agree.Text = "Đồng Ý";
             this.btn_Agree.Click += new System.EventHandler(this.btn_Agree_Click);
@@ -78,7 +78,7 @@
             // 
             this.btn_Cancel.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_Cancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Cancel.ImageOptions.Image")));
-            this.btn_Cancel.Location = new System.Drawing.Point(255, 155);
+            this.btn_Cancel.Location = new System.Drawing.Point(254, 155);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(93, 34);
             this.btn_Cancel.TabIndex = 3;
@@ -111,9 +111,9 @@
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.txt_PassNew, 3);
             this.txt_PassNew.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_PassNew.Location = new System.Drawing.Point(141, 79);
+            this.txt_PassNew.Location = new System.Drawing.Point(140, 79);
             this.txt_PassNew.Name = "txt_PassNew";
-            this.txt_PassNew.Size = new System.Drawing.Size(276, 21);
+            this.txt_PassNew.Size = new System.Drawing.Size(277, 21);
             this.txt_PassNew.TabIndex = 6;
             this.txt_PassNew.UseSystemPasswordChar = true;
             // 
@@ -121,9 +121,9 @@
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.txt_ConfirmPass, 3);
             this.txt_ConfirmPass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_ConfirmPass.Location = new System.Drawing.Point(141, 117);
+            this.txt_ConfirmPass.Location = new System.Drawing.Point(140, 117);
             this.txt_ConfirmPass.Name = "txt_ConfirmPass";
-            this.txt_ConfirmPass.Size = new System.Drawing.Size(276, 21);
+            this.txt_ConfirmPass.Size = new System.Drawing.Size(277, 21);
             this.txt_ConfirmPass.TabIndex = 7;
             this.txt_ConfirmPass.UseSystemPasswordChar = true;
             // 
@@ -177,7 +177,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(420, 192);
             this.Controls.Add(this.tableLayoutPanel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmChangePass";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đổi Mật Khẩu";

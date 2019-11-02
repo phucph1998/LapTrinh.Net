@@ -21,7 +21,8 @@ namespace SpaClassLibrary
 
         private void cbb_ServerName_DropDown(object sender, EventArgs e)
         {
-            DataTable dt = Config.GetServerName();
+            //DataTable dt = Config.GetServerName();
+            DataTable dt = Config.GetHost();
             cbb_Database.Items.Clear();
             foreach (System.Data.DataRow row in dt.Rows)
             {
@@ -43,7 +44,7 @@ namespace SpaClassLibrary
             if (CheckedBeforSearchNameDB())
             {
                 cbb_Database.Items.Clear();
-                List<string> list = Config.GetDatabaseName(cbb_ServerName.Text, txt_UserName.Text, txt_Password.Text);
+                List<string> list = Config.GetDatabaseNameMySQL(cbb_ServerName.Text, txt_UserName.Text, txt_Password.Text);
                 if (list == null)
                 {
                     XtraMessageBox.Show("Thông tin cấu hình chưa chính xác", "Thông báo");
@@ -60,12 +61,12 @@ namespace SpaClassLibrary
         {
             if (cbb_ServerName.Text == string.Empty)
             {
-                XtraMessageBox.Show("Server Name chưa được chọn hoặc nhập", "Thông Báo");
+                XtraMessageBox.Show("Host chưa được chọn hoặc nhập", "Thông Báo");
                 return false;
             }
             if (txt_UserName.Text == string.Empty)
             {
-                XtraMessageBox.Show("User Name chưa được nhập", "Thông Báo");
+                XtraMessageBox.Show("User ID chưa được nhập", "Thông Báo");
                 return false;
             }
             if (txt_Password.Text == string.Empty)
@@ -78,7 +79,8 @@ namespace SpaClassLibrary
 
         private void btn_SaveConfig_Click(object sender, EventArgs e)
         {
-            Config.ChangConnectionString(cbb_ServerName.Text, cbb_Database.Text, txt_UserName.Text, txt_Password.Text);
+            //Config.ChangConnectionString(cbb_ServerName.Text, cbb_Database.Text, txt_UserName.Text, txt_Password.Text);
+            Config.ChangConnectionStringMySQL(cbb_ServerName.Text, cbb_Database.Text, txt_UserName.Text, txt_Password.Text);
             LoginUserControl uc = new LoginUserControl();
             uc.nameDatabase = cbb_Database.Text;
             this.Close();

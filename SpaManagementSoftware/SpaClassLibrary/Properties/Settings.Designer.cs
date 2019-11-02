@@ -92,5 +92,16 @@ namespace SpaClassLibrary.Properties {
                 return ((string)(this["DB_SPAConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("User Id=root;Password=123;Host=127.0.0.1;Database=db_spa;Persist Security Info=Tr" +
+            "ue;Character Set=UTF8")]
+        public string DbSpaDataContextConnectionString {
+            get {
+                return ((string)(this["DbSpaDataContextConnectionString"]));
+            }
+        }
     }
 }

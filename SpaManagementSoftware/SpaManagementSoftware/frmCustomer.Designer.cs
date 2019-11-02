@@ -49,16 +49,15 @@
             this.tSB_Delete = new System.Windows.Forms.ToolStripButton();
             this.dGV_Customer = new System.Windows.Forms.DataGridView();
             this.ID_PROFILE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_USER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDENFITICATION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LAST_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FIRST_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SEX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PHONE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ADDRESS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SCORE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PHONE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BIRTHDAY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NAME_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SCORE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STATUS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IMAGE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cMS_GroupCus = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.thêmNhómToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xóaNhómToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -269,16 +268,15 @@
             this.dGV_Customer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGV_Customer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_PROFILE,
-            this.ID_USER,
-            this.IDENFITICATION,
-            this.LAST_NAME,
-            this.FIRST_NAME,
+            this.NAME,
             this.SEX,
-            this.PHONE,
             this.ADDRESS,
-            this.SCORE,
+            this.PHONE,
+            this.BIRTHDAY,
             this.NAME_TYPE,
-            this.STATUS});
+            this.SCORE,
+            this.STATUS,
+            this.IMAGE});
             this.dGV_Customer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Customer.Location = new System.Drawing.Point(3, 23);
             this.dGV_Customer.MultiSelect = false;
@@ -293,37 +291,16 @@
             // ID_PROFILE
             // 
             this.ID_PROFILE.DataPropertyName = "ID_PROFILE";
-            this.ID_PROFILE.HeaderText = "Mã Hồ Sơ";
+            this.ID_PROFILE.HeaderText = "Mã KH";
             this.ID_PROFILE.Name = "ID_PROFILE";
             this.ID_PROFILE.ReadOnly = true;
             // 
-            // ID_USER
+            // NAME
             // 
-            this.ID_USER.DataPropertyName = "ID_USER";
-            this.ID_USER.HeaderText = "Mã Người Dùng";
-            this.ID_USER.Name = "ID_USER";
-            this.ID_USER.ReadOnly = true;
-            // 
-            // IDENFITICATION
-            // 
-            this.IDENFITICATION.DataPropertyName = "IDENFITICATION";
-            this.IDENFITICATION.HeaderText = "SỐ CMND";
-            this.IDENFITICATION.Name = "IDENFITICATION";
-            this.IDENFITICATION.ReadOnly = true;
-            // 
-            // LAST_NAME
-            // 
-            this.LAST_NAME.DataPropertyName = "LAST_NAME";
-            this.LAST_NAME.HeaderText = "Họ";
-            this.LAST_NAME.Name = "LAST_NAME";
-            this.LAST_NAME.ReadOnly = true;
-            // 
-            // FIRST_NAME
-            // 
-            this.FIRST_NAME.DataPropertyName = "FIRST_NAME";
-            this.FIRST_NAME.HeaderText = "Tên";
-            this.FIRST_NAME.Name = "FIRST_NAME";
-            this.FIRST_NAME.ReadOnly = true;
+            this.NAME.DataPropertyName = "NAME";
+            this.NAME.HeaderText = "Tên KH";
+            this.NAME.Name = "NAME";
+            this.NAME.ReadOnly = true;
             // 
             // SEX
             // 
@@ -332,19 +309,33 @@
             this.SEX.Name = "SEX";
             this.SEX.ReadOnly = true;
             // 
-            // PHONE
-            // 
-            this.PHONE.DataPropertyName = "PHONE";
-            this.PHONE.HeaderText = "SDT";
-            this.PHONE.Name = "PHONE";
-            this.PHONE.ReadOnly = true;
-            // 
             // ADDRESS
             // 
             this.ADDRESS.DataPropertyName = "ADDRESS";
-            this.ADDRESS.HeaderText = "Địa Chỉ";
+            this.ADDRESS.HeaderText = "Địa chỉ";
             this.ADDRESS.Name = "ADDRESS";
             this.ADDRESS.ReadOnly = true;
+            // 
+            // PHONE
+            // 
+            this.PHONE.DataPropertyName = "PHONE";
+            this.PHONE.HeaderText = "Điện Thoại";
+            this.PHONE.Name = "PHONE";
+            this.PHONE.ReadOnly = true;
+            // 
+            // BIRTHDAY
+            // 
+            this.BIRTHDAY.DataPropertyName = "BIRTHDAY";
+            this.BIRTHDAY.HeaderText = "Ngày Sinh";
+            this.BIRTHDAY.Name = "BIRTHDAY";
+            this.BIRTHDAY.ReadOnly = true;
+            // 
+            // NAME_TYPE
+            // 
+            this.NAME_TYPE.DataPropertyName = "NAME1";
+            this.NAME_TYPE.HeaderText = "Loại KH";
+            this.NAME_TYPE.Name = "NAME_TYPE";
+            this.NAME_TYPE.ReadOnly = true;
             // 
             // SCORE
             // 
@@ -353,20 +344,20 @@
             this.SCORE.Name = "SCORE";
             this.SCORE.ReadOnly = true;
             // 
-            // NAME_TYPE
-            // 
-            this.NAME_TYPE.DataPropertyName = "NAME_TYPE";
-            this.NAME_TYPE.HeaderText = "Tên Loại";
-            this.NAME_TYPE.Name = "NAME_TYPE";
-            this.NAME_TYPE.ReadOnly = true;
-            this.NAME_TYPE.Visible = false;
-            // 
             // STATUS
             // 
             this.STATUS.DataPropertyName = "STATUS";
             this.STATUS.HeaderText = "Trạng Thái";
             this.STATUS.Name = "STATUS";
             this.STATUS.ReadOnly = true;
+            // 
+            // IMAGE
+            // 
+            this.IMAGE.DataPropertyName = "IMAGE";
+            this.IMAGE.HeaderText = "IMAGE";
+            this.IMAGE.Name = "IMAGE";
+            this.IMAGE.ReadOnly = true;
+            this.IMAGE.Visible = false;
             // 
             // cMS_GroupCus
             // 
@@ -455,21 +446,20 @@
         private System.Windows.Forms.ToolStripButton tSP_EditGroup;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tSP_Refresh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_PROFILE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_USER;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDENFITICATION;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LAST_NAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FIRST_NAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SEX;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PHONE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ADDRESS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SCORE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_TYPE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
         private System.Windows.Forms.ContextMenuStrip cMS_GroupCus;
         private System.Windows.Forms.ToolStripMenuItem thêmNhómToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xóaNhómToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đổiTênToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_PROFILE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SEX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ADDRESS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PHONE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BIRTHDAY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_TYPE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SCORE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STATUS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IMAGE;
     }
 }

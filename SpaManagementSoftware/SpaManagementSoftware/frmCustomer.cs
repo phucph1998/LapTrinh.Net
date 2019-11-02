@@ -15,13 +15,15 @@ namespace SpaManagementSoftware
 {
     public partial class frmCustomer : DevExpress.XtraEditors.XtraForm
     {
-        UserManager conn;
+        UserManager usr;
         CustomerManager pCus;
         public frmCustomer()
         {
             InitializeComponent();
-            conn = new UserManager();
+            usr = new UserManager();
             pCus = new CustomerManager();
+            Properties.Settings.Default["DbSpaDataContextConnectionString"] = usr.GetStringConfigMySQL();
+            Properties.Settings.Default.Save();
         }
         //Cài đặt màu từng dòng cho dgv
         public void SetColorTable()
@@ -47,7 +49,7 @@ namespace SpaManagementSoftware
             tV_Member.Nodes[0].Tag = "1";
             tV_Member.Nodes[0].ContextMenuStrip = cMS_GroupCus;
             DataTable typeCus = new DataTable();
-            typeCus = pCus.GetTableTypeCustomer();
+            typeCus = pCus.GetTableTypeCustomerMySQL();
             for (int i = 0; i < typeCus.Rows.Count; i++)
             {
                 tV_Member.Nodes[0].Nodes.Add(typeCus.Rows[i][0].ToString());
@@ -60,7 +62,8 @@ namespace SpaManagementSoftware
         private void frmCustomer_Load(object sender, EventArgs e)
         {
             LoadTreeGroupCus();
-            dGV_Customer.DataSource = pCus.GetListCustomer();
+            dGV_Customer.DataSource = pCus.GetListCustomerMySQL();
+            
             SetColorTable();
         }
 
@@ -70,14 +73,14 @@ namespace SpaManagementSoftware
             DataTable profileCus = new DataTable();
             if (selectNode.Tag == "1")
             {
-                dGV_Customer.DataSource = pCus.GetListCustomer();
+                dGV_Customer.DataSource = pCus.GetListCustomerMySQL();
                 SetColorTable();
             }
             else
             {
                 if (selectNode.Tag == "2")
                 {
-                    dGV_Customer.DataSource = pCus.GetListTypeCustomer(selectNode.Text);
+                    dGV_Customer.DataSource = pCus.GetListTypeCustomerMySQL(pCus.GetID_TypeCusMySQL(selectNode.Text).ToString());
                     SetColorTable();
                 }
             }
@@ -95,7 +98,7 @@ namespace SpaManagementSoftware
             frmAddCustomer add = new frmAddCustomer();
             add.CheckAsign = 1;
             add.ShowDialog();
-            dGV_Customer.DataSource = pCus.GetListCustomer();
+            dGV_Customer.DataSource = pCus.GetListCustomerMySQL();
             SetColorTable();
         }
 
@@ -107,17 +110,16 @@ namespace SpaManagementSoftware
         public C_Customer ProFileCus(DataGridView dgv)
         {
             C_Customer temp = new C_Customer();
-            string codepro = dgv.CurrentRow.Cells[0].Value.ToString();
-            string codeuser = dgv.CurrentRow.Cells[1].Value.ToString();
-            string id = dgv.CurrentRow.Cells[2].Value.ToString();
-            string lname = dgv.CurrentRow.Cells[3].Value.ToString();
-            string fname = dgv.CurrentRow.Cells[4].Value.ToString();
-            string sex = dgv.CurrentRow.Cells[5].Value.ToString();
-            string phone = dgv.CurrentRow.Cells[6].Value.ToString();
-            string address = dgv.CurrentRow.Cells[7].Value.ToString();
-            string typecus = dgv.CurrentRow.Cells[9].Value.ToString();
-            string stt = dgv.CurrentRow.Cells[10].Value.ToString();
-            temp = new C_Customer(codepro, codeuser, id, lname, fname, sex, phone, address, typecus, stt);
+            string image = dgv.CurrentRow.Cells["IMAGE"].Value.ToString();
+            string id = dgv.CurrentRow.Cells["ID_PROFILE"].Value.ToString();
+            string name = dgv.CurrentRow.Cells["NAME"].Value.ToString();
+            string sex = dgv.CurrentRow.Cells["SEX"].Value.ToString();
+            string phone = dgv.CurrentRow.Cells["PHONE"].Value.ToString();
+            string address = dgv.CurrentRow.Cells["ADDRESS"].Value.ToString();
+            string typecus = dgv.CurrentRow.Cells["NAME_TYPE"].Value.ToString();
+            string birthday = dgv.CurrentRow.Cells["BIRTHDAY"].Value.ToString();
+            string stt = dgv.CurrentRow.Cells["STATUS"].Value.ToString();
+            temp = new C_Customer(image,id, name, sex, phone, address, birthday, typecus, stt);
             return temp;
         }
         private void dGV_Customer_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -126,7 +128,7 @@ namespace SpaManagementSoftware
             update.CheckAsign = 2;
             update.profile = ProFileCus(dGV_Customer);
             update.ShowDialog();
-            dGV_Customer.DataSource = pCus.GetListCustomer();
+            dGV_Customer.DataSource = pCus.GetListCustomerMySQL();
             SetColorTable();
         }
 
@@ -136,7 +138,7 @@ namespace SpaManagementSoftware
             update.CheckAsign = 2;
             update.profile = ProFileCus(dGV_Customer);
             update.ShowDialog();
-            dGV_Customer.DataSource = pCus.GetListCustomer();
+            dGV_Customer.DataSource = pCus.GetListCustomerMySQL();
             SetColorTable();
         }
 
@@ -150,7 +152,7 @@ namespace SpaManagementSoftware
             r = XtraMessageBox.Show("Bạn có chắc muốn xóa khách hàng " + lname + " " + fname, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if(r == DialogResult.Yes)
             {
-                if (pCus.DeleteCustomer(phone))
+                if (pCus.DeleteCustomerMySQL(phone))
                 {
                     XtraMessageBox.Show("Xóa thành công");
                 }

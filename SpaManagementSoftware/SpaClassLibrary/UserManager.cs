@@ -7,6 +7,9 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Data.Sql;
 using System.Security.Cryptography;
+using Devart.Data;
+using Devart.Data.MySql;
+using DbSpaContext;
 
 namespace SpaClassLibrary
 {
@@ -51,6 +54,25 @@ namespace SpaClassLibrary
             }
         }
 
+        //Kiểm tra cấu hình MYSQL
+        public int Check_ConfigMySQL()
+        {
+            if (Properties.Settings.Default.DbSpaDataContextConnectionString == string.Empty)
+            {
+                return 1;//Chuỗi cấu hình không tồn tại
+            }
+            MySqlConnection mysqlCon = new MySqlConnection(Properties.Settings.Default.DbSpaDataContextConnectionString);
+            try
+            {
+                if (mysqlCon.State == ConnectionState.Closed)
+                    mysqlCon.Open();
+                return 0;//Kết nối thành công
+            }
+            catch
+            {
+                return 2;//Chuỗi cấu hình không phù hợp
+            }
+        }
         //Kiểm tra tài khoản, trả về số
         public int Check_User(string pUser, string pPass)
         {
@@ -64,6 +86,23 @@ namespace SpaClassLibrary
             else
             {
                 if (dt.Rows[0][2] == null || dt.Rows[0][3].ToString() == "0")
+                    return 2;//Không hoạt động
+            }
+            return 3;//Đăng nhập thành công
+        }
+        //Kiểm tra tài khoản, trả về số MySQL
+        public int Check_UserMySQL(string pUser, string pPass)
+        {
+            MySqlDataAdapter daUser = new MySqlDataAdapter("SELECT * FROM user WHERE user.USER_NAME ='" + pUser + "' AND user.PASSWORD='" + pPass + "'", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            DataTable dt = new DataTable();
+            daUser.Fill(dt);
+            if (dt.Rows.Count == 0)
+            {
+                return 1;//Không tồn tại
+            }
+            else
+            {
+                if (dt.Rows[0][1] == null || dt.Rows[0][2].ToString() == "0")
                     return 2;//Không hoạt động
             }
             return 3;//Đăng nhập thành công
@@ -91,7 +130,6 @@ namespace SpaClassLibrary
             }
             return srvname;
         }
-
         //Đọc tên Server
         public DataTable GetServerName()
         {
@@ -99,7 +137,13 @@ namespace SpaClassLibrary
             System.Data.DataTable table = instance.GetDataSources();
             return table;
         }
-
+        //Đọc tên Host
+        public DataTable GetHost()
+        {
+            MySqlDataSourceEnumerator instance = MySqlDataSourceEnumerator.Instance;
+            DataTable table = instance.GetDataSources();
+            return table;
+        }
         //Đọc danh sách database,đầu vào là tên sever, tên user, mật khẩu trả về danh sách database
         public List<string> GetDatabaseName(string pServerName, string pUser, string pPass)
         {
@@ -124,6 +168,30 @@ namespace SpaClassLibrary
             }
             return list;
         }
+        //MySQL Đọc danh sách database,đầu vào là tên sever, tên user, mật khẩu trả về danh sách database
+        public List<string> GetDatabaseNameMySQL(string pHost, string pUser, string pPass)
+        {
+            List<string> list = new List<string>();
+            DataTable dt = new DataTable();
+            try
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT SCHEMA_NAME FROM information_schema.SCHEMATA",
+                    "User Id=" + pUser + ";Password=" + pPass + ";Host=" + pHost + ";Database=information_schema;Persist Security Info=True;;Character Set=UTF8");
+                da.Fill(dt);
+                foreach (System.Data.DataRow r in dt.Rows)
+                {
+                    foreach (System.Data.DataColumn c in dt.Columns)
+                    {
+                        list.Add(r[c].ToString());
+                    }
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            return list;
+        }
 
         //Lưu cấu hình
         public void ChangConnectionString(string pServerName, string pDataBase, string pUser, string pPass)
@@ -133,10 +201,23 @@ namespace SpaClassLibrary
             Properties.Settings.Default.Save();
         }
 
+        //Lưu cấu hình MySQL
+        public void ChangConnectionStringMySQL(string pHost, string pDataBase, string pUser, string pPass)
+        {
+            SpaClassLibrary.Properties.Settings.Default["DbSpaDataContextConnectionString"] = "User Id=" + pUser + ";Password=" + pPass + ";Host=" + pHost + ";Database=" + pDataBase + ";Persist Security Info=True;Character Set=UTF8";
+            Properties.Settings.Default.Save();
+        }
+
         //Lấy chuỗi cấu hình
         public string GetStringConfig()
         {
             return SpaClassLibrary.Properties.Settings.Default.DB_SPAConnect;
+        }
+
+        //Lấy chuỗi cấu hình MySQL
+        public string GetStringConfigMySQL()
+        {
+            return SpaClassLibrary.Properties.Settings.Default.DbSpaDataContextConnectionString;
         }
 
         //Lấy danh sách nhóm người dùng của 1 tài khoản
@@ -147,7 +228,31 @@ namespace SpaClassLibrary
                 C_Account acc = new C_Account();
                 List<string> list = new List<string>();
                 DataTable tb = new DataTable();
-                SqlDataAdapter dt = new SqlDataAdapter("select ID_GROUP from USER_GROUP_USER where ID_USER='"+acc.GetIDAccount(pUserName)+"'", Properties.Settings.Default.DB_SPAConnectionString);
+                SqlDataAdapter dt = new SqlDataAdapter("select ID_GROUP from USER_GROUP_USER where ID_USER='" + acc.GetIDAccount(pUserName) + "'", Properties.Settings.Default.DB_SPAConnectionString);
+                dt.Fill(tb);
+                foreach (System.Data.DataRow r in tb.Rows)
+                {
+                    foreach (System.Data.DataColumn c in tb.Columns)
+                    {
+                        list.Add(r[c].ToString());
+                    }
+                }
+                return list;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        //Lấy danh sách nhóm người dùng của 1 tài khoản MySQL
+        public List<string> GetListIdGroupUserMySQL(string pUserName)
+        {
+            try
+            {
+                C_Account acc = new C_Account();
+                List<string> list = new List<string>();
+                DataTable tb = new DataTable();
+                MySqlDataAdapter dt = new MySqlDataAdapter("SELECT ID_GROUP_USER FROM user_group_user WHERE USER_NAME='" + pUserName + "'", Properties.Settings.Default.DbSpaDataContextConnectionString);
                 dt.Fill(tb);
                 foreach (System.Data.DataRow r in tb.Rows)
                 {
@@ -177,6 +282,52 @@ namespace SpaClassLibrary
             catch
             {
                 return null;
+            }
+        }
+
+        //Lấy danh sách màn hình mySQL
+        public DataTable GetListScreenMySQL(string pID_GROUP)
+        {
+            try
+            {
+                DataTable tb = new DataTable();
+                MySqlDataAdapter dt = new MySqlDataAdapter("select * from grand_right WHERE ID_GROUP_USER='" + pID_GROUP + "'", Properties.Settings.Default.DbSpaDataContextConnectionString);
+                dt.Fill(tb);
+                return tb;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        //Lấy số Lầu của CHi nhánh user đang làm
+        public int GetNumberFloorMySQL(string pUserName)
+        {
+            try
+            {
+                MySqlDataAdapter q = new MySqlDataAdapter("SELECT COUNT(*) FROM branch b , area a WHERE b.ID=a.ID_BRACNH AND b.ID=(SELECT ID_BRANCH FROM user_staff WHERE USER_NAME='" + pUserName + "')", Properties.Settings.Default.DbSpaDataContextConnectionString);
+                DataTable dt = new DataTable();
+                q.Fill(dt);
+                return Convert.ToInt32(dt.Rows[0][0].ToString());
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+        //Lấy số ghế ứng với từng khu vực
+        public int GetNumberChairMySQL(string pIDArea)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                MySqlDataAdapter q = new MySqlDataAdapter("SELECT COUNT(*) FROM db_spa.area, db_spa.chair WHERE db_spa.area.ID = db_spa.chair.ID_AREA AND db_spa.chair.ID_AREA='" + pIDArea + "'", Properties.Settings.Default.DbSpaDataContextConnectionString);
+                q.Fill(dt);
+                return Convert.ToInt32(dt.Rows[0][0].ToString());
+            }
+            catch
+            {
+                return 0;
             }
         }
     }

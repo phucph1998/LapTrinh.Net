@@ -8,15 +8,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using SpaClassLibrary;
 
 namespace SpaManagementSoftware
 {
     public partial class frmUseService : DevExpress.XtraEditors.XtraForm
     {
         CreateControl createCtr = new CreateControl();
+        UserManager usr;
         public frmUseService()
         {
             InitializeComponent();
+            usr = new UserManager();
         }
         //Ẩn hiện cột mặt hàng
         private void btn_Hide_Show_Click(object sender, EventArgs e)
@@ -54,11 +57,13 @@ namespace SpaManagementSoftware
         {
             //i là số tầng của chi nhánh
             //j là số ghế ứng với từng số lầu i của chi nhánh đó
-            for (int i = 2; i > 0; i--)
+            int nFloor = usr.GetNumberFloorMySQL(Program.loginForm.NameAccount);
+            for (int i = nFloor; i > 0; i--)
             {
                 FlowLayoutPanel temp = new FlowLayoutPanel();
                 temp = createCtr.CreateFloor(i, panel_General);
-                for (int j = 1; j < 8; j++)
+                int nChair = usr.GetNumberChairMySQL(i.ToString());
+                for (int j = 1; j <= nChair; j++)
                 {
                     createCtr.CreateButtonChair(i, j, temp, cMS_Menu);
                 }

@@ -153,7 +153,7 @@
             this.tSBUseService.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tSBUseService.Name = "tSBUseService";
             this.tSBUseService.Size = new System.Drawing.Size(113, 22);
-            this.tSBUseService.Tag = "T29";
+            this.tSBUseService.Tag = "T28";
             this.tSBUseService.Text = "Sử dụng dịch vụ";
             this.tSBUseService.Click += new System.EventHandler(this.tSBUseService_Click);
             // 
@@ -163,7 +163,7 @@
             this.tSBManagementSales.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tSBManagementSales.Name = "tSBManagementSales";
             this.tSBManagementSales.Size = new System.Drawing.Size(121, 22);
-            this.tSBManagementSales.Tag = "";
+            this.tSBManagementSales.Tag = "T212";
             this.tSBManagementSales.Text = "Quản lý bán hàng";
             this.tSBManagementSales.Click += new System.EventHandler(this.tSBManagementSales_Click);
             // 
@@ -178,6 +178,7 @@
             this.tSBStatisticalSales.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tSBStatisticalSales.Name = "tSBStatisticalSales";
             this.tSBStatisticalSales.Size = new System.Drawing.Size(134, 22);
+            this.tSBStatisticalSales.Tag = "T215";
             this.tSBStatisticalSales.Text = "Thống kê doanh thu";
             // 
             // tSBStatisticalGoods
@@ -310,6 +311,7 @@
             // 
             // phânNhómNgườiDùngToolStripMenuItem
             // 
+            this.phânNhómNgườiDùngToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Team_16x16;
             this.phânNhómNgườiDùngToolStripMenuItem.Name = "phânNhómNgườiDùngToolStripMenuItem";
             this.phânNhómNgườiDùngToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
             this.phânNhómNgườiDùngToolStripMenuItem.Tag = "T13";
@@ -319,6 +321,7 @@
             // 
             // phânQuyềnNhómNgườiDùngToolStripMenuItem
             // 
+            this.phânQuyềnNhómNgườiDùngToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.Role_16x16;
             this.phânQuyềnNhómNgườiDùngToolStripMenuItem.Name = "phânQuyềnNhómNgườiDùngToolStripMenuItem";
             this.phânQuyềnNhómNgườiDùngToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
             this.phânQuyềnNhómNgườiDùngToolStripMenuItem.Tag = "T14";
@@ -383,6 +386,7 @@
             // 
             // trungTâmKháchHàngToolStripMenuItem
             // 
+            this.trungTâmKháchHàngToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.BOContact_16x16;
             this.trungTâmKháchHàngToolStripMenuItem.Name = "trungTâmKháchHàngToolStripMenuItem";
             this.trungTâmKháchHàngToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.trungTâmKháchHàngToolStripMenuItem.Tag = "T22";
@@ -425,6 +429,7 @@
             // 
             // sửDụngDịchVụToolStripMenuItem
             // 
+            this.sửDụngDịchVụToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.User_16x16;
             this.sửDụngDịchVụToolStripMenuItem.Name = "sửDụngDịchVụToolStripMenuItem";
             this.sửDụngDịchVụToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.sửDụngDịchVụToolStripMenuItem.Tag = "T28";
@@ -527,6 +532,7 @@
             this.danhMụcNhàCungCấpToolStripMenuItem.Name = "danhMụcNhàCungCấpToolStripMenuItem";
             this.danhMụcNhàCungCấpToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.danhMụcNhàCungCấpToolStripMenuItem.Text = "Danh mục nhà cung cấp";
+            this.danhMụcNhàCungCấpToolStripMenuItem.Click += new System.EventHandler(this.danhMụcNhàCungCấpToolStripMenuItem_Click);
             // 
             // nhậpHàngVàoKhoToolStripMenuItem
             // 

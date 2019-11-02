@@ -8,21 +8,38 @@ namespace SpaManagementSoftware
 {
     public class C_Customer
     {
-        public string iD_PROFILE, iD_USER, iDENFITICATION, lAST_NAME, fIRST_NAME, sEX, pHONE, aDDRESS, tYPE_CUS, sTATUS;
+        public string pImag, iD_PROFILE, nAME, sEX, pHONE, aDDRESS, bIRTHDAY, tYPE_CUS, sTATUS;
+
+        public string PImag
+        {
+            get { return pImag; }
+            set { pImag = value; }
+        }
+
+        public string NAME
+        {
+            get { return nAME; }
+            set { nAME = value; }
+        }
+
+        public string BIRTHDAY
+        {
+            get { return bIRTHDAY; }
+            set { bIRTHDAY = value; }
+        }
 
 
         public C_Customer()
         {
 
         }
-        public C_Customer(string iD_PROFILE, string iD_USER, string iDENFITICATION, string lAST_NAME, string fIRST_NAME, string sEX, string pHONE, string aDDRESS,string tYPE_CUS,string sTATUS)
+        public C_Customer(string image,string iD_PROFILE, string nAME, string sEX, string pHONE, string aDDRESS,string bIRTHDAY,string tYPE_CUS,string sTATUS)
         {
+            this.pImag = image;
             this.iD_PROFILE = iD_PROFILE;
-            this.iD_USER = iD_USER;
-            this.iDENFITICATION = iDENFITICATION;
-            this.lAST_NAME = lAST_NAME;
-            this.fIRST_NAME = fIRST_NAME;
+            this.nAME = nAME;
             this.sEX = sEX;
+            this.bIRTHDAY = bIRTHDAY;
             this.pHONE = pHONE;
             this.aDDRESS = aDDRESS;
             this.tYPE_CUS = tYPE_CUS;
@@ -57,30 +74,6 @@ namespace SpaManagementSoftware
         {
             get { return sEX; }
             set { sEX = value; }
-        }
-
-        public string FIRST_NAME
-        {
-            get { return fIRST_NAME; }
-            set { fIRST_NAME = value; }
-        }
-
-        public string LAST_NAME
-        {
-            get { return lAST_NAME; }
-            set { lAST_NAME = value; }
-        }
-
-        public string IDENFITICATION
-        {
-            get { return iDENFITICATION; }
-            set { iDENFITICATION = value; }
-        }
-
-        public string ID_USER
-        {
-            get { return iD_USER; }
-            set { iD_USER = value; }
         }
 
         public string ID_PROFILE

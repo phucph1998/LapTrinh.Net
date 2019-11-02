@@ -11,6 +11,8 @@ using DevExpress.XtraEditors;
 using System.Security.Cryptography;
 using System.Data;
 using System.Data.SqlClient;
+using Devart.Data;
+using Devart.Data.MySql;
 
 namespace SpaClassLibrary
 {
@@ -66,7 +68,8 @@ namespace SpaClassLibrary
                 return;
             }
             //Kiểm tra cấu hình trước khi đăng nhập
-            int checkConn = Config.Check_Config();
+            //int checkConn = Config.Check_Config();
+            int checkConn = Config.Check_ConfigMySQL();
             if (checkConn == 0)
             {
                 ProcessLogin();//Cho phép đăng nhập
@@ -86,7 +89,6 @@ namespace SpaClassLibrary
                 config.ShowDialog();
                 GetNameDatabase();
             }
-
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -139,7 +141,8 @@ namespace SpaClassLibrary
         //Tiến trình đăng nhập
         public void ProcessLogin()
         {
-            int result = Config.Check_User(txt_UserName.Text, EncodePass(txt_Password.Text));
+            //int result = Config.Check_User(txt_UserName.Text, EncodePass(txt_Password.Text));
+            int result = Config.Check_UserMySQL(txt_UserName.Text, EncodePass(txt_Password.Text));
             if (result == 1)
             {
                 XtraMessageBox.Show("Sai Tên Người Dùng hoặc Mật Khẩu !", "Thông Báo");
@@ -188,7 +191,8 @@ namespace SpaClassLibrary
 
         public void GetNameDatabase()
         {
-            SqlConnection temp = new SqlConnection(Properties.Settings.Default.DB_SPAConnect);
+            //SqlConnection temp = new SqlConnection(Properties.Settings.Default.DB_SPAConnect);
+            MySqlConnection temp = new MySqlConnection(Properties.Settings.Default.DbSpaDataContextConnectionString);
             nameDatabase = temp.Database.ToString();
             lbl_NameDatabase.Text = temp.Database.ToString();
         }

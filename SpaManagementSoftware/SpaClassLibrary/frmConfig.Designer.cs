@@ -99,7 +99,7 @@
             this.label1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(91, 26);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Server Name";
+            this.label1.Text = "Host";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbb_ServerName
@@ -155,7 +155,7 @@
             this.label2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.label2.Size = new System.Drawing.Size(91, 28);
             this.label2.TabIndex = 5;
-            this.label2.Text = "User Name";
+            this.label2.Text = "User ID";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3

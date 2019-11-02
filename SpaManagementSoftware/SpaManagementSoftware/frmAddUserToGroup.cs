@@ -14,89 +14,87 @@ namespace SpaManagementSoftware
 {
     public partial class frmAddUserToGroup : DevExpress.XtraEditors.XtraForm
     {
-        UserManager usr;
+        C_Role usr;
         public frmAddUserToGroup()
         {
             InitializeComponent();
-            usr = new UserManager();
+            usr = new C_Role();
         }
-
-        //private void uSER_GROUP_USERDKBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        //{
-        //    this.Validate();
-        //    this.uSER_GROUP_USERDKBindingSource.EndEdit();
-        //    this.tableAdapterManager.UpdateAll(this.dS_GRAND);
-
-        //}
 
         private void frmAddUserToGroup_Load(object sender, EventArgs e)
         {
-            try
-            {
-                Properties.Settings.Default["DB_SPAConnectionString"] = usr.GetStringConfig();
-                Properties.Settings.Default.Save();
-                // TODO: This line of code loads data into the 'dS_GRAND.USER_GROUP_USER' table. You can move, or remove it, as needed.
-                this.uSER_GROUP_USERTableAdapter.Fill(this.dS_GRAND.USER_GROUP_USER);
-                // TODO: This line of code loads data into the 'dS_GRAND.GROUP_USER' table. You can move, or remove it, as needed.
-                this.gROUP_USERTableAdapter.Fill(this.dS_GRAND.GROUP_USER);
-                // TODO: This line of code loads data into the 'dS_GRAND.ACCOUNT' table. You can move, or remove it, as needed.
-                this.aCCOUNTTableAdapter.Fill(this.dS_GRAND.ACCOUNT);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            dGV_UsGroupUs.DataSource = usr.LoadTableUsGroupUs();
+            dGV_User.DataSource = usr.LoadTableUser();
+            cbb_NameGroup.DataSource = usr.LoadNameGroupUser();
+            cbb_NameGroup.ValueMember = "ID";
+            cbb_NameGroup.DisplayMember = "NAME_GROUP_USER";
         }
 
-        public void LoadUserGroup()
+        public void LoadUserGroup(int pID)
         {
             try
             {
-                this.uSER_GROUP_USERDKTableAdapter.Fill(this.dS_GRAND.USER_GROUP_USERDK, Int32.Parse(gROUP_USERComboBox.SelectedValue.ToString()));
+                dGV_UsGroupUs.DataSource = usr.LoadTableUsGroupUs_ID(pID);
             }
-            catch
+            catch (Exception ex)
             {
-                return;
+                XtraMessageBox.Show(ex.ToString());
             }
         }
 
         private void btn_Grand_Click(object sender, EventArgs e)
         {
-            try
+            if (dGV_User.CurrentRow != null)
             {
-                int? t = this.uSER_GROUP_USERTableAdapter.Insert(Int32.Parse(aCCOUNTDataGridView.CurrentRow.Cells[0].Value.ToString()), Int32.Parse(gROUP_USERComboBox.SelectedValue.ToString()), 1);
-                if (t == 1)
+                string username = dGV_User.CurrentRow.Cells[0].Value.ToString();
+                string idgroup = cbb_NameGroup.SelectedValue.ToString();
+                bool flag = usr.InsertUserToGroup(username, idgroup);
+                if (flag)
                 {
-                    XtraMessageBox.Show("Thêm người dùng vào nhóm thành công !");
-                    LoadUserGroup();
+                    XtraMessageBox.Show("Thêm Thành Công !");
+                    LoadUserGroup(Convert.ToInt32(idgroup));
+                }
+                else
+                {
+                    XtraMessageBox.Show("Thêm Thất Bại !");
                 }
             }
-            catch
-            {
-                XtraMessageBox.Show("Thêm thất bại, hoặc tài khoản đã tồn tại trong nhóm");
-            }
-        }
-
-        private void gROUP_USERComboBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-            LoadUserGroup();
         }
 
         private void btn_DeleteGrand_Click(object sender, EventArgs e)
         {
+            if (dGV_UsGroupUs.CurrentRow != null)
+            {
+                string username = dGV_UsGroupUs.CurrentRow.Cells[0].Value.ToString();
+                string idgroup = dGV_UsGroupUs.CurrentRow.Cells[1].Value.ToString();
+                bool flag = usr.DeleteUserOutGroup(username, idgroup);
+                if (flag)
+                {
+                    XtraMessageBox.Show("Xóa thành công !");
+                    LoadUserGroup(Convert.ToInt32(idgroup));
+                }
+                else
+                {
+                    XtraMessageBox.Show("Xóa thất bại !");
+                }
+            }
+        }
+
+        private void cbb_NameGroup_SelectedValueChanged(object sender, EventArgs e)
+        {
             try
             {
-                int? t = this.uSER_GROUP_USERTableAdapter.Delete(Int32.Parse(uSER_GROUP_USERDKDataGridView.CurrentRow.Cells[1].Value.ToString()), Int32.Parse(uSER_GROUP_USERDKDataGridView.CurrentRow.Cells[0].Value.ToString()), Int32.Parse(uSER_GROUP_USERDKDataGridView.CurrentRow.Cells[2].Value.ToString()));
-                if (t == 1)
+
+                if (cbb_NameGroup.SelectedValue.ToString().Trim() != string.Empty)
                 {
-                    XtraMessageBox.Show("Xóa người dùng khỏi nhóm thành công !");
-                    LoadUserGroup();
+                    int id = Int32.Parse(cbb_NameGroup.SelectedValue.ToString());
+                    LoadUserGroup(id);
                 }
+
             }
             catch
             {
-
-                XtraMessageBox.Show("Xóa người dùng khỏi nhóm thất bại !");
+                return;
             }
         }
     }

@@ -14,29 +14,30 @@ namespace SpaManagementSoftware
 {
     public partial class frmRole : DevExpress.XtraEditors.XtraForm
     {
-        UserManager usr;
+        C_Role usr;
         public frmRole()
         {
             InitializeComponent();
-            usr = new UserManager();
+            usr = new C_Role();
         }
 
-        private void gROUP_USERBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.gROUP_USERBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dS_GRAND);
+        //private void gROUP_USERBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        //{
+        //    this.Validate();
+        //    this.gROUP_USERBindingSource.EndEdit();
+        //    this.tableAdapterManager.UpdateAll(this.dS_GRAND);
 
-        }
+        //}
 
         private void frmRole_Load(object sender, EventArgs e)
         {
-            Properties.Settings.Default["DB_SPAConnectionString"] = usr.GetStringConfig();
-            Properties.Settings.Default.Save();
-            // TODO: This line of code loads data into the 'dS_GRAND.GRANT_RIGHT' table. You can move, or remove it, as needed.
-            this.gRANT_RIGHTTableAdapter.Fill(this.dS_GRAND.GRANT_RIGHT);
-            // TODO: This line of code loads data into the 'dS_GRAND.GROUP_USER' table. You can move, or remove it, as needed.
-            this.gROUP_USERTableAdapter.Fill(this.dS_GRAND.GROUP_USER);
+            dGV_GroupUser.DataSource = usr.LoadNameGroupUser();
+            //Properties.Settings.Default["DB_SPAConnectionString"] = usr.GetStringConfig();
+            //Properties.Settings.Default.Save();
+            //// TODO: This line of code loads data into the 'dS_GRAND.GRANT_RIGHT' table. You can move, or remove it, as needed.
+            //this.gRANT_RIGHTTableAdapter.Fill(this.dS_GRAND.GRANT_RIGHT);
+            //// TODO: This line of code loads data into the 'dS_GRAND.GROUP_USER' table. You can move, or remove it, as needed.
+            //this.gROUP_USERTableAdapter.Fill(this.dS_GRAND.GROUP_USER);
 
         }
 
@@ -45,35 +46,29 @@ namespace SpaManagementSoftware
             try
             {
                 //ma nhom,ma man hinh, quyen 
-                for (int i = 0; i < gRANT_RIGHTDKDataGridView.Rows.Count; i++)
+                for (int i = 0; i < dGV_GrandRole.Rows.Count; i++)
                 {
-                    string t = gRANT_RIGHTDKDataGridView.Rows[i].Cells[2].Value.ToString();
-                    string idScreen = gRANT_RIGHTDKDataGridView.Rows[i].Cells[0].Value.ToString();
-                    if (t != string.Empty)
+                    string role = dGV_GrandRole.Rows[i].Cells[2].Value.ToString();//Quyền
+                    string idScreen = dGV_GrandRole.Rows[i].Cells[0].Value.ToString();//Mã màn hình
+                    string idGroupUser = dGV_GroupUser.CurrentRow.Cells[0].Value.ToString();
+                    //            //kiểm tra nếu quyền đã được cấp mà đã thu hồi thì Cập nhật lại quyền, ngược lại thì thêm vào.
+                    if (usr.CheckGrandRight(idGroupUser, idScreen) != 0)
                     {
-                        //kiểm tra nếu quyền đã được cấp mà đã thu hồi thì Cập nhật lại quyền, ngược lại thì thêm vào.
-                        //Lúc này chỉ có 2 TH : T/F
-                        if (this.gRANT_RIGHTTableAdapter.IsGrandRightScalarQuery(Int32.Parse(gROUP_USERDataGridView.CurrentRow.Cells[0].Value.ToString()), idScreen) > 0)
+                        if (role == string.Empty)
                         {
-                            //Cập nhật lại quyền
-                            if (this.gRANT_RIGHTTableAdapter.GetRoleScalarQuery(Int32.Parse(gROUP_USERDataGridView.CurrentRow.Cells[0].Value.ToString()), idScreen) != Boolean.Parse(t))
-                            {
-                                this.gRANT_RIGHTTableAdapter.Update(Boolean.Parse(t), Int32.Parse(gROUP_USERDataGridView.CurrentRow.Cells[0].Value.ToString()), idScreen, this.gRANT_RIGHTTableAdapter.GetRoleScalarQuery(Int32.Parse(gROUP_USERDataGridView.CurrentRow.Cells[0].Value.ToString()), idScreen));
-                            }
+                            role = "0";
+                            usr.UpdateRole(idGroupUser, idScreen, role);
                         }
                         else
                         {
-                            //Thêm quyền, xóa quyền
-                            if (t.Equals("True"))//Cấp quyền
-                            {
-                                this.gRANT_RIGHTTableAdapter.Insert(Int32.Parse(gROUP_USERDataGridView.CurrentRow.Cells[0].Value.ToString()), idScreen, true);
-                            }
-                            else
-                            {
-                                this.gRANT_RIGHTTableAdapter.Insert(Int32.Parse(gROUP_USERDataGridView.CurrentRow.Cells[0].Value.ToString()), idScreen, false);
-                            }
+                            usr.UpdateRole(idGroupUser, idScreen, role);
                         }
                     }
+                    else
+                    {
+                        usr.InsertRole(idGroupUser, idScreen, role);
+                    }
+                    //            //Lúc này chỉ có 2 TH : T/F
                 }
                 XtraMessageBox.Show("Đã Lưu !");
             }
@@ -83,25 +78,20 @@ namespace SpaManagementSoftware
             }
         }
 
-        private void gROUP_USERDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int temp = Int32.Parse(gROUP_USERDataGridView.CurrentRow.Cells[0].Value.ToString());
-                this.gRANT_RIGHTDKTableAdapter.Fill(this.dS_GRAND.GRANT_RIGHTDK, temp);
-            }
-            catch
-            {
-                return;
-            }
-        }
-
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             DialogResult r;
-            r = XtraMessageBox.Show("Bạn có chắc muốn thoát !","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
+            r = XtraMessageBox.Show("Bạn có chắc muốn thoát !", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (r == DialogResult.Yes)
                 this.Close();
+        }
+
+        private void dGV_GroupUser_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dGV_GroupUser.CurrentRow != null)
+            {
+                dGV_GrandRole.DataSource = usr.LoadTableScreenOfGroupUs(dGV_GroupUser.CurrentRow.Cells[0].Value.ToString());
+            }
         }
     }
 }

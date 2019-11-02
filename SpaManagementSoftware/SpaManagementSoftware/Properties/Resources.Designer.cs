@@ -103,6 +103,26 @@ namespace SpaManagementSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BOContact_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("BOContact_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BOCustomer_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("BOCustomer_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BOOrder_16x16 {
             get {
                 object obj = ResourceManager.GetObject("BOOrder_16x16", resourceCulture);
@@ -226,6 +246,16 @@ namespace SpaManagementSoftware.Properties {
         internal static System.Drawing.Bitmap gold {
             get {
                 object obj = ResourceManager.GetObject("gold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_supplier_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-supplier-100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -373,9 +403,29 @@ namespace SpaManagementSoftware.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Role_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Role_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Suggestion_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Suggestion_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Team_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Team_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

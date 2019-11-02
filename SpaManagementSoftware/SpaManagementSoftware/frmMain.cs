@@ -48,18 +48,29 @@ namespace SpaManagementSoftware
             frm.Show();
         }
 
+        public Boolean ToBooleanFromRole(string pRole)
+        {
+            if (pRole.Equals("1"))
+                return true;
+            else
+                return false;
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             stt_User.Text = Program.loginForm.NameAccount;//Tên đăng nhập
             stt_NameData.Text = Program.loginForm.NameDatabase;//Tên Database
 
-            List<string> groupUser = us.GetListIdGroupUser(stt_User.Text);
+            //List<string> groupUser = us.GetListIdGroupUser(stt_User.Text);
+            List<string> groupUser = us.GetListIdGroupUserMySQL(stt_User.Text);
             foreach (string item in groupUser)
             {
-                DataTable listRole = us.GetListScreen(item);//Danh sách màn hình ứng với từng nhóm ND
+                //DataTable listRole = us.GetListScreen(item);//Danh sách màn hình ứng với từng nhóm ND
+                DataTable listRole = us.GetListScreenMySQL(item);
                 foreach (DataRow screen in listRole.Rows)
                 {
-                    FindMenuRole(menuStrip1.Items, screen[1].ToString(), Convert.ToBoolean(screen[2].ToString()));
+                    //FindMenuRole(menuStrip1.Items, screen[1].ToString(), Convert.ToBoolean(screen[2].ToString()));
+                    FindMenuRole(menuStrip1.Items, screen[1].ToString(), ToBooleanFromRole(screen[2].ToString()));
                 }
             }
         }
@@ -168,6 +179,21 @@ namespace SpaManagementSoftware
             frmChangePass frm = new frmChangePass();
             frm.UserName = this.stt_User.Text;
             frm.ShowDialog();
+        }
+
+        private void danhMụcNhàCungCấpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CheckExist("frmSupplier"))
+            {
+                XtraMessageBox.Show("Bạn Đang Sử Dụng Chức Năng Này", "Thông báo");
+                //MessageBox.Show("Chức Năng Này Đang Sử Dụng, Không Cần Mở Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            else
+            {
+                frmSupplier frm = new frmSupplier();
+                openForm(frm);
+            }
         }
     }
 }

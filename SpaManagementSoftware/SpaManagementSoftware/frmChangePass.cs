@@ -23,7 +23,7 @@ namespace SpaManagementSoftware
             get { return userName; }
             set { userName = value; }
         }
-        
+
         public frmChangePass()
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace SpaManagementSoftware
         {
             //B1 Lấy pass từ SQL so sánh với pass từ txt_PassOld
             //B2 MD5 pass trước khi cập nhật
-            if(txt_PassOld.Text.Trim() == string.Empty)
+            if (txt_PassOld.Text.Trim() == string.Empty)
             {
                 XtraMessageBox.Show("Chưa nhập mật khẩu cũ !");
                 txt_PassOld.Focus();
@@ -53,10 +53,10 @@ namespace SpaManagementSoftware
                 txt_ConfirmPass.Focus();
                 return;
             }
-            if(string.Equals(usr.EncodePass(txt_PassNew.Text),usr.EncodePass(txt_ConfirmPass.Text)))
+            if (string.Equals(usr.EncodePass(txt_PassNew.Text), usr.EncodePass(txt_ConfirmPass.Text)))
             {
                 //Thực hiện cho cập nhật mật khẩu
-                if(acc.ChangePass(this.UserName,txt_PassNew.Text,txt_PassOld.Text))
+                if (acc.ChangePassMySQL(this.UserName, txt_PassNew.Text, txt_PassOld.Text))
                 {
                     XtraMessageBox.Show("Đổi mật khẩu thành công !");
                     this.Close();

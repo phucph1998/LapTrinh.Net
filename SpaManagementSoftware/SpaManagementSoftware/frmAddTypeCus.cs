@@ -34,13 +34,13 @@ namespace SpaManagementSoftware
                 txt_NameGroup.Focus();
                 return;
             }
-            if (pCus.IsGroupCustomer(txt_NameGroup.Text) == false)
+            if (pCus.IsGroupCustomerMySQL(txt_NameGroup.Text) == false)
             {
                 XtraMessageBox.Show("Đã tồn tại nhóm khách hàng này !");
             }
             else
             {
-                if (pCus.InsertGroupCustomer(txt_NameGroup.Text))
+                if (pCus.InsertGroupCustomerMySQL(txt_NameGroup.Text))
                 {
                     XtraMessageBox.Show("Thêm Nhóm Khách Hàng Thành Công !");
 
