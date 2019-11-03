@@ -39,6 +39,12 @@
             this.tV_GroupItem = new System.Windows.Forms.TreeView();
             this.dgV_Items = new System.Windows.Forms.DataGridView();
             this.dgV_DetailsCoupon = new System.Windows.Forms.DataGridView();
+            this.NAME_ITEM_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRICE_IN_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUM_MONEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btn_Up = new System.Windows.Forms.ToolStripButton();
             this.btn_Down = new System.Windows.Forms.ToolStripButton();
@@ -46,13 +52,14 @@
             this.btn_Import = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_Add = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_Price = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_Number = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbb_Supplier = new System.Windows.Forms.ComboBox();
             this.txt_Pay = new System.Windows.Forms.TextBox();
             this.txt_SumMoney = new System.Windows.Forms.TextBox();
             this.txt_SaleOff = new System.Windows.Forms.TextBox();
@@ -66,14 +73,16 @@
             this.cbb_Staff = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn_Search = new DevExpress.XtraEditors.SimpleButton();
-            this.txt_Supplier = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbb_Reson = new System.Windows.Forms.ComboBox();
             this.txt_ID = new System.Windows.Forms.TextBox();
             this.dtP_DayCreate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.NAME_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRICE_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgV_Items)).BeginInit();
@@ -172,27 +181,87 @@
             this.tV_GroupItem.Name = "tV_GroupItem";
             this.tV_GroupItem.Size = new System.Drawing.Size(466, 138);
             this.tV_GroupItem.TabIndex = 1;
+            this.tV_GroupItem.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tV_GroupItem_AfterSelect);
             // 
             // dgV_Items
             // 
+            this.dgV_Items.AllowUserToAddRows = false;
+            this.dgV_Items.AllowUserToDeleteRows = false;
+            this.dgV_Items.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgV_Items.BackgroundColor = System.Drawing.Color.White;
             this.dgV_Items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgV_Items.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NAME_ITEM,
+            this.NAME_UNIT,
+            this.PRICE_IN,
+            this.ID});
             this.dgV_Items.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgV_Items.Location = new System.Drawing.Point(3, 321);
             this.dgV_Items.Name = "dgV_Items";
+            this.dgV_Items.ReadOnly = true;
+            this.dgV_Items.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgV_Items.Size = new System.Drawing.Size(466, 119);
             this.dgV_Items.TabIndex = 2;
+            this.dgV_Items.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgV_Items_CellClick);
+            this.dgV_Items.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgV_Items_CellDoubleClick);
             // 
             // dgV_DetailsCoupon
             // 
+            this.dgV_DetailsCoupon.AllowUserToAddRows = false;
+            this.dgV_DetailsCoupon.AllowUserToDeleteRows = false;
+            this.dgV_DetailsCoupon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgV_DetailsCoupon.BackgroundColor = System.Drawing.Color.White;
             this.dgV_DetailsCoupon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgV_DetailsCoupon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NAME_ITEM_2,
+            this.NUMBER,
+            this.UNIT_2,
+            this.PRICE_IN_2,
+            this.SUM_MONEY,
+            this.ID_ITEM});
             this.dgV_DetailsCoupon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgV_DetailsCoupon.Location = new System.Drawing.Point(475, 177);
             this.dgV_DetailsCoupon.Name = "dgV_DetailsCoupon";
             this.tableLayoutPanel1.SetRowSpan(this.dgV_DetailsCoupon, 2);
+            this.dgV_DetailsCoupon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgV_DetailsCoupon.Size = new System.Drawing.Size(466, 263);
             this.dgV_DetailsCoupon.TabIndex = 3;
+            this.dgV_DetailsCoupon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgV_DetailsCoupon_CellClick);
+            this.dgV_DetailsCoupon.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgV_DetailsCoupon_CellValueChanged);
+            // 
+            // NAME_ITEM_2
+            // 
+            this.NAME_ITEM_2.HeaderText = "Mặt hàng";
+            this.NAME_ITEM_2.Name = "NAME_ITEM_2";
+            this.NAME_ITEM_2.ReadOnly = true;
+            // 
+            // NUMBER
+            // 
+            this.NUMBER.HeaderText = "SL";
+            this.NUMBER.Name = "NUMBER";
+            // 
+            // UNIT_2
+            // 
+            this.UNIT_2.HeaderText = "ĐVT";
+            this.UNIT_2.Name = "UNIT_2";
+            this.UNIT_2.ReadOnly = true;
+            // 
+            // PRICE_IN_2
+            // 
+            this.PRICE_IN_2.HeaderText = "Đơn giá";
+            this.PRICE_IN_2.Name = "PRICE_IN_2";
+            // 
+            // SUM_MONEY
+            // 
+            this.SUM_MONEY.HeaderText = "T.tiền";
+            this.SUM_MONEY.Name = "SUM_MONEY";
+            this.SUM_MONEY.ReadOnly = true;
+            // 
+            // ID_ITEM
+            // 
+            this.ID_ITEM.HeaderText = "ID_ITEM";
+            this.ID_ITEM.Name = "ID_ITEM";
+            this.ID_ITEM.Visible = false;
             // 
             // toolStrip1
             // 
@@ -214,6 +283,7 @@
             this.btn_Up.Name = "btn_Up";
             this.btn_Up.Size = new System.Drawing.Size(52, 22);
             this.btn_Up.Text = "Tăng";
+            this.btn_Up.Click += new System.EventHandler(this.btn_Up_Click);
             // 
             // btn_Down
             // 
@@ -222,6 +292,7 @@
             this.btn_Down.Name = "btn_Down";
             this.btn_Down.Size = new System.Drawing.Size(55, 22);
             this.btn_Down.Text = "Giảm";
+            this.btn_Down.Click += new System.EventHandler(this.btn_Down_Click);
             // 
             // btn_Remove
             // 
@@ -230,6 +301,7 @@
             this.btn_Remove.Name = "btn_Remove";
             this.btn_Remove.Size = new System.Drawing.Size(47, 22);
             this.btn_Remove.Text = "Xóa";
+            this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
             // 
             // btn_Import
             // 
@@ -242,9 +314,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.btn_Add);
-            this.panel2.Controls.Add(this.textBox3);
+            this.panel2.Controls.Add(this.txt_Price);
             this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txt_Number);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.label11);
@@ -262,14 +334,15 @@
             this.btn_Add.TabIndex = 17;
             this.btn_Add.Text = "Thêm";
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
-            // textBox3
+            // txt_Price
             // 
-            this.textBox3.Location = new System.Drawing.Point(326, 3);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(68, 21);
-            this.textBox3.TabIndex = 16;
-            this.textBox3.Text = "0";
+            this.txt_Price.Location = new System.Drawing.Point(326, 3);
+            this.txt_Price.Name = "txt_Price";
+            this.txt_Price.Size = new System.Drawing.Size(68, 21);
+            this.txt_Price.TabIndex = 16;
+            this.txt_Price.Text = "0";
             // 
             // label13
             // 
@@ -280,13 +353,13 @@
             this.label13.TabIndex = 15;
             this.label13.Text = "Đơn giá:";
             // 
-            // textBox2
+            // txt_Number
             // 
-            this.textBox2.Location = new System.Drawing.Point(220, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(43, 21);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.Text = "1.00";
+            this.txt_Number.Location = new System.Drawing.Point(220, 3);
+            this.txt_Number.Name = "txt_Number";
+            this.txt_Number.Size = new System.Drawing.Size(43, 21);
+            this.txt_Number.TabIndex = 14;
+            this.txt_Number.Text = "1";
             // 
             // label12
             // 
@@ -316,6 +389,7 @@
             // panel3
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel3, 2);
+            this.panel3.Controls.Add(this.cbb_Supplier);
             this.panel3.Controls.Add(this.txt_Pay);
             this.panel3.Controls.Add(this.txt_SumMoney);
             this.panel3.Controls.Add(this.txt_SaleOff);
@@ -329,8 +403,6 @@
             this.panel3.Controls.Add(this.cbb_Staff);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.btn_Search);
-            this.panel3.Controls.Add(this.txt_Supplier);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.cbb_Reson);
@@ -342,6 +414,15 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(938, 136);
             this.panel3.TabIndex = 6;
+            // 
+            // cbb_Supplier
+            // 
+            this.cbb_Supplier.BackColor = System.Drawing.Color.Yellow;
+            this.cbb_Supplier.FormattingEnabled = true;
+            this.cbb_Supplier.Location = new System.Drawing.Point(90, 37);
+            this.cbb_Supplier.Name = "cbb_Supplier";
+            this.cbb_Supplier.Size = new System.Drawing.Size(218, 21);
+            this.cbb_Supplier.TabIndex = 23;
             // 
             // txt_Pay
             // 
@@ -364,6 +445,7 @@
             this.txt_SumMoney.TabIndex = 21;
             this.txt_SumMoney.Text = "0";
             this.txt_SumMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_SumMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_SumMoney_KeyPress);
             // 
             // txt_SaleOff
             // 
@@ -372,8 +454,11 @@
             this.txt_SaleOff.Name = "txt_SaleOff";
             this.txt_SaleOff.Size = new System.Drawing.Size(163, 22);
             this.txt_SaleOff.TabIndex = 20;
-            this.txt_SaleOff.Text = "0.00";
+            this.txt_SaleOff.Text = "0";
             this.txt_SaleOff.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_SaleOff.TextChanged += new System.EventHandler(this.txt_SaleOff_TextChanged);
+            this.txt_SaleOff.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_SaleOff_KeyPress);
+            this.txt_SaleOff.Leave += new System.EventHandler(this.txt_SaleOff_Leave);
             // 
             // txt_MoneyItem
             // 
@@ -385,6 +470,7 @@
             this.txt_MoneyItem.TabIndex = 19;
             this.txt_MoneyItem.Text = "0";
             this.txt_MoneyItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_MoneyItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MoneyItem_KeyPress);
             // 
             // label7
             // 
@@ -469,22 +555,6 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Lý do:";
             // 
-            // btn_Search
-            // 
-            this.btn_Search.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.Lookup_Reference_16x16;
-            this.btn_Search.Location = new System.Drawing.Point(281, 36);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(27, 23);
-            this.btn_Search.TabIndex = 9;
-            // 
-            // txt_Supplier
-            // 
-            this.txt_Supplier.BackColor = System.Drawing.Color.Yellow;
-            this.txt_Supplier.Location = new System.Drawing.Point(90, 37);
-            this.txt_Supplier.Name = "txt_Supplier";
-            this.txt_Supplier.Size = new System.Drawing.Size(185, 21);
-            this.txt_Supplier.TabIndex = 8;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -537,6 +607,35 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ngày:";
             // 
+            // NAME_ITEM
+            // 
+            this.NAME_ITEM.DataPropertyName = "NAME_ITEM";
+            this.NAME_ITEM.HeaderText = "Mặt hàng";
+            this.NAME_ITEM.Name = "NAME_ITEM";
+            this.NAME_ITEM.ReadOnly = true;
+            // 
+            // NAME_UNIT
+            // 
+            this.NAME_UNIT.DataPropertyName = "NAME_UNIT";
+            this.NAME_UNIT.HeaderText = "Đơn vị tính";
+            this.NAME_UNIT.Name = "NAME_UNIT";
+            this.NAME_UNIT.ReadOnly = true;
+            // 
+            // PRICE_IN
+            // 
+            this.PRICE_IN.DataPropertyName = "PRICE_IN";
+            this.PRICE_IN.HeaderText = "Đơn giá";
+            this.PRICE_IN.Name = "PRICE_IN";
+            this.PRICE_IN.ReadOnly = true;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
             // frmAddEnterCoupon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -549,6 +648,7 @@
             this.Name = "frmAddEnterCoupon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PHIẾU NHẬP KHO";
+            this.Load += new System.EventHandler(this.frmAddEnterCoupon_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -581,8 +681,6 @@
         private System.Windows.Forms.DateTimePicker dtP_DayCreate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.SimpleButton btn_Search;
-        private System.Windows.Forms.TextBox txt_Supplier;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -599,9 +697,9 @@
         private System.Windows.Forms.TextBox txt_Pay;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_Number;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txt_Price;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.ToolStripButton btn_Up;
@@ -612,5 +710,16 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private System.Windows.Forms.ComboBox cbb_Supplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_ITEM_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NUMBER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRICE_IN_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SUM_MONEY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_ITEM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_ITEM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_UNIT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRICE_IN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
     }
 }

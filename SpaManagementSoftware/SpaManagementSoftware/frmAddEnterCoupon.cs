@@ -8,19 +8,255 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using SpaClassLibrary;
 
 namespace SpaManagementSoftware
 {
     public partial class frmAddEnterCoupon : DevExpress.XtraEditors.XtraForm
     {
+        C_Items _item;
+        C_Staff _staff;
+        C_Supplier _sup;
         public frmAddEnterCoupon()
         {
             InitializeComponent();
+            _item = new C_Items();
+            _staff = new C_Staff();
+            _sup = new C_Supplier();
         }
 
         public void LoadTreeGroupItem()
         {
+            tV_GroupItem.Nodes.Clear();
+            tV_GroupItem.Nodes.Add("Tất cả");
+            tV_GroupItem.Nodes[0].Tag = "1";
+            //tV_GroupItem.Nodes[0].ContextMenuStrip = cMS_GroupCus;
+            DataTable typeCus = new DataTable();
+            typeCus = _item.GetTableTypeItemMySQL();
+            for (int i = 0; i < typeCus.Rows.Count; i++)
+            {
+                tV_GroupItem.Nodes[0].Nodes.Add(typeCus.Rows[i][0].ToString());
+                tV_GroupItem.Nodes[0].Nodes[i].Tag = "2";
+                //tV_Member.Nodes[0].Nodes[i].ContextMenuStrip = cMS_GroupCus;
+            }
+            tV_GroupItem.Nodes[0].ExpandAll();
+        }
 
+        public void LoadStaff()
+        {
+            cbb_Staff.DataSource = _staff.LoadListStaff();
+            cbb_Staff.DisplayMember = "NAME";
+            cbb_Staff.ValueMember = "ID";
+        }
+
+        public void LoadSupplier()
+        {
+            cbb_Supplier.DataSource = _sup.GetTableTypeSupplierMySQL();
+            cbb_Supplier.DisplayMember = "NAME_GROUP";
+            cbb_Supplier.ValueMember = "NAME_GROUP";
+        }
+        private void frmAddEnterCoupon_Load(object sender, EventArgs e)
+        {
+            LoadTreeGroupItem();
+            LoadStaff();
+            LoadSupplier();
+            ColorData();
+        }
+
+        private void tV_GroupItem_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode selectNode = this.tV_GroupItem.SelectedNode;
+            DataTable profileCus = new DataTable();
+            if (selectNode.Tag == "1")
+            {
+                dgV_Items.DataSource = _item.GetTableItemsMySQL();
+            }
+            else
+            {
+                if (selectNode.Tag == "2")
+                {
+                    dgV_Items.DataSource = _item.GetListItem_ForGroup(selectNode.Text);
+                }
+            }
+        }
+
+        void AddDataToDGView(int num)
+        {
+            if (dgV_Items.CurrentRow != null)
+            {
+                txt_Price.Text = dgV_Items.CurrentRow.Cells["PRICE_IN"].Value.ToString();
+                string id = dgV_Items.CurrentRow.Cells["ID"].Value.ToString();
+                string name = dgV_Items.CurrentRow.Cells["NAME_ITEM"].Value.ToString();
+                string number = num.ToString();
+                string unit = dgV_Items.CurrentRow.Cells["NAME_UNIT"].Value.ToString();
+                string price = txt_Price.Text;
+                string money = (Convert.ToInt32(txt_Number.Text) * Convert.ToDouble(txt_Price.Text)).ToString();
+                if (dgV_DetailsCoupon.Rows.Count == 0)
+                {
+                    string[] row = new string[] { name, number, unit, price, money, id };
+                    dgV_DetailsCoupon.Rows.Add(row);
+                    SumMoneyItem();
+                    ColorData();
+                }
+                else
+                {
+                    int r = dgV_DetailsCoupon.Rows.Count;
+                    for (int i = 0; i < r; i++)
+                    {
+                        if (id.Equals(dgV_DetailsCoupon.Rows[i].Cells["ID_ITEM"].Value.ToString()))
+                        {
+                            dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value = Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells[1].Value.ToString()) + num;
+                            dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value = Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value.ToString()) * Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["PRICE_IN_2"].Value.ToString());
+                            SumMoneyItem();
+                            ColorData();
+                            return;
+                        }
+                    }
+                    string[] row = new string[] { name, number, unit, price, money, id };
+                    dgV_DetailsCoupon.Rows.Add(row);
+                    SumMoneyItem();
+                    ColorData();
+                }
+            }
+        }
+
+        private void dgV_Items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AddDataToDGView(1);
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            AddDataToDGView(Int32.Parse(txt_Number.Text));
+        }
+
+        private void dgV_Items_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgV_Items.CurrentRow != null)
+            {
+                txt_Price.Text = dgV_Items.CurrentRow.Cells["PRICE_IN"].Value.ToString();
+            }
+        }
+
+        void SumMoneyItem()
+        {
+            int sum = 0;
+            for (int i = 0; i < dgV_DetailsCoupon.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value.ToString());
+            }
+            txt_MoneyItem.Text = sum.ToString();
+            txt_SumMoney.Text = sum.ToString();
+        }
+
+        private void txt_SaleOff_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_SaleOff.Text.Trim() != string.Empty)
+            {
+                Double sumMoney = Double.Parse(txt_MoneyItem.Text);
+                Double sale = Double.Parse(txt_SaleOff.Text);
+                txt_SumMoney.Text = (sumMoney - sale).ToString();
+            }
+        }
+
+        private void txt_SaleOff_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Xác thực rằng phím vừa nhấn không phải CTRL hoặc không phải dạng số
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // Nếu bạn muốn, bạn có thể cho phép nhập số thực với dấu chấm
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_SaleOff_Leave(object sender, EventArgs e)
+        {
+            if (txt_SaleOff.Text.Trim() != string.Empty)
+            {
+                Double sumMoney = Double.Parse(txt_MoneyItem.Text);
+                Double sale = Double.Parse(txt_SaleOff.Text);
+                txt_SumMoney.Text = (sumMoney - sale).ToString();
+            }
+            else
+            {
+                txt_SaleOff.Text = "0";
+                txt_SumMoney.Text = txt_MoneyItem.Text;
+            }
+        }
+
+        private void txt_MoneyItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetterOrDigit(e.KeyChar) || !char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_SumMoney_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsLetterOrDigit(e.KeyChar) || !char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        void ColorData()
+        {
+            dgV_DetailsCoupon.Columns[0].DefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            dgV_DetailsCoupon.Columns[2].DefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            dgV_DetailsCoupon.Columns[4].DefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            dgV_DetailsCoupon.Columns[1].DefaultCellStyle.BackColor = System.Drawing.Color.Gold;
+            dgV_DetailsCoupon.Columns[3].DefaultCellStyle.BackColor = System.Drawing.Color.Gold;
+        }
+
+        private void dgV_DetailsCoupon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgV_DetailsCoupon_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgV_DetailsCoupon.CurrentRow != null)
+                {
+                    dgV_DetailsCoupon.CurrentRow.Cells["SUM_MONEY"].Value = Convert.ToInt32(dgV_DetailsCoupon.CurrentRow.Cells["NUMBER"].Value.ToString()) * Convert.ToInt32(dgV_DetailsCoupon.CurrentRow.Cells["PRICE_IN_2"].Value.ToString());
+                    SumMoneyItem();
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void btn_Up_Click(object sender, EventArgs e)
+        {
+            if (dgV_DetailsCoupon.CurrentRow != null)
+            {
+                dgV_DetailsCoupon.CurrentRow.Cells["NUMBER"].Value = Convert.ToInt32(dgV_DetailsCoupon.CurrentRow.Cells["NUMBER"].Value) + 1;
+            }
+        }
+
+        private void btn_Down_Click(object sender, EventArgs e)
+        {
+            if (dgV_DetailsCoupon.CurrentRow != null)
+            {
+                dgV_DetailsCoupon.CurrentRow.Cells["NUMBER"].Value = Convert.ToInt32(dgV_DetailsCoupon.CurrentRow.Cells["NUMBER"].Value) - 1;
+            }
+        }
+
+        private void btn_Remove_Click(object sender, EventArgs e)
+        {
+            if (dgV_DetailsCoupon.CurrentRow != null)
+            {
+                dgV_DetailsCoupon.Rows.RemoveAt(dgV_DetailsCoupon.CurrentRow.Index);
+            }
         }
     }
 }

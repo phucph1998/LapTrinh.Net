@@ -57,6 +57,7 @@
     <Compile Include="C_Account.cs" />
     <Compile Include="C_Items.cs" />
     <Compile Include="C_Role.cs" />
+    <Compile Include="C_Staff.cs" />
     <Compile Include="C_Supplier.cs" />
     <Compile Include="DC_SPA.designer.cs">
       <AutoGen>True</AutoGen>

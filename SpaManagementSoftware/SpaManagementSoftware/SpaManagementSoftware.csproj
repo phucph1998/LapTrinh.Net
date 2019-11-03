@@ -76,15 +76,6 @@
   <ItemGroup>
     <Compile Include="CreateControl.cs" />
     <Compile Include="C_Customer.cs" />
-    <Compile Include="DS_GRAND.cs">
-      <DependentUpon>DS_GRAND.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="DS_GRAND.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DS_GRAND.xsd</DependentUpon>
-    </Compile>
     <Compile Include="frmAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,17 +212,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="DS_GRAND.xsc">
-      <DependentUpon>DS_GRAND.xsd</DependentUpon>
-    </None>
-    <None Include="DS_GRAND.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_GRAND.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DS_GRAND.xss">
-      <DependentUpon>DS_GRAND.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
