@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="CustomerManager.cs" />
     <Compile Include="C_Account.cs" />
+    <Compile Include="C_Enter.cs" />
     <Compile Include="C_Items.cs" />
     <Compile Include="C_Role.cs" />
     <Compile Include="C_Staff.cs" />

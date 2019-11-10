@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SpaClassLibrary;
+using System.Data;
 
 namespace SpaManagementSoftware
 {
@@ -17,12 +18,21 @@ namespace SpaManagementSoftware
         C_Items _item;
         C_Staff _staff;
         C_Supplier _sup;
+        C_Enter _enter;
+        public String _idEnter;
+
+        public String IdEnter
+        {
+            get { return _idEnter; }
+            set { _idEnter = value; }
+        }
         public frmAddEnterCoupon()
         {
             InitializeComponent();
             _item = new C_Items();
             _staff = new C_Staff();
             _sup = new C_Supplier();
+            _enter = new C_Enter();
         }
 
         public void LoadTreeGroupItem()
@@ -55,11 +65,47 @@ namespace SpaManagementSoftware
             cbb_Supplier.DisplayMember = "NAME_GROUP";
             cbb_Supplier.ValueMember = "NAME_GROUP";
         }
+
+        public void LoadEnterCoupon()
+        {
+            txt_ID.Text = IdEnter;
+            //Load du lieu phieu nhap,chi tiet phieu nhap
+            DataTable temp = _enter.LoadEnterCoupon_Id(IdEnter);
+            for (int i = 0; i < temp.Columns.Count; i++)
+            {
+                dtP_DayCreate.Text = temp.Rows[0][0].ToString();
+                cbb_Supplier.Text = temp.Rows[0][1].ToString();
+                cbb_Reson.Text = temp.Rows[0][2].ToString();
+                cbb_Staff.Text = temp.Rows[0][3].ToString();
+            }
+            DataTable list = _item.GetListDetail_IdEnter(IdEnter);
+            for (int i = 0; i < list.Rows.Count; i++)
+            {
+
+                string id = list.Rows[i][0].ToString();
+                string name = list.Rows[i][1].ToString();
+                string number = list.Rows[i][3].ToString();
+                string unit = list.Rows[i][2].ToString();
+                string price = list.Rows[i][4].ToString();
+                string money = list.Rows[i][5].ToString();
+                string[] row = new string[] { name, number, unit, price, money, id };
+                dgV_DetailsCoupon.Rows.Add(row);
+            }
+            SumMoneyItem();
+        }
         private void frmAddEnterCoupon_Load(object sender, EventArgs e)
         {
             LoadTreeGroupItem();
             LoadStaff();
             LoadSupplier();
+            if (IdEnter != null)
+            {
+                LoadEnterCoupon();
+            }
+            else
+            {
+                txt_ID.Text = (_enter.GetIdMaxEnterCoupon() + 1).ToString();
+            }
             ColorData();
         }
 
@@ -145,8 +191,8 @@ namespace SpaManagementSoftware
             {
                 sum += Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value.ToString());
             }
-            txt_MoneyItem.Text = sum.ToString();
-            txt_SumMoney.Text = sum.ToString();
+            txt_MoneyItem.Text = String.Format("{0:#,##0.##}", sum);
+            txt_SumMoney.Text = String.Format("{0:#,##0.##}", sum);
         }
 
         private void txt_SaleOff_TextChanged(object sender, EventArgs e)
@@ -155,7 +201,7 @@ namespace SpaManagementSoftware
             {
                 Double sumMoney = Double.Parse(txt_MoneyItem.Text);
                 Double sale = Double.Parse(txt_SaleOff.Text);
-                txt_SumMoney.Text = (sumMoney - sale).ToString();
+                txt_SumMoney.Text = String.Format("{0:#,##0.##}", (sumMoney - sale));
             }
         }
 
@@ -180,12 +226,12 @@ namespace SpaManagementSoftware
             {
                 Double sumMoney = Double.Parse(txt_MoneyItem.Text);
                 Double sale = Double.Parse(txt_SaleOff.Text);
-                txt_SumMoney.Text = (sumMoney - sale).ToString();
+                txt_SumMoney.Text = String.Format("{0:#,##0.##}", (sumMoney - sale));
             }
             else
             {
                 txt_SaleOff.Text = "0";
-                txt_SumMoney.Text = txt_MoneyItem.Text;
+                txt_SumMoney.Text = String.Format("{0:#,##0.##}", txt_MoneyItem.Text);
             }
         }
 
@@ -256,6 +302,22 @@ namespace SpaManagementSoftware
             if (dgV_DetailsCoupon.CurrentRow != null)
             {
                 dgV_DetailsCoupon.Rows.RemoveAt(dgV_DetailsCoupon.CurrentRow.Index);
+            }
+        }
+
+        private void btnSaveExit_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(cbb_Supplier.Text))
+            {
+                XtraMessageBox.Show("Chưa chọn nhà cung cấp!");
+                cbb_Supplier.Focus();
+                return;
+            }
+            if (String.IsNullOrEmpty(cbb_Staff.Text))
+            {
+                XtraMessageBox.Show("Chưa chọn nhân viên !");
+                cbb_Staff.Focus();
+                return;
             }
         }
     }

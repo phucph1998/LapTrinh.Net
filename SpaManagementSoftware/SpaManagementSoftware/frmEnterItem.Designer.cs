@@ -42,7 +42,15 @@
             this.dtP_Start = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dgV_EnterCoupon = new System.Windows.Forms.DataGridView();
+            this.CREATE_DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RESON_ENTER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgV_DetailCoupon = new System.Windows.Forms.DataGridView();
+            this.NAME_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRICE_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INTO_MONEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -189,25 +197,100 @@
             // 
             this.dgV_EnterCoupon.AllowUserToAddRows = false;
             this.dgV_EnterCoupon.AllowUserToDeleteRows = false;
+            this.dgV_EnterCoupon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgV_EnterCoupon.BackgroundColor = System.Drawing.Color.White;
             this.dgV_EnterCoupon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgV_EnterCoupon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CREATE_DATE,
+            this.ID,
+            this.NAME,
+            this.RESON_ENTER});
             this.dgV_EnterCoupon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgV_EnterCoupon.Location = new System.Drawing.Point(3, 110);
             this.dgV_EnterCoupon.Name = "dgV_EnterCoupon";
             this.dgV_EnterCoupon.ReadOnly = true;
+            this.dgV_EnterCoupon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgV_EnterCoupon.Size = new System.Drawing.Size(438, 376);
             this.dgV_EnterCoupon.TabIndex = 2;
+            this.dgV_EnterCoupon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgV_EnterCoupon_CellClick);
+            this.dgV_EnterCoupon.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgV_EnterCoupon_CellDoubleClick);
+            // 
+            // CREATE_DATE
+            // 
+            this.CREATE_DATE.DataPropertyName = "CREATE_DATE";
+            this.CREATE_DATE.HeaderText = "Ngày tạo";
+            this.CREATE_DATE.Name = "CREATE_DATE";
+            this.CREATE_DATE.ReadOnly = true;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "Số Phiếu";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // NAME
+            // 
+            this.NAME.DataPropertyName = "NAME";
+            this.NAME.HeaderText = "Nhân Viên";
+            this.NAME.Name = "NAME";
+            this.NAME.ReadOnly = true;
+            // 
+            // RESON_ENTER
+            // 
+            this.RESON_ENTER.DataPropertyName = "RESON_ENTER";
+            this.RESON_ENTER.HeaderText = "Lý do nhập";
+            this.RESON_ENTER.Name = "RESON_ENTER";
+            this.RESON_ENTER.ReadOnly = true;
             // 
             // dgV_DetailCoupon
             // 
+            this.dgV_DetailCoupon.AllowUserToAddRows = false;
+            this.dgV_DetailCoupon.AllowUserToDeleteRows = false;
+            this.dgV_DetailCoupon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgV_DetailCoupon.BackgroundColor = System.Drawing.Color.White;
             this.dgV_DetailCoupon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgV_DetailCoupon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NAME_ITEM,
+            this.NUMBER,
+            this.PRICE_IN,
+            this.INTO_MONEY});
             this.dgV_DetailCoupon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgV_DetailCoupon.Location = new System.Drawing.Point(447, 29);
             this.dgV_DetailCoupon.Name = "dgV_DetailCoupon";
+            this.dgV_DetailCoupon.ReadOnly = true;
             this.tableLayoutPanel1.SetRowSpan(this.dgV_DetailCoupon, 2);
+            this.dgV_DetailCoupon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgV_DetailCoupon.Size = new System.Drawing.Size(439, 457);
             this.dgV_DetailCoupon.TabIndex = 3;
+            // 
+            // NAME_ITEM
+            // 
+            this.NAME_ITEM.DataPropertyName = "NAME_ITEM";
+            this.NAME_ITEM.HeaderText = "Mặt hàng";
+            this.NAME_ITEM.Name = "NAME_ITEM";
+            this.NAME_ITEM.ReadOnly = true;
+            // 
+            // NUMBER
+            // 
+            this.NUMBER.DataPropertyName = "NUMBER";
+            this.NUMBER.HeaderText = "Số lượng";
+            this.NUMBER.Name = "NUMBER";
+            this.NUMBER.ReadOnly = true;
+            // 
+            // PRICE_IN
+            // 
+            this.PRICE_IN.DataPropertyName = "PRICE_IN";
+            this.PRICE_IN.HeaderText = "Đơn giá";
+            this.PRICE_IN.Name = "PRICE_IN";
+            this.PRICE_IN.ReadOnly = true;
+            // 
+            // INTO_MONEY
+            // 
+            this.INTO_MONEY.DataPropertyName = "INTO_MONEY";
+            this.INTO_MONEY.HeaderText = "Thành tiền";
+            this.INTO_MONEY.Name = "INTO_MONEY";
+            this.INTO_MONEY.ReadOnly = true;
             // 
             // panel2
             // 
@@ -283,5 +366,13 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CREATE_DATE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RESON_ENTER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_ITEM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NUMBER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRICE_IN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INTO_MONEY;
     }
 }

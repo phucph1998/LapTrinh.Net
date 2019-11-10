@@ -46,5 +46,23 @@ namespace SpaClassLibrary
             da.Fill(dt);
             return dt;
         }
+        //Load items theo so phieu
+        public DataTable GetListItem_IdEnter(string pIdEnter)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT i.NAME AS NAME_ITEM,dt.NUMBER,i.PRICE_IN,dt.INTO_MONEY FROM detail_enter_coupon dt,item i WHERE dt.ID_ENTER_COUPON = '"+pIdEnter+"' AND dt.ID_ITEM=i.ID";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql,Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
+        //Load items theo so phieu co don vi tinh
+        public DataTable GetListDetail_IdEnter(string pIdEnter)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT dt.ID_ITEM,i.NAME AS NAME_ITEM,u.NAME AS UNIT,dt.NUMBER,i.PRICE_IN,dt.INTO_MONEY FROM detail_enter_coupon dt,item i,unit_item u WHERE dt.ID_ENTER_COUPON = '"+pIdEnter+"' AND dt.ID_ITEM=i.ID AND u.ID=i.ID_UNIT";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
     }
 }

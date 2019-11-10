@@ -32,7 +32,7 @@ namespace SpaManagementSoftware
             //<add name="DbSpaDataContextConnectionString" connectionString="User Id=root;Password=123;Host=127.0.0.1;Database=db_spa;Persist Security Info=True;" />
             InitializeComponent();
             cus = new CustomerManager();
-            usr = new UserManager();            
+            usr = new UserManager();
         }
 
         //Kiểm tra radioBtn Nam,Nu
@@ -123,7 +123,7 @@ namespace SpaManagementSoftware
         }
         //Load Combobox Loai KH
         public void LoadTypeCus()
-        {           
+        {
             DataTable tb = cus.LoadTypeCusMySQL();
             for (int i = 0; i < tb.Rows.Count; i++)
             {
@@ -204,17 +204,24 @@ namespace SpaManagementSoftware
         {
             openDialog.ShowDialog();
             string file = openDialog.FileName;
-            if(string.IsNullOrEmpty(file))
+            if (string.IsNullOrEmpty(file))
             {
                 return;
             }
-            Image myImage = Image.FromFile(file);
-            ptb_ImageCus.Image = myImage;
+            try
+            {
+                Image myImage = Image.FromFile(file);
+                ptb_ImageCus.Image = myImage;
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private void btn_SaveImg_Click(object sender, EventArgs e)
         {
-            if(cus.SaveImgCus(txt_IDProfile.Text,ptb_ImageCus))
+            if (cus.SaveImgCus(txt_IDProfile.Text, ptb_ImageCus))
             {
                 XtraMessageBox.Show("Lưu ảnh thành công");
             }
