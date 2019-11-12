@@ -13,6 +13,14 @@ namespace SpaClassLibrary
 {
     public class C_Supplier
     {
+        //Load id,name nha cung cap
+        public DataTable LoadId_NameSuplier()
+        {
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT ID,NAME FROM supplier", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
         //Lay ma nhom nha cung cap
         public String GetIdGroupSupMySQL(string pNameGroup)
         {

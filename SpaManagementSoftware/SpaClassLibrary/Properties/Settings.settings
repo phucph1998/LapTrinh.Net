@@ -33,9 +33,9 @@
     <Setting Name="DbSpaDataContextConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;User Id=root;Password=123;Host=127.0.0.1;Database=db_spa;Persist Security Info=True;Character Set=UTF8&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;User Id=root;Host=127.0.0.1;Database=db_spa;Persist Security Info=True;Character Set=utf8&lt;/ConnectionString&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">User Id=root;Password=123;Host=127.0.0.1;Database=db_spa;Persist Security Info=True;Character Set=UTF8</Value>
+      <Value Profile="(Default)">User Id=root;Host=127.0.0.1;Database=db_spa;Persist Security Info=True;Character Set=utf8</Value>
     </Setting>
   </Settings>
 </SettingsFile>

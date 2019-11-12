@@ -330,6 +330,7 @@
             this.ClientSize = new System.Drawing.Size(889, 489);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmEnterItem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NHẬP KHO";
             this.Load += new System.EventHandler(this.frmEnterItem_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -20,12 +20,27 @@ namespace SpaManagementSoftware
         C_Supplier _sup;
         C_Enter _enter;
         public String _idEnter;
+        public String username;
 
         public String IdEnter
         {
             get { return _idEnter; }
             set { _idEnter = value; }
         }
+
+        public string Username
+        {
+            get
+            {
+                return username;
+            }
+
+            set
+            {
+                username = value;
+            }
+        }
+
         public frmAddEnterCoupon()
         {
             InitializeComponent();
@@ -61,9 +76,9 @@ namespace SpaManagementSoftware
 
         public void LoadSupplier()
         {
-            cbb_Supplier.DataSource = _sup.GetTableTypeSupplierMySQL();
-            cbb_Supplier.DisplayMember = "NAME_GROUP";
-            cbb_Supplier.ValueMember = "NAME_GROUP";
+            cbb_Supplier.DataSource = _sup.LoadId_NameSuplier();
+            cbb_Supplier.DisplayMember = "NAME";
+            cbb_Supplier.ValueMember = "ID";
         }
 
         public void LoadEnterCoupon()
@@ -304,7 +319,14 @@ namespace SpaManagementSoftware
                 dgV_DetailsCoupon.Rows.RemoveAt(dgV_DetailsCoupon.CurrentRow.Index);
             }
         }
-
+        public string CheckReson()
+        {
+            if (cbb_Reson.Text.Trim() != string.Empty)
+            {
+                return cbb_Reson.Text;
+            }
+            return "Nhập hàng";
+        }
         private void btnSaveExit_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cbb_Supplier.Text))
@@ -317,6 +339,73 @@ namespace SpaManagementSoftware
             {
                 XtraMessageBox.Show("Chưa chọn nhân viên !");
                 cbb_Staff.Focus();
+                return;
+            }
+            if (dgV_DetailsCoupon.Rows.Count != 0)
+            {
+                //Them phieu nhap
+                Username = "admin";
+                int addEnter = _enter.InsertEnterCoupon(txt_ID.Text, cbb_Supplier.SelectedValue.ToString(), cbb_Staff.SelectedValue.ToString(), Username, dtP_DayCreate.Text, CheckReson(), txt_SumMoney.Text);
+                if (addEnter == 2)
+                {
+                    //Them chi tiet phieu nhap
+                    int check = 0;
+                    for (int i = 0; i < dgV_DetailsCoupon.Rows.Count; i++)
+                    {
+                        string iditem = dgV_DetailsCoupon.Rows[i].Cells["ID_ITEM"].Value.ToString();
+                        string num = dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value.ToString();
+                        string price = dgV_DetailsCoupon.Rows[i].Cells["PRICE_IN_2"].Value.ToString();
+                        string money = dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value.ToString();
+                        int adddtitem = _item.InsertOneDtailItem(txt_ID.Text, iditem, num, price, money);
+                        if (adddtitem == 1)
+                        {
+                            check++;
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Có lỗi trong lúc tạo phiếu nhập !");
+                            return;
+                        }
+                    }
+                    if (check == dgV_DetailsCoupon.Rows.Count)//Đồng nghĩa lúc nào chi tiet phieu nhap da them thanh cong
+                    {
+                        //Cap nhat so luong kho
+                        int count = 0;
+                        for (int i = 0; i < dgV_DetailsCoupon.Rows.Count; i++)
+                        {
+                            string iditem = dgV_DetailsCoupon.Rows[i].Cells["ID_ITEM"].Value.ToString();
+                            string num = dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value.ToString();
+                            int update = _item.UpdateNumberItemTerminal(iditem, num);
+                            if (update == 1)
+                            {
+                                count++;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        if (count == dgV_DetailsCoupon.Rows.Count)
+                        {
+                            XtraMessageBox.Show("Tạo phiếu nhập và lưu thành công !");
+                        }
+                    }
+                }
+                else if (addEnter == 1)
+                {
+                    XtraMessageBox.Show("Đã tồn tại phiếu nhập này !");
+                    //Thì cập nhật lại phiếu nhập
+                    return;
+                }
+                else
+                {
+                    XtraMessageBox.Show("Thêm thất bại !");
+                    return;
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Chưa có mặt hàng nào cần nhập ! Hãy thêm mặt hàng nhập");
                 return;
             }
         }
