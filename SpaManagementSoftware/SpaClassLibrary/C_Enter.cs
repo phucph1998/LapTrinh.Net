@@ -12,7 +12,17 @@ namespace SpaClassLibrary
 {
     public class C_Enter
     {
+
         DbSpaDataContext db = new DbSpaDataContext();
+        //Loc danh sach phieu nhap theo ngay thang
+        public DataTable FillterEnterCoupon(string pDayStart, string pDayEnd,string pName)
+        {
+            DataTable dt = new DataTable();
+            string str = "SELECT e.CREATE_DATE,e.ID,s.NAME,e.RESON_ENTER FROM enter_coupon e,staff s,supplier sp WHERE e.ID_STAFF = s.ID AND e.CREATE_DATE >= '"+pDayStart+ "' AND e.CREATE_DATE<= '" + pDayEnd + "' and sp.ID=e.ID_SUPPLIER AND sp.NAME LIKE '%"+ pName+ "%' and e.`STATUS`=1";
+            MySqlDataAdapter da = new MySqlDataAdapter(str, Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
         //Lay ID max cua phieu nhap
         public int GetIdMaxEnterCoupon()
         {
@@ -25,7 +35,7 @@ namespace SpaClassLibrary
         public DataTable LoadListEnter()
         {
             DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT e.CREATE_DATE,e.ID,s.NAME,e.RESON_ENTER FROM enter_coupon e,staff s WHERE e.ID_STAFF = s.ID", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT e.CREATE_DATE,e.ID,s.NAME,e.RESON_ENTER FROM enter_coupon e,staff s WHERE e.ID_STAFF = s.ID and e.`STATUS`=1", Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
         }
@@ -38,7 +48,16 @@ namespace SpaClassLibrary
             da.Fill(dt);
             return dt;
         }
-
+        //Check phieu nhap
+        public bool IsEnterCoupon(string pIdEnter)
+        {
+            int check = db.EnterCoupons.Where(t => t.ID == int.Parse(pIdEnter)).Count();
+            if (check > 0)
+            {
+                return false;
+            }
+            return true;
+        }
         //Them mot phieu nhap
         public int InsertEnterCoupon(string pID, string pIdSup, string pIdStaff, string pUser, string pCreateDay, string pReson, string pTotal)
         {
@@ -64,6 +83,35 @@ namespace SpaClassLibrary
                     db.EnterCoupons.InsertOnSubmit(add);
                     db.SubmitChanges();
                     return 2;//them thanh cong
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        //Cap nhat phieu nhap
+        public int UpdateEnterCoupon(string pID, string pIdSup, string pIdStaff, string pUser, string pCreateDay, string pReson, string pTotal)
+        {
+            try
+            {
+                EnterCoupon check = db.EnterCoupons.Where(t => t.ID == Convert.ToInt32(pID)).FirstOrDefault();
+                if (check != null)
+                {
+                    check.IDSTAFF = int.Parse(pIdStaff);
+                    check.IDSUPPLIER = int.Parse(pIdSup);
+                    check.IDUSER = pUser;
+                    check.CREATEDATE = Convert.ToDateTime(pCreateDay);
+                    check.RESONENTER = pReson;
+                    check.TOTAL = float.Parse(pTotal);
+
+                    db.SubmitChanges();
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
             catch

@@ -32,19 +32,34 @@ namespace SpaManagementSoftware
         private void frmEnterItem_Load(object sender, EventArgs e)
         {
             LoadListEnter();
+            SumMoney();
         }
 
         private void btn_AddCoupon_Click(object sender, EventArgs e)
         {
             frmAddEnterCoupon frm = new frmAddEnterCoupon();
             frm.ShowDialog();
-        }
+            LoadListEnter();
 
+        }
+        public void SumMoney()
+        {
+            float sum = 0;
+            if (dgV_EnterCoupon.CurrentRow != null)
+            {
+                for (int i = 0; i < dgV_DetailCoupon.Rows.Count; i++)
+                {
+                    sum += float.Parse(dgV_DetailCoupon.Rows[i].Cells["INTO_MONEY"].Value.ToString());
+                }
+            }
+            lblSumMoney.Text = String.Format("{0:#,##0.##}", sum);
+        }
         private void dgV_EnterCoupon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgV_EnterCoupon.CurrentRow != null)
             {
                 dgV_DetailCoupon.DataSource = _item.GetListItem_IdEnter(dgV_EnterCoupon.CurrentRow.Cells["ID"].Value.ToString());
+                SumMoney();
             }
         }
 
@@ -55,7 +70,57 @@ namespace SpaManagementSoftware
                 frmAddEnterCoupon frm = new frmAddEnterCoupon();
                 frm._idEnter = dgV_EnterCoupon.CurrentRow.Cells["ID"].Value.ToString();
                 frm.ShowDialog();
+                LoadListEnter();
             }
+        }
+
+        private void btn_EditCoupon_Click(object sender, EventArgs e)
+        {
+            if (dgV_EnterCoupon.CurrentRow != null)
+            {
+                frmAddEnterCoupon frm = new frmAddEnterCoupon();
+                frm._idEnter = dgV_EnterCoupon.CurrentRow.Cells["ID"].Value.ToString();
+                frm.ShowDialog();
+                LoadListEnter();
+            }
+        }
+
+        public void FillterEnter()
+        {
+            DateTime start = Convert.ToDateTime(dtP_Start.Text);
+            DateTime end = Convert.ToDateTime(dtP_End.Text);
+            if (DateTime.Compare(start, end) < 0 || DateTime.Compare(start, end) == 0)
+            {
+                if (txt_Supplier.Text.Trim() != string.Empty)
+                {
+                    //nho hon 0: start som hon end
+                    dgV_EnterCoupon.DataSource = _enter.FillterEnterCoupon(start.ToString("yyyy-MM-dd"), end.ToString("yyyy-MM-dd"), txt_Supplier.Text);
+                    if (dgV_EnterCoupon.Rows.Count != 0)
+                    {
+                        dgV_DetailCoupon.DataSource = _item.GetListItem_IdEnter(dgV_EnterCoupon.Rows[0].Cells["ID"].Value.ToString());
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show("Chưa nhập tên nhà cung cấp !");
+                    txt_Supplier.Focus();
+                    return;
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Vui lòng chọn ngày bắt đầu xóm hơn ngày kết thúc !");
+            }
+        }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            FillterEnter();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadListEnter();
         }
     }
 }

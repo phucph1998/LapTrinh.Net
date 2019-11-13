@@ -34,6 +34,7 @@
             this.btn_EditCoupon = new System.Windows.Forms.ToolStripButton();
             this.btn_DeleteCoupon = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Search = new DevExpress.XtraEditors.SimpleButton();
             this.txt_Supplier = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@
             this.PRICE_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.INTO_MONEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblSumMoney = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -111,6 +112,7 @@
             this.btn_EditCoupon.Name = "btn_EditCoupon";
             this.btn_EditCoupon.Size = new System.Drawing.Size(79, 22);
             this.btn_EditCoupon.Text = "Sửa phiếu";
+            this.btn_EditCoupon.Click += new System.EventHandler(this.btn_EditCoupon_Click);
             // 
             // btn_DeleteCoupon
             // 
@@ -122,6 +124,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.btn_Search);
             this.panel1.Controls.Add(this.txt_Supplier);
             this.panel1.Controls.Add(this.label3);
@@ -135,6 +138,16 @@
             this.panel1.Size = new System.Drawing.Size(438, 75);
             this.panel1.TabIndex = 1;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.Refresh2_16x16;
+            this.btnRefresh.Location = new System.Drawing.Point(356, 44);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(69, 23);
+            this.btnRefresh.TabIndex = 7;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // btn_Search
             // 
             this.btn_Search.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.Lookup_Reference_16x16;
@@ -142,6 +155,7 @@
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(27, 23);
             this.btn_Search.TabIndex = 6;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // txt_Supplier
             // 
@@ -161,6 +175,7 @@
             // 
             // dtP_End
             // 
+            this.dtP_End.CustomFormat = "dd/MM/yyyy";
             this.dtP_End.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtP_End.Location = new System.Drawing.Point(203, 14);
             this.dtP_End.Name = "dtP_End";
@@ -178,6 +193,7 @@
             // 
             // dtP_Start
             // 
+            this.dtP_Start.CustomFormat = "dd/MM/yyyy";
             this.dtP_Start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtP_Start.Location = new System.Drawing.Point(42, 14);
             this.dtP_Start.Name = "dtP_Start";
@@ -294,7 +310,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lblSumMoney);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(447, 3);
@@ -302,22 +318,22 @@
             this.panel2.Size = new System.Drawing.Size(439, 20);
             this.panel2.TabIndex = 4;
             // 
-            // label5
+            // lblSumMoney
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(310, 4);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Số tiền của phiếu";
+            this.lblSumMoney.AutoSize = true;
+            this.lblSumMoney.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSumMoney.ForeColor = System.Drawing.Color.Red;
+            this.lblSumMoney.Location = new System.Drawing.Point(299, 1);
+            this.lblSumMoney.Name = "lblSumMoney";
+            this.lblSumMoney.Size = new System.Drawing.Size(135, 18);
+            this.lblSumMoney.TabIndex = 1;
+            this.lblSumMoney.Text = "Số tiền của phiếu";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(232, 4);
+            this.label4.Location = new System.Drawing.Point(213, 4);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 0;
@@ -365,7 +381,7 @@
         private System.Windows.Forms.ToolStripButton btn_EditCoupon;
         private System.Windows.Forms.ToolStripButton btn_DeleteCoupon;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblSumMoney;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn CREATE_DATE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
@@ -375,5 +391,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NUMBER;
         private System.Windows.Forms.DataGridViewTextBoxColumn PRICE_IN;
         private System.Windows.Forms.DataGridViewTextBoxColumn INTO_MONEY;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
     }
 }

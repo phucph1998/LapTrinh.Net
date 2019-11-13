@@ -51,7 +51,7 @@ namespace SpaClassLibrary
         public DataTable GetListItem_IdEnter(string pIdEnter)
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT i.NAME AS NAME_ITEM,dt.NUMBER,i.PRICE_IN,dt.INTO_MONEY FROM detail_enter_coupon dt,item i WHERE dt.ID_ENTER_COUPON = '" + pIdEnter + "' AND dt.ID_ITEM=i.ID";
+            string sql = "SELECT i.NAME AS NAME_ITEM,dt.NUMBER,i.PRICE_IN,dt.INTO_MONEY FROM detail_enter_coupon dt,item i WHERE dt.ID_ENTER_COUPON = '" + pIdEnter + "' AND dt.ID_ITEM=i.ID and dt.`STATUS`=1";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
@@ -107,6 +107,14 @@ namespace SpaClassLibrary
             }
         }
 
+        //public int GetNumberDT(string pIdItem,string pIdenter)
+        //{
+        //    DataTable dt = new DataTable();
+        //    MySqlDataAdapter da = new MySqlDataAdapter("SELECT NUMBER FROM detail_enter_coupon WHERE ID_ITEM='"+pIdItem+"' AND ID_ENTER_COUPON ='"+pIdenter+"'", Properties.Settings.Default.DbSpaDataContextConnectionString);
+        //    da.Fill(dt);
+        //    return int.Parse(dt.Rows[0][0].ToString());
+        //}
+
         public int UpdateDtEnterCoupon(string pIdEnter, string pIdItem, string pNumber, string pPriceIn, string pMoney)
         {
             try
@@ -114,18 +122,22 @@ namespace SpaClassLibrary
                 DetailEnterCoupon check = db.DetailEnterCoupons.Where(t => t.IDENTERCOUPON == int.Parse(pIdEnter) && t.IDITEM == int.Parse(pIdItem)).FirstOrDefault();
                 if (check != null)
                 {
+                    int? numchange = int.Parse(pNumber) - check.NUMBER;
                     check.IDENTERCOUPON = int.Parse(pIdEnter);
                     check.IDITEM = int.Parse(pIdItem);
                     check.NUMBER = int.Parse(pNumber);
                     check.PRICEIN = float.Parse(pPriceIn);
                     check.INTOMONEY = float.Parse(pMoney);
                     check.STATUS = 1;
+                    //Tồn tại thì cập nhật => Cap nhat so luong kho
+                    UpdateNumberItemTerminal(pIdItem, numchange.ToString());
                     db.SubmitChanges();
-                    return 1;//Tồn tại thì cập nhật => Cap nhat so luong kho
+                    return 1;
                 }
                 else
                 {
                     InsertOneDtailItem(pIdEnter, pIdItem, pNumber, pPriceIn, pMoney);
+                    UpdateNumberItemTerminal(pIdItem, pNumber);
                     return 2;//Chưa tồn tại thì thêm => Them so luong kho
                 }
             }

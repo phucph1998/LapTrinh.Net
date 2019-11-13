@@ -113,6 +113,7 @@ namespace SpaManagementSoftware
             LoadTreeGroupItem();
             LoadStaff();
             LoadSupplier();
+            dgV_Items.DataSource = _item.GetTableItemsMySQL();
             if (IdEnter != null)
             {
                 LoadEnterCoupon();
@@ -341,10 +342,35 @@ namespace SpaManagementSoftware
                 cbb_Staff.Focus();
                 return;
             }
+            Username = "admin";
+            if (IdEnter != null)
+            {
+                if(!_enter.IsEnterCoupon(IdEnter))
+                {
+                    int updateEnter = _enter.UpdateEnterCoupon(txt_ID.Text, cbb_Supplier.SelectedValue.ToString(), cbb_Staff.SelectedValue.ToString(), Username, dtP_DayCreate.Text, CheckReson(), txt_SumMoney.Text);
+                    if(updateEnter == 1)
+                    {
+                        for (int i = 0; i < dgV_DetailsCoupon.Rows.Count; i++)
+                        {
+                            string iditem = dgV_DetailsCoupon.Rows[i].Cells["ID_ITEM"].Value.ToString();
+                            string num = dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value.ToString();
+                            string price = dgV_DetailsCoupon.Rows[i].Cells["PRICE_IN_2"].Value.ToString();
+                            string money = dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value.ToString();
+                            int UpdateDT = _item.UpdateDtEnterCoupon(txt_ID.Text, iditem, num, price, money);
+                            if (UpdateDT != 1)
+                            {
+                                XtraMessageBox.Show("Có lỗi trong lúc cập nhật !");
+                                return;
+                            }
+                        }
+                        XtraMessageBox.Show("Cập nhật thành công");
+                        return;
+                    }
+                }       
+            }
             if (dgV_DetailsCoupon.Rows.Count != 0)
             {
                 //Them phieu nhap
-                Username = "admin";
                 int addEnter = _enter.InsertEnterCoupon(txt_ID.Text, cbb_Supplier.SelectedValue.ToString(), cbb_Staff.SelectedValue.ToString(), Username, dtP_DayCreate.Text, CheckReson(), txt_SumMoney.Text);
                 if (addEnter == 2)
                 {
@@ -356,8 +382,8 @@ namespace SpaManagementSoftware
                         string num = dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value.ToString();
                         string price = dgV_DetailsCoupon.Rows[i].Cells["PRICE_IN_2"].Value.ToString();
                         string money = dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value.ToString();
-                        int adddtitem = _item.InsertOneDtailItem(txt_ID.Text, iditem, num, price, money);
-                        if (adddtitem == 1)
+                        int addDtItem = _item.InsertOneDtailItem(txt_ID.Text, iditem, num, price, money);
+                        if (addDtItem == 1)
                         {
                             check++;
                         }
