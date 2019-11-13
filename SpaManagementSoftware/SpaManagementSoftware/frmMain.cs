@@ -195,5 +195,20 @@ namespace SpaManagementSoftware
                 openForm(frm);
             }
         }
+
+        private void nhậpHàngVàoKhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CheckExist("frmEnterItem"))
+            {
+                XtraMessageBox.Show("Bạn Đang Sử Dụng Chức Năng Này", "Thông báo");
+                //MessageBox.Show("Chức Năng Này Đang Sử Dụng, Không Cần Mở Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            else
+            {
+                frmEnterItem frm = new frmEnterItem();
+                openForm(frm);
+            }
+        }
     }
 }

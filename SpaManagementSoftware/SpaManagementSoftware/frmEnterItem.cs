@@ -25,8 +25,15 @@ namespace SpaManagementSoftware
 
         void LoadListEnter()
         {
-            dgV_EnterCoupon.DataSource = _enter.LoadListEnter();
-            dgV_DetailCoupon.DataSource = _item.GetListItem_IdEnter("1");
+            try
+            {
+                dgV_EnterCoupon.DataSource = _enter.LoadListEnter();
+                dgV_DetailCoupon.DataSource = _item.GetListItem_IdEnter(dgV_EnterCoupon.Rows[0].Cells["ID"].Value.ToString());
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private void frmEnterItem_Load(object sender, EventArgs e)
@@ -121,6 +128,35 @@ namespace SpaManagementSoftware
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadListEnter();
+        }
+
+        private void btn_DeleteCoupon_Click(object sender, EventArgs e)
+        {
+            if(dgV_EnterCoupon.CurrentRow != null)
+            {
+                DialogResult r;
+                string noti = "Bạn có chắc muốn xóa phiếu nhập ngày " + dgV_EnterCoupon.CurrentRow.Cells["CREATE_DATE"].Value.ToString() + ", Số phiếu:" + dgV_EnterCoupon.CurrentRow.Cells["ID"].Value.ToString();
+                r = XtraMessageBox.Show(noti,"Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2);
+                if(r == DialogResult.Yes)
+                {
+                    bool deleteEnter = _enter.DeleteEnterCoupon(dgV_DetailCoupon.CurrentRow.Cells["ID_ENTER_COUPON"].Value.ToString());
+                    bool flag = true;
+                    for (int i = 0; i < dgV_DetailCoupon.Rows.Count; i++)
+                    {
+                        bool deleteDt = _item.DeleteDtEnterCoupon(dgV_DetailCoupon.Rows[i].Cells["ID_ENTER_COUPON"].Value.ToString(), dgV_DetailCoupon.Rows[i].Cells["ID_ITEM"].Value.ToString());
+                        if (!deleteDt)
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (deleteEnter && flag)
+                    {
+                        XtraMessageBox.Show("Xóa phiếu nhập thành công !");
+                        LoadListEnter();
+                    }
+                }
+            }
         }
     }
 }

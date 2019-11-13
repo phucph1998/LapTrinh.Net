@@ -364,6 +364,7 @@ namespace SpaManagementSoftware
                             }
                         }
                         XtraMessageBox.Show("Cập nhật thành công");
+                        this.Close();
                         return;
                     }
                 }       
@@ -414,6 +415,7 @@ namespace SpaManagementSoftware
                         if (count == dgV_DetailsCoupon.Rows.Count)
                         {
                             XtraMessageBox.Show("Tạo phiếu nhập và lưu thành công !");
+                            this.Close();
                         }
                     }
                 }
@@ -434,6 +436,11 @@ namespace SpaManagementSoftware
                 XtraMessageBox.Show("Chưa có mặt hàng nào cần nhập ! Hãy thêm mặt hàng nhập");
                 return;
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

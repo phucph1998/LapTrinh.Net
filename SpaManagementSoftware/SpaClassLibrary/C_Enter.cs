@@ -15,10 +15,10 @@ namespace SpaClassLibrary
 
         DbSpaDataContext db = new DbSpaDataContext();
         //Loc danh sach phieu nhap theo ngay thang
-        public DataTable FillterEnterCoupon(string pDayStart, string pDayEnd,string pName)
+        public DataTable FillterEnterCoupon(string pDayStart, string pDayEnd, string pName)
         {
             DataTable dt = new DataTable();
-            string str = "SELECT e.CREATE_DATE,e.ID,s.NAME,e.RESON_ENTER FROM enter_coupon e,staff s,supplier sp WHERE e.ID_STAFF = s.ID AND e.CREATE_DATE >= '"+pDayStart+ "' AND e.CREATE_DATE<= '" + pDayEnd + "' and sp.ID=e.ID_SUPPLIER AND sp.NAME LIKE '%"+ pName+ "%' and e.`STATUS`=1";
+            string str = "SELECT e.CREATE_DATE,e.ID,s.NAME,e.RESON_ENTER FROM enter_coupon e,staff s,supplier sp WHERE e.ID_STAFF = s.ID AND e.CREATE_DATE >= '" + pDayStart + "' AND e.CREATE_DATE<= '" + pDayEnd + "' and sp.ID=e.ID_SUPPLIER AND sp.NAME LIKE '%" + pName + "%' and e.`STATUS`=1";
             MySqlDataAdapter da = new MySqlDataAdapter(str, Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
@@ -117,6 +117,21 @@ namespace SpaClassLibrary
             catch
             {
                 return 0;
+            }
+        }
+        //Xoa phieu nhap
+        public bool DeleteEnterCoupon(string pIdenter)
+        {
+            try
+            {
+                EnterCoupon check = db.EnterCoupons.Where(t => t.ID == int.Parse(pIdenter)).FirstOrDefault();
+                check.STATUS = 0;
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

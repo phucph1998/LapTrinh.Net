@@ -529,6 +529,7 @@
             // 
             // danhMụcNhàCungCấpToolStripMenuItem
             // 
+            this.danhMụcNhàCungCấpToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.icons8_supplier_100;
             this.danhMụcNhàCungCấpToolStripMenuItem.Name = "danhMụcNhàCungCấpToolStripMenuItem";
             this.danhMụcNhàCungCấpToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.danhMụcNhàCungCấpToolStripMenuItem.Text = "Danh mục nhà cung cấp";
@@ -536,9 +537,11 @@
             // 
             // nhậpHàngVàoKhoToolStripMenuItem
             // 
+            this.nhậpHàngVàoKhoToolStripMenuItem.Image = global::SpaManagementSoftware.Properties.Resources.import_terminal;
             this.nhậpHàngVàoKhoToolStripMenuItem.Name = "nhậpHàngVàoKhoToolStripMenuItem";
             this.nhậpHàngVàoKhoToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.nhậpHàngVàoKhoToolStripMenuItem.Text = "Nhập hàng vào kho";
+            this.nhậpHàngVàoKhoToolStripMenuItem.Click += new System.EventHandler(this.nhậpHàngVàoKhoToolStripMenuItem_Click);
             // 
             // xuấtTiêuDùngToolStripMenuItem
             // 

@@ -32,7 +32,7 @@ namespace SpaManagementSoftware
              * Office 2010 Black,Office 2010 Silver*/
             loginForm = new frmLogin();
             UserManager usr = new UserManager();
-            Application.Run(new frmEnterItem());
+            Application.Run(loginForm);
         }
     }
 }

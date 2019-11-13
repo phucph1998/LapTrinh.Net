@@ -51,7 +51,7 @@ namespace SpaClassLibrary
         public DataTable GetListItem_IdEnter(string pIdEnter)
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT i.NAME AS NAME_ITEM,dt.NUMBER,i.PRICE_IN,dt.INTO_MONEY FROM detail_enter_coupon dt,item i WHERE dt.ID_ENTER_COUPON = '" + pIdEnter + "' AND dt.ID_ITEM=i.ID and dt.`STATUS`=1";
+            string sql = "SELECT dt.ID_ENTER_COUPON,dt.ID_ITEM,i.NAME AS NAME_ITEM,dt.NUMBER,i.PRICE_IN,dt.INTO_MONEY FROM detail_enter_coupon dt,item i WHERE dt.ID_ENTER_COUPON = '" + pIdEnter + "' AND dt.ID_ITEM=i.ID and dt.`STATUS`=1";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
@@ -115,6 +115,7 @@ namespace SpaClassLibrary
         //    return int.Parse(dt.Rows[0][0].ToString());
         //}
 
+        //Cap nhat Chi tiet phieu nhap,kho
         public int UpdateDtEnterCoupon(string pIdEnter, string pIdItem, string pNumber, string pPriceIn, string pMoney)
         {
             try
@@ -144,6 +145,21 @@ namespace SpaClassLibrary
             catch
             {
                 return 0;
+            }
+        }
+        //Xoa chi tiet phieu nhap
+        public bool DeleteDtEnterCoupon(string pIdEnter, string pIdItem)
+        {
+            try
+            {
+                DetailEnterCoupon dt = db.DetailEnterCoupons.Where(t => t.IDENTERCOUPON == int.Parse(pIdEnter) && t.IDITEM == int.Parse(pIdItem)).FirstOrDefault();
+                dt.STATUS = 0;
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

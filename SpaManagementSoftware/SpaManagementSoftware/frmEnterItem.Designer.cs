@@ -52,6 +52,8 @@
             this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRICE_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.INTO_MONEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_ENTER_COUPON = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblSumMoney = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -121,6 +123,7 @@
             this.btn_DeleteCoupon.Name = "btn_DeleteCoupon";
             this.btn_DeleteCoupon.Size = new System.Drawing.Size(80, 22);
             this.btn_DeleteCoupon.Text = "Xóa phiếu";
+            this.btn_DeleteCoupon.Click += new System.EventHandler(this.btn_DeleteCoupon_Click);
             // 
             // panel1
             // 
@@ -270,7 +273,9 @@
             this.NAME_ITEM,
             this.NUMBER,
             this.PRICE_IN,
-            this.INTO_MONEY});
+            this.INTO_MONEY,
+            this.ID_ENTER_COUPON,
+            this.ID_ITEM});
             this.dgV_DetailCoupon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgV_DetailCoupon.Location = new System.Drawing.Point(447, 29);
             this.dgV_DetailCoupon.Name = "dgV_DetailCoupon";
@@ -308,6 +313,22 @@
             this.INTO_MONEY.Name = "INTO_MONEY";
             this.INTO_MONEY.ReadOnly = true;
             // 
+            // ID_ENTER_COUPON
+            // 
+            this.ID_ENTER_COUPON.DataPropertyName = "ID_ENTER_COUPON";
+            this.ID_ENTER_COUPON.HeaderText = "ID_ENTER_COUPON";
+            this.ID_ENTER_COUPON.Name = "ID_ENTER_COUPON";
+            this.ID_ENTER_COUPON.ReadOnly = true;
+            this.ID_ENTER_COUPON.Visible = false;
+            // 
+            // ID_ITEM
+            // 
+            this.ID_ITEM.DataPropertyName = "ID_ITEM";
+            this.ID_ITEM.HeaderText = "ID_ITEM";
+            this.ID_ITEM.Name = "ID_ITEM";
+            this.ID_ITEM.ReadOnly = true;
+            this.ID_ITEM.Visible = false;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lblSumMoney);
@@ -320,6 +341,7 @@
             // 
             // lblSumMoney
             // 
+            this.lblSumMoney.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSumMoney.AutoSize = true;
             this.lblSumMoney.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSumMoney.ForeColor = System.Drawing.Color.Red;
@@ -331,6 +353,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(213, 4);
@@ -387,10 +410,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn NAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn RESON_ENTER;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
         private System.Windows.Forms.DataGridViewTextBoxColumn NAME_ITEM;
         private System.Windows.Forms.DataGridViewTextBoxColumn NUMBER;
         private System.Windows.Forms.DataGridViewTextBoxColumn PRICE_IN;
         private System.Windows.Forms.DataGridViewTextBoxColumn INTO_MONEY;
-        private DevExpress.XtraEditors.SimpleButton btnRefresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_ENTER_COUPON;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_ITEM;
     }
 }

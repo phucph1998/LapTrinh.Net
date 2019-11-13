@@ -32,7 +32,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveExit = new DevExpress.XtraEditors.SimpleButton();
             this.lbl_SumNumber = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -43,6 +43,12 @@
             this.PRICE_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgV_DetailsCoupon = new System.Windows.Forms.DataGridView();
+            this.NAME_ITEM_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRICE_IN_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUM_MONEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btn_Up = new System.Windows.Forms.ToolStripButton();
             this.btn_Down = new System.Windows.Forms.ToolStripButton();
@@ -77,12 +83,6 @@
             this.txt_ID = new System.Windows.Forms.TextBox();
             this.dtP_DayCreate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.NAME_ITEM_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UNIT_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRICE_IN_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SUM_MONEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgV_Items)).BeginInit();
@@ -120,7 +120,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
             this.panel1.Controls.Add(this.simpleButton3);
-            this.panel1.Controls.Add(this.simpleButton2);
+            this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.btnSaveExit);
             this.panel1.Controls.Add(this.lbl_SumNumber);
             this.panel1.Controls.Add(this.label14);
@@ -139,13 +139,14 @@
             this.simpleButton3.TabIndex = 18;
             this.simpleButton3.Text = "Ghi và In phiếu (Ctrl + P)";
             // 
-            // simpleButton2
+            // btnExit
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(845, 9);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 17;
-            this.simpleButton2.Text = "Thoát";
+            this.btnExit.Location = new System.Drawing.Point(845, 9);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 17;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnSaveExit
             // 
@@ -258,6 +259,46 @@
             this.dgV_DetailsCoupon.TabIndex = 3;
             this.dgV_DetailsCoupon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgV_DetailsCoupon_CellClick);
             this.dgV_DetailsCoupon.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgV_DetailsCoupon_CellValueChanged);
+            // 
+            // NAME_ITEM_2
+            // 
+            this.NAME_ITEM_2.DataPropertyName = "NAME_ITEM";
+            this.NAME_ITEM_2.HeaderText = "Mặt hàng";
+            this.NAME_ITEM_2.Name = "NAME_ITEM_2";
+            this.NAME_ITEM_2.ReadOnly = true;
+            // 
+            // NUMBER
+            // 
+            this.NUMBER.DataPropertyName = "NUMBER";
+            this.NUMBER.HeaderText = "SL";
+            this.NUMBER.Name = "NUMBER";
+            // 
+            // UNIT_2
+            // 
+            this.UNIT_2.DataPropertyName = "UNIT";
+            this.UNIT_2.HeaderText = "ĐVT";
+            this.UNIT_2.Name = "UNIT_2";
+            this.UNIT_2.ReadOnly = true;
+            // 
+            // PRICE_IN_2
+            // 
+            this.PRICE_IN_2.DataPropertyName = "PRICE_IN";
+            this.PRICE_IN_2.HeaderText = "Đơn giá";
+            this.PRICE_IN_2.Name = "PRICE_IN_2";
+            // 
+            // SUM_MONEY
+            // 
+            this.SUM_MONEY.DataPropertyName = "INTO_MONEY";
+            this.SUM_MONEY.HeaderText = "T.tiền";
+            this.SUM_MONEY.Name = "SUM_MONEY";
+            this.SUM_MONEY.ReadOnly = true;
+            // 
+            // ID_ITEM
+            // 
+            this.ID_ITEM.DataPropertyName = "ID_ITEM";
+            this.ID_ITEM.HeaderText = "ID_ITEM";
+            this.ID_ITEM.Name = "ID_ITEM";
+            this.ID_ITEM.Visible = false;
             // 
             // toolStrip1
             // 
@@ -604,46 +645,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ngày:";
             // 
-            // NAME_ITEM_2
-            // 
-            this.NAME_ITEM_2.DataPropertyName = "NAME_ITEM";
-            this.NAME_ITEM_2.HeaderText = "Mặt hàng";
-            this.NAME_ITEM_2.Name = "NAME_ITEM_2";
-            this.NAME_ITEM_2.ReadOnly = true;
-            // 
-            // NUMBER
-            // 
-            this.NUMBER.DataPropertyName = "NUMBER";
-            this.NUMBER.HeaderText = "SL";
-            this.NUMBER.Name = "NUMBER";
-            // 
-            // UNIT_2
-            // 
-            this.UNIT_2.DataPropertyName = "UNIT";
-            this.UNIT_2.HeaderText = "ĐVT";
-            this.UNIT_2.Name = "UNIT_2";
-            this.UNIT_2.ReadOnly = true;
-            // 
-            // PRICE_IN_2
-            // 
-            this.PRICE_IN_2.DataPropertyName = "PRICE_IN";
-            this.PRICE_IN_2.HeaderText = "Đơn giá";
-            this.PRICE_IN_2.Name = "PRICE_IN_2";
-            // 
-            // SUM_MONEY
-            // 
-            this.SUM_MONEY.DataPropertyName = "INTO_MONEY";
-            this.SUM_MONEY.HeaderText = "T.tiền";
-            this.SUM_MONEY.Name = "SUM_MONEY";
-            this.SUM_MONEY.ReadOnly = true;
-            // 
-            // ID_ITEM
-            // 
-            this.ID_ITEM.DataPropertyName = "ID_ITEM";
-            this.ID_ITEM.HeaderText = "ID_ITEM";
-            this.ID_ITEM.Name = "ID_ITEM";
-            this.ID_ITEM.Visible = false;
-            // 
             // frmAddEnterCoupon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -715,7 +716,7 @@
         private System.Windows.Forms.ToolStripButton btn_Remove;
         private System.Windows.Forms.Label lbl_SumNumber;
         private System.Windows.Forms.Label label14;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton btnExit;
         private DevExpress.XtraEditors.SimpleButton btnSaveExit;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private System.Windows.Forms.ComboBox cbb_Supplier;

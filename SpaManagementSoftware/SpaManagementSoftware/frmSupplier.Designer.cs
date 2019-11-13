@@ -337,7 +337,7 @@
             this.ClientSize = new System.Drawing.Size(975, 465);
             this.Controls.Add(this.tLP_Customer);
             this.Name = "frmSupplier";
-            this.Text = "frmSupplier";
+            this.Text = "Nhà Cung Cấp";
             this.Load += new System.EventHandler(this.frmSupplier_Load);
             this.tLP_Customer.ResumeLayout(false);
             this.tCtr_Member.ResumeLayout(false);
