@@ -13,6 +13,45 @@ namespace SpaClassLibrary
     public class C_Items
     {
         DbSpaDataContext db = new DbSpaDataContext();
+        //Load san pham custom theo id
+        public DataTable GetListItemFull_ToIdItem(String pIdItem)
+        {
+            DataTable dt = new DataTable();
+            string mysql = "SELECT g.NAME_GROUP,i.ID,i.ID_GROUP,i.ID_UNIT,i.NAME,u.NAME AS NAME_UNIT,i.PRICE_OUT,i.PRICE_IN,i.ROSE,i.ROSE_RATE FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT AND i.ID='"+pIdItem+"'";
+            MySqlDataAdapter da = new MySqlDataAdapter(mysql, Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
+
+        //Load noi dung mat hang co nhung vat tu gi
+        public DataTable GetListContentItem_toId(string pIdItem)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT t.ID_ITEM_CONTENT AS ID,it.NAME AS NAME_ITEM,t.NAME_UNIT,t.NUMBER FROM (SELECT i.ID,ct.ID_ITEM_CONTENT,ui.NAME AS NAME_UNIT,ct.NUMBER FROM item i,content_item ct,unit_item ui WHERE i.ID=ct.ID_ITEM AND i.ID_UNIT=ui.ID AND i.ID = '" + pIdItem + "') AS t, item it WHERE t.ID_ITEM_CONTENT = it.ID";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql,Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
+
+        //Load san pham custom
+        public DataTable GetTableItemsFullMySQL()
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT i.ID,i.ID_GROUP,i.ID_UNIT,i.NAME,u.NAME AS NAME_UNIT,i.PRICE_OUT,i.PRICE_IN,i.ROSE,i.ROSE_RATE FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
+
+        //Load item tung nhom san pham custom
+        public DataTable GetListItemFull_ForGroup(String pNameGroup)
+        {
+            DataTable dt = new DataTable();
+            string mysql = "SELECT i.ID,i.ID_GROUP,i.ID_UNIT,i.NAME,u.NAME AS NAME_UNIT,i.PRICE_OUT,i.PRICE_IN,i.ROSE,i.ROSE_RATE FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT AND i.ID_GROUP='" + GetIdGroupItemMySQL(pNameGroup) + "'";
+            MySqlDataAdapter da = new MySqlDataAdapter(mysql, Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
         //Load nhom san pham
         public DataTable GetTableTypeItemMySQL()
         {
@@ -29,6 +68,16 @@ namespace SpaClassLibrary
             da.Fill(dt);
             return dt;
         }
+
+        //Load san pham theo ten
+        public DataTable GetTableItemsMySQL_ToName(string pNameItem)
+        {
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT i.ID,i.NAME AS NAME_ITEM,i.PRICE_IN,u.NAME AS NAME_UNIT FROM item i, unit_item u WHERE i.NAME LIKE '%" + pNameItem + "%'", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
+
         //Lay ma nhom 
         public String GetIdGroupItemMySQL(string pNameGroup)
         {

@@ -109,3 +109,8 @@ D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaCl
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.csproj.GenerateResource.Cache
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.dll
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.pdb
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\LinqToExcel.dll
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\Remotion.Data.Linq.dll
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\Remotion.dll
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\Remotion.Interfaces.dll
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\LinqToExcel.xml

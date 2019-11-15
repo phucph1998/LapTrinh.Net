@@ -255,3 +255,6 @@ D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.Properties.Resources.resources
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.csproj.GenerateResource.Cache
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.exe.licenses
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmItems.resources
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAddItems.resources
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmSearchItems.resources

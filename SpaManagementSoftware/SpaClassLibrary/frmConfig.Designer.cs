@@ -72,7 +72,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.2132F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.70558F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.7665F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 197);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 199);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label5
@@ -129,7 +129,7 @@
             this.btn_SaveConfig.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_SaveConfig.ImageOptions.Image")));
             this.btn_SaveConfig.Location = new System.Drawing.Point(116, 164);
             this.btn_SaveConfig.Name = "btn_SaveConfig";
-            this.btn_SaveConfig.Size = new System.Drawing.Size(75, 30);
+            this.btn_SaveConfig.Size = new System.Drawing.Size(75, 32);
             this.btn_SaveConfig.TabIndex = 3;
             this.btn_SaveConfig.Text = "Lưu Lại";
             this.btn_SaveConfig.Click += new System.EventHandler(this.btn_SaveConfig_Click);
@@ -140,7 +140,7 @@
             this.btn_Cancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Cancel.ImageOptions.Image")));
             this.btn_Cancel.Location = new System.Drawing.Point(213, 164);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(75, 30);
+            this.btn_Cancel.Size = new System.Drawing.Size(75, 32);
             this.btn_Cancel.TabIndex = 4;
             this.btn_Cancel.Text = "Hủy Bỏ";
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
@@ -210,7 +210,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 197);
+            this.ClientSize = new System.Drawing.Size(390, 199);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

@@ -342,13 +342,13 @@ namespace SpaManagementSoftware
                 cbb_Staff.Focus();
                 return;
             }
-            Username = "admin";
+            Username = Program.UserName;
             if (IdEnter != null)
             {
-                if(!_enter.IsEnterCoupon(IdEnter))
+                if (!_enter.IsEnterCoupon(IdEnter))
                 {
                     int updateEnter = _enter.UpdateEnterCoupon(txt_ID.Text, cbb_Supplier.SelectedValue.ToString(), cbb_Staff.SelectedValue.ToString(), Username, dtP_DayCreate.Text, CheckReson(), txt_SumMoney.Text);
-                    if(updateEnter == 1)
+                    if (updateEnter == 1)
                     {
                         for (int i = 0; i < dgV_DetailsCoupon.Rows.Count; i++)
                         {
@@ -367,7 +367,7 @@ namespace SpaManagementSoftware
                         this.Close();
                         return;
                     }
-                }       
+                }
             }
             if (dgV_DetailsCoupon.Rows.Count != 0)
             {
