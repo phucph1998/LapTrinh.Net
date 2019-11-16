@@ -17,7 +17,7 @@ namespace SpaClassLibrary
         public DataTable GetListItemFull_ToIdItem(String pIdItem)
         {
             DataTable dt = new DataTable();
-            string mysql = "SELECT g.NAME_GROUP,i.ID,i.ID_GROUP,i.ID_UNIT,i.NAME,u.NAME AS NAME_UNIT,i.PRICE_OUT,i.PRICE_IN,i.ROSE,i.ROSE_RATE FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT AND i.ID='"+pIdItem+"'";
+            string mysql = "SELECT g.NAME_GROUP,i.ID,i.ID_GROUP,i.ID_UNIT,i.NAME,u.NAME AS NAME_UNIT,i.PRICE_OUT,i.PRICE_IN,i.ROSE,i.ROSE_RATE FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT AND i.ID='" + pIdItem + "'";
             MySqlDataAdapter da = new MySqlDataAdapter(mysql, Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
@@ -28,7 +28,7 @@ namespace SpaClassLibrary
         {
             DataTable dt = new DataTable();
             string sql = "SELECT t.ID_ITEM_CONTENT AS ID,it.NAME AS NAME_ITEM,t.NAME_UNIT,t.NUMBER FROM (SELECT i.ID,ct.ID_ITEM_CONTENT,ui.NAME AS NAME_UNIT,ct.NUMBER FROM item i,content_item ct,unit_item ui WHERE i.ID=ct.ID_ITEM AND i.ID_UNIT=ui.ID AND i.ID = '" + pIdItem + "') AS t, item it WHERE t.ID_ITEM_CONTENT = it.ID";
-            MySqlDataAdapter da = new MySqlDataAdapter(sql,Properties.Settings.Default.DbSpaDataContextConnectionString);
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
         }
@@ -146,7 +146,6 @@ namespace SpaClassLibrary
                 //Nên đến lúc này cập nhật lại số lượng trong kho không cần kiểm tra mặt hàng đó tồn tại chưa
                 Item update = db.Items.Where(t => t.ID == int.Parse(pIdItem)).FirstOrDefault();
                 update.NUMBER = update.NUMBER + int.Parse(pNumberIn);
-
                 db.SubmitChanges();
                 return 1;//Them thanh cong
             }
@@ -196,7 +195,8 @@ namespace SpaClassLibrary
                 return 0;
             }
         }
-        //Xoa chi tiet phieu nhap
+
+        //Xoa chi tiet phieu nhap theo phieu nhap(chi cap nhat status)
         public bool DeleteDtEnterCoupon(string pIdEnter, string pIdItem)
         {
             try
@@ -205,6 +205,32 @@ namespace SpaClassLibrary
                 dt.STATUS = 0;
                 db.SubmitChanges();
                 return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //Xoa hoan toan chi tiet phieu nhap
+        public bool DeleteDetailEC(string pIdEnter, string pIdItem, string pNumber)
+        {
+            try
+            {
+                DetailEnterCoupon check = db.DetailEnterCoupons.Where(t => t.IDENTERCOUPON == int.Parse(pIdEnter) && t.IDITEM == int.Parse(pIdItem)).FirstOrDefault();
+                if (check != null)
+                {
+                    //Tồn tại thì cập nhật => Cap nhat so luong kho
+                    Item update = db.Items.Where(t => t.ID == int.Parse(pIdItem)).FirstOrDefault();
+                    update.NUMBER = update.NUMBER - int.Parse(pNumber);
+                    db.DetailEnterCoupons.DeleteOnSubmit(check);
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {

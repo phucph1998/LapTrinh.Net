@@ -29,6 +29,7 @@ namespace SpaManagementSoftware
             {
                 dgV_EnterCoupon.DataSource = _enter.LoadListEnter();
                 dgV_DetailCoupon.DataSource = _item.GetListItem_IdEnter(dgV_EnterCoupon.Rows[0].Cells["ID"].Value.ToString());
+                SumMoney();
             }
             catch
             {
@@ -39,7 +40,6 @@ namespace SpaManagementSoftware
         private void frmEnterItem_Load(object sender, EventArgs e)
         {
             LoadListEnter();
-            SumMoney();
         }
 
         private void btn_AddCoupon_Click(object sender, EventArgs e)
@@ -132,12 +132,12 @@ namespace SpaManagementSoftware
 
         private void btn_DeleteCoupon_Click(object sender, EventArgs e)
         {
-            if(dgV_EnterCoupon.CurrentRow != null)
+            if (dgV_EnterCoupon.CurrentRow != null)
             {
                 DialogResult r;
                 string noti = "Bạn có chắc muốn xóa phiếu nhập ngày " + dgV_EnterCoupon.CurrentRow.Cells["CREATE_DATE"].Value.ToString() + ", Số phiếu:" + dgV_EnterCoupon.CurrentRow.Cells["ID"].Value.ToString();
-                r = XtraMessageBox.Show(noti,"Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2);
-                if(r == DialogResult.Yes)
+                r = XtraMessageBox.Show(noti, "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (r == DialogResult.Yes)
                 {
                     bool deleteEnter = _enter.DeleteEnterCoupon(dgV_DetailCoupon.CurrentRow.Cells["ID_ENTER_COUPON"].Value.ToString());
                     bool flag = true;

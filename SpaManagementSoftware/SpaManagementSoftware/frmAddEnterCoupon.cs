@@ -21,6 +21,9 @@ namespace SpaManagementSoftware
         C_Enter _enter;
         public String _idEnter;
         public String username;
+        private List<string> listIDDelete = new List<string>();
+        private List<string> listNumberDelete = new List<string>();
+        bool flagDelete = false;
 
         public String IdEnter
         {
@@ -117,6 +120,7 @@ namespace SpaManagementSoftware
             if (IdEnter != null)
             {
                 LoadEnterCoupon();
+                flagDelete = true;
             }
             else
             {
@@ -184,7 +188,7 @@ namespace SpaManagementSoftware
 
         private void dgV_Items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            AddDataToDGView(1);
+            AddDataToDGView(1);//so luong moi lan double click la 1
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
@@ -285,9 +289,14 @@ namespace SpaManagementSoftware
         {
             try
             {
-                if (dgV_DetailsCoupon.CurrentRow != null)
+                if (dgV_DetailsCoupon.CurrentRow != null && Convert.ToInt32(dgV_DetailsCoupon.CurrentRow.Cells["NUMBER"].Value.ToString()) > 0)
                 {
                     dgV_DetailsCoupon.CurrentRow.Cells["SUM_MONEY"].Value = Convert.ToInt32(dgV_DetailsCoupon.CurrentRow.Cells["NUMBER"].Value.ToString()) * Convert.ToInt32(dgV_DetailsCoupon.CurrentRow.Cells["PRICE_IN_2"].Value.ToString());
+                    SumMoneyItem();
+                }
+                else
+                {
+                    dgV_DetailsCoupon.CurrentRow.Cells["NUMBER"].Value = 1;
                     SumMoneyItem();
                 }
             }
@@ -315,9 +324,17 @@ namespace SpaManagementSoftware
 
         private void btn_Remove_Click(object sender, EventArgs e)
         {
-            if (dgV_DetailsCoupon.CurrentRow != null)
+            if (dgV_DetailsCoupon.CurrentRow != null && flagDelete == false)
             {
                 dgV_DetailsCoupon.Rows.RemoveAt(dgV_DetailsCoupon.CurrentRow.Index);
+                SumMoneyItem();
+            }
+            if (dgV_DetailsCoupon.CurrentRow != null && flagDelete)
+            {
+                listIDDelete.Add(dgV_DetailsCoupon.CurrentRow.Cells["ID_ITEM"].Value.ToString());
+                listNumberDelete.Add(dgV_DetailsCoupon.CurrentRow.Cells["NUMBER"].Value.ToString());
+                dgV_DetailsCoupon.Rows.RemoveAt(dgV_DetailsCoupon.CurrentRow.Index);
+                SumMoneyItem();
             }
         }
         public string CheckReson()
@@ -357,12 +374,17 @@ namespace SpaManagementSoftware
                             string price = dgV_DetailsCoupon.Rows[i].Cells["PRICE_IN_2"].Value.ToString();
                             string money = dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value.ToString();
                             int UpdateDT = _item.UpdateDtEnterCoupon(txt_ID.Text, iditem, num, price, money);
-                            if (UpdateDT != 1)
-                            {
-                                XtraMessageBox.Show("Có lỗi trong lúc cập nhật !");
-                                return;
-                            }
+                            //if (UpdateDT != 1)
+                            //{
+                            //    XtraMessageBox.Show("Có lỗi trong lúc cập nhật !");
+                            //    return;
+                            //}
                         }
+                        for (int i = 0; i < listIDDelete.Count; i++)
+                        {
+                            bool delete = _item.DeleteDetailEC(IdEnter, listIDDelete[i].ToString(), listNumberDelete[i].ToString());
+                        }
+
                         XtraMessageBox.Show("Cập nhật thành công");
                         this.Close();
                         return;
