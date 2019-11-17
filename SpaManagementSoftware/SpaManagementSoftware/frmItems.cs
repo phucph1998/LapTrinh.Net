@@ -65,5 +65,16 @@ namespace SpaManagementSoftware
             frmAddItems frm = new frmAddItems();
             frm.ShowDialog();
         }
+
+        private void dGV_Items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dGV_Items.CurrentRow != null)
+            {
+                frmAddItems frm = new frmAddItems();
+                frm.IdItem = dGV_Items.CurrentRow.Cells["ID"].Value.ToString();
+                frm.ShowDialog();
+                dGV_Items.DataSource = _items.GetTableItemsFullMySQL();
+            }
+        }
     }
 }

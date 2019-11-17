@@ -272,6 +272,7 @@
             this.dGV_Items.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Items.Size = new System.Drawing.Size(652, 414);
             this.dGV_Items.TabIndex = 1;
+            this.dGV_Items.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Items_CellDoubleClick);
             // 
             // ID
             // 

@@ -145,9 +145,11 @@
             this.Controls.Add(this.btnChoose);
             this.Controls.Add(this.dgV_Items);
             this.Controls.Add(this.tV_GroupItem);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSearchItems";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tìm kiếm sản phẩm";
             this.Load += new System.EventHandler(this.frmSearchItems_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgV_Items)).EndInit();

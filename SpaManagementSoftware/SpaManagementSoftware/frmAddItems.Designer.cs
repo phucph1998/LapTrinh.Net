@@ -49,15 +49,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgv_ContentItem = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsb = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAME_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAME_UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -197,6 +197,8 @@
             // 
             // cbbGroupItem
             // 
+            this.cbbGroupItem.BackColor = System.Drawing.Color.Lime;
+            this.cbbGroupItem.ForeColor = System.Drawing.Color.Red;
             this.cbbGroupItem.FormattingEnabled = true;
             this.cbbGroupItem.Location = new System.Drawing.Point(97, 107);
             this.cbbGroupItem.Name = "cbbGroupItem";
@@ -230,6 +232,8 @@
             // 
             // cbbUnit
             // 
+            this.cbbUnit.BackColor = System.Drawing.Color.Yellow;
+            this.cbbUnit.ForeColor = System.Drawing.Color.Red;
             this.cbbUnit.FormattingEnabled = true;
             this.cbbUnit.Location = new System.Drawing.Point(97, 69);
             this.cbbUnit.Name = "cbbUnit";
@@ -238,6 +242,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(97, 6);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(467, 21);
@@ -283,6 +288,31 @@
             this.dgv_ContentItem.Size = new System.Drawing.Size(564, 226);
             this.dgv_ContentItem.TabIndex = 1;
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // NAME_ITEM
+            // 
+            this.NAME_ITEM.DataPropertyName = "NAME_ITEM";
+            this.NAME_ITEM.HeaderText = "Vật tư";
+            this.NAME_ITEM.Name = "NAME_ITEM";
+            // 
+            // NAME_UNIT
+            // 
+            this.NAME_UNIT.DataPropertyName = "NAME_UNIT";
+            this.NAME_UNIT.HeaderText = "ĐVT";
+            this.NAME_UNIT.Name = "NAME_UNIT";
+            // 
+            // NUMBER
+            // 
+            this.NUMBER.DataPropertyName = "NUMBER";
+            this.NUMBER.HeaderText = "Số lượng";
+            this.NUMBER.Name = "NUMBER";
+            // 
             // tsb
             // 
             this.tsb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -310,6 +340,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(83, 22);
             this.btnDelete.Text = "Xóa Vật Tư";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnExit
             // 
@@ -329,31 +360,7 @@
             this.btnSave.Size = new System.Drawing.Size(105, 32);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Ghi dữ liệu";
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // NAME_ITEM
-            // 
-            this.NAME_ITEM.DataPropertyName = "NAME_ITEM";
-            this.NAME_ITEM.HeaderText = "Vật tư";
-            this.NAME_ITEM.Name = "NAME_ITEM";
-            // 
-            // NAME_UNIT
-            // 
-            this.NAME_UNIT.DataPropertyName = "NAME_UNIT";
-            this.NAME_UNIT.HeaderText = "ĐVT";
-            this.NAME_UNIT.Name = "NAME_UNIT";
-            // 
-            // NUMBER
-            // 
-            this.NUMBER.DataPropertyName = "NUMBER";
-            this.NUMBER.HeaderText = "Số lượng";
-            this.NUMBER.Name = "NUMBER";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmAddItems
             // 
@@ -364,9 +371,11 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddItems";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mặt Hàng";
             this.Load += new System.EventHandler(this.frmAddItems_Load);
             this.panel1.ResumeLayout(false);

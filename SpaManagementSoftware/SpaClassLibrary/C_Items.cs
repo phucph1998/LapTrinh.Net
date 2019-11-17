@@ -13,6 +13,11 @@ namespace SpaClassLibrary
     public class C_Items
     {
         DbSpaDataContext db = new DbSpaDataContext();
+        //dem so luong mat hang
+        public string CountIdItem()
+        {
+            return db.Items.Select(t => t).Count().ToString();
+        }
         //Load san pham custom theo id
         public DataTable GetListItemFull_ToIdItem(String pIdItem)
         {
@@ -224,6 +229,144 @@ namespace SpaClassLibrary
                     Item update = db.Items.Where(t => t.ID == int.Parse(pIdItem)).FirstOrDefault();
                     update.NUMBER = update.NUMBER - int.Parse(pNumber);
                     db.DetailEnterCoupons.DeleteOnSubmit(check);
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //Them mot mat hang
+        public bool AddItems(string pIdItem, string pIdGroup, string pIdUnit, string pName, string pPriceOut, string pRose, string pRateRose)
+        {
+            try
+            {
+                Item check = db.Items.Where(t => t.ID == int.Parse(pIdItem)).FirstOrDefault();
+                if (check != null)
+                {
+                    return false;//trung khoa chinh
+                }
+                else
+                {
+                    //them moi
+                    Item add = new Item();
+                    add.ID = int.Parse(pIdItem);
+                    add.IDGROUP = int.Parse(pIdGroup);
+                    add.IDUNIT = int.Parse(pIdUnit);
+                    add.NAME = pName;
+                    add.PRICEOUT = float.Parse(pPriceOut);
+                    add.ROSE = float.Parse(pRose);
+                    add.ROSERATE = float.Parse(pRateRose);
+                    add.STATUS = 1;
+
+                    db.Items.InsertOnSubmit(add);
+                    db.SubmitChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //Cap nhat mat hang
+        public bool UpdateItems(string pIdItem, string pIdGroup, string pIdUnit, string pName, string pPriceOut, string pRose, string pRateRose)
+        {
+            try
+            {
+                Item check = db.Items.Where(t => t.ID == int.Parse(pIdItem)).FirstOrDefault();
+                if (check != null)
+                {
+                    check.IDGROUP = int.Parse(pIdGroup);
+                    check.IDUNIT = int.Parse(pIdUnit);
+                    check.NAME = pName;
+                    check.PRICEOUT = float.Parse(pPriceOut);
+                    check.ROSE = float.Parse(pRose);
+                    check.ROSERATE = float.Parse(pRateRose);
+
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //them noi dung vat tu cua mat hang
+        public bool AddContentItems(string pIdItem, string pIDitemCt, string pNum)
+        {
+            try
+            {
+                ContentItem check = db.ContentItems.Where(t => t.IDITEM == int.Parse(pIdItem) && t.IDITEMCONTENT == int.Parse(pIDitemCt)).FirstOrDefault();
+                if (check != null)
+                {
+                    return false;
+                }
+                else
+                {
+                    ContentItem add = new ContentItem();
+                    add.IDITEM = int.Parse(pIdItem);
+                    add.IDITEMCONTENT = int.Parse(pIDitemCt);
+                    add.NUMBER = int.Parse(pNum);
+
+                    db.ContentItems.InsertOnSubmit(add);
+                    db.SubmitChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //Xoa noi dung vat tu cua mat hang
+        public bool DeleteContentItems(string pIdItem, string pIDitemCt)
+        {
+            try
+            {
+                ContentItem check = db.ContentItems.Where(t => t.IDITEM == int.Parse(pIdItem) && t.IDITEMCONTENT == int.Parse(pIDitemCt)).FirstOrDefault();
+                if (check != null)
+                {
+                    //Xoa
+                    db.ContentItems.DeleteOnSubmit(check);
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //Cap nhat ContentItem
+        public bool UpdateContentItems(string pIdItem, string pIDitemCt, string pNum)
+        {
+            try
+            {
+                ContentItem check = db.ContentItems.Where(t => t.IDITEM == int.Parse(pIdItem) && t.IDITEMCONTENT == int.Parse(pIDitemCt)).FirstOrDefault();
+                if (check != null)
+                {
+                    check.NUMBER = int.Parse(pNum);
                     db.SubmitChanges();
                     return true;
                 }
