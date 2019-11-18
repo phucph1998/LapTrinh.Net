@@ -383,6 +383,7 @@
             this.danhMụcKháchHàngToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.danhMụcKháchHàngToolStripMenuItem.Tag = "T21";
             this.danhMụcKháchHàngToolStripMenuItem.Text = "Danh mục khách hàng";
+            this.danhMụcKháchHàngToolStripMenuItem.Click += new System.EventHandler(this.danhMụcKháchHàngToolStripMenuItem_Click);
             // 
             // trungTâmKháchHàngToolStripMenuItem
             // 
@@ -398,6 +399,7 @@
             this.danhMụcMặtHàngToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.danhMụcMặtHàngToolStripMenuItem.Tag = "T23";
             this.danhMụcMặtHàngToolStripMenuItem.Text = "Danh mục mặt hàng";
+            this.danhMụcMặtHàngToolStripMenuItem.Click += new System.EventHandler(this.danhMụcMặtHàngToolStripMenuItem_Click);
             // 
             // danhMụcThẻTrảTrướcToolStripMenuItem
             // 

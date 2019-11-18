@@ -42,7 +42,7 @@ namespace SpaClassLibrary
         public DataTable GetTableItemsFullMySQL()
         {
             DataTable dt = new DataTable();
-            string sql = "SELECT i.ID,i.ID_GROUP,i.ID_UNIT,i.NAME,u.NAME AS NAME_UNIT,i.PRICE_OUT,i.PRICE_IN,i.ROSE,i.ROSE_RATE FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT";
+            string sql = "SELECT i.ID,i.ID_GROUP,i.ID_UNIT,i.NAME,u.NAME AS NAME_UNIT,i.PRICE_OUT,i.PRICE_IN,i.ROSE,i.ROSE_RATE FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT AND i.STATUS='1'";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
@@ -52,7 +52,7 @@ namespace SpaClassLibrary
         public DataTable GetListItemFull_ForGroup(String pNameGroup)
         {
             DataTable dt = new DataTable();
-            string mysql = "SELECT i.ID,i.ID_GROUP,i.ID_UNIT,i.NAME,u.NAME AS NAME_UNIT,i.PRICE_OUT,i.PRICE_IN,i.ROSE,i.ROSE_RATE FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT AND i.ID_GROUP='" + GetIdGroupItemMySQL(pNameGroup) + "'";
+            string mysql = "SELECT i.ID,i.ID_GROUP,i.ID_UNIT,i.NAME,u.NAME AS NAME_UNIT,i.PRICE_OUT,i.PRICE_IN,i.ROSE,i.ROSE_RATE FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT AND i.ID_GROUP='" + GetIdGroupItemMySQL(pNameGroup) + "' AND i.STATUS='1'";
             MySqlDataAdapter da = new MySqlDataAdapter(mysql, Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
@@ -61,7 +61,7 @@ namespace SpaClassLibrary
         public DataTable GetTableTypeItemMySQL()
         {
             DataTable listType = new DataTable();
-            MySqlDataAdapter dt = new MySqlDataAdapter("select NAME_GROUP from group_item", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            MySqlDataAdapter dt = new MySqlDataAdapter("select NAME_GROUP from group_item WHERE `STATUS`=1", Properties.Settings.Default.DbSpaDataContextConnectionString);
             dt.Fill(listType);
             return listType;
         }
@@ -69,7 +69,15 @@ namespace SpaClassLibrary
         public DataTable GetTableItemsMySQL()
         {
             DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT i.ID,i.NAME AS NAME_ITEM,i.PRICE_IN,u.NAME AS NAME_UNIT FROM item i, unit_item u", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT i.ID,i.NAME AS NAME_ITEM,i.PRICE_IN,u.NAME AS NAME_UNIT FROM item i, unit_item u WHERE i.ID_UNIT=u.ID", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
+        //Load san pham de ban
+        public DataTable GetTableItemsMySQL_Sale()
+        {
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT i.ID,i.NAME AS NAME_ITEM,u.NAME AS NAME_UNIT,i.PRICE_OUT FROM item i, unit_item u WHERE i.ID_UNIT=u.ID", Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
         }
@@ -97,6 +105,16 @@ namespace SpaClassLibrary
         {
             DataTable dt = new DataTable();
             string mysql = "SELECT i.ID,i.NAME AS NAME_ITEM ,i.PRICE_IN,u.NAME AS NAME_UNIT FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT AND i.ID_GROUP='" + GetIdGroupItemMySQL(pNameGroup) + "'";
+            MySqlDataAdapter da = new MySqlDataAdapter(mysql, Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
+
+        //Load item tung nhom san pham de ban
+        public DataTable GetListItem_ForGroup_Sale(String pNameGroup)
+        {
+            DataTable dt = new DataTable();
+            string mysql = "SELECT i.ID,i.NAME AS NAME_ITEM,u.NAME AS NAME_UNIT ,i.PRICE_OUT FROM group_item g,item i,unit_item u WHERE g.ID=i.ID_GROUP AND u.ID=i.ID_UNIT AND i.ID_GROUP='" + GetIdGroupItemMySQL(pNameGroup) + "'";
             MySqlDataAdapter da = new MySqlDataAdapter(mysql, Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
@@ -306,6 +324,28 @@ namespace SpaClassLibrary
             }
         }
 
+        //Xoa Mat Hang (Cap nhat lai status)
+        public bool DeleteItems(string pIdItem)
+        {
+            try
+            {
+                Item check = db.Items.Where(t => t.ID == int.Parse(pIdItem)).FirstOrDefault();
+                if (check != null)
+                {
+                    check.STATUS = 0;
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
         //them noi dung vat tu cua mat hang
         public bool AddContentItems(string pIdItem, string pIDitemCt, string pNum)
         {

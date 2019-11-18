@@ -16,10 +16,12 @@ namespace SpaManagementSoftware
     {
         CreateControl createCtr = new CreateControl();
         UserManager usr;
+        C_Items _item;
         public frmUseService()
         {
             InitializeComponent();
             usr = new UserManager();
+            _item = new C_Items();
         }
         //Ẩn hiện cột mặt hàng
         private void btn_Hide_Show_Click(object sender, EventArgs e)
@@ -53,7 +55,7 @@ namespace SpaManagementSoftware
 
         }
 
-        private void frmUseService_Load(object sender, EventArgs e)
+        public void LoadChairs()
         {
             //i là số tầng của chi nhánh
             //j là số ghế ứng với từng số lầu i của chi nhánh đó
@@ -70,6 +72,50 @@ namespace SpaManagementSoftware
             }
         }
 
+        public void LoadTreeGroupItem()
+        {
+            tV_GroupItem.Nodes.Clear();
+            tV_GroupItem.Nodes.Add("Tất cả");
+            tV_GroupItem.Nodes[0].Tag = "1";
+            //tV_GroupItem.Nodes[0].ContextMenuStrip = cMS_GroupCus;
+            DataTable typeCus = new DataTable();
+            typeCus = _item.GetTableTypeItemMySQL();
+            for (int i = 0; i < typeCus.Rows.Count; i++)
+            {
+                tV_GroupItem.Nodes[0].Nodes.Add(typeCus.Rows[i][0].ToString());
+                tV_GroupItem.Nodes[0].Nodes[i].Tag = "2";
+                //tV_Member.Nodes[0].Nodes[i].ContextMenuStrip = cMS_GroupCus;
+            }
+            tV_GroupItem.Nodes[0].ExpandAll();
+            dGV_Item.DataSource = _item.GetTableItemsMySQL_Sale();
+        }
 
+        private void frmUseService_Load(object sender, EventArgs e)
+        {
+            LoadChairs();
+            LoadTreeGroupItem();
+        }
+
+        private void tV_GroupItem_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode selectNode = this.tV_GroupItem.SelectedNode;
+            DataTable profileCus = new DataTable();
+            if (selectNode.Tag == "1")
+            {
+                dGV_Item.DataSource = _item.GetTableItemsMySQL_Sale();
+            }
+            else
+            {
+                if (selectNode.Tag == "2")
+                {
+                    dGV_Item.DataSource = _item.GetListItem_ForGroup_Sale(selectNode.Text);
+                }
+            }
+        }
+
+        private void dGV_Item_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

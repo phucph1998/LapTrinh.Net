@@ -88,7 +88,7 @@ namespace SpaManagementSoftware
 
         private void tSP_AddGroup_Click(object sender, EventArgs e)
         {
-            frmAddTypeCus add = new frmAddTypeCus();
+            frmAddGroupCus add = new frmAddGroupCus();
             add.ShowDialog();
             LoadTreeGroupCus();
         }

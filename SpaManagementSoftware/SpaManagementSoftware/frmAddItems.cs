@@ -44,6 +44,7 @@ namespace SpaManagementSoftware
         void LoadData()
         {
             //IdItem = "3";
+            ColorData();
             cbbGroupItem.DataSource = _groupItem.GetDataGroupItem();
             cbbGroupItem.DisplayMember = "NAMEGROUP";
             cbbGroupItem.ValueMember = "ID";
@@ -105,7 +106,7 @@ namespace SpaManagementSoftware
                 {
                     string[] row = new string[] { id, name, unit, number };
                     dgv_ContentItem.Rows.Add(row);
-                    //ColorData();
+                    ColorData();
                 }
                 else
                 {
@@ -120,10 +121,17 @@ namespace SpaManagementSoftware
                     }
                     string[] row = new string[] { id, name, unit, number };
                     dgv_ContentItem.Rows.Add(row);
-                    //ColorData();
+                    ColorData();
 
                 }
             }
+        }
+
+        public void ColorData()
+        {
+            dgv_ContentItem.Columns[1].DefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            dgv_ContentItem.Columns[2].DefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            dgv_ContentItem.Columns[3].DefaultCellStyle.BackColor = System.Drawing.Color.Gold;
         }
 
         private void btnExit_Click(object sender, EventArgs e)

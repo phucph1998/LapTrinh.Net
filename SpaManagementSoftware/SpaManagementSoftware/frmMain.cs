@@ -131,17 +131,7 @@ namespace SpaManagementSoftware
 
         private void tSBManagementSales_Click(object sender, EventArgs e)
         {
-            if (CheckExist("frmCustomer"))
-            {
-                XtraMessageBox.Show("Bạn Đang Sử Dụng Chức Năng Này", "Thông báo");
-                //MessageBox.Show("Chức Năng Này Đang Sử Dụng, Không Cần Mở Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                return;
-            }
-            else
-            {
-                frmCustomer cus = new frmCustomer();
-                openForm(cus);
-            }
+            
         }
 
         private void phânNhómNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -207,6 +197,36 @@ namespace SpaManagementSoftware
             else
             {
                 frmEnterItem frm = new frmEnterItem();
+                openForm(frm);
+            }
+        }
+
+        private void danhMụcKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CheckExist("frmCustomer"))
+            {
+                XtraMessageBox.Show("Bạn Đang Sử Dụng Chức Năng Này", "Thông báo");
+                //MessageBox.Show("Chức Năng Này Đang Sử Dụng, Không Cần Mở Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            else
+            {
+                frmCustomer cus = new frmCustomer();
+                openForm(cus);
+            }
+        }
+
+        private void danhMụcMặtHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CheckExist("frmItems"))
+            {
+                XtraMessageBox.Show("Bạn Đang Sử Dụng Chức Năng Này", "Thông báo");
+                //MessageBox.Show("Chức Năng Này Đang Sử Dụng, Không Cần Mở Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            else
+            {
+                frmItems frm = new frmItems();
                 openForm(frm);
             }
         }

@@ -88,6 +88,18 @@
     <Compile Include="frmAddEnterCoupon.Designer.cs">
       <DependentUpon>frmAddEnterCoupon.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddGroupCus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddGroupCus.Designer.cs">
+      <DependentUpon>frmAddGroupCus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddGroupItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddGroupItems.Designer.cs">
+      <DependentUpon>frmAddGroupItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddGroupSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,12 +117,6 @@
     </Compile>
     <Compile Include="frmAddSupplier.Designer.cs">
       <DependentUpon>frmAddSupplier.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmAddTypeCus.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmAddTypeCus.Designer.cs">
-      <DependentUpon>frmAddTypeCus.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddUserToGroup.cs">
       <SubType>Form</SubType>
@@ -187,6 +193,12 @@
     <EmbeddedResource Include="frmAddEnterCoupon.resx">
       <DependentUpon>frmAddEnterCoupon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddGroupCus.resx">
+      <DependentUpon>frmAddGroupCus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddGroupItems.resx">
+      <DependentUpon>frmAddGroupItems.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddGroupSupplier.resx">
       <DependentUpon>frmAddGroupSupplier.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,9 +207,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddSupplier.resx">
       <DependentUpon>frmAddSupplier.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmAddTypeCus.resx">
-      <DependentUpon>frmAddTypeCus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddUserToGroup.resx">
       <DependentUpon>frmAddUserToGroup.cs</DependentUpon>

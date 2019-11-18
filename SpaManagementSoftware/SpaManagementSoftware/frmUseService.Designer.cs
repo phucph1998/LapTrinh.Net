@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUseService));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
             this.btn_SerchCus = new DevExpress.XtraEditors.SimpleButton();
             this.txt_NameCus = new System.Windows.Forms.TextBox();
             this.lbl_Customer = new System.Windows.Forms.Label();
@@ -70,7 +65,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tSP_Discount = new System.Windows.Forms.ToolStripButton();
             this.tSB_Staff = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_DetailReceipt = new System.Windows.Forms.DataGridView();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -100,6 +95,19 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txt_Item = new System.Windows.Forms.TextBox();
             this.dGV_Item = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRICE_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAMEUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRICEOUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SALE_OFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_STAFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_STAFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xTCSale)).BeginInit();
             this.xTCSale.SuspendLayout();
             this.xTBGeneral.SuspendLayout();
@@ -108,7 +116,7 @@
             this.tBL_UseService.SuspendLayout();
             this.tBL_Detail.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DetailReceipt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.tBL_Time.SuspendLayout();
@@ -345,7 +353,7 @@
             this.tBL_Detail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.41509F));
             this.tBL_Detail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.58491F));
             this.tBL_Detail.Controls.Add(this.toolStrip1, 0, 1);
-            this.tBL_Detail.Controls.Add(this.dataGridView1, 0, 2);
+            this.tBL_Detail.Controls.Add(this.dgv_DetailReceipt, 0, 2);
             this.tBL_Detail.Controls.Add(this.xtraTabControl1, 0, 3);
             this.tBL_Detail.Controls.Add(this.tBL_Time, 0, 0);
             this.tBL_Detail.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -448,15 +456,28 @@
             this.tSB_Staff.Size = new System.Drawing.Size(43, 17);
             this.tSB_Staff.Text = "NV";
             // 
-            // dataGridView1
+            // dgv_DetailReceipt
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tBL_Detail.SetColumnSpan(this.dataGridView1, 2);
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 141);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(444, 251);
-            this.dataGridView1.TabIndex = 2;
+            this.dgv_DetailReceipt.AllowUserToAddRows = false;
+            this.dgv_DetailReceipt.AllowUserToDeleteRows = false;
+            this.dgv_DetailReceipt.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_DetailReceipt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DetailReceipt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID_ITEM,
+            this.NAME,
+            this.NAMEUNIT,
+            this.NUMBER,
+            this.PRICEOUT,
+            this.SALE_OFF,
+            this.TOTAL,
+            this.ID_STAFF,
+            this.NAME_STAFF});
+            this.tBL_Detail.SetColumnSpan(this.dgv_DetailReceipt, 2);
+            this.dgv_DetailReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DetailReceipt.Location = new System.Drawing.Point(3, 141);
+            this.dgv_DetailReceipt.Name = "dgv_DetailReceipt";
+            this.dgv_DetailReceipt.Size = new System.Drawing.Size(444, 251);
+            this.dgv_DetailReceipt.TabIndex = 2;
             // 
             // xtraTabControl1
             // 
@@ -686,10 +707,18 @@
             // 
             this.comboBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
             this.comboBox4.Location = new System.Drawing.Point(3, 151);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(53, 21);
             this.comboBox4.TabIndex = 4;
+            this.comboBox4.Text = "1";
             // 
             // btn_AddItem
             // 
@@ -778,16 +807,9 @@
             this.tV_GroupItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tV_GroupItem.Location = new System.Drawing.Point(3, 30);
             this.tV_GroupItem.Name = "tV_GroupItem";
-            treeNode1.Name = "Node1";
-            treeNode1.Text = "Node1";
-            treeNode2.Name = "Node2";
-            treeNode2.Text = "Node2";
-            treeNode3.Name = "Node0";
-            treeNode3.Text = "Node0";
-            this.tV_GroupItem.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
             this.tV_GroupItem.Size = new System.Drawing.Size(250, 145);
             this.tV_GroupItem.TabIndex = 0;
+            this.tV_GroupItem.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tV_GroupItem_AfterSelect);
             // 
             // label6
             // 
@@ -811,12 +833,108 @@
             // 
             // dGV_Item
             // 
+            this.dGV_Item.AllowUserToAddRows = false;
+            this.dGV_Item.AllowUserToDeleteRows = false;
+            this.dGV_Item.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGV_Item.BackgroundColor = System.Drawing.Color.White;
             this.dGV_Item.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV_Item.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.NAME_ITEM,
+            this.NAME_UNIT,
+            this.PRICE_OUT});
             this.dGV_Item.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_Item.Location = new System.Drawing.Point(1046, 187);
             this.dGV_Item.Name = "dGV_Item";
+            this.dGV_Item.ReadOnly = true;
+            this.dGV_Item.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Item.Size = new System.Drawing.Size(256, 315);
             this.dGV_Item.TabIndex = 17;
+            this.dGV_Item.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Item_CellDoubleClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NAME_ITEM
+            // 
+            this.NAME_ITEM.DataPropertyName = "NAME_ITEM";
+            this.NAME_ITEM.FillWeight = 158.4157F;
+            this.NAME_ITEM.HeaderText = "Mặt hàng";
+            this.NAME_ITEM.Name = "NAME_ITEM";
+            this.NAME_ITEM.ReadOnly = true;
+            // 
+            // NAME_UNIT
+            // 
+            this.NAME_UNIT.DataPropertyName = "NAME_UNIT";
+            this.NAME_UNIT.FillWeight = 53.29949F;
+            this.NAME_UNIT.HeaderText = "ĐVT";
+            this.NAME_UNIT.Name = "NAME_UNIT";
+            this.NAME_UNIT.ReadOnly = true;
+            // 
+            // PRICE_OUT
+            // 
+            this.PRICE_OUT.DataPropertyName = "PRICE_OUT";
+            this.PRICE_OUT.FillWeight = 88.28481F;
+            this.PRICE_OUT.HeaderText = "Giá";
+            this.PRICE_OUT.Name = "PRICE_OUT";
+            this.PRICE_OUT.ReadOnly = true;
+            // 
+            // ID_ITEM
+            // 
+            this.ID_ITEM.HeaderText = "ID_ITEM";
+            this.ID_ITEM.Name = "ID_ITEM";
+            this.ID_ITEM.Visible = false;
+            // 
+            // NAME
+            // 
+            this.NAME.HeaderText = "Mặt hàng";
+            this.NAME.Name = "NAME";
+            this.NAME.Width = 120;
+            // 
+            // NAMEUNIT
+            // 
+            this.NAMEUNIT.HeaderText = "ĐVT";
+            this.NAMEUNIT.Name = "NAMEUNIT";
+            this.NAMEUNIT.Width = 40;
+            // 
+            // NUMBER
+            // 
+            this.NUMBER.HeaderText = "SL";
+            this.NUMBER.Name = "NUMBER";
+            this.NUMBER.Width = 40;
+            // 
+            // PRICEOUT
+            // 
+            this.PRICEOUT.HeaderText = "Giá";
+            this.PRICEOUT.Name = "PRICEOUT";
+            this.PRICEOUT.Width = 60;
+            // 
+            // SALE_OFF
+            // 
+            this.SALE_OFF.HeaderText = "CK";
+            this.SALE_OFF.Name = "SALE_OFF";
+            this.SALE_OFF.Width = 40;
+            // 
+            // TOTAL
+            // 
+            this.TOTAL.HeaderText = "Thành tiền";
+            this.TOTAL.Name = "TOTAL";
+            // 
+            // ID_STAFF
+            // 
+            this.ID_STAFF.HeaderText = "ID_STAFF";
+            this.ID_STAFF.Name = "ID_STAFF";
+            this.ID_STAFF.Visible = false;
+            // 
+            // NAME_STAFF
+            // 
+            this.NAME_STAFF.HeaderText = "NV";
+            this.NAME_STAFF.Name = "NAME_STAFF";
             // 
             // frmUseService
             // 
@@ -837,7 +955,7 @@
             this.tBL_Detail.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DetailReceipt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.tBL_Time.ResumeLayout(false);
@@ -877,7 +995,7 @@
         private System.Windows.Forms.ToolStripButton tSP_ReduceItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tSP_BookNumber;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_DetailReceipt;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
@@ -919,6 +1037,18 @@
         private System.Windows.Forms.ToolStripMenuItem menuItem_CancelReceipt;
         private DevExpress.XtraEditors.SimpleButton btn_TimeStart;
         private DevExpress.XtraEditors.SimpleButton btn_TimeEnd;
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_ITEM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_UNIT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRICE_OUT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_ITEM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAMEUNIT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NUMBER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRICEOUT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SALE_OFF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_STAFF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NAME_STAFF;
     }
 }

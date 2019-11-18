@@ -41,6 +41,7 @@ namespace SpaManagementSoftware
         private void frmItems_Load(object sender, EventArgs e)
         {
             LoadTreeGroupItem();
+            dGV_Items.DataSource = _items.GetTableItemsFullMySQL();
         }
 
         private void tV_GroupItem_AfterSelect(object sender, TreeViewEventArgs e)
@@ -68,13 +69,69 @@ namespace SpaManagementSoftware
 
         private void dGV_Items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dGV_Items.CurrentRow != null)
+            if (dGV_Items.CurrentRow != null)
             {
                 frmAddItems frm = new frmAddItems();
                 frm.IdItem = dGV_Items.CurrentRow.Cells["ID"].Value.ToString();
                 frm.ShowDialog();
                 dGV_Items.DataSource = _items.GetTableItemsFullMySQL();
             }
+        }
+
+        private void tSP_Edit_Click(object sender, EventArgs e)
+        {
+            if (dGV_Items.CurrentRow != null)
+            {
+                frmAddItems frm = new frmAddItems();
+                frm.IdItem = dGV_Items.CurrentRow.Cells["ID"].Value.ToString();
+                frm.ShowDialog();
+                dGV_Items.DataSource = _items.GetTableItemsFullMySQL();
+            }
+        }
+
+        private void tSB_Delete_Click(object sender, EventArgs e)
+        {
+            DialogResult r;
+            r = XtraMessageBox.Show("Bạn có chắc muốn xóa mặt hàng : " + dGV_Items.CurrentRow.Cells["NAME"].Value.ToString(), "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (r == DialogResult.Yes)
+            {
+                bool delete = _items.DeleteItems(dGV_Items.CurrentRow.Cells["ID"].Value.ToString());
+                if (delete)
+                {
+                    XtraMessageBox.Show("Xóa mặt hàng thành công!", "Thông báo");
+                }
+                else
+                {
+                    XtraMessageBox.Show("Xóa mặt hàng thất bại!", "Thông báo");
+                }
+                dGV_Items.DataSource = _items.GetTableItemsFullMySQL();
+            }
+        }
+
+        private void tSP_AddGroup_Click(object sender, EventArgs e)
+        {
+            frmAddGroupItems frm = new frmAddGroupItems();
+            frm.ShowDialog();
+            LoadTreeGroupItem();
+            dGV_Items.DataSource = _items.GetTableItemsFullMySQL();
+        }
+
+        private void tSP_EditGroup_Click(object sender, EventArgs e)
+        {
+            if (tV_GroupItem.SelectedNode != null)
+            {
+                frmAddGroupItems frm = new frmAddGroupItems();
+                frm.NameGroup = tV_GroupItem.SelectedNode.Text;
+                frm.ShowDialog();
+                LoadTreeGroupItem();
+                dGV_Items.DataSource = _items.GetTableItemsFullMySQL();
+            }
+        }
+
+        private void tSP_Refresh_Click(object sender, EventArgs e)
+        {
+            LoadTreeGroupItem();
+            XtraMessageBox.Show("Đã refresh !","Thông báo !");
         }
     }
 }

@@ -49,15 +49,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgv_ContentItem = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAME_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAME_UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsb = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -288,31 +288,6 @@
             this.dgv_ContentItem.Size = new System.Drawing.Size(564, 226);
             this.dgv_ContentItem.TabIndex = 1;
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // NAME_ITEM
-            // 
-            this.NAME_ITEM.DataPropertyName = "NAME_ITEM";
-            this.NAME_ITEM.HeaderText = "Vật tư";
-            this.NAME_ITEM.Name = "NAME_ITEM";
-            // 
-            // NAME_UNIT
-            // 
-            this.NAME_UNIT.DataPropertyName = "NAME_UNIT";
-            this.NAME_UNIT.HeaderText = "ĐVT";
-            this.NAME_UNIT.Name = "NAME_UNIT";
-            // 
-            // NUMBER
-            // 
-            this.NUMBER.DataPropertyName = "NUMBER";
-            this.NUMBER.HeaderText = "Số lượng";
-            this.NUMBER.Name = "NUMBER";
-            // 
             // tsb
             // 
             this.tsb.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -361,6 +336,33 @@
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Ghi dữ liệu";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // NAME_ITEM
+            // 
+            this.NAME_ITEM.DataPropertyName = "NAME_ITEM";
+            this.NAME_ITEM.HeaderText = "Vật tư";
+            this.NAME_ITEM.Name = "NAME_ITEM";
+            this.NAME_ITEM.ReadOnly = true;
+            // 
+            // NAME_UNIT
+            // 
+            this.NAME_UNIT.DataPropertyName = "NAME_UNIT";
+            this.NAME_UNIT.HeaderText = "ĐVT";
+            this.NAME_UNIT.Name = "NAME_UNIT";
+            this.NAME_UNIT.ReadOnly = true;
+            // 
+            // NUMBER
+            // 
+            this.NUMBER.DataPropertyName = "NUMBER";
+            this.NUMBER.HeaderText = "Số lượng";
+            this.NUMBER.Name = "NUMBER";
             // 
             // frmAddItems
             // 
