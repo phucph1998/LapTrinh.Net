@@ -130,6 +130,12 @@
     <Compile Include="frmChangePass.Designer.cs">
       <DependentUpon>frmChangePass.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChooseStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChooseStaff.Designer.cs">
+      <DependentUpon>frmChooseStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,12 @@
     </Compile>
     <Compile Include="frmRole.Designer.cs">
       <DependentUpon>frmRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchCustomer.Designer.cs">
+      <DependentUpon>frmSearchCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSearchItems.cs">
       <SubType>Form</SubType>
@@ -214,6 +226,9 @@
     <EmbeddedResource Include="frmChangePass.resx">
       <DependentUpon>frmChangePass.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmChooseStaff.resx">
+      <DependentUpon>frmChooseStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCustomer.resx">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRole.resx">
       <DependentUpon>frmRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchCustomer.resx">
+      <DependentUpon>frmSearchCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSearchItems.resx">
       <DependentUpon>frmSearchItems.cs</DependentUpon>
@@ -391,6 +409,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\items.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-cus.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-cus.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

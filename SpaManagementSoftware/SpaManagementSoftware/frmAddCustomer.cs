@@ -97,6 +97,7 @@ namespace SpaManagementSoftware
                 if (add == 2)
                 {
                     XtraMessageBox.Show("Thêm khách hàng thành công !");
+                    this.Close();
                     return;
                 }
                 else
@@ -124,11 +125,14 @@ namespace SpaManagementSoftware
         //Load Combobox Loai KH
         public void LoadTypeCus()
         {
-            DataTable tb = cus.LoadTypeCusMySQL();
-            for (int i = 0; i < tb.Rows.Count; i++)
-            {
-                cbb_TypeCus.Items.Add(tb.Rows[i][1].ToString());
-            }
+            //DataTable tb = cus.LoadTypeCusMySQL();
+            //for (int i = 0; i < tb.Rows.Count; i++)
+            //{
+            //    cbb_TypeCus.Items.Add(tb.Rows[i][1].ToString());
+            //}
+            cbb_TypeCus.DataSource = cus.LoadTypeCusMySQL();
+            cbb_TypeCus.DisplayMember = "NAME";
+            cbb_TypeCus.ValueMember = "NAME";
             if (this.CheckAsign == 1)
             {
                 btn_Update.Enabled = false;
@@ -193,6 +197,7 @@ namespace SpaManagementSoftware
             if (update)
             {
                 XtraMessageBox.Show("Cập nhật khách hàng thành công");
+                this.Close();
             }
             else
             {

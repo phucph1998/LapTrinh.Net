@@ -55,7 +55,7 @@
             this.panel_Retail = new System.Windows.Forms.Panel();
             this.tBL_UseService = new System.Windows.Forms.TableLayoutPanel();
             this.tBL_Detail = new System.Windows.Forms.TableLayoutPanel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbDTReceipt = new System.Windows.Forms.ToolStrip();
             this.tSB_IncreaseItem = new System.Windows.Forms.ToolStripButton();
             this.tSP_ReduceItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -66,6 +66,15 @@
             this.tSP_Discount = new System.Windows.Forms.ToolStripButton();
             this.tSB_Staff = new System.Windows.Forms.ToolStripButton();
             this.dgv_DetailReceipt = new System.Windows.Forms.DataGridView();
+            this.ID_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAMEUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRICEOUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SALE_OFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_STAFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NAME_STAFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -74,16 +83,17 @@
             this.btn_Hide_Show = new DevExpress.XtraEditors.SimpleButton();
             this.nUD_NumberCus = new System.Windows.Forms.NumericUpDown();
             this.lbl_SumTime = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_Date = new System.Windows.Forms.DateTimePicker();
             this.btn_TimeStart = new DevExpress.XtraEditors.SimpleButton();
             this.btn_TimeEnd = new DevExpress.XtraEditors.SimpleButton();
+            this.lbl_NameChair = new System.Windows.Forms.Label();
             this.tBL_Control = new System.Windows.Forms.TableLayoutPanel();
             this.btn_RemoveItem = new DevExpress.XtraEditors.SimpleButton();
             this.btn_MoveChair = new DevExpress.XtraEditors.SimpleButton();
             this.btn_MergeBill = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Treatment = new DevExpress.XtraEditors.SimpleButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cbbNumber = new System.Windows.Forms.ComboBox();
             this.btn_AddItem = new DevExpress.XtraEditors.SimpleButton();
             this.btn_DeleteItem = new DevExpress.XtraEditors.SimpleButton();
             this.btn_PercentGroup = new DevExpress.XtraEditors.SimpleButton();
@@ -99,15 +109,6 @@
             this.NAME_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NAME_UNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PRICE_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_ITEM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAMEUNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NUMBER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRICEOUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SALE_OFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_STAFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NAME_STAFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xTCSale)).BeginInit();
             this.xTCSale.SuspendLayout();
             this.xTBGeneral.SuspendLayout();
@@ -115,7 +116,7 @@
             this.xTPRetail.SuspendLayout();
             this.tBL_UseService.SuspendLayout();
             this.tBL_Detail.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.tsbDTReceipt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DetailReceipt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -135,6 +136,7 @@
             this.btn_SerchCus.Name = "btn_SerchCus";
             this.btn_SerchCus.Size = new System.Drawing.Size(56, 22);
             this.btn_SerchCus.TabIndex = 10;
+            this.btn_SerchCus.Click += new System.EventHandler(this.btn_SerchCus_Click);
             // 
             // txt_NameCus
             // 
@@ -259,6 +261,7 @@
             this.menuItem_OpenChair.Name = "menuItem_OpenChair";
             this.menuItem_OpenChair.Size = new System.Drawing.Size(180, 22);
             this.menuItem_OpenChair.Text = "Mở ghê";
+            this.menuItem_OpenChair.Click += new System.EventHandler(this.menuItem_OpenChair_Click);
             // 
             // menuItem_Open_Reser
             // 
@@ -352,7 +355,7 @@
             this.tBL_Detail.ColumnCount = 2;
             this.tBL_Detail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.41509F));
             this.tBL_Detail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.58491F));
-            this.tBL_Detail.Controls.Add(this.toolStrip1, 0, 1);
+            this.tBL_Detail.Controls.Add(this.tsbDTReceipt, 0, 1);
             this.tBL_Detail.Controls.Add(this.dgv_DetailReceipt, 0, 2);
             this.tBL_Detail.Controls.Add(this.xtraTabControl1, 0, 3);
             this.tBL_Detail.Controls.Add(this.tBL_Time, 0, 0);
@@ -368,11 +371,11 @@
             this.tBL_Detail.Size = new System.Drawing.Size(450, 499);
             this.tBL_Detail.TabIndex = 14;
             // 
-            // toolStrip1
+            // tsbDTReceipt
             // 
-            this.tBL_Detail.SetColumnSpan(this.toolStrip1, 2);
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tBL_Detail.SetColumnSpan(this.tsbDTReceipt, 2);
+            this.tsbDTReceipt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tsbDTReceipt.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tSB_IncreaseItem,
             this.tSP_ReduceItem,
             this.toolStripSeparator1,
@@ -382,11 +385,11 @@
             this.toolStripSeparator2,
             this.tSP_Discount,
             this.tSB_Staff});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 118);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(450, 20);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.tsbDTReceipt.Location = new System.Drawing.Point(0, 118);
+            this.tsbDTReceipt.Name = "tsbDTReceipt";
+            this.tsbDTReceipt.Size = new System.Drawing.Size(450, 20);
+            this.tsbDTReceipt.TabIndex = 1;
+            this.tsbDTReceipt.Text = "toolStrip1";
             // 
             // tSB_IncreaseItem
             // 
@@ -478,6 +481,59 @@
             this.dgv_DetailReceipt.Name = "dgv_DetailReceipt";
             this.dgv_DetailReceipt.Size = new System.Drawing.Size(444, 251);
             this.dgv_DetailReceipt.TabIndex = 2;
+            this.dgv_DetailReceipt.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DetailReceipt_CellValueChanged);
+            // 
+            // ID_ITEM
+            // 
+            this.ID_ITEM.HeaderText = "ID_ITEM";
+            this.ID_ITEM.Name = "ID_ITEM";
+            this.ID_ITEM.Visible = false;
+            // 
+            // NAME
+            // 
+            this.NAME.HeaderText = "Mặt hàng";
+            this.NAME.Name = "NAME";
+            this.NAME.Width = 120;
+            // 
+            // NAMEUNIT
+            // 
+            this.NAMEUNIT.HeaderText = "ĐVT";
+            this.NAMEUNIT.Name = "NAMEUNIT";
+            this.NAMEUNIT.Width = 40;
+            // 
+            // NUMBER
+            // 
+            this.NUMBER.HeaderText = "SL";
+            this.NUMBER.Name = "NUMBER";
+            this.NUMBER.Width = 40;
+            // 
+            // PRICEOUT
+            // 
+            this.PRICEOUT.HeaderText = "Giá";
+            this.PRICEOUT.Name = "PRICEOUT";
+            this.PRICEOUT.Width = 60;
+            // 
+            // SALE_OFF
+            // 
+            this.SALE_OFF.HeaderText = "CK";
+            this.SALE_OFF.Name = "SALE_OFF";
+            this.SALE_OFF.Width = 40;
+            // 
+            // TOTAL
+            // 
+            this.TOTAL.HeaderText = "Thành tiền";
+            this.TOTAL.Name = "TOTAL";
+            // 
+            // ID_STAFF
+            // 
+            this.ID_STAFF.HeaderText = "ID_STAFF";
+            this.ID_STAFF.Name = "ID_STAFF";
+            this.ID_STAFF.Visible = false;
+            // 
+            // NAME_STAFF
+            // 
+            this.NAME_STAFF.HeaderText = "NV";
+            this.NAME_STAFF.Name = "NAME_STAFF";
             // 
             // xtraTabControl1
             // 
@@ -526,9 +582,10 @@
             this.tBL_Time.Controls.Add(this.nUD_NumberCus, 4, 2);
             this.tBL_Time.Controls.Add(this.lbl_Customer, 0, 3);
             this.tBL_Time.Controls.Add(this.lbl_SumTime, 0, 2);
-            this.tBL_Time.Controls.Add(this.dateTimePicker1, 4, 0);
+            this.tBL_Time.Controls.Add(this.dtp_Date, 4, 0);
             this.tBL_Time.Controls.Add(this.btn_TimeStart, 1, 0);
             this.tBL_Time.Controls.Add(this.btn_TimeEnd, 1, 1);
+            this.tBL_Time.Controls.Add(this.lbl_NameChair, 1, 2);
             this.tBL_Time.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tBL_Time.Location = new System.Drawing.Point(3, 3);
             this.tBL_Time.Name = "tBL_Time";
@@ -575,24 +632,23 @@
             // lbl_SumTime
             // 
             this.lbl_SumTime.AutoSize = true;
-            this.tBL_Time.SetColumnSpan(this.lbl_SumTime, 2);
             this.lbl_SumTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_SumTime.Location = new System.Drawing.Point(3, 56);
             this.lbl_SumTime.Name = "lbl_SumTime";
-            this.lbl_SumTime.Size = new System.Drawing.Size(155, 28);
+            this.lbl_SumTime.Size = new System.Drawing.Size(86, 28);
             this.lbl_SumTime.TabIndex = 14;
             this.lbl_SumTime.Text = "_____________";
             this.lbl_SumTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dateTimePicker1
+            // dtp_Date
             // 
-            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(350, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(91, 21);
-            this.dateTimePicker1.TabIndex = 15;
-            this.dateTimePicker1.Value = new System.DateTime(2019, 9, 9, 0, 0, 0, 0);
+            this.dtp_Date.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_Date.Location = new System.Drawing.Point(350, 3);
+            this.dtp_Date.Name = "dtp_Date";
+            this.dtp_Date.Size = new System.Drawing.Size(91, 21);
+            this.dtp_Date.TabIndex = 15;
+            this.dtp_Date.Value = new System.DateTime(2019, 9, 9, 0, 0, 0, 0);
             // 
             // btn_TimeStart
             // 
@@ -612,6 +668,19 @@
             this.btn_TimeEnd.TabIndex = 17;
             this.btn_TimeEnd.Text = "Kết Thúc";
             // 
+            // lbl_NameChair
+            // 
+            this.lbl_NameChair.AutoSize = true;
+            this.tBL_Time.SetColumnSpan(this.lbl_NameChair, 2);
+            this.lbl_NameChair.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_NameChair.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_NameChair.Location = new System.Drawing.Point(95, 56);
+            this.lbl_NameChair.Name = "lbl_NameChair";
+            this.lbl_NameChair.Size = new System.Drawing.Size(187, 28);
+            this.lbl_NameChair.TabIndex = 18;
+            this.lbl_NameChair.Text = "TenGhe";
+            this.lbl_NameChair.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // tBL_Control
             // 
             this.tBL_Control.ColumnCount = 1;
@@ -621,7 +690,7 @@
             this.tBL_Control.Controls.Add(this.btn_MergeBill, 0, 1);
             this.tBL_Control.Controls.Add(this.btn_Treatment, 0, 2);
             this.tBL_Control.Controls.Add(this.label5, 0, 3);
-            this.tBL_Control.Controls.Add(this.comboBox4, 0, 4);
+            this.tBL_Control.Controls.Add(this.cbbNumber, 0, 4);
             this.tBL_Control.Controls.Add(this.btn_AddItem, 0, 5);
             this.tBL_Control.Controls.Add(this.btn_DeleteItem, 0, 7);
             this.tBL_Control.Controls.Add(this.btn_PercentGroup, 0, 8);
@@ -703,22 +772,22 @@
             this.label5.Text = "Số lượng";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox4
+            // cbbNumber
             // 
-            this.comboBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.cbbNumber.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbbNumber.FormattingEnabled = true;
+            this.cbbNumber.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "4",
             "5",
             "6"});
-            this.comboBox4.Location = new System.Drawing.Point(3, 151);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(53, 21);
-            this.comboBox4.TabIndex = 4;
-            this.comboBox4.Text = "1";
+            this.cbbNumber.Location = new System.Drawing.Point(3, 151);
+            this.cbbNumber.Name = "cbbNumber";
+            this.cbbNumber.Size = new System.Drawing.Size(53, 21);
+            this.cbbNumber.TabIndex = 4;
+            this.cbbNumber.Text = "1";
             // 
             // btn_AddItem
             // 
@@ -884,58 +953,6 @@
             this.PRICE_OUT.Name = "PRICE_OUT";
             this.PRICE_OUT.ReadOnly = true;
             // 
-            // ID_ITEM
-            // 
-            this.ID_ITEM.HeaderText = "ID_ITEM";
-            this.ID_ITEM.Name = "ID_ITEM";
-            this.ID_ITEM.Visible = false;
-            // 
-            // NAME
-            // 
-            this.NAME.HeaderText = "Mặt hàng";
-            this.NAME.Name = "NAME";
-            this.NAME.Width = 120;
-            // 
-            // NAMEUNIT
-            // 
-            this.NAMEUNIT.HeaderText = "ĐVT";
-            this.NAMEUNIT.Name = "NAMEUNIT";
-            this.NAMEUNIT.Width = 40;
-            // 
-            // NUMBER
-            // 
-            this.NUMBER.HeaderText = "SL";
-            this.NUMBER.Name = "NUMBER";
-            this.NUMBER.Width = 40;
-            // 
-            // PRICEOUT
-            // 
-            this.PRICEOUT.HeaderText = "Giá";
-            this.PRICEOUT.Name = "PRICEOUT";
-            this.PRICEOUT.Width = 60;
-            // 
-            // SALE_OFF
-            // 
-            this.SALE_OFF.HeaderText = "CK";
-            this.SALE_OFF.Name = "SALE_OFF";
-            this.SALE_OFF.Width = 40;
-            // 
-            // TOTAL
-            // 
-            this.TOTAL.HeaderText = "Thành tiền";
-            this.TOTAL.Name = "TOTAL";
-            // 
-            // ID_STAFF
-            // 
-            this.ID_STAFF.HeaderText = "ID_STAFF";
-            this.ID_STAFF.Name = "ID_STAFF";
-            this.ID_STAFF.Visible = false;
-            // 
-            // NAME_STAFF
-            // 
-            this.NAME_STAFF.HeaderText = "NV";
-            this.NAME_STAFF.Name = "NAME_STAFF";
-            // 
             // frmUseService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -953,8 +970,8 @@
             this.tBL_UseService.ResumeLayout(false);
             this.tBL_Detail.ResumeLayout(false);
             this.tBL_Detail.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tsbDTReceipt.ResumeLayout(false);
+            this.tsbDTReceipt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DetailReceipt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
@@ -990,7 +1007,7 @@
         private System.Windows.Forms.NumericUpDown nUD_NumberCus;
         private DevExpress.XtraEditors.SimpleButton btn_Hide_Show;
         private System.Windows.Forms.TableLayoutPanel tBL_Detail;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip tsbDTReceipt;
         private System.Windows.Forms.ToolStripButton tSB_IncreaseItem;
         private System.Windows.Forms.ToolStripButton tSP_ReduceItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -1006,7 +1023,7 @@
         private DevExpress.XtraEditors.SimpleButton btn_Treatment;
         private System.Windows.Forms.Label label5;
         private DevExpress.XtraEditors.SimpleButton btn_RemoveItem;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cbbNumber;
         private DevExpress.XtraEditors.SimpleButton btn_AddItem;
         private DevExpress.XtraEditors.SimpleButton btn_DeleteItem;
         private DevExpress.XtraEditors.SimpleButton btn_PercentGroup;
@@ -1024,7 +1041,7 @@
         private System.Windows.Forms.ToolStripButton tSP_Discount;
         private System.Windows.Forms.ToolStripButton tSB_Staff;
         private System.Windows.Forms.Label lbl_SumTime;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtp_Date;
         private System.Windows.Forms.ContextMenuStrip cMS_Menu;
         private System.Windows.Forms.ToolStripMenuItem menuItem_OpenChair;
         private System.Windows.Forms.ToolStripMenuItem menuItem_Open_Reser;
@@ -1050,5 +1067,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_STAFF;
         private System.Windows.Forms.DataGridViewTextBoxColumn NAME_STAFF;
+        private System.Windows.Forms.Label lbl_NameChair;
     }
 }

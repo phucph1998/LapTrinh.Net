@@ -259,3 +259,5 @@ D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.exe
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.pdb
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAddGroupCus.resources
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmChooseStaff.resources
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmSearchCustomer.resources

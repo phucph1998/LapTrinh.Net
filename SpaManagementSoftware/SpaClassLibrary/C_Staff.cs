@@ -18,5 +18,15 @@ namespace SpaClassLibrary
             da.Fill(dt);
             return dt;
         }
+
+        //Load du lieu nhan vien vao combobox de chon voi dieu kien cung chi nhánh với user
+        public DataTable LoadListStaff_SameBranch(string pUserName)
+        {
+            DataTable dt = new DataTable();
+            string sql = "SELECT s.ID,s.NAME FROM user_staff us,staff s WHERE us.ID_STAFF=s.ID and us.ID_BRANCH=(SELECT ID_BRANCH FROM user_staff WHERE USER_NAME='"+ pUserName + "') AND us.`STATUS`=1";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
     }
 }

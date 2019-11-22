@@ -52,6 +52,15 @@ namespace SpaClassLibrary
             return listCus;
         }
 
+        //Loc danh sach khach hang theo ten
+        public DataTable GetListCusTomerMySQL_Name(string pName)
+        {
+            DataTable listCus = new DataTable();
+            MySqlDataAdapter dt = new MySqlDataAdapter("SELECT p.IMAGE,p.ID_PROFILE,p.NAME,p.SEX,p.ADDRESS,p.PHONE,p.BIRTHDAY,t.NAME,p.SCORE,p.`STATUS` FROM type_cus t,profile_cus p WHERE t.ID = p.ID_TYPE AND p.NAME LIKE '%" + pName + "%'", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            dt.Fill(listCus);
+            return listCus;
+        }
+
         //Danh sách khách hàng dựa trên Loại KH
         public DataTable GetListTypeCustomer(string pTypeCus)
         {

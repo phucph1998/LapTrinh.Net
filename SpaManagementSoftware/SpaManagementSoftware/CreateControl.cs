@@ -32,7 +32,7 @@ namespace SpaManagementSoftware
         }
 
         //Create Button have chair icon
-        public SimpleButton CreateButtonChair(int numberFloor, int numberChair, FlowLayoutPanel nameFloor,ContextMenuStrip nameCMS)
+        public SimpleButton CreateButtonChair(int numberFloor, int numberChair, FlowLayoutPanel nameFloor, ContextMenuStrip nameCMS)
         {
             SimpleButton btnChair = new SimpleButton();
             nameFloor.Controls.Add(btnChair);
@@ -51,6 +51,7 @@ namespace SpaManagementSoftware
             btnChair.ContextMenuStrip = nameCMS;
             return btnChair;
         }
+
 
         //Sự kiện hiện form thanh toán
         void btnChair_DoubleClick(object sender, EventArgs e)
