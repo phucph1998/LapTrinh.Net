@@ -67,12 +67,15 @@
   <ItemGroup>
     <Compile Include="CustomerManager.cs" />
     <Compile Include="C_Account.cs" />
+    <Compile Include="C_DetailsReceipt.cs" />
     <Compile Include="C_Enter.cs" />
     <Compile Include="C_GroupItem.cs" />
     <Compile Include="C_ImportExcel.cs" />
     <Compile Include="C_Items.cs" />
+    <Compile Include="C_Receipt.cs" />
     <Compile Include="C_Role.cs" />
     <Compile Include="C_Staff.cs" />
+    <Compile Include="C_Staff_User.cs" />
     <Compile Include="C_Supplier.cs" />
     <Compile Include="C_Unit.cs" />
     <Compile Include="DC_SPA.designer.cs">

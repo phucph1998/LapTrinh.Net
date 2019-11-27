@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SpaClassLibrary;
+using DbSpaContext;
 using System.Collections;
 
 namespace SpaManagementSoftware
@@ -16,17 +17,23 @@ namespace SpaManagementSoftware
     public partial class frmUseService : DevExpress.XtraEditors.XtraForm
     {
         //CreateControl createCtr = new CreateControl();
+        C_Receipt _receipt;
+        C_DetailsReceipt _dtreceipt;
         UserManager usr;
         C_Items _item;
+        C_Staff_User _staffUser;
         List<int> listIdChair = new List<int>();
         string idBranch;
 
         public frmUseService()
         {
             InitializeComponent();
+            _staffUser = new C_Staff_User();
+            _dtreceipt = new C_DetailsReceipt();
             usr = new UserManager();
             _item = new C_Items();
-            idBranch = "1";//GetId loginForm
+            _receipt = new C_Receipt();
+            idBranch = _staffUser.GetIdBranch_User(Program.loginForm.NameAccount);//GetId loginForm            
         }
         //Tạo tầng tạo ghế
         //Create FlowLayoutPanel (tầng)
@@ -86,6 +93,7 @@ namespace SpaManagementSoftware
             SimpleButton btn = (SimpleButton)sender;
             btn.ForeColor = System.Drawing.SystemColors.Highlight;
             //Kiem tra neu ghe dang mo thi cac button tuong ung se mo va load du lieu tuong ung
+            //List<Receipt> receipt = _receipt.GetIdReceipt()
             //nguoc lai neu ghe dang dong thi cac button tuong ung se dong
         }
 
@@ -138,7 +146,7 @@ namespace SpaManagementSoftware
                 t = (SimpleButton)sender;
                 if (t.Tag == "Close")
                 {
-                    MessageBox.Show("Mo ghe");
+                    MessageBox.Show("Đã mở ghế, Hãy chọn khách hàng để bắt đầu sử dụng dịch vụ !");
                     t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket;
                     t.Tag = "Open";
                     ChairOpen_EnableControls();
@@ -196,7 +204,7 @@ namespace SpaManagementSoftware
             //i là số tầng của chi nhánh
             //j là số ghế ứng với từng số lầu i của chi nhánh đó
 
-            int nFloor = usr.GetNumberFloorMySQL(/*Program.loginForm.NameAccount*/"admin");
+            int nFloor = usr.GetNumberFloorMySQL(Program.loginForm.NameAccount/*"admin"*/);
             for (int i = nFloor; i > 0; i--)
             {
                 FlowLayoutPanel temp = new FlowLayoutPanel();
@@ -301,12 +309,16 @@ namespace SpaManagementSoftware
                             float dg = float.Parse(dgv_DetailReceipt.Rows[i].Cells["PRICEOUT"].Value.ToString());
                             dgv_DetailReceipt.Rows[i].Cells["NUMBER"].Value = (sl + 1).ToString();
                             dgv_DetailReceipt.Rows[i].Cells["TOTAL"].Value = (sl * dg).ToString();
+                            //Cập nhật chi tiết hóa đơn, cập nhật tổng tiền bên hóa đơn
                             return;
                         }
                     }
 
                     string[] row = new string[] { idItem, product, unit, num, price, saleoff, total, idStaff, nameStaff };
                     dgv_DetailReceipt.Rows.Add(row);
+                    //Thêm 1 chi tiết hóa đơn mới , cập nhật tổng tiền bên hóa đơn
+                    bool flagAdd = _dtreceipt.AddDetailReceipt("1", idStaff, idItem, saleoff, num, price, total, "1");
+                    XtraMessageBox.Show("Thêm dịch vụ thành công !","Thông báo !");
                 }
             }
             else
@@ -350,15 +362,27 @@ namespace SpaManagementSoftware
             frm.ShowDialog();
             if (frm.idCus != null && frm.nameCus != null)
             {
-                string idAccount = frm.idCus;
-                string idUser = Program.loginForm.NameAccount;
-                string idChair = lbl_NameChair.Text.Substring(lbl_NameChair.Text.Length - 3, 3));
-                string idCus = frm.idCus;
-                string dateuse = dtp_Date.Text;
+                string idAccount = frm.idCus; //idAccount lấy được sau khi chọn khách hàng                
+                string idUser = Program.loginForm.NameAccount;//Sau khi chọn khách hàng tạo hóa đơn rỗng idUser = UserName
+                string idChair = lbl_NameChair.Text.Substring(lbl_NameChair.Text.Length - 3, 3);//Lấy được mã ghế ví dụ 111,121,...
+                string dateUse = dtp_Date.Text;//Lấy ngày tạo ,ngày sử dụng là ngày hiện tại từ DateTimePicker
+                string dateCre = dtp_Date.Text;
                 string type = "1";
-                //Sau khi chọn khách hàng tạo hóa đơn rỗng idUser = UserName
-                //SaveReceiptEmpty(pIdReceipt,pIdChair,pIdUser,pidCus,pCreateDate,pDateUse,pType)
+                //IdChair lay du lieu tu lbl có id ghế. bằng cách dùng hàm CheckChairOpen(string name) đã viết
+                //Id khách hàng
+                //SaveReceiptEmpty(pIdReceipt,pIdChair,pIdUser,pidAccount,pCreateDate,pDateUse,pType)
                 txt_NameCus.Text = frm.nameCus;
+                try
+                {
+                    bool flag = _receipt.CreateReceipt(idChair, idUser, idAccount, dateCre, dateUse, type);
+                    XtraMessageBox.Show("Tao hd thanh cong");
+                }
+                catch
+                {
+                    XtraMessageBox.Show("Có lỗi khi chọn khách hàng ! Hãy xem lại !", "Thông báo !");
+                    return;
+                }
+
             }
         }
     }

@@ -1,278 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Database Name="db_spa" EntityNamespace="DbSpaContext" ContextNamespace="DbSpaContext" Class="DbSpaDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="bbeaefb9-0b95-4b14-b1ba-ca06d34f08dd" Provider="Devart.Data.MySql.Linq.Provider.MySqlDataProvider, Devart.Data.MySql.Linq" Extended="true" xmlns="http://schemas.devart.com/linqconnect/mapping">
-  <Connection Mode="ConnectionString" ConnectionString="User Id=root;Host=127.0.0.1;Database=db_spa;Persist Security Info=True;Character Set=utf8" Provider="Devart.Data.MySql" />
+<Database Name="db_spa" EntityNamespace="DbSpaContext" ContextNamespace="DbSpaContext" Class="DbSpaDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="3dd843c6-032d-410f-8cee-165e1043a29e" Provider="Devart.Data.MySql.Linq.Provider.MySqlDataProvider, Devart.Data.MySql.Linq" Extended="true" xmlns="http://schemas.devart.com/linqconnect/mapping">
+  <Connection Mode="ConnectionString" ConnectionString="User Id=root;Host=127.0.0.1;Port=3306;Database=db_spa;Persist Security Info=True;Character Set=utf8" Provider="Devart.Data.MySql" />
   <Table Name="db_spa.account" Member="Accounts">
-    <Type Name="Account" ed:Guid="28f0f5c1-af9b-4c6a-aa4b-b1b32317e551">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="f6f3b0c4-13ba-415a-844c-8971d9911fc7" />
-      <Column Name="ID_PROFILE" Member="IDPROFILE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="1adcfa32-aa72-4797-9e92-888ff0791040" />
-      <Column Name="USER_NAME" Member="USERNAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="c4fc020e-3088-4d72-a5b2-ae0ef38f1a28" />
-      <Column Name="`PASSWORD`" Member="PASSWORD" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="670b2304-ccbe-480c-a3f1-6cef741b2e07" />
-      <Column Name="FACEBOOKID" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="14b97ac0-4968-4607-a87e-875e048b0686" />
-      <Column Name="TOKEN_FACE" Member="TOKENFACE" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="f5d1b09d-b356-4bc5-992d-eff67d9d6d04" />
-      <Column Name="TYPE_USER" Member="TYPEUSER" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="d3e7ceca-cec6-4357-a3ab-258962a4c60c" />
-      <Column Name="TOKEN_LOGIN" Member="TOKENLOGIN" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="21f6e9cd-cdc4-47db-a946-49ecdffd02a2" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="8513ce85-1dfb-4728-9212-86dd541f0b2f" />
-      <Association Name="ProfileCu_Account" ed:AssociationGuid="36a7a1c6-746b-4a52-9c74-15e67220b071" Member="ProfileCu" ed:Guid="32d8b466-38a2-44ae-ab8c-59ba24ee2fb1" ThisKey="IDPROFILE" OtherKey="IDPROFILE" Type="ProfileCu" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Account_Receipt" ed:AssociationGuid="8b63c5ac-d119-49bf-9fad-57e3831a7ee3" Member="Receipts" ed:Guid="8d8bf48f-a075-41c3-bb7e-f4662ae0700c" ThisKey="ID" OtherKey="IDACCOUNT" Type="Receipt" />
+    <Type Name="Account" ed:Guid="2f1374b5-c30e-4282-b986-9e5bb6d377be">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="eace85c2-4b7c-4626-aa1e-482d5c24a3bc" />
+      <Column Name="ID_PROFILE" Member="IDPROFILE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="45b5aca5-1f20-4433-8f19-4c1721a189e3" />
+      <Column Name="USER_NAME" Member="USERNAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="b17dd7c2-d357-4a29-b58d-78a6f4c29ac9" />
+      <Column Name="`PASSWORD`" Member="PASSWORD" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="1febd41a-6150-42e8-85f3-54c0ec9232e6" />
+      <Column Name="FACEBOOKID" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="50290891-0fca-4f6f-b493-07aee0f21cfa" />
+      <Column Name="TOKEN_FACE" Member="TOKENFACE" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="cf78ff6e-efd5-4284-8a8f-a29be0b1a2e4" />
+      <Column Name="TYPE_USER" Member="TYPEUSER" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="e4f3893a-23f9-4884-b7ed-0447f5945fe0" />
+      <Column Name="TOKEN_LOGIN" Member="TOKENLOGIN" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="fc5c07df-071f-4014-a164-32664c2da0b9" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="6ff52069-1b73-4f8a-b266-e8056d92931d" />
+      <Association Name="ProfileCu_Account" ed:AssociationGuid="a4c44a3b-4d09-4d77-a05e-9c41ce65e820" Member="ProfileCu" ed:Guid="7edd1160-dffe-4f92-8d55-b189ae6bb720" ThisKey="IDPROFILE" OtherKey="IDPROFILE" Type="ProfileCu" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Account_Receipt" ed:AssociationGuid="c07ce5d1-f1b3-4cf8-8744-7d6ccf6b0f56" Member="Receipts" ed:Guid="740c2edf-d38a-4bd8-b587-0e720e52b946" ThisKey="ID" OtherKey="IDACCOUNT" Type="Receipt" />
     </Type>
   </Table>
   <Table Name="db_spa.area" Member="Areas">
-    <Type Name="Area" ed:Guid="b01b471c-5d25-4bf3-9ceb-d473da191b60">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="8c5087b7-affc-42b4-a514-98e8524e2a6c" />
-      <Column Name="ID_BRACNH" Member="IDBRACNH" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="eb81b761-2443-49be-81e3-b5f41ee10bc9" />
-      <Column Name="NAME" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="b8b776c3-852e-4297-a687-41cf5ed6ce1e" />
-      <Column Name="NUMBER_CHAIR" Member="NUMBERCHAIR" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="6e05291f-ee1d-4d95-87ff-37d3bc2f68c4" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="43790e31-f800-4af5-8b91-9a43a0f5534c" />
-      <Association Name="Branch_Area" ed:AssociationGuid="d899f783-7f8a-4a43-bf53-d311d0918a90" Member="Branch" ed:Guid="88ebfa69-b006-4fe1-942c-7f725add861d" ThisKey="IDBRACNH" OtherKey="ID" Type="Branch" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Area_Chair" ed:AssociationGuid="b4016328-063f-4864-8edb-447d7fdc01b1" Member="Chairs" ed:Guid="19b35e78-66cf-43e0-a1d6-ffca50201777" ThisKey="ID" OtherKey="IDAREA" Type="Chair" />
+    <Type Name="Area" ed:Guid="d82c3926-6165-4d18-9706-efb78b6f5309">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="fb29e395-e575-47c4-a7a9-50c89facede5" />
+      <Column Name="ID_BRACNH" Member="IDBRACNH" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="1eac7c02-9ea6-4093-b82a-9ad7415562c6" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="af003f40-1395-4288-a203-93cb73070211" />
+      <Column Name="NUMBER_CHAIR" Member="NUMBERCHAIR" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="eb6184aa-e99f-487e-8257-d9f9558b2282" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="af1bd15a-756f-42b4-aaaa-05b6c65517a6" />
+      <Association Name="Branch_Area" ed:AssociationGuid="a773010e-a3b4-49b0-b720-c393f6324845" Member="Branch" ed:Guid="8f09a0b1-4326-4b12-9113-f22e7bcf4299" ThisKey="IDBRACNH" OtherKey="ID" Type="Branch" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Area_Chair" ed:AssociationGuid="45f40513-6454-42d0-b69a-b34efdb81df9" Member="Chairs" ed:Guid="415772f1-b045-480c-9996-ee754223137b" ThisKey="ID" OtherKey="IDAREA" Type="Chair" />
     </Type>
   </Table>
   <Table Name="db_spa.branch" Member="Branches">
-    <Type Name="Branch" ed:Guid="1ca7d340-39c1-4abe-beb4-d182ab1dd607">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="cf283581-d5d2-4ec6-9755-25ce14a0f8ff" />
-      <Column Name="NAME" Type="System.String" DbType="MEDIUMTEXT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" Unicode="true" ed:ValidateRequired="false" ed:Guid="5e57dab4-a3b2-4e08-a8e0-b8c69e9bd64f" />
-      <Column Name="IMAGE" Type="System.Byte[]" DbType="BLOB NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="8fa64885-b0cc-41c2-acec-91bfd2af3ab2" />
-      <Column Name="ADDRESS" Type="System.String" DbType="MEDIUMTEXT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" Unicode="true" ed:ValidateRequired="false" ed:Guid="d67e216c-8412-4c66-a2d6-3617136115f4" />
-      <Column Name="PHONE" Type="System.String" DbType="CHAR(10) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" FixedLength="true" MaxLength="10" Unicode="true" ed:ValidateMaxLength="10" ed:ValidateRequired="false" ed:Guid="ecff95c8-cb66-474d-9664-a5fcdfc099a7" />
-      <Column Name="EMAIL" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="540e061c-2c01-4bfd-9e61-0539e921d934" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="6ec8eb91-7530-4097-90c2-664397254e4e" />
-      <Association Name="Branch_Area" ed:AssociationGuid="d899f783-7f8a-4a43-bf53-d311d0918a90" Member="Areas" ed:Guid="e9a4d7de-ad03-4716-8a1f-bccf2a8b29df" ThisKey="ID" OtherKey="IDBRACNH" Type="Area" />
-      <Association Name="Branch_UserStaff" ed:AssociationGuid="a32eb773-b7c0-4601-a7c1-06272172991b" Member="UserStaffs" ed:Guid="7809d72d-d26d-4e53-ad53-75a102654b50" ThisKey="ID" OtherKey="IDBRANCH" Type="UserStaff" />
+    <Type Name="Branch" ed:Guid="5e2a72da-8fc5-4415-ade4-950e7e976364">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="943ab21a-cd2e-4deb-8319-52a7d9902058" />
+      <Column Name="NAME" Type="System.String" DbType="MEDIUMTEXT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" Unicode="true" ed:ValidateRequired="false" ed:Guid="245a171e-33fc-4daf-8272-adb6667e632c" />
+      <Column Name="IMAGE" Type="System.Byte[]" DbType="BLOB NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="e0e0cade-8cb7-4ad1-986c-29fa90c5fe69" />
+      <Column Name="ADDRESS" Type="System.String" DbType="MEDIUMTEXT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" Unicode="true" ed:ValidateRequired="false" ed:Guid="c13d7e61-5b44-48eb-b12f-c117953ff07c" />
+      <Column Name="PHONE" Type="System.String" DbType="CHAR(10) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" FixedLength="true" MaxLength="10" Unicode="true" ed:ValidateMaxLength="10" ed:ValidateRequired="false" ed:Guid="7858045f-8ba0-41c5-9234-f680e70972a0" />
+      <Column Name="EMAIL" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="891de9a3-ca6d-46ed-8a6a-746a65c6222d" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="331d5834-9285-4e17-bad8-81711f168cf4" />
+      <Association Name="Branch_Area" ed:AssociationGuid="a773010e-a3b4-49b0-b720-c393f6324845" Member="Areas" ed:Guid="d92f9538-6646-4b60-ad94-c06c29c9672b" ThisKey="ID" OtherKey="IDBRACNH" Type="Area" />
+      <Association Name="Branch_UserStaff" ed:AssociationGuid="c52e12bb-3af5-4349-b3b8-5e199e830275" Member="UserStaffs" ed:Guid="32d5ea49-9bf5-4440-a73f-7021a44be707" ThisKey="ID" OtherKey="IDBRANCH" Type="UserStaff" />
     </Type>
   </Table>
   <Table Name="db_spa.chair" Member="Chairs">
-    <Type Name="Chair" ed:Guid="2770d125-d272-4042-9e57-f8eb029c9ef3">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="cac035e8-8bde-44d3-9e27-d18122b85d0e" />
-      <Column Name="ID_AREA" Member="IDAREA" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="48a3efe5-badd-4a11-9d7c-55a0c1b86dda" />
-      <Column Name="NAME" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="c7ab7434-3446-456f-a7de-6d584436dc33" />
-      <Column Name="IMAGE" Type="System.Byte[]" DbType="BLOB NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="b4d0db12-f88e-4d67-b876-4881cf43cf39" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="bf6eea9a-8431-4286-910e-c9fd484266ad" />
-      <Association Name="Area_Chair" ed:AssociationGuid="b4016328-063f-4864-8edb-447d7fdc01b1" Member="Area" ed:Guid="14c97fe3-7c81-478e-8e16-362dbea70c29" ThisKey="IDAREA" OtherKey="ID" Type="Area" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Chair_Receipt" ed:AssociationGuid="24ad2c34-8cf1-4eb5-9ded-f412347d2066" Member="Receipts" ed:Guid="8cf1c35a-baf2-4e97-bff2-e64832f58da0" ThisKey="ID" OtherKey="IDCHAIR" Type="Receipt" />
+    <Type Name="Chair" ed:Guid="c5e327dc-ef9b-4b60-92a4-7b1dcd2b7d1d">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="47d3fa76-90d6-420a-a218-a1459b3c8d5c" />
+      <Column Name="ID_AREA" Member="IDAREA" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="1e859e13-206f-4841-b875-d6604937f94d" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="2e1ee701-fded-4a07-a1da-5f74882703b8" />
+      <Column Name="IMAGE" Type="System.Byte[]" DbType="BLOB NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="b52ad550-f1cf-46cb-ac68-8059a70ae094" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="383507c1-5fc0-4ee3-b1a9-b4eb8447cf61" />
+      <Association Name="Area_Chair" ed:AssociationGuid="45f40513-6454-42d0-b69a-b34efdb81df9" Member="Area" ed:Guid="1c5436a6-3055-4c2f-b122-c087c9423586" ThisKey="IDAREA" OtherKey="ID" Type="Area" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Chair_Receipt" ed:AssociationGuid="98fd27ff-37af-452a-aac5-08a2578c67fe" Member="Receipts" ed:Guid="e261b91e-c2be-4130-9300-09324e92b91c" ThisKey="ID" OtherKey="IDCHAIR" Type="Receipt" />
     </Type>
   </Table>
   <Table Name="db_spa.content_item" Member="ContentItems">
-    <Type Name="ContentItem" ed:Guid="ab556461-214a-4780-8db7-b4c97b5b0682">
-      <Column Name="ID_ITEM" Member="IDITEM" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="54b6d0c0-043b-4f59-bf81-e1afb4a6241e" />
-      <Column Name="ID_ITEM_CONTENT" Member="IDITEMCONTENT" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="68d0367b-6753-43d4-80d5-51bc3697ac6a" />
-      <Column Name="NUMBER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="47f03003-0f06-4a73-9014-ba0163e480f7" />
-      <Association Name="Item_ContentItem" ed:AssociationGuid="00646ae5-1ae3-49c5-b7b0-1a3ef89418aa" Member="Item_IDITEM" ed:Guid="e19c39a8-b411-4dd5-baad-83ea3de63344" ThisKey="IDITEM" OtherKey="ID" Type="Item" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Item_ContentItem1" ed:AssociationGuid="2537b476-8f62-4299-b522-32df022e22b9" Member="Item_IDITEMCONTENT" ed:Guid="be18865d-3426-42f9-bed9-59dae28f1f33" ThisKey="IDITEMCONTENT" OtherKey="ID" Type="Item" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="ContentItem" ed:Guid="e51ce69e-7687-46d4-ab0b-cf739c04cfcb">
+      <Column Name="ID_ITEM" Member="IDITEM" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="bc3dc7da-4a0d-48b9-8a25-a0d4614d7b84" />
+      <Column Name="ID_ITEM_CONTENT" Member="IDITEMCONTENT" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="49394b9c-fc02-4e3d-ba0f-168c3872c6e4" />
+      <Column Name="NUMBER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="2448de28-3d55-4ae3-92af-8a1c707706ab" />
+      <Association Name="Item_ContentItem" ed:AssociationGuid="63c4641b-2bf2-4648-b6b8-e182b577c2ad" Member="Item_IDITEM" ed:Guid="f9d366a9-a7a2-42cd-8e49-888557df1b5e" ThisKey="IDITEM" OtherKey="ID" Type="Item" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Item_ContentItem1" ed:AssociationGuid="fd34e64c-8059-4127-bebf-53f7aa72b0c4" Member="Item_IDITEMCONTENT" ed:Guid="ac6c5773-5a55-4fe9-b3b0-b7db39be2264" ThisKey="IDITEMCONTENT" OtherKey="ID" Type="Item" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.detail_enter_coupon" Member="DetailEnterCoupons">
-    <Type Name="DetailEnterCoupon" ed:Guid="9a0e40b0-81f1-4f02-9731-fbbcfa1abd59">
-      <Column Name="ID_ENTER_COUPON" Member="IDENTERCOUPON" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="67cfdf93-05d6-475d-98cb-e230cfa58e2e" />
-      <Column Name="ID_ITEM" Member="IDITEM" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="3715899b-3460-4ff6-92e6-3d9791017c48" />
-      <Column Name="NUMBER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="97c262cd-6686-4562-a137-c8788ed4adfd" />
-      <Column Name="PRICE_IN" Member="PRICEIN" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="1c199189-0a75-4152-8c8e-bcb77563cc20" />
-      <Column Name="INTO_MONEY" Member="INTOMONEY" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="022ed1fb-156c-431b-aa20-d0947ad5334e" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="136aa833-ba3f-4313-868b-51f3c28a59b2" />
-      <Association Name="EnterCoupon_DetailEnterCoupon" ed:AssociationGuid="b6db82d4-245e-4e01-a0fc-21c418f8f872" Member="EnterCoupon" ed:Guid="56b4bdb4-3801-4099-af79-d96ed7779972" ThisKey="IDENTERCOUPON" OtherKey="ID" Type="EnterCoupon" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Item_DetailEnterCoupon" ed:AssociationGuid="40db4b4b-8772-4b7b-82b0-0ad4a3c2d5ee" Member="Item" ed:Guid="8ab1639f-930d-4c14-bcc1-10d08323702b" ThisKey="IDITEM" OtherKey="ID" Type="Item" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="DetailEnterCoupon" ed:Guid="03f86451-d958-434e-bc99-1443ef609c84">
+      <Column Name="ID_ENTER_COUPON" Member="IDENTERCOUPON" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="97724647-1eff-44e2-94c1-b2d6882dcaf6" />
+      <Column Name="ID_ITEM" Member="IDITEM" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="aae147f1-3de0-410a-a7d2-4c37dbb797cf" />
+      <Column Name="NUMBER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="57597a49-c0fe-4359-85fb-8432f566a679" />
+      <Column Name="PRICE_IN" Member="PRICEIN" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="707daf4a-7713-438f-890f-f1588e5dbd1d" />
+      <Column Name="INTO_MONEY" Member="INTOMONEY" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="ee968810-2795-449f-aaf2-ecfb142376a5" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="c8197153-5caf-43bb-bf34-d609437993aa" />
+      <Association Name="EnterCoupon_DetailEnterCoupon" ed:AssociationGuid="69b93afe-d08b-49f3-9ca1-96a20f34df6a" Member="EnterCoupon" ed:Guid="871461bb-9f56-416b-b022-7a1c62f86d6c" ThisKey="IDENTERCOUPON" OtherKey="ID" Type="EnterCoupon" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Item_DetailEnterCoupon" ed:AssociationGuid="1b5e22c1-78cd-4bc4-976a-d5e4a85940d8" Member="Item" ed:Guid="4f2915c2-d001-4f7e-84e9-195f5c3dd202" ThisKey="IDITEM" OtherKey="ID" Type="Item" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.detail_receipt" Member="DetailReceipts">
-    <Type Name="DetailReceipt" ed:Guid="c36bbedf-91ce-422e-b30b-b9a8f071b0d3">
-      <Column Name="ID_RECEIPT" Member="IDRECEIPT" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="fd63c23e-a0da-4f7d-9310-ffa4dc560901" />
-      <Column Name="ID_STAFF" Member="IDSTAFF" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="e8a86a26-7ecc-42ab-878e-7b7351dba7f4" />
-      <Column Name="ID_ITEM" Member="IDITEM" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="d2b88090-bf33-49b6-ac35-0a8acee2ba80" />
-      <Column Name="SALE_OFF" Member="SALEOFF" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="9f8136d3-6568-4094-b832-58611220cc6a" />
-      <Column Name="NUMBER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="0600bf46-a2dd-453d-ab5c-65fba4b68900" />
-      <Column Name="INTO_MONEY" Member="INTOMONEY" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="8d64c83a-5ac2-4b45-8b3d-d164cc562318" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="fc11f7ef-e8df-4117-8789-be5cdbce0cf2" />
-      <Association Name="Item_DetailReceipt" ed:AssociationGuid="b2248ff7-a580-495b-b4d0-518e4c527148" Member="Item" ed:Guid="901209cc-4b96-4c9e-9537-11a4e98bb164" ThisKey="IDITEM" OtherKey="ID" Type="Item" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Receipt_DetailReceipt" ed:AssociationGuid="e450e351-b017-4d63-94b3-4df0243ed125" Member="Receipt" ed:Guid="2deac89d-cd63-4592-bc6c-b868a8fb7ded" ThisKey="IDRECEIPT" OtherKey="ID" Type="Receipt" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Staff_DetailReceipt" ed:AssociationGuid="09794619-60ec-450b-8c42-a9fdcd422369" Member="Staff" ed:Guid="f1bcdb22-5f67-49ec-b1e0-08d94464a429" ThisKey="IDSTAFF" OtherKey="ID" Type="Staff" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="DetailReceipt" ed:Guid="29932299-a722-405c-9aac-4794439758f6">
+      <Column Name="ID_RECEIPT" Member="IDRECEIPT" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="0d8bacec-8cee-4675-a1e4-afcaa0a36781" />
+      <Column Name="ID_STAFF" Member="IDSTAFF" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="2d9052f7-a50f-4ab0-af19-813d85d0d831" />
+      <Column Name="ID_ITEM" Member="IDITEM" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="0ee7bce9-709d-46d0-9663-9dd4f4847af0" />
+      <Column Name="SALE_OFF" Member="SALEOFF" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="4f35454b-7738-45c1-b8fe-b50163859c75" />
+      <Column Name="NUMBER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="7498a7d9-2a91-4bac-9c3e-8aec164dcda7" />
+      <Column Name="PRICE_OUT" Member="PRICEOUT" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="9d7a1bb0-dcab-4d41-9ad7-657ecc020cb5" />
+      <Column Name="INTO_MONEY" Member="INTOMONEY" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="7d793722-6bc1-477a-a3e8-52a3beb1f13f" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="f397a7c9-9694-4ade-b48a-e5608fd1bab0" />
+      <Association Name="Item_DetailReceipt" ed:AssociationGuid="7c1e4029-5e05-4bff-b121-24e2eb012966" Member="Item" ed:Guid="10ccc1fa-e5f6-43b1-a7fe-1f8abddb7c6f" ThisKey="IDITEM" OtherKey="ID" Type="Item" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Receipt_DetailReceipt" ed:AssociationGuid="2db0e67e-60a4-4a22-bfdb-a5137c0bc26a" Member="Receipt" ed:Guid="a6445ebf-250e-4ff9-bde1-8e4fe41f4d2a" ThisKey="IDRECEIPT" OtherKey="ID" Type="Receipt" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Staff_DetailReceipt" ed:AssociationGuid="3dae8e82-d3b7-400b-8e32-1fc3d15b3f63" Member="Staff" ed:Guid="067c13d9-b063-49be-9526-43b80da08ae5" ThisKey="IDSTAFF" OtherKey="ID" Type="Staff" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.enter_coupon" Member="EnterCoupons">
-    <Type Name="EnterCoupon" ed:Guid="07b2cab6-a929-40d6-901b-77bb627c23ec">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="98ea015e-1bbb-4441-91fd-b54ba7e246cc" />
-      <Column Name="ID_SUPPLIER" Member="IDSUPPLIER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="a8619a60-e83d-40c4-bae0-63234e6bae6f" />
-      <Column Name="ID_STAFF" Member="IDSTAFF" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="dec1d8ce-961c-4817-b288-6504cefe0363" />
-      <Column Name="ID_USER" Member="IDUSER" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="99a5ec71-b42c-4c65-8075-f0f2b6b9a961" />
-      <Column Name="CREATE_DATE" Member="CREATEDATE" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="c21b24d7-1792-4b6d-82ea-ae91645c0a5e" />
-      <Column Name="RESON_ENTER" Member="RESONENTER" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="27da438a-47e4-4973-9157-576c782acee9" />
-      <Column Name="TOTAL" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="b6e4968d-880e-4b95-8c6c-7a279e46adc2" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="bac06d7f-5b92-4508-8f3e-dfa23c32c4c6" />
-      <Association Name="EnterCoupon_DetailEnterCoupon" ed:AssociationGuid="b6db82d4-245e-4e01-a0fc-21c418f8f872" Member="DetailEnterCoupons" ed:Guid="2a95cbbc-fdf8-453d-9ba8-5936db8e9d95" ThisKey="ID" OtherKey="IDENTERCOUPON" Type="DetailEnterCoupon" />
-      <Association Name="Staff_EnterCoupon" ed:AssociationGuid="ecb5e097-348d-4f19-b449-342b882e749d" Member="Staff" ed:Guid="ea36c48e-375f-4649-a4b3-b1d723bd3927" ThisKey="IDSTAFF" OtherKey="ID" Type="Staff" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Supplier_EnterCoupon" ed:AssociationGuid="38a3c2f3-7e17-4f2f-95f1-5134bb7fa285" Member="Supplier" ed:Guid="a04cfa60-a499-49fe-ab14-9f664b2fb0f8" ThisKey="IDSUPPLIER" OtherKey="ID" Type="Supplier" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="User_EnterCoupon" ed:AssociationGuid="31c5987e-4552-434a-8b25-dcee303fdab7" Member="User" ed:Guid="9d100583-8965-435b-8470-ed87a6c4855d" ThisKey="IDUSER" OtherKey="USERNAME" Type="User" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="EnterCoupon" ed:Guid="ca6f11c6-0623-4434-a58f-0fbaf36befe7">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="4af77b33-5b06-4f6c-8c5b-edb5a86b41a3" />
+      <Column Name="ID_SUPPLIER" Member="IDSUPPLIER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="2a4f9a8a-2f5e-47b7-886e-d6d925ff1667" />
+      <Column Name="ID_STAFF" Member="IDSTAFF" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="3f22c339-956c-4e77-914b-f47880cc1df9" />
+      <Column Name="ID_USER" Member="IDUSER" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="ba7aa15c-6e06-476f-b427-5ed108a2b256" />
+      <Column Name="CREATE_DATE" Member="CREATEDATE" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="315cc255-ba88-48ea-ab87-e788dccc2ca2" />
+      <Column Name="RESON_ENTER" Member="RESONENTER" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="6e06305d-1caf-4130-a0f7-04a4b7bb5cf6" />
+      <Column Name="TOTAL" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="c0be57c0-a73b-4ca0-b544-0cbbea3cb8fb" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="87537c13-480b-4438-b689-7979c8d00347" />
+      <Association Name="EnterCoupon_DetailEnterCoupon" ed:AssociationGuid="69b93afe-d08b-49f3-9ca1-96a20f34df6a" Member="DetailEnterCoupons" ed:Guid="1630bc79-76f0-4ef8-ac12-7c17fb151d7f" ThisKey="ID" OtherKey="IDENTERCOUPON" Type="DetailEnterCoupon" />
+      <Association Name="Staff_EnterCoupon" ed:AssociationGuid="13eb8c53-0f37-4253-9b69-d75bba4aa423" Member="Staff" ed:Guid="6985a9fe-69dc-49b0-960b-2f5cd869e74e" ThisKey="IDSTAFF" OtherKey="ID" Type="Staff" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Supplier_EnterCoupon" ed:AssociationGuid="a28d8ab3-9658-4fc0-aaca-e107a8e2cd17" Member="Supplier" ed:Guid="a9588ac7-f5d7-4c5c-8e12-303a43978cf0" ThisKey="IDSUPPLIER" OtherKey="ID" Type="Supplier" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="User_EnterCoupon" ed:AssociationGuid="5f9ad97d-5000-4308-a04c-28617da46a03" Member="User" ed:Guid="968b2773-5540-495c-a060-903662e13fef" ThisKey="IDUSER" OtherKey="USERNAME" Type="User" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.grand_right" Member="GrandRights">
-    <Type Name="GrandRight" ed:Guid="31697174-d37c-434e-b1f4-d87b95a19e43">
-      <Column Name="ID_GROUP_USER" Member="IDGROUPUSER" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="9941d9b4-4393-4e8f-8662-490e5d740cbb" />
-      <Column Name="ID_SCREEN" Member="IDSCREEN" Type="System.String" DbType="CHAR(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="6" ed:ValidateMaxLength="6" ed:ValidateRequired="true" ed:Guid="45141a85-47b4-4860-830d-935e70bd28d8" />
-      <Column Name="ROLE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="bc4c502f-bf5f-4a40-b1f3-75a770f14c6d" />
-      <Association Name="GroupUser_GrandRight" ed:AssociationGuid="3a49c2c3-156a-4b2a-9dbb-6d7fe40ff87f" Member="GroupUser" ed:Guid="d69524cf-a950-447b-b71e-7255ccc4c1da" ThisKey="IDGROUPUSER" OtherKey="ID" Type="GroupUser" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Screen_GrandRight" ed:AssociationGuid="5164e72a-1a86-4d9c-b059-c16fb84ca231" Member="Screen" ed:Guid="b95b92b9-c03f-43da-8439-402aeda97920" ThisKey="IDSCREEN" OtherKey="ID" Type="Screen" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="GrandRight" ed:Guid="db285c1b-ca79-416c-92e4-bdec962cdadd">
+      <Column Name="ID_GROUP_USER" Member="IDGROUPUSER" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="cdcbd924-32d8-4998-a83e-39932504ffe1" />
+      <Column Name="ID_SCREEN" Member="IDSCREEN" Type="System.String" DbType="CHAR(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="6" ed:ValidateMaxLength="6" ed:ValidateRequired="true" ed:Guid="ca4e6b30-e011-4c4c-a817-60173c8b95b5" />
+      <Column Name="ROLE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="7d9d2b61-73e4-4954-b5ff-4c04b45e9ee8" />
+      <Association Name="GroupUser_GrandRight" ed:AssociationGuid="35aee402-7130-4f58-a41a-bfc639cba26f" Member="GroupUser" ed:Guid="17e852ac-7600-4d31-b510-750e549dbec8" ThisKey="IDGROUPUSER" OtherKey="ID" Type="GroupUser" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Screen_GrandRight" ed:AssociationGuid="85a5a632-3264-4d41-8165-40696395f9c5" Member="Screen" ed:Guid="126e57f2-20af-4bbd-b46b-d94b94d1e06f" ThisKey="IDSCREEN" OtherKey="ID" Type="Screen" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.group_item" Member="GroupItems">
-    <Type Name="GroupItem" ed:Guid="2fd457b1-acca-435f-8a7d-7b1a0f6cac67">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="d15c1676-fcea-480e-8bfa-dfecc323803f" />
-      <Column Name="NAME_GROUP" Member="NAMEGROUP" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="a4518c8e-c1e1-4c55-85e1-9e0f45737142" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="ef1d6e8d-bcf1-40e8-af74-efb67cc28096" />
-      <Association Name="GroupItem_Item" ed:AssociationGuid="d8788d14-be0c-4098-8c94-33716869e1bb" Member="Items" ed:Guid="084d8a81-7b3f-4164-bc90-71227df97b60" ThisKey="ID" OtherKey="IDGROUP" Type="Item" />
+    <Type Name="GroupItem" ed:Guid="2a4576df-9e6a-4957-be2e-25eacb215758">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="16227c33-f523-4d21-848e-0528310afde2" />
+      <Column Name="NAME_GROUP" Member="NAMEGROUP" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="0dbf64bb-21a5-4d10-8ecc-e73dffe62c3d" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="3512e992-b00e-4ed3-83dd-e9544f8fade7" />
+      <Association Name="GroupItem_Item" ed:AssociationGuid="4226837e-05e9-4b34-a616-e7362e218cf3" Member="Items" ed:Guid="b5127908-6a24-458c-b488-4f368e5abe80" ThisKey="ID" OtherKey="IDGROUP" Type="Item" />
     </Type>
   </Table>
   <Table Name="db_spa.group_supplier" Member="GroupSuppliers">
-    <Type Name="GroupSupplier" ed:Guid="ba5359be-fe31-43d6-be09-e5511ae083e6">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="60317d7d-baa0-4466-a33c-f82d558afa79" />
-      <Column Name="NAME_GROUP" Member="NAMEGROUP" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="267f4eac-ef34-4384-ba3e-0118e84b49a7" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="7d875b43-8d08-4627-ac02-c3eacd8d194c" />
-      <Association Name="GroupSupplier_Supplier" ed:AssociationGuid="4cc785bc-5e6f-48d7-93c9-fa4239d4d4d9" Member="Suppliers" ed:Guid="669fc414-9a8d-4b9a-b9b2-41e19f909cd3" ThisKey="ID" OtherKey="IDGROUP" Type="Supplier" />
+    <Type Name="GroupSupplier" ed:Guid="7d0e828c-2180-4d9e-be49-048bb4ff518a">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="39b624bb-44f5-4903-9304-a9d96e6838db" />
+      <Column Name="NAME_GROUP" Member="NAMEGROUP" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="533bc7e5-4219-4819-b221-23cce35c4b7c" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="cf8249b5-226c-4bd9-a94b-a6771fd78543" />
+      <Association Name="GroupSupplier_Supplier" ed:AssociationGuid="2dc04f33-a1b0-4fb8-97bb-5531f9107563" Member="Suppliers" ed:Guid="9487c421-2a1f-477b-97a9-1ac22589c348" ThisKey="ID" OtherKey="IDGROUP" Type="Supplier" />
     </Type>
   </Table>
   <Table Name="db_spa.group_user" Member="GroupUsers">
-    <Type Name="GroupUser" ed:Guid="23e38791-63b1-470b-bc3e-26c3b44bb7e6">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="186b677a-2491-415d-9af1-d7f7ef11c759" />
-      <Column Name="NAME_GROUP_USER" Member="NAMEGROUPUSER" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="0f8efc73-6f5d-496b-a902-1104a300f6dd" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="feba9da8-6fef-4e0b-b6d3-7a6148ddaf93" />
-      <Association Name="GroupUser_GrandRight" ed:AssociationGuid="3a49c2c3-156a-4b2a-9dbb-6d7fe40ff87f" Member="GrandRights" ed:Guid="a9cffd90-a49e-46b8-a884-938afe57737f" ThisKey="ID" OtherKey="IDGROUPUSER" Type="GrandRight" />
-      <Association Name="GroupUser_UserGroupUser" ed:AssociationGuid="af585e75-f27d-4842-87ba-b2f240aa8308" Member="UserGroupUsers" ed:Guid="ba67295a-5a1c-4ca9-9b76-ee617329582b" ThisKey="ID" OtherKey="IDGROUPUSER" Type="UserGroupUser" />
+    <Type Name="GroupUser" ed:Guid="730d28cf-a0fa-47b2-8753-eeed2310081f">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="4eb5d2cc-ca8e-4c2e-ad32-8a1d74b2c828" />
+      <Column Name="NAME_GROUP_USER" Member="NAMEGROUPUSER" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="03cb1271-246b-4d0a-a734-4fc61dd74c98" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="f5149ce4-a7b4-4a67-9c69-2b13e2997818" />
+      <Association Name="GroupUser_GrandRight" ed:AssociationGuid="35aee402-7130-4f58-a41a-bfc639cba26f" Member="GrandRights" ed:Guid="d4e4caa4-de25-4410-88cb-a378c85238d8" ThisKey="ID" OtherKey="IDGROUPUSER" Type="GrandRight" />
+      <Association Name="GroupUser_UserGroupUser" ed:AssociationGuid="2270a549-2214-4f86-a629-96dfa4aa9e7a" Member="UserGroupUsers" ed:Guid="bb8df12f-fb23-4313-8054-302f5b1b3680" ThisKey="ID" OtherKey="IDGROUPUSER" Type="UserGroupUser" />
     </Type>
   </Table>
   <Table Name="db_spa.item" Member="Items">
-    <Type Name="Item" ed:Guid="a9c683d2-aa08-4ccf-a0af-5a3bf565be9e">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="7a2a7aa9-c7ec-41fb-8fac-c7c625f520f8" />
-      <Column Name="ID_GROUP" Member="IDGROUP" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="887d9816-0741-4b9f-9c6d-3ed8fac56f04" />
-      <Column Name="ID_UNIT" Member="IDUNIT" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="fa2f45a3-b9bd-4a80-9e40-451cfdde74c3" />
-      <Column Name="NAME" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="986bfb0c-3e78-49bd-91d4-c836fc0de748" />
-      <Column Name="IMAGE" Type="System.Byte[]" DbType="BLOB NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="4dfb6fce-71b2-439c-84c4-f15eb9bea0ab" />
-      <Column Name="CONTENT" Type="System.String" DbType="VARCHAR(500) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="500" Unicode="true" ed:ValidateMaxLength="500" ed:ValidateRequired="false" ed:Guid="c3b6f2d0-2e8f-4c50-b0ca-a4ecfbdd1cd6" />
-      <Column Name="STEP_CONDUCT" Member="STEPCONDUCT" Type="System.String" DbType="VARCHAR(500) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="500" Unicode="true" ed:ValidateMaxLength="500" ed:ValidateRequired="false" ed:Guid="3f8e4882-ebcf-4bc4-b088-d5a97b83c186" />
-      <Column Name="SALE_OFF" Member="SALEOFF" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="bcaa9d4e-bb3d-4553-8239-2caaa73929a3" />
-      <Column Name="NUMBER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="5ed6814f-a2aa-4991-b14e-fbd205a6d004" />
-      <Column Name="PRICE_OUT" Member="PRICEOUT" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="42eeba69-bae1-4bf9-9e3b-eaa8725ab7a2" />
-      <Column Name="PRICE_IN" Member="PRICEIN" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="c738797a-c568-4d75-ab2f-c6b152164a74" />
-      <Column Name="ROSE" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="5479fc81-6509-4103-8b21-04b477b32754" />
-      <Column Name="ROSE_RATE" Member="ROSERATE" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="84554747-69d7-42f9-8f69-cc916dfaf66d" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="45b5c778-1885-44f1-89e7-b628330c2549" />
-      <Association Name="Item_ContentItem" ed:AssociationGuid="00646ae5-1ae3-49c5-b7b0-1a3ef89418aa" Member="ContentItems_IDITEM" ed:Guid="e924b6db-717d-4787-8bf7-00a3582664b7" ThisKey="ID" OtherKey="IDITEM" Type="ContentItem" />
-      <Association Name="Item_ContentItem1" ed:AssociationGuid="2537b476-8f62-4299-b522-32df022e22b9" Member="ContentItems_IDITEMCONTENT" ed:Guid="74a3b38a-a29e-48b8-97fa-86a9fe3001ee" ThisKey="ID" OtherKey="IDITEMCONTENT" Type="ContentItem" />
-      <Association Name="Item_DetailEnterCoupon" ed:AssociationGuid="40db4b4b-8772-4b7b-82b0-0ad4a3c2d5ee" Member="DetailEnterCoupons" ed:Guid="86e72376-2034-4fa2-8dbe-113b730a4299" ThisKey="ID" OtherKey="IDITEM" Type="DetailEnterCoupon" />
-      <Association Name="Item_DetailReceipt" ed:AssociationGuid="b2248ff7-a580-495b-b4d0-518e4c527148" Member="DetailReceipts" ed:Guid="feaa8592-d3ba-44c4-8a7a-13c148be69b5" ThisKey="ID" OtherKey="IDITEM" Type="DetailReceipt" />
-      <Association Name="GroupItem_Item" ed:AssociationGuid="d8788d14-be0c-4098-8c94-33716869e1bb" Member="GroupItem" ed:Guid="f0aa7e97-a30d-42c5-9af3-6549e641ea95" ThisKey="IDGROUP" OtherKey="ID" Type="GroupItem" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="UnitItem_Item" ed:AssociationGuid="5467dde6-48f4-4f25-a177-acc42de61148" Member="UnitItem" ed:Guid="4ef107c4-6152-4090-a196-e3190361ac83" ThisKey="IDUNIT" OtherKey="ID" Type="UnitItem" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="Item" ed:Guid="1efcaef5-db70-4c32-b9ab-a9505a58f29a">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="08c48eaf-2b0b-4f63-b8cf-63286df29d89" />
+      <Column Name="ID_GROUP" Member="IDGROUP" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="6f100f44-94a8-4822-a74f-6efe5a8a9682" />
+      <Column Name="ID_UNIT" Member="IDUNIT" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="c1ad32bc-95f7-4d44-acd3-9884cf3941b9" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="0aa5596f-cd03-4d42-9197-075c397a9ca9" />
+      <Column Name="IMAGE" Type="System.Byte[]" DbType="BLOB NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="26c164f1-2ae3-4e49-a039-3dafc09d07cb" />
+      <Column Name="CONTENT" Type="System.String" DbType="VARCHAR(500) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="500" Unicode="true" ed:ValidateMaxLength="500" ed:ValidateRequired="false" ed:Guid="93f30003-87bc-4336-9fc6-2a0a32bb6d20" />
+      <Column Name="STEP_CONDUCT" Member="STEPCONDUCT" Type="System.String" DbType="VARCHAR(500) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="500" Unicode="true" ed:ValidateMaxLength="500" ed:ValidateRequired="false" ed:Guid="ef605a16-5d76-4951-9138-6de974edb2b2" />
+      <Column Name="SALE_OFF" Member="SALEOFF" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="afc1cc5a-3fbc-431f-a022-d6edf30dd957" />
+      <Column Name="NUMBER" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="1e8fc862-bbe0-4e53-8c55-9c69a6534ac6" />
+      <Column Name="PRICE_OUT" Member="PRICEOUT" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="b0a73ef3-a625-457c-9c81-e2a6e77a8773" />
+      <Column Name="PRICE_IN" Member="PRICEIN" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="b3a3b946-3436-4500-8f33-4db8bcee60f7" />
+      <Column Name="ROSE" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="3c66251d-c5c8-472e-bde6-d25cb9032e6b" />
+      <Column Name="ROSE_RATE" Member="ROSERATE" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="a479bac2-bf74-46df-87f0-ad9834b6202d" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="138152e8-d739-4e66-9efc-3efb1d034eb1" />
+      <Association Name="Item_ContentItem" ed:AssociationGuid="63c4641b-2bf2-4648-b6b8-e182b577c2ad" Member="ContentItems_IDITEM" ed:Guid="7a6b1beb-7d30-4bd3-9be4-3dde914b53e5" ThisKey="ID" OtherKey="IDITEM" Type="ContentItem" />
+      <Association Name="Item_ContentItem1" ed:AssociationGuid="fd34e64c-8059-4127-bebf-53f7aa72b0c4" Member="ContentItems_IDITEMCONTENT" ed:Guid="901cc780-4203-4324-abd4-f684a603f47c" ThisKey="ID" OtherKey="IDITEMCONTENT" Type="ContentItem" />
+      <Association Name="Item_DetailEnterCoupon" ed:AssociationGuid="1b5e22c1-78cd-4bc4-976a-d5e4a85940d8" Member="DetailEnterCoupons" ed:Guid="1c11c78f-56c1-4baa-a14d-593e205248d8" ThisKey="ID" OtherKey="IDITEM" Type="DetailEnterCoupon" />
+      <Association Name="Item_DetailReceipt" ed:AssociationGuid="7c1e4029-5e05-4bff-b121-24e2eb012966" Member="DetailReceipts" ed:Guid="d52f7c5a-f25e-48d3-953e-b72fcae16d4c" ThisKey="ID" OtherKey="IDITEM" Type="DetailReceipt" />
+      <Association Name="GroupItem_Item" ed:AssociationGuid="4226837e-05e9-4b34-a616-e7362e218cf3" Member="GroupItem" ed:Guid="19ed738e-17e5-4a32-bfca-8e3353deda1f" ThisKey="IDGROUP" OtherKey="ID" Type="GroupItem" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="UnitItem_Item" ed:AssociationGuid="a5cc4128-e0df-4e14-ac02-5eb6e7d18a01" Member="UnitItem" ed:Guid="0e1aaf30-68d7-4c3f-b692-0b08ccb4f4d2" ThisKey="IDUNIT" OtherKey="ID" Type="UnitItem" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.profile_cus" Member="ProfileCus">
-    <Type Name="ProfileCu" ed:Guid="a2997386-1495-4f49-aa7a-329248e0c2e6">
-      <Column Name="ID_PROFILE" Member="IDPROFILE" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="a303476f-77e9-4ba5-a31a-9229d3b791f4" />
-      <Column Name="ID_TYPE" Member="IDTYPE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="759cb1a7-2059-432e-a4f9-0d98f97abc41" />
-      <Column Name="NAME" Type="System.String" DbType="VARCHAR(100) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="f5986cd8-227b-425d-924a-730be6ddf93d" />
-      <Column Name="IMAGE" Type="System.Byte[]" DbType="LONGBLOB NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="2134a851-210e-4885-909a-a5df77f57f30" />
-      <Column Name="BIRTHDAY" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="da23462c-9abd-48c4-b58e-472816374a53" />
-      <Column Name="PHONE" Type="System.String" DbType="CHAR(10) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" FixedLength="true" MaxLength="10" Unicode="true" ed:ValidateMaxLength="10" ed:ValidateRequired="false" ed:Guid="9fe7e47f-c82e-474a-9b0d-f8deb299901d" />
-      <Column Name="SEX" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="38feafea-ea3e-451a-81d2-25554cc00986" />
-      <Column Name="ADDRESS" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="bce8187c-eab0-4f94-87cd-ccb913a69549" />
-      <Column Name="SCORE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="9db82967-f01d-4194-a106-3f3b84d1a1a0" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="a5806a7f-18b4-41ac-bc99-46bf97661bdb" />
-      <Association Name="ProfileCu_Account" ed:AssociationGuid="36a7a1c6-746b-4a52-9c74-15e67220b071" Member="Accounts" ed:Guid="0aaafafa-980e-4cd9-8d32-f218ab0b7152" ThisKey="IDPROFILE" OtherKey="IDPROFILE" Type="Account" />
-      <Association Name="TypeCu_ProfileCu" ed:AssociationGuid="a445ebf2-5afe-4b21-99e8-0648f0a5f390" Member="TypeCu" ed:Guid="b1e3333c-1b3c-4c3d-9a60-99f317596eef" ThisKey="IDTYPE" OtherKey="ID" Type="TypeCu" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="ProfileCu" ed:Guid="ab9ca0b9-6fc3-43ca-9035-3830368facb4">
+      <Column Name="ID_PROFILE" Member="IDPROFILE" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="bc348842-a630-4c02-8c3d-a327bc026c1e" />
+      <Column Name="ID_TYPE" Member="IDTYPE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="2da07e4a-b087-47b0-be28-c1ce0bed03d5" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(100) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="862ef651-f8dd-4e4f-b0cf-beafd4973c98" />
+      <Column Name="IMAGE" Type="System.Byte[]" DbType="LONGBLOB NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="ce08431d-c6b9-4f5d-ba91-3fab233e246e" />
+      <Column Name="BIRTHDAY" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="dba197e9-43aa-4800-bdfd-391b06d70b19" />
+      <Column Name="PHONE" Type="System.String" DbType="CHAR(10) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" FixedLength="true" MaxLength="10" Unicode="true" ed:ValidateMaxLength="10" ed:ValidateRequired="false" ed:Guid="4fdd768a-64bf-4b16-8759-22989c5ad5cc" />
+      <Column Name="SEX" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="9aed073b-0dd7-4376-a066-432246e9fd3e" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="77bfee82-3612-4b12-b0db-0d4a073ee8e4" />
+      <Column Name="SCORE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="2b662689-2b5a-48c6-84f5-c917e0779a99" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="1edcb1e9-84c8-4bfe-8d15-54a282eed030" />
+      <Association Name="ProfileCu_Account" ed:AssociationGuid="a4c44a3b-4d09-4d77-a05e-9c41ce65e820" Member="Accounts" ed:Guid="4c18a1a7-2d0f-4d49-a5e1-0b7a23e0b978" ThisKey="IDPROFILE" OtherKey="IDPROFILE" Type="Account" />
+      <Association Name="TypeCu_ProfileCu" ed:AssociationGuid="34af3222-abdb-4aff-b434-4a6f46b6dbbe" Member="TypeCu" ed:Guid="b0652a3a-7fac-477d-8ca0-002f416ca7ea" ThisKey="IDTYPE" OtherKey="ID" Type="TypeCu" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.receipt" Member="Receipts">
-    <Type Name="Receipt" ed:Guid="5f9590b1-c1db-412c-9ca8-0f88902bf441">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="105da01b-059d-4fd5-8411-28d27d824361" />
-      <Column Name="ID_CHAIR" Member="IDCHAIR" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="81b8d56b-a0de-47c7-8e23-adad66253390" />
-      <Column Name="ID_USER" Member="IDUSER" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="81628ca3-b55f-4ad6-899f-4305d58e1826" />
-      <Column Name="ID_ACCOUNT" Member="IDACCOUNT" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="48980ffc-c74c-4ac0-a5d9-c0978f897775" />
-      <Column Name="CREATE_DATE" Member="CREATEDATE" Type="System.DateTime" DbType="DATE NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="69b78de4-9c1a-4cbb-a10f-e4accaeee8a2" />
-      <Column Name="USE_DATE" Member="USEDATE" Type="System.DateTime" DbType="DATE NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="877b163c-e13f-42d6-bd05-0d9c82490085" />
-      <Column Name="TYPE_RECEIPT" Member="TYPERECEIPT" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="dc7a5b02-f14d-4f65-a2b1-8efe66a56388" />
-      <Column Name="TOTAL_MONEY" Member="TOTALMONEY" Type="System.Single" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="f2e4e2c7-bac6-4b1b-8c64-34e1062f0f08" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="e1522a22-07cc-4b64-bf4a-8cc172b7c27c" />
-      <Association Name="Account_Receipt" ed:AssociationGuid="8b63c5ac-d119-49bf-9fad-57e3831a7ee3" Member="Account" ed:Guid="f005289b-92bc-421f-9f6a-5bb64e4da55c" ThisKey="IDACCOUNT" OtherKey="ID" Type="Account" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Chair_Receipt" ed:AssociationGuid="24ad2c34-8cf1-4eb5-9ded-f412347d2066" Member="Chair" ed:Guid="2f0eeec6-550e-4a6c-9016-10a6b2e6f07a" ThisKey="IDCHAIR" OtherKey="ID" Type="Chair" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Receipt_DetailReceipt" ed:AssociationGuid="e450e351-b017-4d63-94b3-4df0243ed125" Member="DetailReceipts" ed:Guid="087c8ca2-9ad3-41f1-a7c1-99c67c045c41" ThisKey="ID" OtherKey="IDRECEIPT" Type="DetailReceipt" />
-      <Association Name="User_Receipt" ed:AssociationGuid="dfd89270-c099-408f-969e-c80f78842c4d" Member="User" ed:Guid="8ab12455-cea4-4783-873a-45e215dc6dcb" ThisKey="IDUSER" OtherKey="USERNAME" Type="User" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="Receipt" ed:Guid="8c6bea77-6702-4a37-9112-b9864eaba056">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="f0158600-bcc8-46e4-9d29-3a4cbccbbce3" />
+      <Column Name="ID_CHAIR" Member="IDCHAIR" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="e10e0c16-46be-4d4e-b459-16ba18f3e60a" />
+      <Column Name="ID_USER" Member="IDUSER" Type="System.String" DbType="VARCHAR(50) NOT NULL" CanBeNull="false" UpdateCheck="Never" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="b0ae7969-06d8-45f1-89ad-8197937eb460" />
+      <Column Name="ID_ACCOUNT" Member="IDACCOUNT" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="15464c09-b2b5-4789-99b8-5479ddbb0aae" />
+      <Column Name="CREATE_DATE" Member="CREATEDATE" Type="System.DateTime" DbType="DATE NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d669c77a-e1b5-4f50-9659-fc51126d3bf7" />
+      <Column Name="USE_DATE" Member="USEDATE" Type="System.DateTime" DbType="DATE NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="db2df4f2-ec5b-4020-95b1-1474270565d2" />
+      <Column Name="TYPE_RECEIPT" Member="TYPERECEIPT" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="1f960333-a5c1-4fe0-aa11-66368fea0bf6" />
+      <Column Name="TOTAL_MONEY" Member="TOTALMONEY" Type="System.Single" DbType="FLOAT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="c3528a55-2383-46e3-a3dd-8dde32ee5092" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="83127c7a-860a-4277-9e8d-d64e019acb20" />
+      <Association Name="Account_Receipt" ed:AssociationGuid="c07ce5d1-f1b3-4cf8-8744-7d6ccf6b0f56" Member="Account" ed:Guid="0fb1dc49-4891-4f31-9bb8-39f09c3756b5" ThisKey="IDACCOUNT" OtherKey="ID" Type="Account" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Chair_Receipt" ed:AssociationGuid="98fd27ff-37af-452a-aac5-08a2578c67fe" Member="Chair" ed:Guid="5b039012-70c6-4fa9-9ba3-966ab210be4b" ThisKey="IDCHAIR" OtherKey="ID" Type="Chair" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Receipt_DetailReceipt" ed:AssociationGuid="2db0e67e-60a4-4a22-bfdb-a5137c0bc26a" Member="DetailReceipts" ed:Guid="07020840-b839-4f30-9159-d14c96c8eb3c" ThisKey="ID" OtherKey="IDRECEIPT" Type="DetailReceipt" />
+      <Association Name="User_Receipt" ed:AssociationGuid="d92b9843-6201-405e-84c1-a71a1c50d8e2" Member="User" ed:Guid="3859dec3-3457-405e-8b1d-c493661ddedb" ThisKey="IDUSER" OtherKey="USERNAME" Type="User" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.screen" Member="Screens">
-    <Type Name="Screen" ed:Guid="671aab2f-ee7d-4ce0-bab0-ae758a5d5ba4">
-      <Column Name="ID" Type="System.String" DbType="CHAR(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="6" ed:ValidateMaxLength="6" ed:ValidateRequired="true" ed:Guid="8ae7affe-f1e6-4801-8f41-3a286dcb731a" />
-      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="5b23009e-4828-45c4-a4cb-ac4f40c19b9f" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="39120bdd-7b48-441d-9ddb-3a74d6619bc8" />
-      <Association Name="Screen_GrandRight" ed:AssociationGuid="5164e72a-1a86-4d9c-b059-c16fb84ca231" Member="GrandRights" ed:Guid="50ca3feb-b2be-4d5b-8a27-06b0984688ba" ThisKey="ID" OtherKey="IDSCREEN" Type="GrandRight" />
+    <Type Name="Screen" ed:Guid="8461d8ed-cf60-41e8-a4e0-3b9870481286">
+      <Column Name="ID" Type="System.String" DbType="CHAR(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="6" ed:ValidateMaxLength="6" ed:ValidateRequired="true" ed:Guid="8b10af2e-615d-49ec-be00-711716dfc0f8" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="fa68083d-4ee1-45a3-bf68-535ad34a6a1c" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="04c227c5-ed93-4765-95a8-9b77925859b8" />
+      <Association Name="Screen_GrandRight" ed:AssociationGuid="85a5a632-3264-4d41-8165-40696395f9c5" Member="GrandRights" ed:Guid="3df64ed2-8e94-4b4c-8b23-158d03ab981b" ThisKey="ID" OtherKey="IDSCREEN" Type="GrandRight" />
     </Type>
   </Table>
   <Table Name="db_spa.staff" Member="Staffs">
-    <Type Name="Staff" ed:Guid="3b8bee1b-27b0-402d-aeb5-46ad04defa85">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="e003ae44-cec9-4d44-9155-73496208bc8d" />
-      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="bee69fa2-84b8-4f51-b6e3-301b50fff532" />
-      <Column Name="PHONE" Type="System.String" DbType="CHAR(10) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" FixedLength="true" MaxLength="10" Unicode="true" ed:ValidateMaxLength="10" ed:ValidateRequired="false" ed:Guid="0c0e8fc6-1792-44e2-aeb4-5e567ab8daf1" />
-      <Column Name="EMAIL" Type="System.String" DbType="VARCHAR(100) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="7d2af472-9ce0-4a0c-8331-1f2772152bb4" />
-      <Column Name="ADDRESS" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="67f73cbd-3a13-4067-b20e-e068acdb95b2" />
-      <Column Name="LUONG" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="ad4b64de-caf5-48d7-ac54-12279926bd7e" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="e8537921-7982-4a0e-b850-2a8b343ec0cd" />
-      <Association Name="Staff_DetailReceipt" ed:AssociationGuid="09794619-60ec-450b-8c42-a9fdcd422369" Member="DetailReceipts" ed:Guid="e9687765-64b7-4c3b-92fc-3bc988efa9ea" ThisKey="ID" OtherKey="IDSTAFF" Type="DetailReceipt" />
-      <Association Name="Staff_EnterCoupon" ed:AssociationGuid="ecb5e097-348d-4f19-b449-342b882e749d" Member="EnterCoupons" ed:Guid="9f7212c3-69bf-4812-8fcf-686db6653983" ThisKey="ID" OtherKey="IDSTAFF" Type="EnterCoupon" />
-      <Association Name="Staff_UserStaff" ed:AssociationGuid="d2385b9b-a7bc-4609-a630-bcec3d134eed" Member="UserStaffs" ed:Guid="52b6551f-30fa-427a-a24c-d854fcb4b2a1" ThisKey="ID" OtherKey="IDSTAFF" Type="UserStaff" />
+    <Type Name="Staff" ed:Guid="dcd3d3f8-b5e9-4d78-900b-01a02874bfbd">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="2c948438-5d77-4c84-839a-0a100aa836c4" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="833bfabd-2d39-4119-8b07-d352fb0f26de" />
+      <Column Name="PHONE" Type="System.String" DbType="CHAR(10) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" FixedLength="true" MaxLength="10" Unicode="true" ed:ValidateMaxLength="10" ed:ValidateRequired="false" ed:Guid="91536334-f24c-4862-b34d-0886e9f4593a" />
+      <Column Name="EMAIL" Type="System.String" DbType="VARCHAR(100) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="84b97811-499b-493d-9deb-0427dd6b0eb1" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="6f50e732-1fe8-42b9-b15c-c62258a7c88a" />
+      <Column Name="LUONG" Type="System.Single" DbType="FLOAT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="85cfd28b-79c8-4230-8509-a7b8ec9946f2" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="bd614b25-1499-49ef-862f-155297b85270" />
+      <Association Name="Staff_DetailReceipt" ed:AssociationGuid="3dae8e82-d3b7-400b-8e32-1fc3d15b3f63" Member="DetailReceipts" ed:Guid="91412a99-c15f-4609-b6cc-f6f55544e977" ThisKey="ID" OtherKey="IDSTAFF" Type="DetailReceipt" />
+      <Association Name="Staff_EnterCoupon" ed:AssociationGuid="13eb8c53-0f37-4253-9b69-d75bba4aa423" Member="EnterCoupons" ed:Guid="ebc98cfb-8255-4c20-b7c1-f4c9b21dc80a" ThisKey="ID" OtherKey="IDSTAFF" Type="EnterCoupon" />
+      <Association Name="Staff_UserStaff" ed:AssociationGuid="65c918f5-d717-486f-a9de-ac9976e1daa6" Member="UserStaffs" ed:Guid="a9e346ee-2f8e-4a09-a102-c5b12371b999" ThisKey="ID" OtherKey="IDSTAFF" Type="UserStaff" />
     </Type>
   </Table>
   <Table Name="db_spa.supplier" Member="Suppliers">
-    <Type Name="Supplier" ed:Guid="b762a05d-7827-4db7-a42a-750bf1cce74e">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="c6d70d9e-374f-4b8e-9b79-59fc64c6b2da" />
-      <Column Name="ID_GROUP" Member="IDGROUP" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="bc3e396e-4373-4a53-b550-ec434f1a3f5b" />
-      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="2ce7f89e-ec81-4ca4-a917-890917a4f222" />
-      <Column Name="PHONE" Type="System.String" DbType="CHAR(10) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" FixedLength="true" MaxLength="10" Unicode="true" ed:ValidateMaxLength="10" ed:ValidateRequired="false" ed:Guid="e22f4d8b-612c-4f00-8dd1-37a07319c77f" />
-      <Column Name="EMAIL" Type="System.String" DbType="VARCHAR(100) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="49461dcd-ff91-4da2-96be-bcca92d80faf" />
-      <Column Name="ADDRESS" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="453a00fc-c7b2-419f-ad00-f07e4a5b78eb" />
-      <Column Name="TAX_CODE" Member="TAXCODE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="2524049c-9063-45d2-b2a8-62db677111dc" />
-      <Association Name="Supplier_EnterCoupon" ed:AssociationGuid="38a3c2f3-7e17-4f2f-95f1-5134bb7fa285" Member="EnterCoupons" ed:Guid="c3b62d2b-5925-4122-8ad5-ba7991b78003" ThisKey="ID" OtherKey="IDSUPPLIER" Type="EnterCoupon" />
-      <Association Name="GroupSupplier_Supplier" ed:AssociationGuid="4cc785bc-5e6f-48d7-93c9-fa4239d4d4d9" Member="GroupSupplier" ed:Guid="dfbfa6f6-9f85-4d9f-af99-af6d3e8a9421" ThisKey="IDGROUP" OtherKey="ID" Type="GroupSupplier" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="Supplier" ed:Guid="ecb47d98-80ef-4f67-ba48-9e6823bc4ace">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="80c6d10a-11b8-4ea4-a183-1b7d6c1b70dc" />
+      <Column Name="ID_GROUP" Member="IDGROUP" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="9d40cbb9-0cfd-4ac3-9638-4a05f808c83f" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="bcd7dc9a-1ec2-4de3-8257-46eadd7be33b" />
+      <Column Name="PHONE" Type="System.String" DbType="CHAR(10) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" FixedLength="true" MaxLength="10" Unicode="true" ed:ValidateMaxLength="10" ed:ValidateRequired="false" ed:Guid="3b0dc828-60e1-4fd1-befc-f3a92785b869" />
+      <Column Name="EMAIL" Type="System.String" DbType="VARCHAR(100) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="5c0fd75e-5f73-4ce0-ab3f-b8ad446088ea" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VARCHAR(200) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="d63d2ae0-a195-4278-88a3-fb9937cfca0f" />
+      <Column Name="TAX_CODE" Member="TAXCODE" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="b7ffffdf-0d5d-4c4c-89bb-cdc50ade0ea0" />
+      <Association Name="Supplier_EnterCoupon" ed:AssociationGuid="a28d8ab3-9658-4fc0-aaca-e107a8e2cd17" Member="EnterCoupons" ed:Guid="c140d545-fc40-47f6-a4e0-42191859e1de" ThisKey="ID" OtherKey="IDSUPPLIER" Type="EnterCoupon" />
+      <Association Name="GroupSupplier_Supplier" ed:AssociationGuid="2dc04f33-a1b0-4fb8-97bb-5531f9107563" Member="GroupSupplier" ed:Guid="07c47515-08bc-4b2e-beec-6ff373b069da" ThisKey="IDGROUP" OtherKey="ID" Type="GroupSupplier" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.type_cus" Member="TypeCus">
-    <Type Name="TypeCu" ed:Guid="e03f710f-eaf3-44ed-92cf-4c7241e89c51">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="ca9033e6-91b0-4de7-a797-d8a8127ee7c3" />
-      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="03088e5e-4944-47b3-961f-4f206e72d130" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="841fba67-1206-409b-8a6f-03e56f82f20a" />
-      <Association Name="TypeCu_ProfileCu" ed:AssociationGuid="a445ebf2-5afe-4b21-99e8-0648f0a5f390" Member="ProfileCus" ed:Guid="b58b1a0d-f007-430a-b531-0ea74b1a32c7" ThisKey="ID" OtherKey="IDTYPE" Type="ProfileCu" />
+    <Type Name="TypeCu" ed:Guid="66805b7e-d0b8-4b47-bba7-2dd58c81b6d8">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="3fc74951-9965-4475-864b-2db0c5d46d98" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="2a6bd37c-e402-46e7-8807-8cfa30c41402" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="21fd4a21-dbf7-495f-b29f-432e3d61bb8c" />
+      <Association Name="TypeCu_ProfileCu" ed:AssociationGuid="34af3222-abdb-4aff-b434-4a6f46b6dbbe" Member="ProfileCus" ed:Guid="f36fc05c-f326-4445-88fe-65885dea92f1" ThisKey="ID" OtherKey="IDTYPE" Type="ProfileCu" />
     </Type>
   </Table>
   <Table Name="db_spa.unit_item" Member="UnitItems">
-    <Type Name="UnitItem" ed:Guid="32098a98-7e5a-40b3-b652-05e24f9e437c">
-      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="496c218e-a528-4977-9aa8-21e61b5dd75c" />
-      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="8594b9aa-d611-4b37-b50b-73faab341ab3" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="9d96f00f-8dd5-4f25-aa6d-eaf41b294804" />
-      <Association Name="UnitItem_Item" ed:AssociationGuid="5467dde6-48f4-4f25-a177-acc42de61148" Member="Items" ed:Guid="88b0d51f-14e1-4e49-94eb-ad75525e9007" ThisKey="ID" OtherKey="IDUNIT" Type="Item" />
+    <Type Name="UnitItem" ed:Guid="3a212b11-416f-46ae-b58b-4702aef45ccb">
+      <Column Name="ID" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="81da965f-ea2f-4402-8429-438cc0115c22" />
+      <Column Name="NAME" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="2fbf30a5-83fb-4048-8ca4-ae78e42fadc1" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="1205aec1-910e-47bc-a619-0c1e20b92567" />
+      <Association Name="UnitItem_Item" ed:AssociationGuid="a5cc4128-e0df-4e14-ac02-5eb6e7d18a01" Member="Items" ed:Guid="443ab89a-f507-4106-8968-f04adbf9c382" ThisKey="ID" OtherKey="IDUNIT" Type="Item" />
     </Type>
   </Table>
   <Table Name="db_spa.user" Member="Users">
-    <Type Name="User" ed:Guid="9908d236-80c0-4076-aa57-2b8c08df831d">
-      <Column Name="USER_NAME" Member="USERNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="dcf25bda-ef6c-44ca-9cce-2837266c1f3e" />
-      <Column Name="`PASSWORD`" Member="PASSWORD" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="bf527ee3-e61f-4d4a-8020-22534528544e" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="832946e7-2539-4b48-94f9-e2f5a4fe7362" />
-      <Association Name="User_EnterCoupon" ed:AssociationGuid="31c5987e-4552-434a-8b25-dcee303fdab7" Member="EnterCoupons" ed:Guid="282bc9f5-4f90-4f12-848c-123a30c003c4" ThisKey="USERNAME" OtherKey="IDUSER" Type="EnterCoupon" />
-      <Association Name="User_Receipt" ed:AssociationGuid="dfd89270-c099-408f-969e-c80f78842c4d" Member="Receipts" ed:Guid="050405a0-fbb5-4643-b7ad-0d25794d7f89" ThisKey="USERNAME" OtherKey="IDUSER" Type="Receipt" />
-      <Association Name="User_UserGroupUser" ed:AssociationGuid="494ccd6e-eb0c-46be-8a55-ce441bf7c3c6" Member="UserGroupUsers" ed:Guid="01dbc832-a4f2-41b4-9b4a-298a91485003" ThisKey="USERNAME" OtherKey="USERNAME" Type="UserGroupUser" />
-      <Association Name="User_UserStaff" ed:AssociationGuid="c334ee2e-539a-41ef-b034-43c2a734f010" Member="UserStaffs" ed:Guid="87fcdc19-d263-4734-a23e-8409449cd936" ThisKey="USERNAME" OtherKey="USERNAME" Type="UserStaff" />
+    <Type Name="User" ed:Guid="e8631208-f140-4606-9bc5-ee3c4f5007dd">
+      <Column Name="USER_NAME" Member="USERNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="874eff8b-f047-4a00-93b2-23730aae5152" />
+      <Column Name="`PASSWORD`" Member="PASSWORD" Type="System.String" DbType="VARCHAR(50) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="6ffdc923-978c-4a9d-b039-ba8721b43df3" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="5b50f09d-a374-465e-81eb-e405d8a5421b" />
+      <Association Name="User_EnterCoupon" ed:AssociationGuid="5f9ad97d-5000-4308-a04c-28617da46a03" Member="EnterCoupons" ed:Guid="f35fdd2c-8c42-4bf2-8d79-85eda489d6b0" ThisKey="USERNAME" OtherKey="IDUSER" Type="EnterCoupon" />
+      <Association Name="User_Receipt" ed:AssociationGuid="d92b9843-6201-405e-84c1-a71a1c50d8e2" Member="Receipts" ed:Guid="608eaf10-aeab-4476-8730-4b075add5da6" ThisKey="USERNAME" OtherKey="IDUSER" Type="Receipt" />
+      <Association Name="User_UserGroupUser" ed:AssociationGuid="e7b66b66-44d4-44cb-8255-0a48cabc989f" Member="UserGroupUsers" ed:Guid="2aefe0c3-e886-4276-b779-61d6732588e7" ThisKey="USERNAME" OtherKey="USERNAME" Type="UserGroupUser" />
+      <Association Name="User_UserStaff" ed:AssociationGuid="e28c2978-1c47-4e73-b481-8be0e19ffc24" Member="UserStaffs" ed:Guid="e2623a7e-760b-4931-afcc-6f0af7c4ae2b" ThisKey="USERNAME" OtherKey="USERNAME" Type="UserStaff" />
     </Type>
   </Table>
   <Table Name="db_spa.user_group_user" Member="UserGroupUsers">
-    <Type Name="UserGroupUser" ed:Guid="163653a7-1165-43d2-bc26-711df120cf0d">
-      <Column Name="USER_NAME" Member="USERNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="94558cb6-d0ee-4e23-9503-6d9cf26a5c44" />
-      <Column Name="ID_GROUP_USER" Member="IDGROUPUSER" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="e23aa593-192b-453a-a428-efb3e395f9d3" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="03005c80-4215-4e6d-b886-b0921bf6282c" />
-      <Association Name="GroupUser_UserGroupUser" ed:AssociationGuid="af585e75-f27d-4842-87ba-b2f240aa8308" Member="GroupUser" ed:Guid="9d755fec-756d-4434-ad71-d7d931f39ce6" ThisKey="IDGROUPUSER" OtherKey="ID" Type="GroupUser" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="User_UserGroupUser" ed:AssociationGuid="494ccd6e-eb0c-46be-8a55-ce441bf7c3c6" Member="User" ed:Guid="9c0a38d6-cca8-4072-887c-e085bc975260" ThisKey="USERNAME" OtherKey="USERNAME" Type="User" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="UserGroupUser" ed:Guid="e67951db-6489-4c4a-9bbd-1d73c886d7f5">
+      <Column Name="USER_NAME" Member="USERNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="f9aad4d0-7fb7-45ee-9a09-3cf77702152c" />
+      <Column Name="ID_GROUP_USER" Member="IDGROUPUSER" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="c0b38f8d-d46a-4b73-b7d1-d31261096793" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="c107c272-b18f-426c-bbbd-9c38724855f4" />
+      <Association Name="GroupUser_UserGroupUser" ed:AssociationGuid="2270a549-2214-4f86-a629-96dfa4aa9e7a" Member="GroupUser" ed:Guid="34c7ffeb-4a57-4582-be15-8dd53097ec06" ThisKey="IDGROUPUSER" OtherKey="ID" Type="GroupUser" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="User_UserGroupUser" ed:AssociationGuid="e7b66b66-44d4-44cb-8255-0a48cabc989f" Member="User" ed:Guid="59306f2b-35e4-4e8d-9681-d679b7f8a738" ThisKey="USERNAME" OtherKey="USERNAME" Type="User" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="db_spa.user_staff" Member="UserStaffs">
-    <Type Name="UserStaff" ed:Guid="03237348-1c17-4154-877d-5b17f0867a77">
-      <Column Name="USER_NAME" Member="USERNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="8af5640f-15c7-4f6c-a840-d541099d8297" />
-      <Column Name="ID_STAFF" Member="IDSTAFF" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="2972d644-33cb-4e5d-9a0b-a338df781bb9" />
-      <Column Name="ID_BRANCH" Member="IDBRANCH" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="7a3f1a7a-dddc-40e5-889f-3e0df6080185" />
-      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="f50432b3-da8d-43c9-8422-7d82f8ce223c" />
-      <Association Name="Branch_UserStaff" ed:AssociationGuid="a32eb773-b7c0-4601-a7c1-06272172991b" Member="Branch" ed:Guid="98249989-b820-4bed-9793-055796e76d29" ThisKey="IDBRANCH" OtherKey="ID" Type="Branch" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="Staff_UserStaff" ed:AssociationGuid="d2385b9b-a7bc-4609-a630-bcec3d134eed" Member="Staff" ed:Guid="0233cd21-a70b-447b-9f68-cf339846bfea" ThisKey="IDSTAFF" OtherKey="ID" Type="Staff" DeleteRule="RESTRICT" IsForeignKey="true" />
-      <Association Name="User_UserStaff" ed:AssociationGuid="c334ee2e-539a-41ef-b034-43c2a734f010" Member="User" ed:Guid="a19f40f4-9fa5-4ebc-b8e2-0574fa53039b" ThisKey="USERNAME" OtherKey="USERNAME" Type="User" DeleteRule="RESTRICT" IsForeignKey="true" />
+    <Type Name="UserStaff" ed:Guid="61eea91a-2126-4631-8db1-8299f4ac737f">
+      <Column Name="USER_NAME" Member="USERNAME" Type="System.String" DbType="VARCHAR(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="6d17cc89-3855-46c8-8a85-fda70638a77b" />
+      <Column Name="ID_STAFF" Member="IDSTAFF" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="a0f3ad5f-fc95-4440-8d29-507c64afd50a" />
+      <Column Name="ID_BRANCH" Member="IDBRANCH" Type="System.Int32" DbType="INT(11) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="74e13985-a6fe-4856-8512-e13362034a9c" />
+      <Column Name="STATUS" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" Precision="11" ed:ValidateRequired="false" ed:Guid="8d659be6-82b0-496d-b5fe-ff7d373ad58a" />
+      <Association Name="Branch_UserStaff" ed:AssociationGuid="c52e12bb-3af5-4349-b3b8-5e199e830275" Member="Branch" ed:Guid="c040b6f4-f810-4f04-aa0b-0264587d78e4" ThisKey="IDBRANCH" OtherKey="ID" Type="Branch" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Staff_UserStaff" ed:AssociationGuid="65c918f5-d717-486f-a9de-ac9976e1daa6" Member="Staff" ed:Guid="183bbc64-b2a8-46b1-8920-770031c445ac" ThisKey="IDSTAFF" OtherKey="ID" Type="Staff" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="User_UserStaff" ed:AssociationGuid="e28c2978-1c47-4e73-b481-8be0e19ffc24" Member="User" ed:Guid="d0d3eae3-6373-4e60-867b-00809e1e724e" ThisKey="USERNAME" OtherKey="USERNAME" Type="User" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

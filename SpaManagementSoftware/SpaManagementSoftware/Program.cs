@@ -34,7 +34,7 @@ namespace SpaManagementSoftware
             loginForm = new frmLogin();
             UserName = loginForm.NameAccount;
             UserManager usr = new UserManager();
-            Application.Run(new frmUseService()); 
+            Application.Run(loginForm); 
         }
     }
 }

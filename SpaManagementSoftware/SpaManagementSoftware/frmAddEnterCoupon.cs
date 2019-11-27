@@ -148,42 +148,49 @@ namespace SpaManagementSoftware
 
         void AddDataToDGView(int num)
         {
-            if (dgV_Items.CurrentRow != null)
+            try
             {
-                txt_Price.Text = dgV_Items.CurrentRow.Cells["PRICE_IN"].Value.ToString();
-                string id = dgV_Items.CurrentRow.Cells["ID"].Value.ToString();
-                string name = dgV_Items.CurrentRow.Cells["NAME_ITEM"].Value.ToString();
-                string number = num.ToString();
-                string unit = dgV_Items.CurrentRow.Cells["NAME_UNIT"].Value.ToString();
-                string price = txt_Price.Text;
-                string money = (Convert.ToInt32(txt_Number.Text) * Convert.ToDouble(txt_Price.Text)).ToString();
-                if (dgV_DetailsCoupon.Rows.Count == 0)
+                if (dgV_Items.CurrentRow != null)
                 {
-                    string[] row = new string[] { name, number, unit, price, money, id };
-                    dgV_DetailsCoupon.Rows.Add(row);
-                    SumMoneyItem();
-                    ColorData();
-                }
-                else
-                {
-                    int r = dgV_DetailsCoupon.Rows.Count;
-                    for (int i = 0; i < r; i++)
+                    txt_Price.Text = dgV_Items.CurrentRow.Cells["PRICE_IN"].Value.ToString();
+                    string id = dgV_Items.CurrentRow.Cells["ID"].Value.ToString();
+                    string name = dgV_Items.CurrentRow.Cells["NAME_ITEM"].Value.ToString();
+                    string number = num.ToString();
+                    string unit = dgV_Items.CurrentRow.Cells["NAME_UNIT"].Value.ToString();
+                    string price = txt_Price.Text;
+                    string money = (Convert.ToInt32(txt_Number.Text) * Convert.ToDouble(txt_Price.Text)).ToString();
+                    if (dgV_DetailsCoupon.Rows.Count == 0)
                     {
-                        if (id.Equals(dgV_DetailsCoupon.Rows[i].Cells["ID_ITEM"].Value.ToString()))
-                        {
-                            dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value = Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells[1].Value.ToString()) + num;
-                            dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value = Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value.ToString()) * Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["PRICE_IN_2"].Value.ToString());
-                            SumMoneyItem();
-                            ColorData();
-                            return;
-                        }
+                        string[] row = new string[] { name, number, unit, price, money, id };
+                        dgV_DetailsCoupon.Rows.Add(row);
+                        SumMoneyItem();
+                        ColorData();
                     }
-                    string[] row = new string[] { name, number, unit, price, money, id };
-                    dgV_DetailsCoupon.Rows.Add(row);
-                    SumMoneyItem();
-                    ColorData();
+                    else
+                    {
+                        int r = dgV_DetailsCoupon.Rows.Count;
+                        for (int i = 0; i < r; i++)
+                        {
+                            if (id.Equals(dgV_DetailsCoupon.Rows[i].Cells["ID_ITEM"].Value.ToString()))
+                            {
+                                dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value = Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells[1].Value.ToString()) + num;
+                                dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value = Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value.ToString()) * Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["PRICE_IN_2"].Value.ToString());
+                                SumMoneyItem();
+                                ColorData();
+                                return;
+                            }
+                        }
+                        string[] row = new string[] { name, number, unit, price, money, id };
+                        dgV_DetailsCoupon.Rows.Add(row);
+                        SumMoneyItem();
+                        ColorData();
+                    }
                 }
             }
+            catch
+            {
+                return;
+            }            
         }
 
         private void dgV_Items_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
