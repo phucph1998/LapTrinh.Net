@@ -4,12 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbSpaContext;
+using System.Data;
+using Devart.Data.MySql;
 
 namespace SpaClassLibrary
 {
     public class C_DetailsReceipt
     {
         DbSpaDataContext db = new DbSpaDataContext();
+        //Load Chi tiet hoa don
+        public DataTable GetDTReceipt(string pId)
+        {
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM detail_receipt WHERE detail_receipt.ID_RECEIPT = '"+pId+"'", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
         //Them mot chi tiet hoa don
         public bool AddDetailReceipt(string idReceipt, string idStaff, string idItem, string pSaleOff, string pNum, string pPriceOut, string pIntoMoney, string pStatus)
         {
@@ -22,6 +32,7 @@ namespace SpaClassLibrary
                 add.NUMBER = int.Parse(pNum);
                 add.PRICEOUT = float.Parse(pPriceOut);
                 add.INTOMONEY = float.Parse(pIntoMoney);
+                add.SALEOFF = float.Parse(pSaleOff);
                 add.STATUS = int.Parse(pStatus);
 
                 db.DetailReceipts.InsertOnSubmit(add);

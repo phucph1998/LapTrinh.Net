@@ -10,6 +10,8 @@ namespace SpaClassLibrary
     {
         DbSpaDataContext db = new DbSpaDataContext();
 
+        //Lay ten 
+
         public List<GroupItem> GetDataGroupItem()
         {
             return db.GroupItems.Select(t => t).ToList();

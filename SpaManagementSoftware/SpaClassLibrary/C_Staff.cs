@@ -5,12 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Devart.Data;
 using Devart.Data.MySql;
+using DbSpaContext;
 using System.Data;
 
 namespace SpaClassLibrary
 {
     public class C_Staff
     {
+        DbSpaDataContext db = new DbSpaDataContext();
+        //Lay ten nhan vien
+        public string GetNameStaff(string pIdStaff)
+        {
+            return db.Staffs.Where(t => t.ID == int.Parse(pIdStaff)).FirstOrDefault().NAME.ToString();
+        }
         public DataTable LoadListStaff()
         {
             DataTable dt = new DataTable();

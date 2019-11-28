@@ -17,6 +17,12 @@ namespace SpaClassLibrary
     {
         C_Account acc = new C_Account();
         UserManager mh = new UserManager();
+        //Lấy tên khách hàng
+        public string GetNameCus(string pIdCus)
+        {
+            DbSpaDataContext db = new DbSpaDataContext();
+            return db.ProfileCus.Where(t => t.IDPROFILE == int.Parse(pIdCus)).FirstOrDefault().NAME.ToString();
+        }
         //Bảng loại khách hàng
         public DataTable GetTableTypeCustomer()
         {

@@ -21,9 +21,13 @@ namespace SpaManagementSoftware
         C_DetailsReceipt _dtreceipt;
         UserManager usr;
         C_Items _item;
+        C_Staff _staff;
+        C_Unit _unit;
         C_Staff_User _staffUser;
-        List<int> listIdChair = new List<int>();
+        CustomerManager _cus;
         string idBranch;
+        List<int> listIdChair = new List<int>();        
+        List<ReceiptTemp> _listReceipt = new List<ReceiptTemp>();
 
         public frmUseService()
         {
@@ -33,6 +37,9 @@ namespace SpaManagementSoftware
             usr = new UserManager();
             _item = new C_Items();
             _receipt = new C_Receipt();
+            _cus = new CustomerManager();
+            _unit = new C_Unit();
+            _staff = new C_Staff();
             idBranch = _staffUser.GetIdBranch_User(Program.loginForm.NameAccount);//GetId loginForm            
         }
         //Tạo tầng tạo ghế
@@ -92,8 +99,47 @@ namespace SpaManagementSoftware
             lbl_NameChair.Text = (sender as SimpleButton).Text;
             SimpleButton btn = (SimpleButton)sender;
             btn.ForeColor = System.Drawing.SystemColors.Highlight;
+            txt_Number.Clear();
+            txt_NameCus.Clear();
+            dgv_DetailReceipt.Rows.Clear();
+            string idChair = lbl_NameChair.Text.Substring(lbl_NameChair.Text.Length - 3, 3);
             //Kiem tra neu ghe dang mo thi cac button tuong ung se mo va load du lieu tuong ung
-            //List<Receipt> receipt = _receipt.GetIdReceipt()
+            if (CheckChairOpen("btnChair" + idChair))
+            {
+                ChairOpen_EnableControls();
+                for (int i = 0; i < _listReceipt.Count; i++)
+                {
+                    if (_listReceipt[i].Chair.Equals(idChair))
+                    {
+                        //Load hoa don
+                        txt_Number.Text = _listReceipt[i].Id;
+                        Receipt temp = _receipt.GetReceipt(_listReceipt[i].Id);
+                        txt_NameCus.Text = _cus.GetNameCus(temp.IDACCOUNT.ToString());
+
+                        //Load chi tiet hoa don tuong ung
+                        DataTable listDt = _dtreceipt.GetDTReceipt(_listReceipt[i].Id);
+                        for (int j = 0; j < listDt.Rows.Count; j++)
+                        {
+                            string idItem = listDt.Rows[j][2].ToString(); ;
+                            string product = _item.GetNameItem(listDt.Rows[j][2].ToString());//Lay ten san pham
+                            string unit = _unit.GetNameUnit(_item.GetIdUnit(listDt.Rows[j][2].ToString()));//Lay ten don vi
+                            string price = listDt.Rows[j][5].ToString();
+                            string idStaff = listDt.Rows[j][1].ToString();
+                            string nameStaff = _staff.GetNameStaff(listDt.Rows[j][1].ToString());//Lay ten nhan vien
+                            string num = listDt.Rows[j][4].ToString(); ;
+                            string saleoff = listDt.Rows[j][3].ToString();
+                            string total = listDt.Rows[j][6].ToString();
+                            string[] row = new string[] { idItem, product, unit, num, price, saleoff, total, idStaff, nameStaff };
+                            dgv_DetailReceipt.Rows.Add(row);
+                        }
+                        break;
+                    }                    
+                }
+            }
+            else
+            {
+                ChairClose_EnableControls();
+            }
             //nguoc lai neu ghe dang dong thi cac button tuong ung se dong
         }
 
@@ -157,11 +203,21 @@ namespace SpaManagementSoftware
                 if (t.Tag == "Open")
                 {
                     MessageBox.Show("Dong ghe tinh tien");
+                    string idChair = lbl_NameChair.Text.Substring(lbl_NameChair.Text.Length - 3, 3);//Id ghe
                     t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket_black;
                     t.Tag = "Close";
-                    ChairClose_EnableControls();
                     //Lúc này các button tương ứng sẽ Enable = fales
-
+                    ChairClose_EnableControls();
+                    //Xóa dữ liệu tạm trong _listReceipt
+                    for (int i = 0; i < _listReceipt.Count; i++)
+                    {
+                        if (_listReceipt[i].Chair.Equals(idChair))
+                        {
+                            _listReceipt.RemoveAt(i);
+                            txt_Number.Clear();
+                            break;
+                        }
+                    }
                     return;
                 }
             }
@@ -281,6 +337,12 @@ namespace SpaManagementSoftware
 
         private void dGV_Item_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(txt_Number.Text.Trim() == string.Empty)
+            {
+                XtraMessageBox.Show("Vui lòng tìm kiếm khách hàng sử dụng trước !");
+                btn_SerchCus.Focus();
+                return;
+            }
             if (dGV_Item.CurrentRow != null && CheckChairOpen("btnChair" + lbl_NameChair.Text.Substring(lbl_NameChair.Text.Length - 3, 3)))
             {
                 frmChooseStaff frm = new frmChooseStaff();
@@ -298,7 +360,7 @@ namespace SpaManagementSoftware
                     string idStaff = frm.IdStaff;
                     string nameStaff = frm.NameStaff;
                     string num = cbbNumber.Text;
-                    string saleoff = "0.0";
+                    string saleoff = "0";
                     string total = (double.Parse(num) * double.Parse(price) - (double.Parse(num) * double.Parse(price)) * double.Parse(saleoff)).ToString();
 
                     for (int i = 0; i < dgv_DetailReceipt.Rows.Count; i++)
@@ -317,8 +379,8 @@ namespace SpaManagementSoftware
                     string[] row = new string[] { idItem, product, unit, num, price, saleoff, total, idStaff, nameStaff };
                     dgv_DetailReceipt.Rows.Add(row);
                     //Thêm 1 chi tiết hóa đơn mới , cập nhật tổng tiền bên hóa đơn
-                    bool flagAdd = _dtreceipt.AddDetailReceipt("1", idStaff, idItem, saleoff, num, price, total, "1");
-                    XtraMessageBox.Show("Thêm dịch vụ thành công !","Thông báo !");
+                    bool flagAdd = _dtreceipt.AddDetailReceipt(txt_Number.Text, idStaff, idItem, saleoff, num, price, total, "1");
+                    XtraMessageBox.Show("Thêm dịch vụ thành công !", "Thông báo !");
                 }
             }
             else
@@ -362,6 +424,7 @@ namespace SpaManagementSoftware
             frm.ShowDialog();
             if (frm.idCus != null && frm.nameCus != null)
             {
+                string idhd = (int.Parse(_receipt.CountIdReceipt()) + 1).ToString();
                 string idAccount = frm.idCus; //idAccount lấy được sau khi chọn khách hàng                
                 string idUser = Program.loginForm.NameAccount;//Sau khi chọn khách hàng tạo hóa đơn rỗng idUser = UserName
                 string idChair = lbl_NameChair.Text.Substring(lbl_NameChair.Text.Length - 3, 3);//Lấy được mã ghế ví dụ 111,121,...
@@ -374,7 +437,13 @@ namespace SpaManagementSoftware
                 txt_NameCus.Text = frm.nameCus;
                 try
                 {
-                    bool flag = _receipt.CreateReceipt(idChair, idUser, idAccount, dateCre, dateUse, type);
+                    bool flag = _receipt.CreateReceipt(idhd, idChair, idUser, idAccount, dateCre, dateUse, type);
+                    //Lưu mã hóa đơn vào danh sách tạm
+                    ReceiptTemp t = new ReceiptTemp();
+                    t.Id = idhd;
+                    t.Chair = idChair;
+                    _listReceipt.Add(t);
+                    txt_Number.Text = idhd;
                     XtraMessageBox.Show("Tao hd thanh cong");
                 }
                 catch

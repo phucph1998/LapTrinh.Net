@@ -13,6 +13,17 @@ namespace SpaClassLibrary
     public class C_Items
     {
         DbSpaDataContext db = new DbSpaDataContext();
+        //Lay madon vi tinh mathang
+        public string GetIdUnit(string pidItem)
+        {
+            return db.Items.Where(t => t.ID == int.Parse(pidItem)).FirstOrDefault().IDUNIT.ToString();
+        }
+
+        //Lay ten san pham theo id
+        public string GetNameItem(string pidItem)
+        {
+            return db.Items.Where(t => t.ID == int.Parse(pidItem)).FirstOrDefault().NAME.ToString();
+        }
         //dem so luong mat hang
         public string CountIdItem()
         {

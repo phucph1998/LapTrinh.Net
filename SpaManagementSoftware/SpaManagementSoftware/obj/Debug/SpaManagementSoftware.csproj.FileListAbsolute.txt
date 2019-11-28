@@ -235,7 +235,6 @@ D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\es\DevExpress.Office.v17.1.Core.resources.dll
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\ja\DevExpress.Office.v17.1.Core.resources.dll
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\bin\Debug\ru\DevExpress.Office.v17.1.Core.resources.dll
-D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.csprojResolveAssemblyReference.cache
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAddCustomer.resources
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAddEnterCoupon.resources
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAddGroupItems.resources
@@ -261,3 +260,4 @@ D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAddGroupCus.resources
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmChooseStaff.resources
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmSearchCustomer.resources
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.csprojResolveAssemblyReference.cache

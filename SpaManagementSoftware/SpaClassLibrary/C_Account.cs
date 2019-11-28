@@ -13,9 +13,8 @@ namespace SpaClassLibrary
 {
     public class C_Account
     {
-        UserManager mh = new UserManager();
+        UserManager mh = new UserManager();        
         //Lấy ID Tài khoản
-
         public int GetIDAccount(string pUserName)
         {
             DataTable tb = new DataTable();

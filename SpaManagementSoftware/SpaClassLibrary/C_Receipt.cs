@@ -13,9 +13,9 @@ namespace SpaClassLibrary
     {
         DbSpaDataContext db = new DbSpaDataContext();
         //Load id hoa don tuong ung cua ghe
-        public List<Receipt> GetReceipt(string pidReceipt)
+        public Receipt GetReceipt(string pidReceipt)
         {
-            return db.Receipts.Where(t => t.ID == int.Parse(pidReceipt)).ToList();
+            return db.Receipts.Where(t => t.ID == int.Parse(pidReceipt)).FirstOrDefault();
         }
         //Dem Id hoa don
         public string CountIdReceipt()
@@ -23,12 +23,12 @@ namespace SpaClassLibrary
             return db.Receipts.Count().ToString();
         }
         //Tạo hóa đơn rỗng chi tiết
-        public bool CreateReceipt(string pIdChair, string pIdUser, string pidAccount, string pCreateDate, string pDateUse, string pType)
+        public bool CreateReceipt(string pId, string pIdChair, string pIdUser, string pidAccount, string pCreateDate, string pDateUse, string pType)
         {
             try
             {
                 Receipt add = new Receipt();
-                add.ID = int.Parse(CountIdReceipt()) + 1;
+                add.ID = int.Parse(pId);
                 add.IDACCOUNT = int.Parse(pidAccount);
                 add.IDCHAIR = int.Parse(pIdChair);
                 add.IDUSER = pIdUser;
