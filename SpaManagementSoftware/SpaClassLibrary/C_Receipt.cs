@@ -17,6 +17,33 @@ namespace SpaClassLibrary
         {
             return db.Receipts.Where(t => t.ID == int.Parse(pidReceipt)).FirstOrDefault();
         }
+        //Thanh toan cap nhat loai hoa don
+        public bool PayMent(string idReceipt)
+        {
+            try
+            {
+                Receipt check = db.Receipts.Where(t => t.ID == int.Parse(idReceipt)).FirstOrDefault();
+                if(check != null)
+                {
+                    check.TYPERECEIPT = 2;
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //Lay tong tien cua hoa don bat ky
+        public string GetMoneyReceipt(string idReceipt)
+        {
+            return db.Receipts.Where(t => t.ID == int.Parse(idReceipt)).FirstOrDefault().TOTALMONEY.ToString();
+        }
         //Dem Id hoa don
         public string CountIdReceipt()
         {

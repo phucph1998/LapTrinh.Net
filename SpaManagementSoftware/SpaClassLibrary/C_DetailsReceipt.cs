@@ -16,7 +16,7 @@ namespace SpaClassLibrary
         public DataTable GetDTReceipt(string pId)
         {
             DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM detail_receipt WHERE detail_receipt.ID_RECEIPT = '"+pId+"'", Properties.Settings.Default.DbSpaDataContextConnectionString);
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM detail_receipt WHERE detail_receipt.ID_RECEIPT = '" + pId + "'", Properties.Settings.Default.DbSpaDataContextConnectionString);
             da.Fill(dt);
             return dt;
         }
@@ -50,7 +50,17 @@ namespace SpaClassLibrary
         {
             try
             {
-                return true;
+                DetailReceipt check = db.DetailReceipts.Where(t => t.IDRECEIPT == int.Parse(idReceipt) && t.IDSTAFF == int.Parse(idStaff) && t.IDITEM == int.Parse(idItem)).FirstOrDefault();
+                if (check != null)
+                {
+                    db.DetailReceipts.DeleteOnSubmit(check);
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {
@@ -63,7 +73,23 @@ namespace SpaClassLibrary
         {
             try
             {
-                return true;
+                DetailReceipt check = db.DetailReceipts.Where(t => t.IDRECEIPT == int.Parse(idReceipt) && t.IDSTAFF == int.Parse(idStaff) && t.IDITEM == int.Parse(idItem)).FirstOrDefault();
+                if (check != null)
+                {
+                    //Cap nhat
+                    check.SALEOFF = float.Parse(pSaleOff);
+                    check.NUMBER = int.Parse(pNum);
+                    check.PRICEOUT = float.Parse(pPriceOut);
+                    check.INTOMONEY = float.Parse(pIntoMoney);
+                    check.STATUS = int.Parse(pStatus);
+
+                    db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {

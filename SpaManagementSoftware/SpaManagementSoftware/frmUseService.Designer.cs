@@ -77,6 +77,13 @@
             this.NAME_STAFF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_Total = new System.Windows.Forms.TextBox();
+            this.txt_MoneySale = new System.Windows.Forms.TextBox();
+            this.txt_Sale = new System.Windows.Forms.TextBox();
+            this.txt_IntoMoney = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.tBL_Time = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_NumberCus = new System.Windows.Forms.Label();
@@ -120,6 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DetailReceipt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
             this.tBL_Time.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_NumberCus)).BeginInit();
             this.tBL_Control.SuspendLayout();
@@ -398,7 +406,8 @@
             this.tSB_IncreaseItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tSB_IncreaseItem.Name = "tSB_IncreaseItem";
             this.tSB_IncreaseItem.Size = new System.Drawing.Size(23, 17);
-            this.tSB_IncreaseItem.Text = "toolStripButton1";
+            this.tSB_IncreaseItem.Text = "Tăng";
+            this.tSB_IncreaseItem.Click += new System.EventHandler(this.tSB_IncreaseItem_Click);
             // 
             // tSP_ReduceItem
             // 
@@ -407,7 +416,8 @@
             this.tSP_ReduceItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tSP_ReduceItem.Name = "tSP_ReduceItem";
             this.tSP_ReduceItem.Size = new System.Drawing.Size(23, 17);
-            this.tSP_ReduceItem.Text = "toolStripButton2";
+            this.tSP_ReduceItem.Text = "Giảm";
+            this.tSP_ReduceItem.Click += new System.EventHandler(this.tSP_ReduceItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -551,9 +561,89 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.label3);
+            this.xtraTabPage1.Controls.Add(this.label2);
+            this.xtraTabPage1.Controls.Add(this.txt_Total);
+            this.xtraTabPage1.Controls.Add(this.txt_MoneySale);
+            this.xtraTabPage1.Controls.Add(this.txt_Sale);
+            this.xtraTabPage1.Controls.Add(this.txt_IntoMoney);
+            this.xtraTabPage1.Controls.Add(this.label1);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(415, 92);
             this.xtraTabPage1.Text = "Tổng";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(62, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 19);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Tổng Cộng:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(99, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Giảm giá (%)";
+            // 
+            // txt_Total
+            // 
+            this.txt_Total.BackColor = System.Drawing.Color.Khaki;
+            this.txt_Total.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Total.ForeColor = System.Drawing.Color.Red;
+            this.txt_Total.Location = new System.Drawing.Point(169, 55);
+            this.txt_Total.Name = "txt_Total";
+            this.txt_Total.Size = new System.Drawing.Size(243, 27);
+            this.txt_Total.TabIndex = 4;
+            this.txt_Total.Text = "0";
+            this.txt_Total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txt_MoneySale
+            // 
+            this.txt_MoneySale.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_MoneySale.Location = new System.Drawing.Point(267, 28);
+            this.txt_MoneySale.Name = "txt_MoneySale";
+            this.txt_MoneySale.Size = new System.Drawing.Size(145, 23);
+            this.txt_MoneySale.TabIndex = 3;
+            this.txt_MoneySale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txt_Sale
+            // 
+            this.txt_Sale.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Sale.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.txt_Sale.Location = new System.Drawing.Point(169, 28);
+            this.txt_Sale.Name = "txt_Sale";
+            this.txt_Sale.Size = new System.Drawing.Size(89, 23);
+            this.txt_Sale.TabIndex = 2;
+            this.txt_Sale.Text = "0";
+            this.txt_Sale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_Sale.TextChanged += new System.EventHandler(this.txt_Sale_TextChanged);
+            this.txt_Sale.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Sale_KeyPress);
+            this.txt_Sale.MouseLeave += new System.EventHandler(this.txt_Sale_MouseLeave);
+            // 
+            // txt_IntoMoney
+            // 
+            this.txt_IntoMoney.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_IntoMoney.Location = new System.Drawing.Point(169, 4);
+            this.txt_IntoMoney.Name = "txt_IntoMoney";
+            this.txt_IntoMoney.Size = new System.Drawing.Size(243, 23);
+            this.txt_IntoMoney.TabIndex = 1;
+            this.txt_IntoMoney.Text = "0";
+            this.txt_IntoMoney.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(99, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tổng tiền:";
             // 
             // xtraTabPage2
             // 
@@ -808,6 +898,7 @@
             this.btn_DeleteItem.Size = new System.Drawing.Size(53, 23);
             this.btn_DeleteItem.TabIndex = 7;
             this.btn_DeleteItem.Text = "Xóa";
+            this.btn_DeleteItem.Click += new System.EventHandler(this.btn_DeleteItem_Click);
             // 
             // btn_PercentGroup
             // 
@@ -975,6 +1066,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DetailReceipt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage1.PerformLayout();
             this.tBL_Time.ResumeLayout(false);
             this.tBL_Time.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUD_NumberCus)).EndInit();
@@ -1068,5 +1161,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_STAFF;
         private System.Windows.Forms.DataGridViewTextBoxColumn NAME_STAFF;
         private System.Windows.Forms.Label lbl_NameChair;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_Total;
+        private System.Windows.Forms.TextBox txt_MoneySale;
+        private System.Windows.Forms.TextBox txt_Sale;
+        private System.Windows.Forms.TextBox txt_IntoMoney;
+        private System.Windows.Forms.Label label1;
     }
 }

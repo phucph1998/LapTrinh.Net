@@ -26,7 +26,7 @@ namespace SpaManagementSoftware
         C_Staff_User _staffUser;
         CustomerManager _cus;
         string idBranch;
-        List<int> listIdChair = new List<int>();        
+        List<int> listIdChair = new List<int>();
         List<ReceiptTemp> _listReceipt = new List<ReceiptTemp>();
 
         public frmUseService()
@@ -133,12 +133,18 @@ namespace SpaManagementSoftware
                             dgv_DetailReceipt.Rows.Add(row);
                         }
                         break;
-                    }                    
+                    }
                 }
+                //Tinh tien lai
+                SumMoney();
             }
             else
             {
                 ChairClose_EnableControls();
+                txt_IntoMoney.Text = "0";
+                txt_Sale.Text = "0";
+                txt_MoneySale.Text = (float.Parse(txt_IntoMoney.Text) * (float.Parse(txt_Sale.Text) / 100)).ToString();
+                txt_Total.Text = (float.Parse(txt_IntoMoney.Text) - float.Parse(txt_MoneySale.Text)).ToString();
             }
             //nguoc lai neu ghe dang dong thi cac button tuong ung se dong
         }
@@ -202,23 +208,33 @@ namespace SpaManagementSoftware
                 }
                 if (t.Tag == "Open")
                 {
-                    MessageBox.Show("Dong ghe tinh tien");
-                    string idChair = lbl_NameChair.Text.Substring(lbl_NameChair.Text.Length - 3, 3);//Id ghe
-                    t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket_black;
-                    t.Tag = "Close";
-                    //Lúc này các button tương ứng sẽ Enable = fales
-                    ChairClose_EnableControls();
-                    //Xóa dữ liệu tạm trong _listReceipt
-                    for (int i = 0; i < _listReceipt.Count; i++)
+                    frmPayMent frm = new frmPayMent();
+                    frm.IdReceipt = txt_Number.Text;
+                    frm.NameChair = lbl_NameChair.Text;
+                    frm.ShowDialog();
+                    if(frm.flagPayment)
                     {
-                        if (_listReceipt[i].Chair.Equals(idChair))
+                        //MessageBox.Show("Dong ghe tinh tien");
+                        string idChair = lbl_NameChair.Text.Substring(lbl_NameChair.Text.Length - 3, 3);//Id ghe
+                        t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket_black;
+                        t.Tag = "Close";
+                        //Lúc này các button tương ứng sẽ Enable = fales
+                        ChairClose_EnableControls();
+                        //Xóa dữ liệu tạm trong _listReceipt
+                        for (int i = 0; i < _listReceipt.Count; i++)
                         {
-                            _listReceipt.RemoveAt(i);
-                            txt_Number.Clear();
-                            break;
+                            if (_listReceipt[i].Chair.Equals(idChair))
+                            {
+                                _listReceipt.RemoveAt(i);
+                                txt_Number.Clear();
+                                break;
+                            }
                         }
-                    }
-                    return;
+                        txt_Number.Clear();
+                        txt_NameCus.Clear();
+                        dgv_DetailReceipt.Rows.Clear();
+                        return;
+                    }                    
                 }
             }
         }
@@ -335,9 +351,34 @@ namespace SpaManagementSoftware
             return false;
         }
 
+        public void SumMoney()
+        {
+            float sum = 0;
+            if (dgv_DetailReceipt != null)
+            {
+                for (int i = 0; i < dgv_DetailReceipt.Rows.Count; i++)
+                {
+                    sum += float.Parse(dgv_DetailReceipt.Rows[i].Cells["TOTAL"].Value.ToString());
+                }
+                txt_IntoMoney.Text = sum.ToString();
+                txt_MoneySale.Text = (float.Parse(txt_IntoMoney.Text) * (float.Parse(txt_Sale.Text) / 100)).ToString();
+                txt_Total.Text = (float.Parse(txt_IntoMoney.Text) - float.Parse(txt_MoneySale.Text)).ToString();
+            }
+            else
+            {
+                if (dgv_DetailReceipt.Rows == null)
+                {
+                    txt_IntoMoney.Text = "0";
+                    txt_Sale.Text = "0";
+                    txt_MoneySale.Text = (float.Parse(txt_IntoMoney.Text) * (float.Parse(txt_Sale.Text) / 100)).ToString();
+                    txt_Total.Text = (float.Parse(txt_IntoMoney.Text) - float.Parse(txt_MoneySale.Text)).ToString();
+                }
+            }
+        }
+
         private void dGV_Item_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(txt_Number.Text.Trim() == string.Empty)
+            if (txt_Number.Text.Trim() == string.Empty)
             {
                 XtraMessageBox.Show("Vui lòng tìm kiếm khách hàng sử dụng trước !");
                 btn_SerchCus.Focus();
@@ -370,17 +411,59 @@ namespace SpaManagementSoftware
                             float sl = float.Parse(dgv_DetailReceipt.Rows[i].Cells["NUMBER"].Value.ToString());
                             float dg = float.Parse(dgv_DetailReceipt.Rows[i].Cells["PRICEOUT"].Value.ToString());
                             dgv_DetailReceipt.Rows[i].Cells["NUMBER"].Value = (sl + 1).ToString();
-                            dgv_DetailReceipt.Rows[i].Cells["TOTAL"].Value = (sl * dg).ToString();
-                            //Cập nhật chi tiết hóa đơn, cập nhật tổng tiền bên hóa đơn
-                            return;
+                            dgv_DetailReceipt.Rows[i].Cells["TOTAL"].Value = ((sl + 1) * dg).ToString();
+                            //Cập nhật chi tiết hóa đơn
+                            bool flagUpdate = _dtreceipt.UpdateDetailReceipt(txt_Number.Text, idStaff, idItem, saleoff, dgv_DetailReceipt.Rows[i].Cells["NUMBER"].Value.ToString(), price, dgv_DetailReceipt.Rows[i].Cells["TOTAL"].Value.ToString(), "1");
+                            if (flagUpdate)
+                            {
+                                //cập nhật tổng tiền bên hóa đơn,
+                                SumMoney();
+                                bool flagUpdateReceiptMoney = _receipt.UpdateToTalReceipt(txt_Number.Text, txt_Total.Text);
+                                if (flagUpdateReceiptMoney)
+                                {
+                                    //cập nhật số lượng kho
+                                    return;
+                                }
+                                else
+                                {
+                                    XtraMessageBox.Show("Có lỗi !");
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                XtraMessageBox.Show("Có lỗi !");
+                                return;
+                            }
                         }
                     }
 
                     string[] row = new string[] { idItem, product, unit, num, price, saleoff, total, idStaff, nameStaff };
                     dgv_DetailReceipt.Rows.Add(row);
-                    //Thêm 1 chi tiết hóa đơn mới , cập nhật tổng tiền bên hóa đơn
+                    //Thêm 1 chi tiết hóa đơn mới
                     bool flagAdd = _dtreceipt.AddDetailReceipt(txt_Number.Text, idStaff, idItem, saleoff, num, price, total, "1");
-                    XtraMessageBox.Show("Thêm dịch vụ thành công !", "Thông báo !");
+                    if (flagAdd)
+                    {
+                        //cập nhật tổng tiền bên hóa đơn,
+                        SumMoney();
+                        bool flagUpdateReceiptMoney = _receipt.UpdateToTalReceipt(txt_Number.Text, txt_Total.Text);
+                        if (flagUpdateReceiptMoney)
+                        {
+                            //cập nhật số lượng kho
+                            XtraMessageBox.Show("Thêm dịch vụ thành công !", "Thông báo !");
+                            return;
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Có lỗi !");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Có lỗi !");
+                        return;
+                    }
                 }
             }
             else
@@ -391,6 +474,7 @@ namespace SpaManagementSoftware
 
         private void dgv_DetailReceipt_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            //Sua doi truc tiep trong List (Can chu y lai)
             try
             {
                 if (dgv_DetailReceipt.CurrentRow != null && Convert.ToInt32(dgv_DetailReceipt.CurrentRow.Cells["NUMBER"].Value.ToString()) > 0)
@@ -399,12 +483,16 @@ namespace SpaManagementSoftware
                     double price = Convert.ToDouble(dgv_DetailReceipt.CurrentRow.Cells["PRICEOUT"].Value.ToString());
                     double sale = Convert.ToDouble(dgv_DetailReceipt.CurrentRow.Cells["SALE_OFF"].Value.ToString());
                     dgv_DetailReceipt.CurrentRow.Cells["TOTAL"].Value = ((num * price) - (num * price * sale)).ToString();
-                    //SumMoneyItem();
+                    //cập nhật tổng tiền bên hóa đơn,
+                    SumMoney();
+                    //cập nhật số lượng kho
                 }
                 else
                 {
                     dgv_DetailReceipt.CurrentRow.Cells["NUMBER"].Value = 1;
-                    //SumMoneyItem();
+                    //cập nhật tổng tiền bên hóa đơn,
+                    SumMoney();
+                    //cập nhật số lượng kho
                 }
             }
             catch
@@ -444,7 +532,7 @@ namespace SpaManagementSoftware
                     t.Chair = idChair;
                     _listReceipt.Add(t);
                     txt_Number.Text = idhd;
-                    XtraMessageBox.Show("Tao hd thanh cong");
+                    XtraMessageBox.Show("Tạo hóa đơn khách hàng thành công !");
                 }
                 catch
                 {
@@ -452,6 +540,166 @@ namespace SpaManagementSoftware
                     return;
                 }
 
+            }
+        }
+
+        private void tSB_IncreaseItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgv_DetailReceipt.CurrentRow != null)
+                {
+                    string idItem = dgv_DetailReceipt.CurrentRow.Cells["ID_ITEM"].Value.ToString();
+                    float price = float.Parse(dgv_DetailReceipt.CurrentRow.Cells["PRICEOUT"].Value.ToString());
+                    string idStaff = dgv_DetailReceipt.CurrentRow.Cells["ID_STAFF"].Value.ToString();
+                    int num = int.Parse(dgv_DetailReceipt.CurrentRow.Cells["NUMBER"].Value.ToString());
+                    float saleoff = float.Parse(dgv_DetailReceipt.CurrentRow.Cells["SALE_OFF"].Value.ToString());
+                    string total = dgv_DetailReceipt.CurrentRow.Cells["TOTAL"].Value.ToString();
+
+                    int updateNum = num + 1;
+                    dgv_DetailReceipt.CurrentRow.Cells["NUMBER"].Value = updateNum.ToString();
+                    dgv_DetailReceipt.CurrentRow.Cells["TOTAL"].Value = (updateNum * price - updateNum * price * saleoff).ToString();
+                    //Cập nhật chi tiết hóa đơn 
+                    bool flagUpdate = _dtreceipt.UpdateDetailReceipt(txt_Number.Text, idStaff, idItem, saleoff.ToString(), dgv_DetailReceipt.CurrentRow.Cells["NUMBER"].Value.ToString(), price.ToString(), dgv_DetailReceipt.CurrentRow.Cells["TOTAL"].Value.ToString(), "1");
+                    if (flagUpdate)
+                    {
+                        //cập nhật tổng tiền bên hóa đơn,
+                        SumMoney();
+                        bool flagUpdateReceiptMoney = _receipt.UpdateToTalReceipt(txt_Number.Text, txt_Total.Text);
+                        if (flagUpdateReceiptMoney)
+                        {
+                            //cập nhật số lượng kho
+                            return;
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Có lỗi !");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Có lỗi khi tăng số lượng sản phẩm !");
+                    }
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void tSP_ReduceItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgv_DetailReceipt.CurrentRow != null)
+                {
+                    string idItem = dgv_DetailReceipt.CurrentRow.Cells["ID_ITEM"].Value.ToString();
+                    float price = float.Parse(dgv_DetailReceipt.CurrentRow.Cells["PRICEOUT"].Value.ToString());
+                    string idStaff = dgv_DetailReceipt.CurrentRow.Cells["ID_STAFF"].Value.ToString();
+                    int num = int.Parse(dgv_DetailReceipt.CurrentRow.Cells["NUMBER"].Value.ToString());
+                    float saleoff = float.Parse(dgv_DetailReceipt.CurrentRow.Cells["SALE_OFF"].Value.ToString());
+                    string total = dgv_DetailReceipt.CurrentRow.Cells["TOTAL"].Value.ToString();
+                    if (num == 0)
+                    {
+                        return;
+                    }
+                    int updateNum = num - 1;
+                    dgv_DetailReceipt.CurrentRow.Cells["NUMBER"].Value = updateNum.ToString();
+                    dgv_DetailReceipt.CurrentRow.Cells["TOTAL"].Value = (updateNum * price - updateNum * price * saleoff).ToString();
+                    //Cập nhật chi tiết hóa đơn
+                    bool flagUpdate = _dtreceipt.UpdateDetailReceipt(txt_Number.Text, idStaff, idItem, saleoff.ToString(), dgv_DetailReceipt.CurrentRow.Cells["NUMBER"].Value.ToString(), price.ToString(), dgv_DetailReceipt.CurrentRow.Cells["TOTAL"].Value.ToString(), "1");
+                    if (flagUpdate)
+                    {
+                        //cập nhật tổng tiền bên hóa đơn
+                        SumMoney();
+                        bool flagUpdateReceiptMoney = _receipt.UpdateToTalReceipt(txt_Number.Text, txt_Total.Text);
+                        if (flagUpdateReceiptMoney)
+                        {
+                            //cập nhật số lượng kho
+                            return;
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Có lỗi !");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Có lỗi khi giảm số lượng sản phẩm !");
+                    }
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void btn_DeleteItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgv_DetailReceipt.CurrentRow != null)
+                {
+                    string idItem = dgv_DetailReceipt.CurrentRow.Cells["ID_ITEM"].Value.ToString();
+                    string idStaff = dgv_DetailReceipt.CurrentRow.Cells["ID_STAFF"].Value.ToString();
+                    //Xóa chi tiết hóa đơn
+                    bool flagDelete = _dtreceipt.DeleteDetailReceipt(txt_Number.Text, idStaff, idItem);
+                    if (flagDelete)
+                    {
+                        XtraMessageBox.Show("Đã xóa mặt hàng (dịch vụ)" + dgv_DetailReceipt.CurrentRow.Cells["NAME"].Value.ToString() + " khỏi hóa đơn này !");
+                        //cập nhật tổng tiền bên hóa đơn                        
+                        dgv_DetailReceipt.Rows.Remove(dgv_DetailReceipt.CurrentRow);
+                        SumMoney();
+                        bool flagUpdateReceiptMoney = _receipt.UpdateToTalReceipt(txt_Number.Text, txt_Total.Text);
+                        if (flagUpdateReceiptMoney)
+                        {
+                            //cập nhật số lượng kho
+                            return;
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Có lỗi !");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show("Có lỗi khi xóa sản phẩm !");
+                    }
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void txt_Sale_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_Sale.Text.Trim() != string.Empty)
+            {
+                txt_MoneySale.Text = (float.Parse(txt_IntoMoney.Text) * (float.Parse(txt_Sale.Text) / 100)).ToString();
+                txt_Total.Text = (float.Parse(txt_IntoMoney.Text) - float.Parse(txt_MoneySale.Text)).ToString();
+            }
+        }
+
+        private void txt_Sale_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_Sale_MouseLeave(object sender, EventArgs e)
+        {
+            if (txt_Sale.Text.Trim() == string.Empty)
+            {
+                txt_Sale.Text = "0";
             }
         }
     }

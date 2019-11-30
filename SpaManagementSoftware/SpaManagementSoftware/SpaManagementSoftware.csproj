@@ -76,6 +76,12 @@
   <ItemGroup>
     <Compile Include="CreateControl.cs" />
     <Compile Include="C_Customer.cs" />
+    <Compile Include="frmPayMent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPayMent.Designer.cs">
+      <DependentUpon>frmPayMent.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReceiptTemp.cs" />
     <Compile Include="frmAddCustomer.cs">
       <SubType>Form</SubType>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPayMent.resx">
+      <DependentUpon>frmPayMent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRole.resx">
       <DependentUpon>frmRole.cs</DependentUpon>
