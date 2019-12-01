@@ -111,6 +111,7 @@
             this.txt_ToTal.Name = "txt_ToTal";
             this.txt_ToTal.Size = new System.Drawing.Size(252, 33);
             this.txt_ToTal.TabIndex = 6;
+            this.txt_ToTal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txt_MoneyCus
             // 
@@ -120,6 +121,7 @@
             this.txt_MoneyCus.Name = "txt_MoneyCus";
             this.txt_MoneyCus.Size = new System.Drawing.Size(252, 33);
             this.txt_MoneyCus.TabIndex = 8;
+            this.txt_MoneyCus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_MoneyCus.TextChanged += new System.EventHandler(this.txt_MoneyCus_TextChanged);
             this.txt_MoneyCus.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MoneyCus_KeyPress);
             // 
@@ -144,6 +146,7 @@
             this.txt_Refund.Name = "txt_Refund";
             this.txt_Refund.Size = new System.Drawing.Size(252, 33);
             this.txt_Refund.TabIndex = 10;
+            this.txt_Refund.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
             // 
@@ -160,7 +163,7 @@
             // 
             this.btn_PrintTemp.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_PrintTemp.Appearance.Options.UseFont = true;
-            this.btn_PrintTemp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btn_PrintTemp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_PrintTemp.ImageOptions.Image")));
             this.btn_PrintTemp.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btn_PrintTemp.Location = new System.Drawing.Point(376, 73);
             this.btn_PrintTemp.Name = "btn_PrintTemp";
@@ -172,7 +175,7 @@
             // 
             this.btn_CloseBillPrint.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_CloseBillPrint.Appearance.Options.UseFont = true;
-            this.btn_CloseBillPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.btn_CloseBillPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_CloseBillPrint.ImageOptions.Image")));
             this.btn_CloseBillPrint.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btn_CloseBillPrint.Location = new System.Drawing.Point(325, 232);
             this.btn_CloseBillPrint.Name = "btn_CloseBillPrint";
@@ -185,7 +188,7 @@
             // 
             this.btn_CloseBillNoPrint.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_CloseBillNoPrint.Appearance.Options.UseFont = true;
-            this.btn_CloseBillNoPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.btn_CloseBillNoPrint.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_CloseBillNoPrint.ImageOptions.Image")));
             this.btn_CloseBillNoPrint.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btn_CloseBillNoPrint.Location = new System.Drawing.Point(325, 273);
             this.btn_CloseBillNoPrint.Name = "btn_CloseBillNoPrint";
@@ -198,7 +201,7 @@
             // 
             this.btn_Cancel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.Appearance.Options.UseFont = true;
-            this.btn_Cancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.btn_Cancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_Cancel.ImageOptions.Image")));
             this.btn_Cancel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btn_Cancel.Location = new System.Drawing.Point(325, 314);
             this.btn_Cancel.Name = "btn_Cancel";

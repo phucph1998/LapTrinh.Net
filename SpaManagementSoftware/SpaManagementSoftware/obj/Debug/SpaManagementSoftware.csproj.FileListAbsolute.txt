@@ -262,3 +262,5 @@ D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmSearchCustomer.resources
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.csprojResolveAssemblyReference.cache
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmPayMent.resources
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmQuestionOpenChair.resources
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaManagementSoftware\obj\Debug\SpaManagementSoftware.frmAppointment.resources

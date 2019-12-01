@@ -80,5 +80,15 @@ namespace SpaManagementSoftware
                 this.Close();
             }
         }
+
+        private void dGV_Customer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dGV_Customer.CurrentRow != null)
+            {
+                idCus = dGV_Customer.CurrentRow.Cells["ID_PROFILE"].Value.ToString();
+                nameCus = dGV_Customer.CurrentRow.Cells["NAME"].Value.ToString();
+                this.Close();
+            }
+        }
     }
 }

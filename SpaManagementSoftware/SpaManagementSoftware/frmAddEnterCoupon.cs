@@ -214,12 +214,15 @@ namespace SpaManagementSoftware
         void SumMoneyItem()
         {
             int sum = 0;
+            int count = 0;
             for (int i = 0; i < dgV_DetailsCoupon.Rows.Count; i++)
             {
                 sum += Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["SUM_MONEY"].Value.ToString());
+                count += Convert.ToInt32(dgV_DetailsCoupon.Rows[i].Cells["NUMBER"].Value.ToString());
             }
             txt_MoneyItem.Text = String.Format("{0:#,##0.##}", sum);
             txt_SumMoney.Text = String.Format("{0:#,##0.##}", sum);
+            lbl_SumNumber.Text = count.ToString();
         }
 
         private void txt_SaleOff_TextChanged(object sender, EventArgs e)

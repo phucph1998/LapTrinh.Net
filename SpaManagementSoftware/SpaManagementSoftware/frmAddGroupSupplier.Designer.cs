@@ -108,6 +108,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddGroupSupplier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhóm Nhà Cung Cấp";
             ((System.ComponentModel.ISupportInitialize)(this.xTC_AddGroup)).EndInit();
             this.xTC_AddGroup.ResumeLayout(false);

@@ -161,18 +161,20 @@
             // lbl_SumNumber
             // 
             this.lbl_SumNumber.AutoSize = true;
-            this.lbl_SumNumber.Location = new System.Drawing.Point(94, 11);
+            this.lbl_SumNumber.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_SumNumber.Location = new System.Drawing.Point(122, 9);
             this.lbl_SumNumber.Name = "lbl_SumNumber";
-            this.lbl_SumNumber.Size = new System.Drawing.Size(13, 13);
+            this.lbl_SumNumber.Size = new System.Drawing.Size(16, 18);
             this.lbl_SumNumber.TabIndex = 15;
             this.lbl_SumNumber.Text = "1";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(9, 10);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(79, 13);
+            this.label14.Size = new System.Drawing.Size(107, 18);
             this.label14.TabIndex = 14;
             this.label14.Text = "Tổng số lượng:";
             // 

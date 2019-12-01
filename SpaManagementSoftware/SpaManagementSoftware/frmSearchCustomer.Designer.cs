@@ -79,6 +79,7 @@
             this.dGV_Customer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dGV_Customer.Size = new System.Drawing.Size(658, 271);
             this.dGV_Customer.TabIndex = 2;
+            this.dGV_Customer.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGV_Customer_CellDoubleClick);
             // 
             // ID_PROFILE
             // 

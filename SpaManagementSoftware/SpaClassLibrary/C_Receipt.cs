@@ -12,6 +12,24 @@ namespace SpaClassLibrary
     public class C_Receipt
     {
         DbSpaDataContext db = new DbSpaDataContext();
+        //Tim kiem hoa don theo ten khach hang
+        public DataTable SearchReceipt_ToNameCus(string pNameCus)
+        {
+            string sql = "SELECT r.CREATE_DATE,r.ID,r.ID_CHAIR,p.NAME as NAME_CUS,p.ADDRESS,p.PHONE,r.ID_ACCOUNT FROM receipt r,profile_cus p WHERE r.ID_ACCOUNT=p.ID_PROFILE AND r.TYPE_RECEIPT=3 AND r.`STATUS` = 1 AND p.NAME LIKE N'%" + pNameCus + "%'";
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
+        //Load hoa don dat lich
+        public DataTable GetDataAppointment()
+        {
+            string sql = "SELECT r.CREATE_DATE,r.ID,r.ID_CHAIR,p.NAME as NAME_CUS,p.ADDRESS,p.PHONE,r.ID_ACCOUNT FROM receipt r,profile_cus p WHERE r.ID_ACCOUNT=p.ID_PROFILE AND r.TYPE_RECEIPT=3 AND r.`STATUS` = 1";
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, Properties.Settings.Default.DbSpaDataContextConnectionString);
+            da.Fill(dt);
+            return dt;
+        }
         //Load id hoa don tuong ung cua ghe
         public Receipt GetReceipt(string pidReceipt)
         {
@@ -23,7 +41,7 @@ namespace SpaClassLibrary
             try
             {
                 Receipt check = db.Receipts.Where(t => t.ID == int.Parse(idReceipt)).FirstOrDefault();
-                if(check != null)
+                if (check != null)
                 {
                     check.TYPERECEIPT = 2;
                     db.SubmitChanges();

@@ -76,11 +76,23 @@
   <ItemGroup>
     <Compile Include="CreateControl.cs" />
     <Compile Include="C_Customer.cs" />
+    <Compile Include="frmAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAppointment.Designer.cs">
+      <DependentUpon>frmAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPayMent.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPayMent.Designer.cs">
       <DependentUpon>frmPayMent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuestionOpenChair.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuestionOpenChair.Designer.cs">
+      <DependentUpon>frmQuestionOpenChair.cs</DependentUpon>
     </Compile>
     <Compile Include="ReceiptTemp.cs" />
     <Compile Include="frmAddCustomer.cs">
@@ -230,6 +242,9 @@
     <EmbeddedResource Include="frmAddUserToGroup.resx">
       <DependentUpon>frmAddUserToGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAppointment.resx">
+      <DependentUpon>frmAppointment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmChangePass.resx">
       <DependentUpon>frmChangePass.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPayMent.resx">
       <DependentUpon>frmPayMent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuestionOpenChair.resx">
+      <DependentUpon>frmQuestionOpenChair.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRole.resx">
       <DependentUpon>frmRole.cs</DependentUpon>

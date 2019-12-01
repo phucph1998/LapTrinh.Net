@@ -56,6 +56,7 @@ namespace SpaManagementSoftware
             lbl_Chair.Text = NameChair;
             //Load tien
             txt_ToTal.Text = _receipt.GetMoneyReceipt(IdReceipt);
+            txt_MoneyCus.Text = txt_ToTal.Text;
         }
 
         private void btn_CloseBillNoPrint_Click(object sender, EventArgs e)
@@ -87,12 +88,19 @@ namespace SpaManagementSoftware
 
         private void txt_MoneyCus_TextChanged(object sender, EventArgs e)
         {
-            if (txt_MoneyCus.Text.Trim() != string.Empty)
+            try
             {
-                Double sumMoney = Double.Parse(txt_ToTal.Text);
-                Double moneyCus = Double.Parse(txt_MoneyCus.Text);
-                txt_Refund.Text = String.Format("{0:#,##0.##}", (sumMoney - moneyCus));
+                if (txt_MoneyCus.Text.Trim() != string.Empty)
+                {
+                    Double sumMoney = Double.Parse(txt_ToTal.Text);
+                    Double moneyCus = Double.Parse(txt_MoneyCus.Text);
+                    txt_Refund.Text = String.Format("{0:#,##0.##}", (sumMoney - moneyCus));
+                }
             }
+            catch
+            {
+                return;
+            }            
         }
 
         private void txt_MoneyCus_KeyPress(object sender, KeyPressEventArgs e)

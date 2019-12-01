@@ -176,38 +176,93 @@ namespace SpaManagementSoftware
         //Sự kiện hiện form thanh toán
         void btnChair_DoubleClick(object sender, EventArgs e)
         {
-            /*DialogResult r;
-            r = DevExpress.XtraEditors.XtraMessageBox.Show("Tạo Form Tính Tiền", "Nhắc Nhở", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-            DevExpress.XtraEditors.SimpleButton t;
-            if (r == DialogResult.Yes)
-            {
-                if (sender.GetType() == typeof(DevExpress.XtraEditors.SimpleButton))
-                {
-                    t = (DevExpress.XtraEditors.SimpleButton)sender;
-                    t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket;
-                }
-            }
-            else
-            {
-                t = (DevExpress.XtraEditors.SimpleButton)sender;
-                t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket_black;
-            }*/
             SimpleButton t;
             if (sender.GetType() == typeof(SimpleButton))
             {
                 t = (SimpleButton)sender;
                 if (t.Tag == "Close")
                 {
-                    MessageBox.Show("Đã mở ghế, Hãy chọn khách hàng để bắt đầu sử dụng dịch vụ !");
-                    t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket;
-                    t.Tag = "Open";
-                    ChairOpen_EnableControls();
-                    //Chon khach hang hoac load lai du lieu ở sự kiện click của button tìm kiếm
-                    //Lúc này các button tương ứng sẽ Enable = true
-                    return;
+                    //Chon phuong thuc mo ghe binh thuong, lich hen
+                    frmQuestionOpenChair frm = new frmQuestionOpenChair();
+                    frm.ShowDialog();
+                    if(!frm.FlagOpen)
+                    {
+                        XtraMessageBox.Show("Đã mở ghế bình thường, Hãy chọn khách hàng để bắt đầu sử dụng dịch vụ !","Thông báo");
+                        t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket;
+                        t.Tag = "Open";
+                        ChairOpen_EnableControls();
+                        //Chon khach hang hoac load lai du lieu ở sự kiện click của button tìm kiếm
+                        //Lúc này các button tương ứng sẽ Enable = true
+                        return;
+                    }
+                    else
+                    {
+                        //thuc hien mo ghe tu lich hen
+                        try
+                        {
+                            frmAppointment frmAppoint = new frmAppointment();
+                            frmAppoint.ShowDialog();
+                            string idChair = t.Name.Substring(t.Name.Length - 3, 3);
+                            if (frmAppoint.IdChair.Equals(idChair))
+                            {
+                                //Cho phep mo ghe
+                                XtraMessageBox.Show("Đã mở ghế từ lịch hẹn trước !", "Thông báo");
+                                t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket;
+                                t.Tag = "Open";
+                                ChairOpen_EnableControls();
+                                //Lưu mã hóa đơn vào danh sách tạm
+                                ReceiptTemp temp = new ReceiptTemp();
+                                temp.Id = frmAppoint.IdReceiptAppoint;
+                                temp.Chair = frmAppoint.IdChair;
+                                _listReceipt.Add(temp);
+                                txt_Number.Text = frmAppoint.IdReceiptAppoint;
+                                //Load tat ca thong tin don dat hang len cac control tuong ung
+                                //Load hoa don
+                                Receipt r = _receipt.GetReceipt(frmAppoint.IdReceiptAppoint);
+                                txt_NameCus.Text = _cus.GetNameCus(r.IDACCOUNT.ToString());
+
+                                //Load chi tiet hoa don tuong ung
+                                DataTable listDt = _dtreceipt.GetDTReceipt(frmAppoint.IdReceiptAppoint);
+                                for (int j = 0; j < listDt.Rows.Count; j++)
+                                {
+                                    string idItem = listDt.Rows[j][2].ToString(); ;
+                                    string product = _item.GetNameItem(listDt.Rows[j][2].ToString());//Lay ten san pham
+                                    string unit = _unit.GetNameUnit(_item.GetIdUnit(listDt.Rows[j][2].ToString()));//Lay ten don vi
+                                    string price = listDt.Rows[j][5].ToString();
+                                    string idStaff = listDt.Rows[j][1].ToString();
+                                    string nameStaff = _staff.GetNameStaff(listDt.Rows[j][1].ToString());//Lay ten nhan vien
+                                    string num = listDt.Rows[j][4].ToString(); ;
+                                    string saleoff = listDt.Rows[j][3].ToString();
+                                    string total = listDt.Rows[j][6].ToString();
+                                    string[] row = new string[] { idItem, product, unit, num, price, saleoff, total, idStaff, nameStaff };
+                                    dgv_DetailReceipt.Rows.Add(row);
+                                }
+                                SumMoney();
+                                return;
+                            }
+                        }
+                        catch
+                        {
+                            XtraMessageBox.Show("Bạn chưa chọn đơn đặt lịch nào !");
+                            ChairClose_EnableControls();
+                            t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket_black;
+                            t.Tag = "Close";
+                            return;
+                        }             
+                    }                    
                 }
                 if (t.Tag == "Open")
                 {
+                    if(txt_Number.Text.Trim() == string.Empty)
+                    {
+                        XtraMessageBox.Show("Ghế chưa có khách hàng sử dụng!");
+                        t.ImageOptions.Image = global::SpaManagementSoftware.Properties.Resources.ticket_black;
+                        ChairClose_EnableControls();
+                        txt_Number.Clear();
+                        txt_NameCus.Clear();
+                        dgv_DetailReceipt.Rows.Clear();
+                        return;
+                    }
                     frmPayMent frm = new frmPayMent();
                     frm.IdReceipt = txt_Number.Text;
                     frm.NameChair = lbl_NameChair.Text;
