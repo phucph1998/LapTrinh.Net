@@ -170,6 +170,7 @@
             this.btn_PrintTemp.Size = new System.Drawing.Size(131, 35);
             this.btn_PrintTemp.TabIndex = 11;
             this.btn_PrintTemp.Text = "In tạm tính";
+            this.btn_PrintTemp.Click += new System.EventHandler(this.btn_PrintTemp_Click);
             // 
             // btn_CloseBillPrint
             // 

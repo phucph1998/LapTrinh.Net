@@ -44,7 +44,7 @@ namespace SpaClassLibrary
             if (CheckedBeforSearchNameDB())
             {
                 cbb_Database.Items.Clear();
-                List<string> list = Config.GetDatabaseNameMySQL(cbb_ServerName.Text, txt_UserName.Text, txt_Password.Text);
+                List<string> list = Config.GetDatabaseNameMySQL(cbb_ServerName.Text, txt_UserName.Text, txt_Password.Text, txt_Port.Text);
                 if (list == null)
                 {
                     XtraMessageBox.Show("Thông tin cấu hình chưa chính xác", "Thông báo");
@@ -80,7 +80,7 @@ namespace SpaClassLibrary
         private void btn_SaveConfig_Click(object sender, EventArgs e)
         {
             //Config.ChangConnectionString(cbb_ServerName.Text, cbb_Database.Text, txt_UserName.Text, txt_Password.Text);
-            Config.ChangConnectionStringMySQL(cbb_ServerName.Text, cbb_Database.Text, txt_UserName.Text, txt_Password.Text);
+            Config.ChangConnectionStringMySQL(cbb_ServerName.Text, cbb_Database.Text, txt_UserName.Text, txt_Port.Text, txt_Password.Text);
             LoginUserControl uc = new LoginUserControl();
             uc.nameDatabase = cbb_Database.Text;
             this.Close();

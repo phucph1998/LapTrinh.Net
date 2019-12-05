@@ -408,16 +408,16 @@ namespace SpaManagementSoftware
 
         public void SumMoney()
         {
-            float sum = 0;
+            double sum = 0;
             if (dgv_DetailReceipt != null)
             {
                 for (int i = 0; i < dgv_DetailReceipt.Rows.Count; i++)
                 {
-                    sum += float.Parse(dgv_DetailReceipt.Rows[i].Cells["TOTAL"].Value.ToString());
+                    sum += double.Parse(dgv_DetailReceipt.Rows[i].Cells["TOTAL"].Value.ToString());
                 }
                 txt_IntoMoney.Text = sum.ToString();
-                txt_MoneySale.Text = (float.Parse(txt_IntoMoney.Text) * (float.Parse(txt_Sale.Text) / 100)).ToString();
-                txt_Total.Text = (float.Parse(txt_IntoMoney.Text) - float.Parse(txt_MoneySale.Text)).ToString();
+                txt_MoneySale.Text = (double.Parse(txt_IntoMoney.Text) * (double.Parse(txt_Sale.Text) / 100)).ToString();
+                txt_Total.Text = (double.Parse(txt_IntoMoney.Text) - double.Parse(txt_MoneySale.Text)).ToString();
             }
             else
             {
@@ -425,8 +425,8 @@ namespace SpaManagementSoftware
                 {
                     txt_IntoMoney.Text = "0";
                     txt_Sale.Text = "0";
-                    txt_MoneySale.Text = (float.Parse(txt_IntoMoney.Text) * (float.Parse(txt_Sale.Text) / 100)).ToString();
-                    txt_Total.Text = (float.Parse(txt_IntoMoney.Text) - float.Parse(txt_MoneySale.Text)).ToString();
+                    txt_MoneySale.Text = (double.Parse(txt_IntoMoney.Text) * (double.Parse(txt_Sale.Text) / 100)).ToString();
+                    txt_Total.Text = (double.Parse(txt_IntoMoney.Text) - double.Parse(txt_MoneySale.Text)).ToString();
                 }
             }
         }

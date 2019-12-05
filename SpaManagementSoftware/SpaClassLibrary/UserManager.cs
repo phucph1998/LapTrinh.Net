@@ -169,14 +169,13 @@ namespace SpaClassLibrary
             return list;
         }
         //MySQL Đọc danh sách database,đầu vào là tên sever, tên user, mật khẩu trả về danh sách database
-        public List<string> GetDatabaseNameMySQL(string pHost, string pUser, string pPass)
+        public List<string> GetDatabaseNameMySQL(string pHost, string pUser, string pPass, string pPort)
         {
             List<string> list = new List<string>();
             DataTable dt = new DataTable();
             try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter("SELECT SCHEMA_NAME FROM information_schema.SCHEMATA",
-                    "User Id=" + pUser + ";Password=" + pPass + ";Host=" + pHost + ";Database=information_schema;Persist Security Info=True;;Character Set=UTF8");
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT SCHEMA_NAME FROM information_schema.SCHEMATA", "User Id =" + pUser + ";Password=" + pPass + ";Port =" + pPort + "; Host =" + pHost + ";Database =information_schema; Persist Security Info = True; Character Set = utf8");
                 da.Fill(dt);
                 foreach (System.Data.DataRow r in dt.Rows)
                 {
@@ -202,9 +201,9 @@ namespace SpaClassLibrary
         }
 
         //Lưu cấu hình MySQL
-        public void ChangConnectionStringMySQL(string pHost, string pDataBase, string pUser, string pPass)
+        public void ChangConnectionStringMySQL(string pHost, string pDataBase, string pUser, string pPort,string pPass)
         {
-            SpaClassLibrary.Properties.Settings.Default["DbSpaDataContextConnectionString"] = "User Id=" + pUser + ";Password=" + pPass + ";Host=" + pHost + ";Database=" + pDataBase + ";Persist Security Info=True;Character Set=UTF8";
+            SpaClassLibrary.Properties.Settings.Default["DbSpaDataContextConnectionString"] = "User Id=" + pUser + ";Password=" + pPass + ";Port=" + pPort + ";Host=" + pHost + ";Database=" + pDataBase + ";Persist Security Info=True;Character Set=UTF8";
             Properties.Settings.Default.Save();
         }
 

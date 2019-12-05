@@ -36,11 +36,11 @@
             this.txt_UserName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.txt_Password = new System.Windows.Forms.TextBox();
             this.btn_SaveConfig = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Cancel = new DevExpress.XtraEditors.SimpleButton();
             this.cbb_Database = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_Port = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -154,19 +154,6 @@
             this.label3.Text = "Password";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 141);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.label4.Size = new System.Drawing.Size(100, 27);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Database";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // txt_Password
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.txt_Password, 3);
@@ -210,6 +197,19 @@
             this.cbb_Database.Size = new System.Drawing.Size(315, 21);
             this.cbb_Database.TabIndex = 10;
             this.cbb_Database.DropDown += new System.EventHandler(this.cbb_Database_DropDown);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 141);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.label4.Size = new System.Drawing.Size(100, 27);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Database";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
             // 

@@ -78,6 +78,20 @@ namespace SpaManagementSoftware
         private void btn_CloseBillPrint_Click(object sender, EventArgs e)
         {
             flagPayment = true;
+            //Cap nhat trang thai hoa don typereceipt
+            bool flag = _receipt.PayMent(idReceipt);
+            if (flag)
+            {
+                //XtraMessageBox.Show("Thanh Toán Thành Công!", "Thông báo");
+                frmReportReceipt frm = new frmReportReceipt();
+                frm.PIdReceipt = idReceipt;
+                frm.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                XtraMessageBox.Show("Thanh Toán Thất Bại !", "Thông báo");
+            }
             this.Close();
         }
 
@@ -100,7 +114,7 @@ namespace SpaManagementSoftware
             catch
             {
                 return;
-            }            
+            }
         }
 
         private void txt_MoneyCus_KeyPress(object sender, KeyPressEventArgs e)
@@ -109,6 +123,13 @@ namespace SpaManagementSoftware
             {
                 e.Handled = true;
             }
+        }
+
+        private void btn_PrintTemp_Click(object sender, EventArgs e)
+        {
+            frmReportReceipt frm = new frmReportReceipt();
+            frm.PIdReceipt = idReceipt;
+            frm.ShowDialog();
         }
 
         private void frmPayMent_Load(object sender, EventArgs e)

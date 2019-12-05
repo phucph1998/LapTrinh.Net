@@ -114,3 +114,4 @@ D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\Remot
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\Remotion.dll
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\Remotion.Interfaces.dll
 D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\bin\Debug\LinqToExcel.xml
+D:\LT_WINDOWS\LapTrinh.Net\SpaManagementSoftware\SpaClassLibrary\obj\Debug\SpaClassLibrary.csproj.CopyComplete
